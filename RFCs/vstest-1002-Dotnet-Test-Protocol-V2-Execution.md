@@ -1,4 +1,4 @@
-# RFC vstest-1001 dotnet-test protocol v2 - Execution
+# RFC vstest-1002 dotnet-test protocol v2 - Execution
 
 ## Summary
 This note details the protocol improvements in the new dotnet-test integration with IDE's. The focus will be more on the delta with the older protocol and the breaking changes.
@@ -56,10 +56,12 @@ And this protocol helps one launch a custom host or perform debugging:
 
 ### New Flow for Debug Tests/Custom test host process:
 This flow would have the same protocol to bootstrap the test platform which is essentially #1 in the default flow above. Here is the sequence of steps after the initialization phase:
+
 1. The IDE adapter sends a TestExecution.GetProcessStartInfo with a [TestRunRequestPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Payloads/TestRunRequestPayload.cs) that contains the container/tests it wants to execute.
 2. dotnet-test then reverts back to the IDE adapter with a TestExecution.CustomTestHostLaunch with a [ProcessStartInfo](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestProcessStartInfo.cs) payload which has the process start info of the default test host. As part of the arguments, we send a port that the test host should connect to communicate with dotnet-test.
 3. At this point, the adapter can launch the test host process (and attach to it for debugging if it chooses to).
 4. Once the test host starts, it sends dotnet-test a handshake TestHost.Connected message that indicates it is ready to receive commands.
+
 After these set of actions the protocol is the same as the default flow above, which is essentially from Step #4 above.
 	
 ### Notes:
