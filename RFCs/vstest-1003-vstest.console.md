@@ -10,7 +10,7 @@ There needs to be an infrastructure in place that is able to run unit tests base
 
 The overall architecture of the test platform is detailed in the block diagram below with all the extensibility points colored in green. 
 
-![vstest.console overall architecture]()
+![vstest.console overall architecture](https://github.com/AbhitejJohn/vstest-docs/blob/RFCvstestconsole/RFCs/Images/vstest.console-overall-architecture.png)
 
 The test platform has 3 major processes:
 	1. Runner
