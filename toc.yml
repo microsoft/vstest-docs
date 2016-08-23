@@ -1,6 +1,13 @@
-
-- name: Articles
-  href: articles/
-- name: Api Documentation
-  href: api/
-  homepage: api/index.md
+# Contents map
+# See https://dotnet.github.io/docfx/tutorial/intro_toc.html for details
+#- name: Downloads
+  #href: docs/download.md
+- name: Documentation
+  href: docs/
+- name: Specifications
+  href: RFCs/
+#- name: Contribute
+  #href: docs/contribute.md
+#- name: API Documentation
+  #href: api/
+  #homepage: api/index.md

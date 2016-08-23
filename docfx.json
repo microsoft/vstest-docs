@@ -26,8 +26,10 @@
       },
       {
         "files": [
-          "articles/**.md",
-          "articles/**/toc.yml",
+          "docs/**.md",
+          "docs/**/toc.yml",
+          "RFCs/**.md",
+          "RFCs/**/toc.yml",
           "toc.yml",
           "*.md"
         ],
@@ -40,7 +42,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "**/images/**",
+          "**/Images/**"
         ],
         "exclude": [
           "obj/**",
