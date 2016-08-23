@@ -20,12 +20,12 @@ These protocol changes provides the following improvements to dotnet-test:
 
 ### Protocol
 This is the existing dotnet-test integration with IDEs:
-![dotnet-test v1 protocol](https://github.com/dotnet/cli/blob/rel/1.0.0/Documentation/images/DotnetTestDiscoverTests.png)
+![dotnet-test v1 protocol](https://github.com/dotnet/cli/raw/rel/1.0.0/Documentation/images/DotnetTestDiscoverTests.png)
 
 Reference: https://github.com/dotnet/cli/blob/rel/1.0.0/Documentation/dotnet-test-protocol.md
 
 Here is what the changed wire protocol looks like after TPV2 integrates with dotnet-test:
-![dotnet-test v2 protocol](https://github.com/Microsoft/vstest-docs/blob/c1655dfff45528280bcacc763f3ff8daba25fdd3/RFCs/Images/dotnet-test-protocol-v2-discovery.png)
+![dotnet-test v2 protocol](Images/dotnet-test-protocol-v2-discovery.png)
 
 ### Breaking changes for Adapter(IDE)
 1. The object model used via the wire protocol will change from using [Microsoft.Extensions.Testing.Abstractions.Test](https://github.com/dotnet/cli/blob/rel/1.0.0/src/Microsoft.Extensions.Testing.Abstractions/Test.cs) to [Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs). 

@@ -21,15 +21,15 @@ These protocol changes provides the following improvements to dotnet-test:
 
 ### Protocol
 This is the existing dotnet-test integration with IDEs:
-![dotnet-test v1 protocol](https://github.com/dotnet/cli/blob/rel/1.0.0/Documentation/images/DotnetTestExecuteTests.png)
+![dotnet-test v1 protocol](https://github.com/dotnet/cli/raw/rel/1.0.0/Documentation/images/DotnetTestDiscoverTests.png)
 
 Reference: https://github.com/dotnet/cli/blob/rel/1.0.0/Documentation/dotnet-test-protocol.md
 
 Here is what the changed wire protocol looks like after TPV2 integrates with dotnet-test:
-![dotnet-test v2 protocol](https://github.com/Microsoft/vstest-docs/blob/c1655dfff45528280bcacc763f3ff8daba25fdd3/RFCs/Images/dotnet-test-protocol-v2-execution.png)
+![dotnet-test v2 protocol](Images/dotnet-test-protocol-v2-execution.png)
 
 And this protocol helps one launch a custom host or perform debugging:
-![dotnet-test v2 protocol for custom host](https://github.com/Microsoft/vstest-docs/blob/c1655dfff45528280bcacc763f3ff8daba25fdd3/RFCs/Images/dotnet-test-protocol-v2-execution-customhost.png)
+![dotnet-test v2 protocol for custom host](Images/dotnet-test-protocol-v2-execution-customhost.png)
 
 ### Breaking changes for Adapter(IDE)
 1. The object model used via the wire protocol will change from using [Microsoft.Extensions.Testing.Abstractions.Test](https://github.com/dotnet/cli/blob/rel/1.0.0/src/Microsoft.Extensions.Testing.Abstractions/Test.cs) and [Microsoft.Extensions.Testing.Abstractions.TestResult](https://github.com/dotnet/cli/blob/rel/1.0.0/src/Microsoft.Extensions.Testing.Abstractions/TestResult.cs) to [Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) and [Microsoft.VisualStudio.TestPlatform.ObjectModel.TestResult](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) appropriately.
@@ -66,7 +66,3 @@ After these set of actions the protocol is the same as the default flow above, w
 	
 ### Notes:
 1. Since TP V2 supports execution on multiple containers with a bunch of settings the Adapter can now pass in the containers as a List<string> to dotnet-test. Dotnet-test would then orchestrate among (multiple) test host processes and update the Adapter with the test results.
-
-
-
-

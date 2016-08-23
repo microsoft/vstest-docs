@@ -1,0 +1,4 @@
+- name: 1001 - Discovery test protocol
+  href: vstest-1001-Dotnet-Test-Protocol-V2-Discovery.md
+- name: 1002 - Execution test protocol
+  href: vstest-1002-Dotnet-Test-Protocol-V2-Execution.md
