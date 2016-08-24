@@ -28,7 +28,7 @@ Rest of the article will provide steps for VS and CLI/Editors development.
 
 ## Build
 
-### Building source code (Visual Studio)
+### Building with Visual Studio
 
 Open `/src/vstest/TestPlatform.sln` in VS.
 
@@ -37,7 +37,7 @@ Use `Build Solution` to build the source code.
 Binaries for each assembly are produced in the
 `artifacts/src/<Assembly>/bin/Debug` directory.
 
-### Building source code (CLI, CI, Editors)
+### Building with CLI, CI, Editors
 
 To build the repository, run the following command:
 
@@ -162,7 +162,7 @@ with Debug or Release as appropriate).
 
 A `netcoreapp` target of vstest.console is dropped at
 `/src/vstest/artifacts/<Configuration>/netcoreapp1.0/vstest.console.dll`. It can be
-executed with any x64 dotnet executable. You may choose to use the dotnet-cli we
+executed with any dotnet executable. You may choose to use the dotnet-cli we
 have in `/src/vstest/tools/dotnet/dotnet` as well :)
 
 ```
