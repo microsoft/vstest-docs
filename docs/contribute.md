@@ -176,3 +176,19 @@ follows:
 ```
 > /src/artifacts/Debug/net46/win7-x64/vstest.console.exe /?
 ```
+
+## Diagnostics
+
+Try to isolate the failure scenario. In the best case it's just a command line
+that can demonstrate a bug. For example, a bug in discovery of tests can show up
+in following command line:
+
+```
+> /src/artifacts/Debug/net46/win7-x64/vstest.console.exe mytest.dll /listTests /tests:*&&*#Ed
+```
+
+Next step is to enable verbose logging (TBD) to understand details.
+
+Another add a `Debugger.Launch` at the process launch points. E.g.
+`testhost.exe` or `vstest.console.exe`. Select the appropriate debugger (choose
+CoreCLR for netcoreapp scenario) and step through.
