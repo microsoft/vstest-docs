@@ -15,6 +15,7 @@ build and run a local server.
 
 ```
 > cd d:\src\vstest-docs
+> d:\tmp\docfx\docfx.exe build
 > d:\tmp\docfx\docfx.exe serve
 ```
 
