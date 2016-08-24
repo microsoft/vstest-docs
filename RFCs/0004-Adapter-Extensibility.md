@@ -1,4 +1,4 @@
-# RFC vstest-1003 Adapter extensibility
+# 0004 Adapter Extensibility
 
 ## Summary
 Allow the test platform to discover/run tests based on a 3rd party test framework. This would be done via an adapter for the corresponding framework that understands how tests are defined in that framework and can run them providing back the test platform with results.
