@@ -1,4 +1,4 @@
-# RFC vstest-1002 dotnet-test protocol v2 - Execution
+# 0003 Test Execution Protocol
 
 ## Summary
 This note details the protocol improvements in the new dotnet-test integration with IDE's. The focus will be more on the delta with the older protocol and the breaking changes.

@@ -1,4 +1,4 @@
-# RFC vstest-1001 dotnet-test protocol v2 - Discovery
+# 0002 Test Discovery Protocol
 
 ## Summary
 This note details the protocol improvements in the new dotnet-test integration with IDE's. The focus will be more on the delta with the older protocol and the breaking changes.

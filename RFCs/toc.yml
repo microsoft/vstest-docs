@@ -1,4 +1,8 @@
-- name: 1001 - Discovery test protocol
-  href: vstest-1001-Dotnet-Test-Protocol-V2-Discovery.md
-- name: 1002 - Execution test protocol
-  href: vstest-1002-Dotnet-Test-Protocol-V2-Execution.md
+- name: 0001 - Test Platform Architecture
+  href: 0001-Test-Platform-Architecture.md
+- name: 0002 - Test discovery protocol
+  href: 0002-Test-Discovery-Protocol.md
+- name: 0003 - Test execution protocol
+  href: 0003-Test-Execution-Protocol.md
+- name: 0004 - Adapter extensibility
+  href: 0004-Adapter-Extensibility.md
