@@ -19,5 +19,5 @@ build and run a local server.
 > d:\tmp\docfx\docfx.exe serve
 ```
 
-Open [http://localhost:8080/_site][] in a browser to see the rendering of the
+Open [http://localhost:8080/_site](http://localhost:8080/_site) in a browser to see the rendering of the
 documentation.
