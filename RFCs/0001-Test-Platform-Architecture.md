@@ -5,24 +5,40 @@ This document outlines the architecture of Visual Studio Test Platform. It
 covers the core components and the runner.
 
 ## Motivation
-There needs to be an infrastructure in place that is able to run unit tests
-based on different programming languages(C#/VB/C++/JS etc.) and different
-platforms(Windows Desktop/Linux/Mac/UWP etc.) and across different
-architectures(x86/x64/arm). This framework also needs to be extensible enough so
-that anyone can plugin easily into the key areas of the system.
+The test platform should help the developer through out [testing life
+cycle][testplatform-concept-blog]. In terms of **acquisition**, the test
+platform may provide a test runner which is available in key operating systems
+and devices.
+
+Based on the test strategy, tests are grouped into various categories as per
+semantics (the product area they validate), or the phase they run (Developer
+Machine, Continous Integration or Continous Deployment). Test platform should
+allow **selection** of tests. Various aspects of test execution may need to be
+**configurable** and shared across a team. During test execution, if needed,
+diagnostics from the product should be available as **reporting**. The reporting
+and collection of diagnostics data may be extensible.
+
+The platform should provide an extensibility model for test frameworks (and
+language runtimes). A developer acquainted with the aspects of test platform can
+use the same set of operations (test filtering, test execution, reporting)
+irrespective of the test framework (or language runtime) of the test.
+
+[testplatform-concept-blog]: https://blogs.msdn.microsoft.com/visualstudioalm/2016/07/25/evolving-the-visual-studio-test-platform-part-1
 
 ## Detailed Design
 
-The overall architecture of the test platform is detailed in the block diagram below with all the extensibility points colored in green. 
+The overall architecture of the test platform is detailed in the block diagram
+below with all the extensibility points colored in green. 
 
-![vstest.console overall architecture](Images/vstest.console-overall-architecture.png)
+[![vstest.console overall architecture](Images/vstest.console-overall-architecture.png)](Images/vstest.console-overall-architecture.png)
 
-The test platform has 3 major processes:
-	1. Runner
-	2. Test host
-	3. Data Collector
+The test platform has 3 major components:
 
-### Runner
+1. Runner
+2. Test host
+3. Data Collector
+
+### 1. Runner
 The runner is the entry point to the test platform. The main functionality of
 the runner is to take in the test container with user specified settings, figure
 out what architecture, framework is required to run the tests and spawn of a
@@ -35,7 +51,7 @@ a different environment(inside of a UWP app)/ built for a different
 architecture, framework. These two extensibility points will be detailed in a
 different document.
 
-### Test host
+### 2. Test host
 The test host actually hosts the test containers and runs the test. Its main
 functionality is to drive test discovery and execution via Adapters for a test
 framework. This constitutes the **adapter extensibility** which allows test
@@ -47,7 +63,7 @@ session or test case start and end events within the test host process, which
 one can use to figure out for instance the the code coverage for a test case.
 More on this extensibility point is covered in a different document.
 
-### Data Collector
+### 3. Data Collector
 The data collector process takes care of loading the Data Collection
 extensibility provider that allows users to write Data collectors for a test
 session. This component gets test session/ test case start and end events from
@@ -57,7 +73,8 @@ cpu usage for a test etc. This is a separate process because:
 
 1. We do not want the collector to affect the resources used by the test host
    process.
-2. The test host process can be of a totally different architecture, framework which not all data collectors can load in.
+2. The test host process can be of a totally different architecture, framework
+   which not all data collectors can load in.
 
 This process is spawned off only when data collection is turned on. In a vanilla flow only runner and test host process are required. 
 
