@@ -8,3 +8,6 @@
 /**/bin/
 /**/obj/
 _site
+
+# Visio
+*.~vsdx

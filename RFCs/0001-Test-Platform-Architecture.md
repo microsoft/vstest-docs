@@ -10,13 +10,14 @@ cycle][testplatform-concept-blog]. In terms of **acquisition**, the test
 platform may provide a test runner which is available in key operating systems
 and devices.
 
-Based on the test strategy, tests are grouped into various categories as per
-semantics (the product area they validate), or the phase they run (Developer
-Machine, Continous Integration or Continous Deployment). Test platform should
-allow **selection** of tests. Various aspects of test execution may need to be
-**configurable** and shared across a team. During test execution, if needed,
+Based on test strategy of a product, tests are grouped into various categories
+as per semantics (the product area they validate), or the phase they run
+(Developer Machine, Continous Integration or Continous Deployment). Test
+platform should allow **selection** of tests. Various aspects of test execution
+may need to be **configurable** and shared across a team. During test execution,
 diagnostics from the product should be available as **reporting**. The reporting
-and collection of diagnostics data may be extensible.
+and collection of diagnostics data may be extensible to support coverage,
+loggers, analytics and so on.
 
 The platform should provide an extensibility model for test frameworks (and
 language runtimes). A developer acquainted with the aspects of test platform can
@@ -32,53 +33,99 @@ below with all the extensibility points colored in green.
 
 [![vstest.console overall architecture](Images/vstest.console-overall-architecture.png)](Images/vstest.console-overall-architecture.png)
 
-The test platform has 3 major components:
+This architecture has four major components:
 
-1. Runner
-2. Test host
-3. Data Collector
+1. **Test Runner** is the command line entrypoint to test platform
+   (`vstest.console`).
+2. **Test Execution Host** is an architecture and framework specific process
+   that actually loads the test container and executes tests.
+3. **Data Collector Host** process hosts the various test execution data
+   listeners.
+4. **IDE/Editor** process is used by developer for Edit/Build the application
+   and trigger test runs.
 
-### 1. Runner
-The runner is the entry point to the test platform. The main functionality of
-the runner is to take in the test container with user specified settings, figure
-out what architecture, framework is required to run the tests and spawn of a
-host process with that setting to host and run the tests. It also houses two key
-extensibility points - Logger and Host extensibility. **Logger extensibility**
-provides users with an ability to save test results in a format of their choice
-which could be in a file or posted on a server. **Host extensibility** provides
-users with an ability to write their own custom test host process that can be in
-a different environment(inside of a UWP app)/ built for a different
-architecture, framework. These two extensibility points will be detailed in a
-different document.
+We will describe each component in the following sections.
 
-### 2. Test host
-The test host actually hosts the test containers and runs the test. Its main
-functionality is to drive test discovery and execution via Adapters for a test
-framework. This constitutes the **adapter extensibility** which allows test
-framework writers like xunit/nunit/mstest to write adapters that can understand
-tests written in that framework and run them. Adapter extensibility is detailed
-in a separate document. Another key functionality that the test host house's is
-**In-Proc Data Collection extensibility**. This allows users to listen to test
-session or test case start and end events within the test host process, which
-one can use to figure out for instance the the code coverage for a test case.
-More on this extensibility point is covered in a different document.
+### Test Runner
+Test runner is the primary entry point to the test platform. It takes a test
+container with a set of configuration settings as input. The language runtime,
+architecture, framework for test execution are inferred from the settings. Based
+on these parameters, it spawns a **Test Execution Host** process.
 
-### 3. Data Collector
-The data collector process takes care of loading the Data Collection
-extensibility provider that allows users to write Data collectors for a test
-session. This component gets test session/ test case start and end events from
-the test host process and notifies the registered data collectors. The data
-collectors can use this data to identify how much memory a test is taking or the
-cpu usage for a test etc. This is a separate process because:
+If data collectors are specified in the run settings, the **Data Collector
+Host** is spawned.
 
-1. We do not want the collector to affect the resources used by the test host
-   process.
-2. The test host process can be of a totally different architecture, framework
-   which not all data collectors can load in.
+Using the **Logger extensibility** feature, an extension can listen to the *Test
+Result* for each test case. It can also recieve a set of *Test Attachments*
+generated during the test execution. E.g. Trx logger generates an xml report of
+test results, elapsed time for the run etc. using this mechanism.
 
-This process is spawned off only when data collection is turned on. In a vanilla flow only runner and test host process are required. 
+There are several aspects of test execution that a test platform needs to cater.
 
-### Runner - test host interaction
+* Tests can target any language runtime. E.g. .NET, Javascript, Python etc.
+* Tests can target a specific version of the runtime. E.g. .NET 4.6 or .NET
+  Standard 1.4
+* Tests can target a specific platform architecture. E.g. x64 or x86
+
+Depending on the language runtime, some of these aspects require a separate
+process to run tests. **Host extensibility** allows developers to author custom
+test execution hosts.  One of the primary use case for this is running tests on
+a device. E.g. in case of running tests against a Universal Windows device, the
+test host is launched on a Windows Phone device. The test case and run settings
+are passed on to the test host using a JSON over Sockets protocol.
+
+Discovery of test cases and Execution are the primary commands sent to a test
+host. Read more about them in [0002 Test Discovery
+Protocol](0002-Test-Discovery-Protocol.md).
+
+### Test Execution Host
+The test host actually the test containers, discovers the tests available in it
+and finally runs the tests that match user specified criteria. Within a test
+host, the language runtime, version and architecture are fixed. However there's
+one more variable for tests:
+
+* Tests can be authored in any test framework for a runtime. E.g. NUnit, MSTest
+  or XUnit for .NET runtime.
+
+**Adapter Extensibility** provides an extensible way for developers to plug in
+adapters which understand the intricacies of test frameworks. Each test adapter
+needs to respond to Discovery and Execution requests from test runner. [Test
+Adapter Extensibility](0004-Adapter-Extensibility.md) discusses the API and
+other considerations in more details.
+
+A Data Collector monitors the test execution and collects diagnostic,
+performance, and other data for the code under test. If a data collector needs
+to collect intrusive data, it may use the **In-Proc Data Collection
+extensibility** API for this. In-proc data collectors, as the name suggests, are
+loaded within the test execution host. They can subscribe the test run and test
+case level events.
+
+We will discuss out of process data collectors in the next section.
+
+### Data Collector Host
+Out of process data collectors are hosted in the data collector host process.
+Similar to in-proc data collector, these data collectors also receive test
+run and test case level start/stop events. Usually the data collector
+starts/stops monitoring in these event handlers. Further a data collector can
+generate attachments which are available in the *TestCaseResult*.
+session. E.g. a video data collector can record a browser
+session while the test case is executing, it may attach the recorded video to
+the test result (if the test case failed) for further analysis by the user.
+
+Data collectors are hosted in a separate process for several reasons:
+
+1. Data collector may not be intrusive, it should not impact the test execution
+   itself. E.g. a performance data collector may not be accurate if it runs
+   within the execution process
+2. The test host process can be of a totally different architecture, framework.
+   However data collectors are usually generic. E.g. the video data collector
+   should record videos for JS or .NET tests alike.
+
+Data collector host process is spawned only if data collection is configured in
+the test run settings.
+
+### Flow: Test Runner - Test Host
+
 1. A user would spawn of the runner with a set of test containers and settings for the test session. 
 2. The runner would then process those settings to figure out key decision parameters for the run some of which are:
 	* The architecture the tests should run on.(x86/x64)
@@ -95,6 +142,7 @@ This process is spawned off only when data collection is turned on. In a vanilla
 The protocol between the runner and the test host for discovery and execution is detailed below. The interaction between the runner, test host and data collector is detailed in a different document.
 
 #### Discovery:	
+
 ![Discovery Protocol](Images/vstest.console-discovery.png)								
 1. After launching the test host process as detailed above the runner sends a TestDiscovery.Initialize message with the full path to extension assemblies as an IEnumerable<string>. The test host then uses this to load the extensions before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
 2. The runner then sends a TestDiscovery.Start message with a [DiscoveryPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/DiscoveryCriteria.cs) which contains the test containers and the session level settings.
