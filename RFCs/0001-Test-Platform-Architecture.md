@@ -33,7 +33,7 @@ below with all the extensibility points colored in green.
 
 [![vstest.console overall architecture](Images/vstest.console-overall-architecture.png)](Images/vstest.console-overall-architecture.png)
 
-This architecture four major components:
+This architecture has four major components:
 
 1. **Test Runner** is the command line entrypoint to test platform
    (`vstest.console`).
@@ -124,7 +124,7 @@ Data collectors are hosted in a separate process for several reasons:
 Data collector host process is spawned only if data collection is configured in
 the test run settings.
 
-### Runner - test host interaction
+### Flow: Test Runner - Test Host
 
 1. A user would spawn of the runner with a set of test containers and settings for the test session. 
 2. The runner would then process those settings to figure out key decision parameters for the run some of which are:
