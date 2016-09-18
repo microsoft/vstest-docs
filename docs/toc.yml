@@ -6,3 +6,5 @@
     #href: concepts.md
 - name: Contribute
   href: contribute.md
+- name: Release Notes
+  href: releases.md
