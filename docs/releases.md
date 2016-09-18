@@ -4,6 +4,7 @@
 
 * Support for .net core framework
 * New nuget package `Microsoft.Testplatform.CLI` for dotnet-cli
+* Performance instrumentation of runner, discovery and execution
 * Bug fix: Handle crash of test host
 * Bug fix: Handle paths and arguments on Unix
 * Bug fix: Sign core binaries
