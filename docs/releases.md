@@ -4,6 +4,7 @@
 
 * New configuration `DisableParallelization` in runsettings. This setting may be used by adapters to disable parallel run in certain scenarios, e.g. test profiling or instrumented runs.
 * Support for non-shared test hosts. A non shared test host is exclusive per test source. E.g. .net core tests use a non-shared host.
+* New nuget package: Microsoft.TestPlaform.TestHost. All .net core test apps will refer to this package.
 * Sample performance tests for test platform
 * Bug fix: support for reg free COM in Dia
 * Bug fix: display a message in VS on test host crash
