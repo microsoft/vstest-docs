@@ -80,9 +80,8 @@ Waiting for debugger attach...
 Process Id: 51928, Name: vstest.console
 ```
 
-For test host process (`testhost.exe`) use the following environment variable.
-Note that there will be no message on console for test host. Execution will
-halt until debugger is attached.
+For test host process (`testhost.exe`) use the following environment variable. 
+Execution will halt until debugger is attached.
 
 ```
 > set VSTEST_HOST_DEBUG=1
@@ -91,4 +90,5 @@ Microsoft (R) Test Execution Command Line Tool Version 15.0.0.0
 Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Starting test execution, please wait...
+Host debugging is enabled. Please attach debugger to testhost process to continue.
 ```
