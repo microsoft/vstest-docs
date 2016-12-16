@@ -15,6 +15,18 @@ Verbose trace information will be available in the `log.txt` file. You can also
 provide a path `/tmp/dir/log.txt`. `/tmp/dir` will be created for you if it
 doesn't exist.
 
+### Dotnet test
+
+Use the `--diag` option for `dotnet test` command. To get traces for VSTest build task,
+enable the following environment variable.
+
+```
+> set VSTEST_BUILD_TRACE=1
+or
+> $env:VSTEST_BUILD_TRACE=1    # powershell
+> dotnet test
+```
+
 ## Collect trace using config file
 
 Second technique to enable tracing is via a configuration file. Create
