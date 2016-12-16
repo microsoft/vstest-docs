@@ -6,7 +6,7 @@
 * Translationlayer timeout for CustomHost Launch changed to indefinate [#265](https://github.com/Microsoft/vstest/pull/265)
 * Added net46 folder in lib of Microsoft.TestPlatform Nuget Package [#247](https://github.com/Microsoft/vstest/pull/247).
 * Added license link.
-* Added thirt party notice to nuget packages [#249](https://github.com/Microsoft/vstest/pull/249).
+* Added third party notice to nuget packages [#249](https://github.com/Microsoft/vstest/pull/249).
 * Change assembly signing to public [#256](https://github.com/Microsoft/vstest/pull/256).
 * Make testhost a project dependency instead of content [#264](https://github.com/Microsoft/vstest/pull/264).
 * Several changes to build infrastructure for csproj migration [#262](https://github.com/Microsoft/vstest/pull/262) [#268](https://github.com/Microsoft/vstest/pull/268/files).
