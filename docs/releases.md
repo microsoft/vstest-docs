@@ -1,4 +1,24 @@
 # Release Notes
+## 15.0.0-preview-20161216.01
+
+* Migrate to csproj from xproj [here](https://github.com/Microsoft/vstest/pull/217).
+* Translationlayer timeout for CustomHost Launch changed to indefinate [here](https://github.com/Microsoft/vstest/pull/265)
+* Added net46 folder in lib of Microsoft.TestPlatform Nuget Package [here](https://github.com/Microsoft/vstest/pull/247).
+* Added license link.
+* Added thirt party notice to nuget packages [here](https://github.com/Microsoft/vstest/pull/249).
+* Change assembly signing to public [here](https://github.com/Microsoft/vstest/pull/256).
+* Make testhost a project dependency instead of content [here](https://github.com/Microsoft/vstest/pull/264).
+* Mutliple changes to build process [here](https://github.com/Microsoft/vstest/pull/262) [here](https://github.com/Microsoft/vstest/pull/268/files).
+* Include microbuild.core as a dependency for signing [here](https://github.com/Microsoft/vstest/pull/267).
+* Make External packages are restored with a separate csproj [here](https://github.com/Microsoft/vstest/pull/273).
+* Add Acceptance tests for netcore1.0 target [here](https://github.com/Microsoft/vstest/pull/259).
+* Add Acceptance tests for netcore1.1 target [here](https://github.com/Microsoft/vstest/pull/270).
+* Added E2E test for RunTestsWithCustomTestHostLauncher.
+* Change testcase gereration id algorithm to SHA1 to be in compat with Associate-WorkItem scenarios [here](https://github.com/Microsoft/vstest/pull/279).
+* Bug fix: Default logger output path should be cmd-line friendly [here](https://github.com/Microsoft/vstest/issues/244).
+* Bug fix: TRX logger Started Time incorrect [here](https://github.com/Microsoft/vstest/pull/253).
+* Update README.md [here](https://github.com/Microsoft/vstest/pull/263).
+
 
 ## 15.0.0-preview-20161123.03
 
