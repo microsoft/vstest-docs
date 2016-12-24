@@ -92,7 +92,8 @@ Waiting for debugger attach...
 Process Id: 51928, Name: vstest.console
 ```
 
-For test host process (`testhost.exe`) use the following environment variable. 
+For test host process (`testhost.exe`, or `dotnet exec testhost.dll` depending on
+target framework) use the following environment variable. 
 Execution will halt until debugger is attached.
 
 ```
