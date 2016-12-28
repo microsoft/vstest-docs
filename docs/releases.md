@@ -1,5 +1,22 @@
 # Release Notes
 
+## 15.0.0-preview-20161227.02
+
+* Add enhancement: trx logger can take logfile parameter [#282](https://github.com/Microsoft/vstest/pull/282).
+* Allow TranslationLayer to specify Diag parameters [#296](https://github.com/Microsoft/vstest/pull/296).
+* Passing runsettings as command line arguments [#297](https://github.com/Microsoft/vstest/pull/297).
+* Localization work [#302](https://github.com/Microsoft/vstest/pull/302).
+* Testhost Diag log file name format change [#303](https://github.com/Microsoft/vstest/pull/303).
+* Fix for issue where xlftool.exe is not able to update neutral xlf file if we update any existing resource string [#305](https://github.com/Microsoft/vstest/pull/305).
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.0.0-preview-20161216-01...v15.0.0-preview-20161227-02).
+
+### Drops
+
+* TestPlatform vsix: [TestPlatform.CI.Real-20161227-02](https://devdiv.visualstudio.com/DevDiv/VS.in%20Agile%20Testing%20IDE/_build/index?buildId=490545&_a=summary&tab=artifacts)
+* Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20161227-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20161227-02)
+* Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20161227-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20161227-02)
+
 ## 15.0.0-preview-20161216.01
 
 * Migrate to csproj from xproj [#217](https://github.com/Microsoft/vstest/pull/217).
