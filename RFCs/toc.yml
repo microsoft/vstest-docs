@@ -8,5 +8,5 @@
   href: 0004-Adapter-Extensibility.md
 - name: 0005 - Test platform SDK
   href: 0005-Test-Platform-SDK.md
-  - name: 0006 - Datacollection protocol
+- name: 0006 - Datacollection protocol
   href: 0006-DataCollection-Protocol.md
