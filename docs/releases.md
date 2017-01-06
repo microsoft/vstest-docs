@@ -6,7 +6,7 @@
 * Fixed DiaSession issue which showed async methods to be `external` [#307](https://github.com/Microsoft/vstest/pull/307)
 * Localized vstest [#308](https://github.com/Microsoft/vstest/pull/308)
 * Added OutputType to Microsoft.NET.Test.Sdk.target [#310](https://github.com/Microsoft/vstest/pull/310)
-* Enclosed run settings arguments to handle whitespace [#312](312)[https://github.com/Microsoft/vstest/pull/312]
+* Enclosed run settings arguments to handle whitespace [#312](https://github.com/Microsoft/vstest/pull/312)
 * Converted TestPlatform.vsix from V2 to V3 format [#316](https://github.com/Microsoft/vstest/pull/316)
 
 A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.0.0-preview-20161227-02...v15.0.0-preview-20170106-08).
