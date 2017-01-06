@@ -143,22 +143,25 @@ The protocol between the runner and the test host for discovery and execution is
 
 #### Discovery:	
 
-![Discovery Protocol](Images/vstest.console-discovery.png)								
-1. After launching the test host process as detailed above the runner sends a TestDiscovery.Initialize message with the full path to extension assemblies as an IEnumerable<string>. The test host then uses this to load the extensions before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
+![Discovery Protocol](Images/vstest.console-discovery.png)
+
+1. After launching the test host process as detailed above the runner sends a TestDiscovery.Initialize message with the full path to extension assemblies as an `IEnumerable<string>`. The test host then uses this to load the extensions before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
 2. The runner then sends a TestDiscovery.Start message with a [DiscoveryPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/DiscoveryCriteria.cs) which contains the test containers and the session level settings.
 3. The TestPlatform.Engine component in test host process invokes the loaded adapters with these containers to discover tests.
 4. When the adapter finds a test it notifies the TestPlatform.Engine which caches these test cases.
 5. When the maximum cache size is hit or on a cache timeout the
    TestPlatform.Engine passes on a list of test cases in a
-   TestDiscovery.TestsFound message as a List<TestCase>
+   TestDiscovery.TestsFound message as a `List<TestCase>`
 6. The adapter can also notify the TestPlatform.Engine of any errors/warnings during discovery via a message. This messages are then sent to the runner as a TestSession.Message with a [TestMessagePayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestMessagePayload.cs) This is an optional message.
 7. On discovery completion the adapter notifies the TestPlatform.Engine which then sends a TestDiscovery.Completed message to the runner with a [DiscoveryCompletePayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/DiscoveryCompletePayload.cs)
 8. On receiving a discovery complete from the test host the runner then ends the communication with a TestSession.Terminate.
 9. On receiving a terminate message the test host process cleanly exits.
 	
 #### Execution:
+
 ![Execution Protocol](Images/vstest.console-execution.png)
-1. After launching the test host process as detailed above the runner sends a TestExecution.Initialize message with the full path to extension assemblies as an IEnumerable<string>. The test host then uses this to load the extensions needed for execution before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
+
+1. After launching the test host process as detailed above the runner sends a TestExecution.Initialize message with the full path to extension assemblies as an `IEnumerable<string>`. The test host then uses this to load the extensions needed for execution before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
 2. The runner then sends a TestExecution.StartWithSources message with a [TestRunCriteriaWithSources](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/ObjectModel/TestRunCriteriaWithSources.cs) which contains the test containers and the session level settings.
 3. The TestPlatform.Engine component in test host process invokes the loaded adapters with these containers to execute tests.
 4. The adapter notifies the TestPlatform.Engine of a test case start, test result and a test case end. It maintains the test results received in a cache.
