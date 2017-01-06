@@ -1,6 +1,6 @@
 # Release Notes
 
-## 15.0.0-preview-20161227.02
+## 15.0.0-preview-20170106.08
 
 * First Draft for the Protocol tool. [#306](https://github.com/Microsoft/vstest/pull/306)
 * Fixed DiaSession issue which showed async methods to be `external` [#307](https://github.com/Microsoft/vstest/pull/307)
