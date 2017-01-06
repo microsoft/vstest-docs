@@ -2,6 +2,23 @@
 
 ## 15.0.0-preview-20161227.02
 
+* First Draft for the Protocol tool. [#306](https://github.com/Microsoft/vstest/pull/306)
+* Fixed DiaSession issue which showed async methods to be `external` [#307](https://github.com/Microsoft/vstest/pull/307)
+* Localized vstest [#308](https://github.com/Microsoft/vstest/pull/308)
+* Added OutputType to Microsoft.NET.Test.Sdk.target [#310](https://github.com/Microsoft/vstest/pull/310)
+* Enclosed run settings arguments to handle whitespace [#312](312)[https://github.com/Microsoft/vstest/pull/312]
+* Converted TestPlatform.vsix from V2 to V3 format [#316](https://github.com/Microsoft/vstest/pull/316)
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.0.0-preview-20161227-02...v15.0.0-preview-20170106-08).
+
+### Drops
+
+* TestPlatform vsix: [TestPlatform.CI.Real-20170106-08](https://devdiv.visualstudio.com/DevDiv/VS.in%20Agile%20Testing%20IDE/_build/index?buildId=505945&_a=summary&tab=artifacts)
+* Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20170106-08](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20170106-08)
+* Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20170106-08](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20170106-08)
+
+## 15.0.0-preview-20161227.02
+
 * Add enhancement: trx logger can take logfile parameter [#282](https://github.com/Microsoft/vstest/pull/282).
 * Allow TranslationLayer to specify Diag parameters [#296](https://github.com/Microsoft/vstest/pull/296).
 * Passing runsettings as command line arguments [#297](https://github.com/Microsoft/vstest/pull/297).
