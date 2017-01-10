@@ -184,7 +184,7 @@ in following command line:
 > /src/vstest/artifacts/Debug/net46/win7-x64/vstest.console.exe mytest.dll /listTests /tests:*&&*#Ed
 ```
 
-Next step is to enable verbose logging (TBD) to understand details.
+Next step is to enable [verbose logging](diagnose.md) to understand details.
 
 Another add a `Debugger.Launch` at the process launch points. E.g.
 `testhost.exe` or `vstest.console.exe`. Select the appropriate debugger (choose
