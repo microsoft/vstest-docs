@@ -24,8 +24,9 @@ If you're planning to use **Visual Studio** as development environment, please
 install `VS 2017 RC 2` and the `.NET Core and Docker (Preview)` workload installed. See download
 link [here](https://www.microsoft.com/net/core#windowsvs2017).
 
-Rest of the article will provide steps for VS and CLI/Editors development.
+If you're _not_ planning to use **Visual Studio** and only use CLI. You will need to install [.Net 46 targeting pack](https://www.microsoft.com/en-us/download/details.aspx?id=48136). The download link has two msis. Both needs to be installed. Otherwise build will fail asking to install net 46.
 
+Rest of the article will provide steps for VS and CLI/Editors development.
 ## Build
 
 ### Building with Visual Studio
