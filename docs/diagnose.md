@@ -11,14 +11,21 @@ traces to a log file. Invoke the runner using below command line:
 > vstest.console testApp.dll --diag:log.txt
 ```
 
-Verbose trace information will be available in the `log.txt` file. You can also
-provide a path `/tmp/dir/log.txt`. `/tmp/dir` will be created for you if it
-doesn't exist.
+Verbose trace information will be available in the `log.txt` file. The testhost
+execution logs will be in a `log.host.*.txt` file. Testhost logs will be most
+interesting since that process actually loads the adapters and runs the tests. It
+is also possible provide a path `/tmp/dir/log.txt`. `/tmp/dir` will be created if
+it doesn't exist.
 
 ### Dotnet test
 
-Use the `--diag` option for `dotnet test` command. To get traces for VSTest build task,
-enable the following environment variable.
+Use the `--diag` option for `dotnet test` command. This will also produce same
+set of log files: `log.txt` and `log.*.txt`.
+```
+> dotnet test --diag:log.txt
+```
+
+To get traces for VSTest build task, enable the following environment variable.
 
 ```
 > set VSTEST_BUILD_TRACE=1
@@ -32,6 +39,8 @@ or
 Second technique to enable tracing is via a configuration file. Create
 a `vstest.console.exe.config` configuration file in the same directory as
 `vstest.console`. Similar configuration is also possible for `testhost.exe` or `testhost.x86.exe`.
+
+This technique is useful to capture logs for IDE/Editor scenarios.
 
 ```
 > where vstest.console
