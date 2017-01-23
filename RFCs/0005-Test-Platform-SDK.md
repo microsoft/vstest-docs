@@ -35,12 +35,12 @@ Following is the `.NET` libraries supported by the ObjectModel package:
 
 [ObjectModelNuget]: http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/
 
-#### Compability
+#### Compatibility
 
 | Version   | Compatibility                      |
 |-----------|------------------------------------|
 | 11.0.0    | Supports VS 2012 - present         |
-| 15.0.0    | Supports VS 2016 - present         |
+| 15.0.0    | Supports VS 2017 - present         |
 
 The `15.0.0` version of `Microsoft.TestPlatform.ObjectModel` introduces several additional capabilities:
 * In process data collection
@@ -55,11 +55,15 @@ Test platform allows integration with an editor using a JSON wire protocol. The 
 #### SDK requirements
 There is no strict requirement for a authoring an editor integration in a particular language since the communication can be driven with JSON over the wire. At the moment, a `.NET` implementation is available. It is used by Visual Studio to drive test execution from the Test Explorer.
 
-Developers can use `Microsoft.TestPlatform.TranslationLayer` nuget package. It is a *redistributable* package.
+Developers can use `Microsoft.TestPlatform.TranslationLayer` nuget package. It is a *redistributable* package. It is available from vstest myget feed: [https://dotnet.myget.org/F/vstest/api/v3/index.json](https://dotnet.myget.org/F/vstest/api/v3/index.json). Sample application is [here](https://github.com/Microsoft/vstest/tree/master/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest)
 
 | Version   | .NET runtime                      |
 |-----------|-----------------------------------|
 | 15.0.0    | netstandard1.3                    |
+
+Protocol specification is available [here](0007-Editors-API-Specification.md).
+
+> Both the protocol and the sdk are under active development. Your feedback is most welcome. Please create an issue on the vstest repository.
 
 #### Compatibility
 Editor integration is available from Test Platform `15.0.0` onwards.
