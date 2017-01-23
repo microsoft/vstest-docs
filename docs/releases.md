@@ -1,5 +1,21 @@
 # Release Notes
 
+## 15.0.0-preview-20170123.02
+
+* Allow multiple test properties with same key [#239](https://github.com/Microsoft/vstest/issues/239), [#358](https://github.com/Microsoft/vstest/issues/358)
+* Localization for testplatform vsix package [#146](https://github.com/Microsoft/vstest/issues/146)
+* Working directory should be set to test source parent directory [#311](https://github.com/Microsoft/vstest/issues/311)
+* Allow relative source paths to vstest.console [#331](https://github.com/Microsoft/vstest/issues/331)
+* Stacktrace and error message should be in context of failed test [#285](https://github.com/Microsoft/vstest/issues/285)
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/RC.3...15.0-rtm).
+
+### Drops
+
+* TestPlatform vsix: [TestPlatform.CI.Real-20170123-02](https://devdiv.visualstudio.com/DevDiv/_build/index?buildId=533598&_a=summary)
+* Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20170123-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20170123-02)
+* Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20170123-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20170123-02)
+
 ## 15.0.0-preview-20170106.08
 
 * First Draft for the Protocol tool. [#306](https://github.com/Microsoft/vstest/pull/306)
