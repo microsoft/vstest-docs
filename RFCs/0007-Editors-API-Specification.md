@@ -792,9 +792,92 @@ represent user's test selection.
   }
 }
 ```
+### Cancel Test Run (Request)
+This request will cancel the current test run request.
+
+#### API Payload
+| Key         | Type   | Description           |
+|-------------|--------|-----------------------|
+| MessageType | string | TestExecution.Cancel  |
+| Payload     | object | null                  |
+
+#### Example
+```json
+{
+    "MessageType": "TestExecution.Cancel",
+    "Payload": null
+}
+```
+
+### Abort Test Run (Request)
+This request will abort the current test run request.
+
+#### API Payload
+| Key         | Type   | Description           |
+|-------------|--------|-----------------------|
+| MessageType | string | TestExecution.Abort   |
+| Payload     | object | null                  |
+
+#### Example
+```json
+{
+    "MessageType": "TestExecution.Abort",
+    "Payload": null
+}
+```
 
 ## Debug Tests
 TODO
+
+## Test Session Messages (Response)
+The log messages are sent as `TestSession.Message`. Error messages are also reported via this message response.
+
+#### API Payload
+| Key         | Type   | Description             |
+|-------------|--------|-------------------------|
+| MessageType | string | TestSession.Message     |
+| Payload     | object | See details below       |
+
+**Payload** object is has following structure.
+
+| Key                 | Type    | Description                                                   |
+|---------------------|---------|---------------------------------------------------------------|
+| MessageLevel        | number  | Represent the TestMessageLevel. See details below             |
+| Message             | string  | The actual message reported by the runner.                    |
+
+**MessageLevel** provides an integer specifying the type of log message.
+Possible values are:
+  * `0x0`: Informational
+  * `0x1`: Warning
+  * `0x2`: Error
+
+**Example**
+```json
+{
+    "MessageType": "TestSession.Message",
+    "Payload": {
+      "MessageLevel" : 1,
+      "Message" : "The test run was aborted."
+    }
+}
+```
+
+### Test Session End (Request)
+This request is used to the end the current test session.
+
+#### API Payload
+| Key         | Type   | Description           |
+|-------------|--------|-----------------------|
+| MessageType | string | TestSession.Terminate |
+| Payload     | object | null                  |
+
+#### Example
+```json
+{
+    "MessageType": "TestSession.Terminate",
+    "Payload": null
+}
+```
 
 ## Appendix
 ### Key Data Structures
