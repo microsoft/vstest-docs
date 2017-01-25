@@ -429,12 +429,24 @@ to listen to `TestExecution.StatsChange` messages until a
 
 **Payload** object has following structure.
 
-| Key            | Type  | Description                 |
-|----------------|-------|-----------------------------|
-| NewTestResults | array | Set of `TestResult` objects |
+| Key               | Type   | Description                                      |
+|-------------------|--------|--------------------------------------------------|
+| NewTestResults    | array  | Set of `TestResult` objects                      |
+| TestRunStatistics | object | See details below                                |
+| ActiveTests       | array  | Set of active or inprogress `TestCase` objects   |
+
+**TestRunStatistics** object has following structure
+
+| Key             | Type   | Description                             |
+|-----------------|--------|-----------------------------------------|
+| ExecutedTests   | number | Total number test executed              |
+| Stats           | object | Map for count of tests for each outcome |
 
 Details of a `TestResult` object is available in
-[appendix](#DataStructure.TestResult).
+[appendix](#4-testresult).
+
+Details of a `TestCase` object is available in
+[appendix](#3-testcase).
 
 #### Example
 ```json
@@ -454,7 +466,7 @@ Details of a `TestResult` object is available in
                 "Attributes": 1,
                 "ValueType": "System.String"
               },
-              "Value": "UnitTestProject.UnitTest.PassingTest"
+              "Value": "UnitTestProject.UnitTest.FailingTest"
             },
             {
               "Key": {
@@ -476,7 +488,7 @@ Details of a `TestResult` object is available in
                 "Attributes": 0,
                 "ValueType": "System.String"
               },
-              "Value": ".\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
+              "Value": "UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
             },
             {
               "Key": {
@@ -487,7 +499,7 @@ Details of a `TestResult` object is available in
                 "Attributes": 0,
                 "ValueType": "System.String"
               },
-              "Value": "PassingTest"
+              "Value": "FailingTest"
             },
             {
               "Key": {
@@ -521,6 +533,28 @@ Details of a `TestResult` object is available in
                 "ValueType": "System.Collections.Generic.KeyValuePair`2[[System.String],[System.String]][]"
               },
               "Value": []
+            },
+            {
+              "Key": {
+                "Id": "TestCase.LineNumber",
+                "Label": "Line Number",
+                "Category": "",
+                "Description": "",
+                "Attributes": 1,
+                "ValueType": "System.Int32"
+              },
+              "Value": 25
+            },
+            {
+              "Key": {
+                "Id": "TestCase.CodeFilePath",
+                "Label": "File Path",
+                "Category": "",
+                "Description": "",
+                "Attributes": 0,
+                "ValueType": "System.String"
+              },
+              "Value": "UnitTestProject\\UnitTest.cs"
             }
           ]
         },
@@ -536,7 +570,7 @@ Details of a `TestResult` object is available in
               "Attributes": 1,
               "ValueType": "System.String"
             },
-            "Value": ""
+            "Value": null
           },
           {
             "Key": {
@@ -547,7 +581,7 @@ Details of a `TestResult` object is available in
               "Attributes": 0,
               "ValueType": "System.TimeSpan"
             },
-            "Value": "00:00:00.0066746"
+            "Value": "00:00:10.0941957"
           },
           {
             "Key": {
@@ -558,7 +592,7 @@ Details of a `TestResult` object is available in
               "Attributes": 0,
               "ValueType": "System.String"
             },
-            "Value": ""
+            "Value": "Assert.AreEqual failed. Expected:<2>. Actual:<3>. "
           },
           {
             "Key": {
@@ -569,7 +603,7 @@ Details of a `TestResult` object is available in
               "Attributes": 0,
               "ValueType": "System.String"
             },
-            "Value": ""
+            "Value": "   at UnitTestProject.UnitTest.FailingTest() in UnitTestProject\\UnitTest.cs:line 27\r\n"
           },
           {
             "Key": {
@@ -580,7 +614,7 @@ Details of a `TestResult` object is available in
               "Attributes": 0,
               "ValueType": "Microsoft.VisualStudio.TestPlatform.ObjectModel.TestOutcome, Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
             },
-            "Value": 1
+            "Value": 2
           },
           {
             "Key": {
@@ -591,7 +625,7 @@ Details of a `TestResult` object is available in
               "Attributes": 0,
               "ValueType": "System.DateTimeOffset"
             },
-            "Value": "2017-01-06T10:43:16.5348448+05:30"
+            "Value": "2017-01-25T16:22:42.0912112+05:30"
           },
           {
             "Key": {
@@ -602,7 +636,119 @@ Details of a `TestResult` object is available in
               "Attributes": 0,
               "ValueType": "System.DateTimeOffset"
             },
-            "Value": "2017-01-06T10:43:16.5703446+05:30"
+            "Value": "2017-01-25T16:22:52.1862902+05:30"
+          }
+        ]
+      }
+    ],
+    "TestRunStatistics": {
+      "ExecutedTests": 2,
+      "Stats": {
+        "Passed": 1,
+        "Failed": 1
+      }
+    },
+    "ActiveTests": [
+      {
+        "Properties": [
+          {
+            "Key": {
+              "Id": "TestCase.FullyQualifiedName",
+              "Label": "FullyQualifiedName",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject.UnitTest.SkippingTest"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.ExecutorUri",
+              "Label": "Executor Uri",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Uri"
+            },
+            "Value": "executor://MSTestAdapter/v2"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.Source",
+              "Label": "Source",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.DisplayName",
+              "Label": "Name",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "SkippingTest"
+          },
+          {
+            "Key": {
+              "Id": "MSTestDiscovererv2.IsEnabled",
+              "Label": "IsEnabled",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Boolean"
+            },
+            "Value": false
+          },
+          {
+            "Key": {
+              "Id": "MSTestDiscovererv2.TestClassName",
+              "Label": "ClassName",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject.UnitTest"
+          },
+          {
+            "Key": {
+              "Id": "TestObject.Traits",
+              "Label": "Traits",
+              "Category": "",
+              "Description": "",
+              "Attributes": 5,
+              "ValueType": "System.Collections.Generic.KeyValuePair`2[[System.String],[System.String]][]"
+            },
+            "Value": []
+          },
+          {
+            "Key": {
+              "Id": "TestCase.LineNumber",
+              "Label": "Line Number",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Int32"
+            },
+            "Value": 36
+          },
+          {
+            "Key": {
+              "Id": "TestCase.CodeFilePath",
+              "Label": "File Path",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject\\UnitTest.cs"
           }
         ]
       }
