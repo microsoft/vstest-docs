@@ -1,5 +1,20 @@
 # Release Notes
 
+## 15.0.0-preview-20170125-04
+
+* Localization for following nuget packages:
+ 1) Microsoft.TestPlatform.CLI
+ 2) Microsoft.TestPlatform
+ 3) Microsoft.TestPlatform.ObjectModel
+ 4) Microsoft.TestPlatform.TestHost
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.0.0-preview-20170123-02...15.0.0-preview-20170125-04).
+
+### Drops
+
+* Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20170125-04](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20170125-04)
+* Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20170125-04](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20170125-04)
+
 ## 15.0.0-preview-20170123.02
 
 * Allow multiple test properties with same key [#239](https://github.com/Microsoft/vstest/issues/239), [#358](https://github.com/Microsoft/vstest/issues/358)
