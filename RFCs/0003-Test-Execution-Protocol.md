@@ -21,9 +21,9 @@ These protocol changes provides the following improvements to dotnet-test:
 
 ### Protocol
 This is the existing dotnet-test integration with IDEs:
-![dotnet-test v1 protocol](https://github.com/dotnet/cli/raw/rel/1.0.0/Documentation/images/DotnetTestDiscoverTests.png)
+![dotnet-test v1 protocol](https://github.com/dotnet/cli/raw/rel/1.0.0/Documentation/images/DotnetTestExecuteTests.png)
 
-Reference: https://github.com/dotnet/cli/blob/rel/1.0.0/Documentation/dotnet-test-protocol.md
+Reference: https://github.com/dotnet/cli/blob/rel/1.0.0/Documentation/dotnet-test-protocol.md#test-execution
 
 Here is what the changed wire protocol looks like after TPV2 integrates with dotnet-test:
 ![dotnet-test v2 protocol](Images/dotnet-test-protocol-v2-execution.png)
