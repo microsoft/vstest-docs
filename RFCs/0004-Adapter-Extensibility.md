@@ -157,7 +157,7 @@ The user might optionally also pass in a test case filter to run a subset of tes
 static readonly TestProperty PriorityProperty = TestProperty.Register(
   "CustomDiscoverer.Priority", "Priority", typeof(int), TestPropertyAttributes.Hidden, typeof(TestCase));
 
-/// Test properties supported for filtering 
+// Test properties supported for filtering 
 Dictionary<string, TestProperty> supportedProperties =
   new Dictionary<string, TestProperty>(StringComparer.OrdinalIgnoreCase);
 
@@ -168,7 +168,7 @@ supportedProperties[PriorityProperty.Label] = PriorityProperty.
 var filterExpression = runContext.GetTestCaseFilter(supportedProperties, (propertyName) =>
 {
     TestProperty testProperty = null;
-    supportedPropertiesCache.TryGetValue(propertyName, out testProperty);
+    supportedProperties.TryGetValue(propertyName, out testProperty);
     return testProperty;
 });
 
