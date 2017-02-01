@@ -16,28 +16,35 @@ This design will be detailed through the following sections:
 
 ### Specifying an Adapter
 Adapters can be provided to the test platform in one of the following ways:
-1. "/testadapterpath:<PathToTheAdapter>" This is a switch to vstest.console.exe that feeds in the location of the adapter to the test platform. The PathToAdapter is either the full path to the adapter directory or the relative path to the current directory. For instance:                 
+1. "/testadapterpath:<PathToTheAdapter>" This is a switch to vstest.console.exe that feeds in the location of the adapter to the test platform. The PathToAdapter is either the full path to the adapter directory or the relative path to the current directory. For instance:                 
+
 ```
-/testapdaterpath:"C:\Adapters\"
+/testapdaterpath:"C:\Adapters\"
 ```
-This picks up files which have ***.TestAdapter.dll**  in their name from C:\Adapters\ and loads them in as adapters to the test platform. This is done to optimize the number of assemblies the test platform considers as adapters.  
+
+This picks up files which have ***.TestAdapter.dll**  in their name from C:\Adapters\ and loads them in as adapters to the test platform. This is done to optimize the number of assemblies the test platform considers as adapters.  
+
 ```
 C:\Projects\UnitTestProject\bin\debug> vstest.console.exe /testadapterpath:"Adapters"
 ```
- This picks up all files which have ***.TestAdapter.dll** in their name from C:\Projects\UnitTestProject\bin\debug\Adapters and loads them in as adapters to the test platform.
-2. Runsettings via "TestAdaptersPaths" node in the RunConfiguration section. Here is a sample on how this can be specified:
+
+This picks up all files which have ***.TestAdapter.dll** in their name from C:\Projects\UnitTestProject\bin\debug\Adapters and loads them in as adapters to the test platform.
+2. Runsettings via "TestAdaptersPaths" node in the RunConfiguration section. Here is a sample on how this can be specified:
+
 ```xml
 	<RunSettings>
 	  <!-- Configurations that affect the Test Framework -->
 	  <RunConfiguration>
 	     <TestAdaptersPaths>C:\Adapters;Adapters;%temp%\Adapters</TestAdaptersPaths>
 	  </RunConfiguration>
-	</RunSettings>
+	</RunSettings>
 ```
-One can provide multiple paths that are ';' separated. Paths can be absolute like "C:\Adapters" or relative to the current directory like "Adapters" or can use environment variables like "%temp%\Adapters". Similar to /testadapterpath only files with ***.TestAdapter.dll** in their name from the above locations are fed in as adapters to the test platform. This specification will also work in non-commandline scenarios like VS IDE which can also take in a runsettings.
-3. VSIX based adapters. Any vsix extension that has an Asset in the vsixmanifest file with type "UnitTestExtension" is a candidate adapter. This is picked up automatically as an adapter in VS IDE. In vstest.console.exe these adapters are picked up when the '/usevsixextensions' switch is provided like below:
+
+One can provide multiple paths that are ';' separated. Paths can be absolute like "C:\Adapters" or relative to the current directory like "Adapters" or can use environment variables like "%temp%\Adapters". Similar to /testadapterpath only files with ***.TestAdapter.dll** in their name from the above locations are fed in as adapters to the test platform. This specification will also work in non-commandline scenarios like VS IDE which can also take in a runsettings.
+3. VSIX based adapters. Any vsix extension that has an Asset in the vsixmanifest file with type "UnitTestExtension" is a candidate adapter. This is picked up automatically as an adapter in VS IDE. In vstest.console.exe these adapters are picked up when the '/usevsixextensions' switch is provided like below:
+
 ```
-vstest.console.exe unittestproject.dll /usevsixextensions:true
+vstest.console.exe unittestproject.dll /usevsixextensions:true
 ```
 4. Nuget based Adapters in VS IDE. For seamless integration with adapters shipping as nuget packages, in VS IDE we automatically pick up referenced nuget packages that have files which satisfy ***.TestAdapter.dll** in their name and provide these files as adapters to the test platform.
 5. Default Adapters in Extensions folder. All the default adapters required by the test platform are packaged along with it in a folder that always gets probed. This folder lies where vstest.console.exe lies and is called the "Extensions" folder. One can get to the location of vstest.console by putting in a "where vstest.console" in a developer command prompt for VS. Any assembly placed in this folder is a candidate adapter. This is however not always recommended since this is specific to a system and involves changing contents in a VS installation folder.
@@ -56,7 +63,7 @@ Interface ITestDiscoverer
         /// <param name="discoveryContext">Context in which discovery is being performed.</param>
         /// <param name="logger">Logger used to log messages.</param>
         /// <param name="discoverySink">Used to send testcases and discovery related events back to Discoverer manager.</param>
-     DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext, IMessageLogger logger, ITestCaseDiscoverySink discoverySink)}
+     DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext, IMessageLogger logger, ITestCaseDiscoverySink discoverySink)}
 }
 ```
 The test platform iterates through all the loaded adapters and probes each one with the set of containers to get all the test cases defined in them. To optimize this process each adapter can have a FileExtension attribute defined that informs the test platform what file extension types each adapter is interested in. The following section details this with an example.
@@ -216,7 +223,7 @@ As detailed in the earlier section the TestDiscoverer.DiscoverTests gets called 
 
 The TestExecutor above is adorned by a ExtensionUri attribute which advertises the executor URI of this executor. The test platform uses this information to allocate test cases discovered and stamped by a URI in the discovery phase above  to the right executor. Execution, being a long running operation can be cancelled by the test platform via ITestExecutor.Cancel(). The adapter is then expected to stop execution and clean up resources. Any test result that the adapter tries to send back to the test platform after a cancel has been notified would result in a TestCanceledException.
 
-The adapters are also provided with the runsettings xml used for the run via the IDiscoveryContext.RunSettings for discovery and IRunContext.RunSettings for execution. 
+The adapters are also provided with the runsettings xml used for the run via the IDiscoveryContext.RunSettings for discovery and IRunContext.RunSettings for execution. 
 
 ### Adapter Specific Settings
 The adapters can also incorporate user provided settings via the runsettings XML by adding what is called as a Settings Provider. A settings provider would implement an ISettingsProvider interface and would be called before a discovery/ execution operation with the settings defined for that adapter in the runsettings XML(if any). 
@@ -251,7 +258,7 @@ The settings provider will first need to advertise to the test platform that it 
   <RunConfiguration>
     <TargetPlatform>x86</TargetPlatform>
   </RunConfiguration>
-    <XmlAdapter>
+    <XmlAdapter>
     <TraceLevel>4</TraceLevel>
     <ShouldPublishDataToFile>true</ShouldPublishDataToFile>
   </XmlAdapter>
@@ -261,7 +268,7 @@ The settings provider will first need to advertise to the test platform that it 
 the Load function would be called with the following sub-tree which only contains the settings for XmlAdapter
 
 ```xml
-  <XmlAdapter>
+  <XmlAdapter>
     <TraceLevel>4</TraceLevel>
     <ShouldPublishDataToFile>true</ShouldPublishDataToFile>
   </XmlAdapter>
