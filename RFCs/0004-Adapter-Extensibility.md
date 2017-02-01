@@ -154,10 +154,12 @@ Data driven test cases can have multiple test results, one against each data val
 The user might optionally also pass in a test case filter to run a subset of tests. In such cases along with invoking the adapters with the container set, the test platform also provides a callback in the run context instance in the form of [GetTestCaseFilter](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/IRunContext.cs#L38) that enables adapters to filter a [TestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) object. The adapters can query this API with the set of properties it supports filtering on, along with a provider of TestProperty instances  for each property. From the filter expression returned by this API, the adapter would then just have to perform a [ITestCaseFilterExpression.MatchTestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestCaseFilterExpression.cs#L20) on each test case which returns false if the test case has been filtered out. Below is sample code that demonstrates filtering:
 
 ```csharp
-static readonly TestProperty PriorityProperty = TestProperty.Register("CustomDiscoverer.Priority", "Priority", typeof(int), TestPropertyAttributes.Hidden, typeof(TestCase));
+static readonly TestProperty PriorityProperty = TestProperty.Register(
+  "CustomDiscoverer.Priority", "Priority", typeof(int), TestPropertyAttributes.Hidden, typeof(TestCase));
 
 /// Test properties supported for filtering 
-Dictionary<string, TestProperty> supportedProperties = new Dictionary<string, TestProperty>(StringComparer.OrdinalIgnoreCase);
+Dictionary<string, TestProperty> supportedProperties =
+  new Dictionary<string, TestProperty>(StringComparer.OrdinalIgnoreCase);
 
 // In the Adapter initialization phase
 supportedProperties[PriorityProperty.Label] = PriorityProperty.
@@ -205,7 +207,8 @@ If one needs to write a new adapter, it just needs to implement the two interfac
 [DefaultExecutorUri("executor://XmlTestExecutor")]
 class TestDiscoverer : ITestDiscoverer
 {
-    void DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext, IMessageLogger logger, ITestCaseDiscoverySink discoverySink)
+    void DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext,
+      IMessageLogger logger, ITestCaseDiscoverySink discoverySink)
     {
         // Logic to get the tests from the containers passed in.
 
