@@ -43,7 +43,7 @@ And this protocol helps one launch a custom host or perform debugging:
 ### New Flow for Run Tests:
 1. After the optional version check,  the IDE adapter can choose to optionally send paths to extensions it wants to initialize the test platform with.
 2. The IDE adapter then sends either a TestExecution.RunTestsWithContainersOnDefaultHost (or) TestExecution.RunTestsWithTestsOnDefaultHost with a [TestRunRequestPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Payloads/TestRunRequestPayload.cs) that contains containers (or) tests respectively.
-3. dotnet-test would then spawn of the default test host process for the configuration specified. 
+3. dotnet-test would then spawn an instance of the default test host process for the configuration specified. 
 4. dotnet-test then sends across the extensions if the IDE adapter has specified any, followed by the containers/test cases to run tests on. 
 5. The test host then invokes the Rocksteady adapter with the containers/tests to run via the ITestExeuctor.RunTests entry point. 
 6. The Rocksteady adapter runs each test and calls back to the test host when a test starts, when a test result is received and when a test ends.
