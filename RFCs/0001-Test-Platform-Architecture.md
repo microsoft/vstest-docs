@@ -126,17 +126,17 @@ the test run settings.
 
 ### Flow: Test Runner - Test Host
 
-1. A user would spawn of the runner with a set of test containers and settings for the test session. 
+1. A user would spawn an instance of the runner with a set of test containers and settings for the test session. 
 2. The runner would then process those settings to figure out key decision parameters for the run some of which are:
 	* The architecture the tests should run on.(x86/x64)
 	* The framework that the tests are on.(Desktop Fx/Core Fx)
 	* Data collectors if enabled.
 	* Path to user specified extension assemblies.
-3. It uses the architecture and framework specified to spawn of a test host process that satisfies these settings.
-4. The runner also starts of a TCP server to communicate with the test host process. 
+3. It uses the architecture and framework specified to spawn an instance of a test host process that satisfies these settings.
+4. The runner also starts an instance of a TCP server to communicate with the test host process. 
 5. After the test host launches it sets up a client connection with the runner. 
 6. The runner would then send through the test containers with the user specified settings to the test host process.
-7. The test host process performs the requested operation either discovery/execution and returns back the results in batches to the runner.
+7. The test host process performs the requested operation - either discovery/execution - and returns back the results in batches to the runner.
 8. The test host signals an operation end to the runner which then notifies the loggers and bails out.
 
 The protocol between the runner and the test host for discovery and execution is detailed below. The interaction between the runner, test host and data collector is detailed in a different document.
