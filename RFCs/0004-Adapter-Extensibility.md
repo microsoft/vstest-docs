@@ -9,6 +9,7 @@ Users are free to write tests based on a test framework of their choice (be it x
 ## Detailed Design
 
 This design will be detailed through the following sections:
+
 1. Specifying an adapter 
 2. Test Platform - Adapter interaction
 3. Writing an adapter
@@ -16,37 +17,42 @@ This design will be detailed through the following sections:
 
 ### Specifying an Adapter
 Adapters can be provided to the test platform in one of the following ways:
+
 1. "/testadapterpath:<PathToTheAdapter>" This is a switch to vstest.console.exe that feeds in the location of the adapter to the test platform. The PathToAdapter is either the full path to the adapter directory or the relative path to the current directory. For instance:                 
 
-```
-/testapdaterpath:"C:\Adapters\"
-```
+    ```
+    /testapdaterpath:"C:\Adapters\"
+    ```
 
-This picks up files which have ***.TestAdapter.dll**  in their name from C:\Adapters\ and loads them in as adapters to the test platform. This is done to optimize the number of assemblies the test platform considers as adapters.  
+    This picks up files which have ***.TestAdapter.dll**  in their name from C:\Adapters\ and loads them in as adapters to the test platform. This is done to optimize the number of assemblies the test platform considers as adapters.  
 
-```
-C:\Projects\UnitTestProject\bin\debug> vstest.console.exe /testadapterpath:"Adapters"
-```
+    ```
+    C:\Projects\UnitTestProject\bin\debug> vstest.console.exe /testadapterpath:"Adapters"
+    ```
 
-This picks up all files which have ***.TestAdapter.dll** in their name from C:\Projects\UnitTestProject\bin\debug\Adapters and loads them in as adapters to the test platform.
+    This picks up all files which have ***.TestAdapter.dll** in their name from C:\Projects\UnitTestProject\bin\debug\Adapters and loads them in as adapters to the test platform.
+
 2. Runsettings via "TestAdaptersPaths" node in the RunConfiguration section. Here is a sample on how this can be specified:
 
-```xml
-	<RunSettings>
-	  <!-- Configurations that affect the Test Framework -->
-	  <RunConfiguration>
-	     <TestAdaptersPaths>C:\Adapters;Adapters;%temp%\Adapters</TestAdaptersPaths>
-	  </RunConfiguration>
-	</RunSettings>
-```
+    ```xml
+    <RunSettings>
+      <!-- Configurations that affect the Test Framework -->
+      <RunConfiguration>
+        <TestAdaptersPaths>C:\Adapters;Adapters;%temp%\Adapters</TestAdaptersPaths>
+      </RunConfiguration>
+    </RunSettings>
+    ```
 
-One can provide multiple paths that are ';' separated. Paths can be absolute like "C:\Adapters" or relative to the current directory like "Adapters" or can use environment variables like "%temp%\Adapters". Similar to /testadapterpath only files with ***.TestAdapter.dll** in their name from the above locations are fed in as adapters to the test platform. This specification will also work in non-commandline scenarios like VS IDE which can also take in a runsettings.
+    One can provide multiple paths that are ';' separated. Paths can be absolute like "C:\Adapters" or relative to the current directory like "Adapters" or can use environment variables like "%temp%\Adapters". Similar to /testadapterpath only files with ***.TestAdapter.dll** in their name from the above locations are fed in as adapters to the test platform. This specification will also work in non-commandline scenarios like VS IDE which can also take in a runsettings.
+
 3. VSIX based adapters. Any vsix extension that has an Asset in the vsixmanifest file with type "UnitTestExtension" is a candidate adapter. This is picked up automatically as an adapter in VS IDE. In vstest.console.exe these adapters are picked up when the '/usevsixextensions' switch is provided like below:
 
-```
-vstest.console.exe unittestproject.dll /usevsixextensions:true
-```
+    ```
+    vstest.console.exe unittestproject.dll /usevsixextensions:true
+    ```
+
 4. Nuget based Adapters in VS IDE. For seamless integration with adapters shipping as nuget packages, in VS IDE we automatically pick up referenced nuget packages that have files which satisfy ***.TestAdapter.dll** in their name and provide these files as adapters to the test platform.
+
 5. Default Adapters in Extensions folder. All the default adapters required by the test platform are packaged along with it in a folder that always gets probed. This folder lies where vstest.console.exe lies and is called the "Extensions" folder. One can get to the location of vstest.console by putting in a "where vstest.console" in a developer command prompt for VS. Any assembly placed in this folder is a candidate adapter. This is however not always recommended since this is specific to a system and involves changing contents in a VS installation folder.
 
 ### Test Platform - Adapter interaction
@@ -97,6 +103,7 @@ Interface ITestExecutor
 }
 ```
 The test platform can call into the adapters with a set of 
+
 1. Containers or 
 2. Test cases to execute tests. 
 
@@ -169,14 +176,16 @@ The user might optionally also pass in a test case filter to run a subset of tes
 
 #### TestCase Extensibility
 Adapters can choose to fill in custom data into the [TestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) object through its [Property](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestObject.cs#L112) bag. This data can be:
+
 1. If the test case is adorned by a "Do Not Run"  attribute.
 2. If the test case is data driven, the values of the data to drive it with.
 
 and so on. During test execution the ITestExecutor can re-use this data to run the test. For instance, it may choose not to run the test in the first example above or feed in the stored data to data drive the test in the second example.
 
 #### Alternate Solutions
+
 1. Adapter extensibility can also be at a process level as opposed to using reflection to load the adapters. As long as the adapter understands the protocol with the client this could be a viable option. However there are two issues with this approach:
-	* The adapter would need to maintain multiple processes one for each architecture and framework.
+    * The adapter would need to maintain multiple processes one for each architecture and framework.
     * The test platform has other extensibility points in the host process that cannot be exposed if the adapter controls the host process unless each adapter initializes these extensions on its own.
 
 ### Writing an Adapter
@@ -275,6 +284,9 @@ the Load function would be called with the following sub-tree which only contain
 ```
 
 ## Open questions
+
 1. Should the user need to specify a test adapter path for an adapter to be picked up. Can we automatically figure out adapters that are dropped along with the test assembly? 
+
 2. Currently there is no way to specify to the test platform that it should pick only one specific adapter and ignore the rest. This would save the time taken to probe each adapter to figure out if it can run the tests and make this purely a user driven scenario. Do we want to have this ability?
+
 3. Currently there is a different host process that gets launched for discovery and execution. This does not allow adapters to easily re-use data created/read during discovery in the Run tests phase. The host process cannot be kept alive currently because Core Fx does not have a concept of app domains to load the test dll's in and unload them so that they are not locked. The only way adapters can re-use data across discovery and execution currently is by adding it in a property bag that the TestCase object exposes. Should this be the only way? Can we do something different here?
