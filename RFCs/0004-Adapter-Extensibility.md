@@ -59,17 +59,19 @@ Adapters can be provided to the test platform in one of the following ways:
 After the adapters are provided to the test platform via one or more of the entry points above, it then loads these adapters in the host process that runs the tests and calls into the adapter via one of the entry points defined in the interfaces detailed in the following sections.
 
 #### Discovery
+
 ```csharp
 Interface ITestDiscoverer
 {
-        /// <summary>
-        /// Discovers the tests available from the provided container.
-        /// </summary>
-        /// <param name="containers">Collection of test containers.</param>
-        /// <param name="discoveryContext">Context in which discovery is being performed.</param>
-        /// <param name="logger">Logger used to log messages.</param>
-        /// <param name="discoverySink">Used to send testcases and discovery related events back to Discoverer manager.</param>
-     DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext, IMessageLogger logger, ITestCaseDiscoverySink discoverySink)}
+  /// <summary>
+  /// Discovers the tests available from the provided container.
+  /// </summary>
+  /// <param name="containers">Collection of test containers.</param>
+  /// <param name="discoveryContext">Context in which discovery is being performed.</param>
+  /// <param name="logger">Logger used to log messages.</param>
+  /// <param name="discoverySink">Used to send testcases and discovery related events back to Discoverer manager.</param>
+  DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext,
+    IMessageLogger logger, ITestCaseDiscoverySink discoverySink)}
 }
 ```
 The test platform iterates through all the loaded adapters and probes each one with the set of containers to get all the test cases defined in them. To optimize this process each adapter can have a FileExtension attribute defined that informs the test platform what file extension types each adapter is interested in. The following section details this with an example.
@@ -80,26 +82,26 @@ For a single adapter the test platform calls ITestDiscoverer.DiscoverTests() dur
 ```csharp
 Interface ITestExecutor
 {
-        /// <summary>
-        /// Runs only the tests specified by parameter 'tests'. 
-        /// </summary>
-        /// <param name="tests">Tests to be run.</param>
-        /// <param name="runContext">Context to use when executing the tests.</param>
-        /// <param param name="frameworkHandle">Handle to the framework to record results and to do framework operations.</param>
-        void RunTests(IEnumerable<TestCase> tests, IRunContext runContext, IFrameworkHandle frameworkHandle);
+  /// <summary>
+  /// Runs only the tests specified by parameter 'tests'. 
+  /// </summary>
+  /// <param name="tests">Tests to be run.</param>
+  /// <param name="runContext">Context to use when executing the tests.</param>
+  /// <param param name="frameworkHandle">Handle to the framework to record results and to do framework operations.</param>
+  void RunTests(IEnumerable<TestCase> tests, IRunContext runContext, IFrameworkHandle frameworkHandle);
  
-        /// <summary>
-        /// Runs 'all' the tests present in the specified 'containers'. 
-        /// </summary>
-        /// <param name="containers">Path to test container files to look for tests in.</param>
-        /// <param name="runContext">Context to use when executing the tests.</param>
-        /// <param param name="frameworkHandle">Handle to the framework to record results and to do framework operations.</param>
-        void RunTests(IEnumerable<string> containers, IRunContext runContext, IFrameworkHandle frameworkHandle);
+  /// <summary>
+  /// Runs 'all' the tests present in the specified 'containers'. 
+  /// </summary>
+  /// <param name="containers">Path to test container files to look for tests in.</param>
+  /// <param name="runContext">Context to use when executing the tests.</param>
+  /// <param param name="frameworkHandle">Handle to the framework to record results and to do framework operations.</param>
+  void RunTests(IEnumerable<string> containers, IRunContext runContext, IFrameworkHandle frameworkHandle);
  
-        /// <summary>
-        /// Cancel the execution of the tests.
-        /// </summary>
-        void Cancel();
+  /// <summary>
+  /// Cancel the execution of the tests.
+  /// </summary>
+  void Cancel();
 }
 ```
 The test platform can call into the adapters with a set of 
@@ -114,31 +116,33 @@ ITestExecutor.RunTests with a set of containers gets called when the platform do
 The adapter can use the following API's exposed via the IFrameworkHandle interface to report back the status of the test run to the test platform:
 ```csharp
 /// <summary>
-        /// Notify the platform about the test result.
-        /// </summary>
-        /// <param name="testResult">Test Result to be sent to the adapter.</param>
-        void RecordResult(TestResult testResult);
+/// Notify the platform about the test result.
+/// </summary>
+/// <param name="testResult">Test Result to be sent to the adapter.</param>
+void RecordResult(TestResult testResult);
 
-        /// <summary>
-        /// Notify the platform about starting of the test case. 
-        /// The platform sends this event to data collectors enabled in the run. If no data collector is enabled, then the event is ignored. 
-        /// </summary>
-        /// <param name="testCase">testcase which will be started.</param>
-        void RecordStart(TestCase testCase);
- 
-        /// <summary>
-        /// Notify the platform about completion of the test case. 
-        /// The platform sends this event to data collectors enabled in the run. If no data collector is enabled, then the event is ignored. 
-        /// </summary>
-        /// <param name="testCase">testcase which has completed.</param>
-        /// <param name="outcome">outcome of the test case.</param>
-        void RecordEnd(TestCase testCase, TestOutcome outcome);
-  
-        /// <summary>
-        /// Notify the platform about run level attachments.
-        /// </summary>
-        /// <param name="attachmentSets">attachments produced in this run.</param>
-        void RecordAttachments(IList<AttachmentSet> attachmentSets);
+/// <summary>
+/// Notify the platform about starting of the test case. 
+/// The platform sends this event to data collectors enabled in the run. 
+/// If no data collector is enabled, then the event is ignored. 
+/// </summary>
+/// <param name="testCase">testcase which will be started.</param>
+void RecordStart(TestCase testCase);
+
+/// <summary>
+/// Notify the platform about completion of the test case. 
+/// The platform sends this event to data collectors enabled in the run. 
+/// If no data collector is enabled, then the event is ignored. 
+/// </summary>
+/// <param name="testCase">testcase which has completed.</param>
+/// <param name="outcome">outcome of the test case.</param>
+void RecordEnd(TestCase testCase, TestOutcome outcome);
+
+/// <summary>
+/// Notify the platform about run level attachments.
+/// </summary>
+/// <param name="attachmentSets">attachments produced in this run.</param>
+void RecordAttachments(IList<AttachmentSet> attachmentSets);
 ```
 
 An attachment here, could be any file that the adapter generates during the run / a file that the test writer would want attached to a run. This is surfaced to VS IDE as part of the output for a test case. More details on this follows in the "Writing an Adapter" section below.
@@ -150,28 +154,32 @@ Data driven test cases can have multiple test results, one against each data val
 The user might optionally also pass in a test case filter to run a subset of tests. In such cases along with invoking the adapters with the container set, the test platform also provides a callback in the run context instance in the form of [GetTestCaseFilter](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/IRunContext.cs#L38) that enables adapters to filter a [TestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) object. The adapters can query this API with the set of properties it supports filtering on, along with a provider of TestProperty instances  for each property. From the filter expression returned by this API, the adapter would then just have to perform a [ITestCaseFilterExpression.MatchTestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestCaseFilterExpression.cs#L20) on each test case which returns false if the test case has been filtered out. Below is sample code that demonstrates filtering:
 
 ```csharp
- static readonly TestProperty PriorityProperty = TestProperty.Register("CustomDiscoverer.Priority", "Priority", typeof(int), TestPropertyAttributes.Hidden, typeof(TestCase));
+static readonly TestProperty PriorityProperty = TestProperty.Register("CustomDiscoverer.Priority", "Priority", typeof(int), TestPropertyAttributes.Hidden, typeof(TestCase));
 
-        /// Test properties supported for filtering 
-       Dictionary<string, TestProperty> supportedProperties = new Dictionary<string, TestProperty>(StringComparer.OrdinalIgnoreCase);
+/// Test properties supported for filtering 
+Dictionary<string, TestProperty> supportedProperties = new Dictionary<string, TestProperty>(StringComparer.OrdinalIgnoreCase);
 
-       // In the Adapter initialization phase
-       supportedProperties[PriorityProperty.Label] = PriorityProperty.
+// In the Adapter initialization phase
+supportedProperties[PriorityProperty.Label] = PriorityProperty.
 
-        // Inside the execute tests method.
-       var filterExpression = runContext.GetTestCaseFilter(supportedProperties, (propertyName) => { 
-											TestProperty testProperty = null;
-										           supportedPropertiesCache.TryGetValue(propertyName, out testProperty);
-											return testProperty; 
-										 });
-										
-       // The adapter can then query if the test case has been filtered out using the following snippet.
-       if(filterExpression != null && 
-		filterExpression.MatchTestCase(currentTest, (propertyName) => {
-													      var testProperty = supportedProperties.TryGetValue(propertyName, out testProperty);
-													      return currentTest.GetPropertyValue(testProperty)
-													}
-) == false)
+// Inside the execute tests method.
+var filterExpression = runContext.GetTestCaseFilter(supportedProperties, (propertyName) =>
+{
+    TestProperty testProperty = null;
+    supportedPropertiesCache.TryGetValue(propertyName, out testProperty);
+    return testProperty;
+});
+
+// The adapter can then query if the test case has been filtered out using the following snippet.
+if (filterExpression != null &&
+    filterExpression.MatchTestCase(currentTest, (propertyName) =>
+    {
+        var testProperty = supportedProperties.TryGetValue(propertyName, out testProperty);
+        return currentTest.GetPropertyValue(testProperty);
+    }) == false)
+{
+    // ...
+}
 ```
 
 #### TestCase Extensibility
@@ -191,40 +199,41 @@ and so on. During test execution the ITestExecutor can re-use this data to run t
 ### Writing an Adapter
 
 If one needs to write a new adapter, it just needs to implement the two interfaces defined above along with a shipping mechanism so that it can be plugged into one of the entry points to the platform specified earlier. The adapter would have the following:
+
 ```csharp
 [FileExtension(".xml")]
 [DefaultExecutorUri("executor://XmlTestExecutor")]
-Class TestDiscoverer: ITestDiscoverer
+class TestDiscoverer : ITestDiscoverer
 {
     void DiscoverTests(IEnumerable<string> containers, IDiscoveryContext discoveryContext, IMessageLogger logger, ITestCaseDiscoverySink discoverySink)
-   {
-	// Logic to get the tests from the containers passed in.
-	
-	//Notify the test platform of the list of test cases found.
-	foreach(TestCase test in testsFound)
-	{
-		discoverySink.SendTestCase(test)
-	}
-   }
+    {
+        // Logic to get the tests from the containers passed in.
+
+        //Notify the test platform of the list of test cases found.
+        foreach (TestCase test in testsFound)
+        {
+            discoverySink.SendTestCase(test);
+        }
+    }
 }
 
 [ExtensionUri("executor://XmlTestExecutor")]
-Class TestExecutor: ITestExecutor
+class TestExecutor : ITestExecutor
 {
-	void RunTests(IEnumerable<TestCase> tests, IRunContext runContext, IFrameworkHandle frameworkHandle)
-	{
-		// Logic to run xml based test cases and report back results.
-	}
-	
-	void RunTests(IEnumerable<string> containers, IRunContext runContext, IFrameworkHandle frameworkHandle)
-	{
-		// Logic to discover and run xml based tests and report back results.
-	}
-	
-	void Cancel()
-	{
-		// Logic to cancel the current test run.
-	}
+    void RunTests(IEnumerable<TestCase> tests, IRunContext runContext, IFrameworkHandle frameworkHandle)
+    {
+        // Logic to run xml based test cases and report back results.
+    }
+
+    void RunTests(IEnumerable<string> containers, IRunContext runContext, IFrameworkHandle frameworkHandle)
+    {
+        // Logic to discover and run xml based tests and report back results.
+    }
+
+    void Cancel()
+    {
+        // Logic to cancel the current test run.
+    }
 }
 ```
 
@@ -240,11 +249,11 @@ The adapters can also incorporate user provided settings via the runsettings XML
 ```csharp
 interface ISettingsProvider
 {
-        /// <summary>
-        /// Load the settings from the reader.
-        /// </summary>
-        /// <param name="reader">Reader to load the settings from.</param>
-        void Load(XmlReader reader);
+  /// <summary>
+  /// Load the settings from the reader.
+  /// </summary>
+  /// <param name="reader">Reader to load the settings from.</param>
+  void Load(XmlReader reader);
 }
 ```
 A sample settings provider would look like below:
@@ -253,10 +262,10 @@ A sample settings provider would look like below:
 [SettingsName("XmlAdapter")
 public class XmlAdapterSettingsProvider : ISettingsProvider
 {
-	public void Load(XmlReader reader)
-	{
-		// Read the setting nodes from the XmlReader and save it for a succeeding discovery/execution operation.
-	}
+  public void Load(XmlReader reader)
+  {
+    // Read the setting nodes from the XmlReader and save it for a succeeding discovery/execution operation.
+  }
 }
 ```
 
@@ -267,7 +276,7 @@ The settings provider will first need to advertise to the test platform that it 
   <RunConfiguration>
     <TargetPlatform>x86</TargetPlatform>
   </RunConfiguration>
-    <XmlAdapter>
+  <XmlAdapter>
     <TraceLevel>4</TraceLevel>
     <ShouldPublishDataToFile>true</ShouldPublishDataToFile>
   </XmlAdapter>
@@ -277,10 +286,10 @@ The settings provider will first need to advertise to the test platform that it 
 the Load function would be called with the following sub-tree which only contains the settings for XmlAdapter
 
 ```xml
-  <XmlAdapter>
-    <TraceLevel>4</TraceLevel>
-    <ShouldPublishDataToFile>true</ShouldPublishDataToFile>
-  </XmlAdapter>
+<XmlAdapter>
+  <TraceLevel>4</TraceLevel>
+  <ShouldPublishDataToFile>true</ShouldPublishDataToFile>
+</XmlAdapter>
 ```
 
 ## Open questions
