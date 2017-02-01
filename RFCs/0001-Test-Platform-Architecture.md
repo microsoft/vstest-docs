@@ -79,7 +79,7 @@ host. Read more about them in [0002 Test Discovery
 Protocol](0002-Test-Discovery-Protocol.md).
 
 ### Test Execution Host
-The test host actually the test containers, discovers the tests available in it
+The test host actually discovers the test containers, discovers the tests available in it
 and finally runs the tests that match user specified criteria. Within a test
 host, the language runtime, version and architecture are fixed. However there's
 one more variable for tests:
