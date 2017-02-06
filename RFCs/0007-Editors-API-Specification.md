@@ -972,8 +972,103 @@ This request will abort the current test run request.
 }
 ```
 
-## Debug Tests
-TODO
+## Debug All Tests
+User needs to get the TestRunnerProcess StartInfo for running the host process under debugger. GetTestRunnerProcessStartInfoForRunAll message is sent and CustomTestHostLaunch message is received which contains the StartInfo of the host process. After starting the host process, CustomTestHostLaunchCallback is sent as an acknowledgment to the runner.
+Post this TestRunStatsChange and TestExecutionComplete events will received as per the test run.
+
+### Get TestRunner ProcessStartInfo For RunAll (Request)
+The request to get the Process StartInfo for the Test host.
+
+#### API Payload
+| Key         | Type   | Description                                         |
+|-------------|--------|-----------------------------------------------------|
+| MessageType | string | TestSession.GetTestRunnerProcessStartInfoForRunAll  |
+| Payload     | object | See details below                                   |
+
+**Payload** object is has following structure.
+
+| Key              | Type    | Description                                   |
+|------------------|---------|-----------------------------------------------|
+| Sources          | array   | Set of test containers. *Required*            |
+| TestCases        | array   | Set of `TestCase` objects. Null in this case. |
+| RunSettings      | string  | Run settings for the test run                 |
+| KeepAlive        | boolean | Reserved for future                           |
+| DebuggingEnabled | boolean | `true` indicates a test run under debugger    |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.GetTestRunnerProcessStartInfoForRunAll",
+  "Payload": {
+    "Sources": [
+      "E:\\git\\singh\\vstest\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
+    ],
+    "TestCases": null,
+    "RunSettings": null,
+    "KeepAlive": false,
+    "DebuggingEnabled": true
+  }
+}
+```
+### Custom TestHost Launch (Response)
+CustomTestHostLaunch is the response to GetTestRunnerProcessStartInfoRunAll request. This message contains the StartInfo for the testhost process.
+
+#### API Payload
+| Key         | Type   | Description                          |
+|-------------|--------|--------------------------------------|
+| MessageType | string | TestSession.CustomTestHostLaunch     |
+| Payload     | object | See details below                    |
+
+**Payload** object is has following structure.
+
+| Key                  | Type    | Description                                                |
+|----------------------|---------|------------------------------------------------------------|
+| FileName             | string  | Name of the host process                                   |
+| Arguments            | string  | Arguments to be passed to the host process                 |
+| WorkingDirectory     | string  | Working directory for the host process                     |
+| EnvironmentVariables | array   | Environment variables associated with host process         |
+| CustomProperties     | array   | Any custom properties that need to set                     |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.CustomTestHostLaunch",
+  "Payload": {
+    "FileName": "C:\\Program Files\\dotnet\\dotnet.exe",
+    "Arguments": "exec --runtimeconfig \"UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.runtimeconfig.json\" --depsfile \"E:\\git\\singh\\vstest\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.deps.json\" \"E:\\git\\packages\\microsoft.testplatform.testhost/15.0.0-preview-20170106-08\\lib/netstandard1.5/testhost.dll\" --port 64531 --parentprocessid 12292",
+    "WorkingDirectory": "vstest\\samples\\Microsoft.TestPlatform.Protocol",
+    "EnvironmentVariables": {},
+    "CustomProperties": null
+  }
+}
+```
+
+### Custom TestHost LaunchCallback (Acknowledgement)
+CustomTestHostLaunchCallback is the acknowledgement sent to the runner after starting the host process.
+
+#### API Payload
+| Key         | Type   | Description                                  |
+|-------------|--------|----------------------------------------------|
+| MessageType | string | TestSession.CustomTestHostLaunchCallback     |
+| Payload     | object | See details below                            |
+
+**Payload** object is has following structure.
+
+| Key                 | Type    | Description                                                |
+|---------------------|---------|------------------------------------------------------------|
+| HostProcessId       | number  | Process Id of the host process                             |
+| ErrorMessage        | string  | Error message in case host process does not start          |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.CustomTestHostLaunchCallback",
+  "Payload": {
+    "HostProcessId": 53572,
+    "ErrorMessage": null
+  }
+}
+```
 
 ## Test Session Messages (Response)
 The log messages are sent as `TestSession.Message`. Error messages are also reported via this message response.
