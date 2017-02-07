@@ -972,11 +972,13 @@ This request will abort the current test run request.
 }
 ```
 
-## Debug All Tests
-User needs to get the TestRunnerProcess StartInfo for running the host process under debugger. GetTestRunnerProcessStartInfoForRunAll message is sent and CustomTestHostLaunch message is received which contains the StartInfo of the host process. After starting the host process, CustomTestHostLaunchCallback is sent as an acknowledgment to the runner.
-Post this TestRunStatsChange and TestExecutionComplete events will received as per the test run.
+## Debug All/Selected Tests
+User needs to get the TestRunnerProcess StartInfo for running the host process under debugger. 
+GetTestRunnerProcessStartInfoForRunAll and GetTestRunnerProcessStartInfoForRunSelected messages need to be sent for DebugAll and DebugSelected operation respectively.
+CustomTestHostLaunch message is received which contains the StartInfo of the host process. After starting the host process using the StartInfo, CustomTestHostLaunchCallback is sent as an acknowledgment to the runner.
+Post this, TestRunStatsChange and TestExecutionComplete events are received as per the test run.
 
-### Get TestRunner ProcessStartInfo For RunAll (Request)
+### Get Process StartInfo For Debug All (Request)
 The request to get the Process StartInfo for the Test host.
 
 #### API Payload
@@ -1010,8 +1012,146 @@ The request to get the Process StartInfo for the Test host.
   }
 }
 ```
+
+### Get Process StartInfo For Debug Selected (Request)
+The request to get the Process StartInfo for the Test host.
+
+#### API Payload
+| Key         | Type   | Description                                              |
+|-------------|--------|----------------------------------------------------------|
+| MessageType | string | TestSession.GetTestRunnerProcessStartInfoForRunSelected  |
+| Payload     | object | See details below                                        |
+
+**Payload** object is has following structure.
+
+| Key              | Type    | Description                                   |
+|------------------|---------|-----------------------------------------------|
+| Sources          | array   | Set of test containers. Null in this case.    |
+| TestCases        | array   | Set of `TestCase` objects. *Required*         |
+| RunSettings      | string  | Run settings for the test run                 |
+| KeepAlive        | boolean | Reserved for future                           |
+| DebuggingEnabled | boolean | `true` indicates a test run under debugger    |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.GetTestRunnerProcessStartInfoForRunSelected",
+  "Payload": {
+    "Sources": null,
+    "TestCases": [
+      {
+        "Properties": [
+          {
+            "Key": {
+              "Id": "TestCase.FullyQualifiedName",
+              "Label": "FullyQualifiedName",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject.UnitTest.PassingTest"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.ExecutorUri",
+              "Label": "Executor Uri",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Uri"
+            },
+            "Value": "executor://MSTestAdapter/v2"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.Source",
+              "Label": "Source",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "E:\\git\\singh\\vstest\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.DisplayName",
+              "Label": "Name",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "PassingTest"
+          },
+          {
+            "Key": {
+              "Id": "MSTestDiscovererv2.IsEnabled",
+              "Label": "IsEnabled",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Boolean"
+            },
+            "Value": true
+          },
+          {
+            "Key": {
+              "Id": "MSTestDiscovererv2.TestClassName",
+              "Label": "ClassName",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject.UnitTest"
+          },
+          {
+            "Key": {
+              "Id": "TestObject.Traits",
+              "Label": "Traits",
+              "Category": "",
+              "Description": "",
+              "Attributes": 5,
+              "ValueType": "System.Collections.Generic.KeyValuePair`2[[System.String],[System.String]][]"
+            },
+            "Value": []
+          },
+          {
+            "Key": {
+              "Id": "TestCase.LineNumber",
+              "Label": "Line Number",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Int32"
+            },
+            "Value": 16
+          },
+          {
+            "Key": {
+              "Id": "TestCase.CodeFilePath",
+              "Label": "File Path",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "E:\\git\\singh\\vstest\\samples\\UnitTestProject\\UnitTest.cs"
+          }
+        ]
+      }
+    ],
+    "RunSettings": null,
+    "KeepAlive": false,
+    "DebuggingEnabled": true
+  }
+}
+```
+
 ### Custom TestHost Launch (Response)
-CustomTestHostLaunch is the response to GetTestRunnerProcessStartInfoRunAll request. This message contains the StartInfo for the testhost process.
+CustomTestHostLaunch is the response to GetTestRunnerProcessStartInfoRunAll/GetTestRunnerProcessStartInfoRunSelected request. This message contains the StartInfo for the testhost process.
 
 #### API Payload
 | Key         | Type   | Description                          |
