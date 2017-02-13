@@ -973,10 +973,13 @@ This request will abort the current test run request.
 ```
 
 ## Debug All/Selected Tests
-User needs to get the TestRunnerProcess StartInfo for running the host process under debugger. 
-GetTestRunnerProcessStartInfoForRunAll and GetTestRunnerProcessStartInfoForRunSelected messages need to be sent for DebugAll and DebugSelected operation respectively.
-CustomTestHostLaunch message is received which contains the StartInfo of the host process. After starting the host process using the StartInfo, CustomTestHostLaunchCallback is sent as an acknowledgment to the runner.
-Post this, TestRunStatsChange and TestExecutionComplete events are received as per the test run.
+Debug all or selected test operations follow this sequence:
+
+1. Request for the process to be launched under debugger (along with start parameters). `TestSession.GetTestRunnerProcessStartInfoForRunAll` and `TestSession.GetTestRunnerProcessStartInfoForRunSelected` messages need to be sent for DebugAll and DebugSelected operation respectively.
+2. Runner responds with a `TestSession.CustomTestHostLaunch` message. It has the executable which needs to be launched with debugger attached.
+3. After starting the host process, send `TestSession.CustomTestHostLaunchCallback` as an acknowledgment to the runner.
+
+After this, runner sends TestRunStatsChange and TestExecutionComplete events similar to a RunAll operation.
 
 ### Get Process StartInfo For Debug All (Request)
 The request to get the Process StartInfo for the Test host.
