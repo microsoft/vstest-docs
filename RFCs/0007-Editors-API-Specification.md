@@ -972,8 +972,246 @@ This request will abort the current test run request.
 }
 ```
 
-## Debug Tests
-TODO
+## Debug All/Selected Tests
+Debug all or selected test operations follow this sequence:
+
+1. Request for the process to be launched under debugger (along with start parameters). `TestSession.GetTestRunnerProcessStartInfoForRunAll` and `TestSession.GetTestRunnerProcessStartInfoForRunSelected` messages need to be sent for DebugAll and DebugSelected operation respectively.
+2. Runner responds with a `TestSession.CustomTestHostLaunch` message. It has the executable which needs to be launched with debugger attached.
+3. After starting the host process, send `TestSession.CustomTestHostLaunchCallback` as an acknowledgment to the runner.
+
+After this, runner sends TestRunStatsChange and TestExecutionComplete events similar to a RunAll operation.
+
+### Get Process StartInfo For Debug All (Request)
+The request to get the Process StartInfo for the Test host.
+
+#### API Payload
+| Key         | Type   | Description                                         |
+|-------------|--------|-----------------------------------------------------|
+| MessageType | string | TestSession.GetTestRunnerProcessStartInfoForRunAll  |
+| Payload     | object | See details below                                   |
+
+**Payload** object is has following structure.
+
+| Key              | Type    | Description                                   |
+|------------------|---------|-----------------------------------------------|
+| Sources          | array   | Set of test containers. *Required*            |
+| TestCases        | array   | Set of `TestCase` objects. Null in this case. |
+| RunSettings      | string  | Run settings for the test run                 |
+| KeepAlive        | boolean | Reserved for future                           |
+| DebuggingEnabled | boolean | `true` indicates a test run under debugger    |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.GetTestRunnerProcessStartInfoForRunAll",
+  "Payload": {
+    "Sources": [
+      "E:\\git\\singh\\vstest\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
+    ],
+    "TestCases": null,
+    "RunSettings": null,
+    "KeepAlive": false,
+    "DebuggingEnabled": true
+  }
+}
+```
+
+### Get Process StartInfo For Debug Selected (Request)
+The request to get the Process StartInfo for the Test host.
+
+#### API Payload
+| Key         | Type   | Description                                              |
+|-------------|--------|----------------------------------------------------------|
+| MessageType | string | TestSession.GetTestRunnerProcessStartInfoForRunSelected  |
+| Payload     | object | See details below                                        |
+
+**Payload** object is has following structure.
+
+| Key              | Type    | Description                                   |
+|------------------|---------|-----------------------------------------------|
+| Sources          | array   | Set of test containers. Null in this case.    |
+| TestCases        | array   | Set of `TestCase` objects. *Required*         |
+| RunSettings      | string  | Run settings for the test run                 |
+| KeepAlive        | boolean | Reserved for future                           |
+| DebuggingEnabled | boolean | `true` indicates a test run under debugger    |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.GetTestRunnerProcessStartInfoForRunSelected",
+  "Payload": {
+    "Sources": null,
+    "TestCases": [
+      {
+        "Properties": [
+          {
+            "Key": {
+              "Id": "TestCase.FullyQualifiedName",
+              "Label": "FullyQualifiedName",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject.UnitTest.PassingTest"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.ExecutorUri",
+              "Label": "Executor Uri",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Uri"
+            },
+            "Value": "executor://MSTestAdapter/v2"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.Source",
+              "Label": "Source",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "E:\\git\\singh\\vstest\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.dll"
+          },
+          {
+            "Key": {
+              "Id": "TestCase.DisplayName",
+              "Label": "Name",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "PassingTest"
+          },
+          {
+            "Key": {
+              "Id": "MSTestDiscovererv2.IsEnabled",
+              "Label": "IsEnabled",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Boolean"
+            },
+            "Value": true
+          },
+          {
+            "Key": {
+              "Id": "MSTestDiscovererv2.TestClassName",
+              "Label": "ClassName",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.String"
+            },
+            "Value": "UnitTestProject.UnitTest"
+          },
+          {
+            "Key": {
+              "Id": "TestObject.Traits",
+              "Label": "Traits",
+              "Category": "",
+              "Description": "",
+              "Attributes": 5,
+              "ValueType": "System.Collections.Generic.KeyValuePair`2[[System.String],[System.String]][]"
+            },
+            "Value": []
+          },
+          {
+            "Key": {
+              "Id": "TestCase.LineNumber",
+              "Label": "Line Number",
+              "Category": "",
+              "Description": "",
+              "Attributes": 1,
+              "ValueType": "System.Int32"
+            },
+            "Value": 16
+          },
+          {
+            "Key": {
+              "Id": "TestCase.CodeFilePath",
+              "Label": "File Path",
+              "Category": "",
+              "Description": "",
+              "Attributes": 0,
+              "ValueType": "System.String"
+            },
+            "Value": "E:\\git\\singh\\vstest\\samples\\UnitTestProject\\UnitTest.cs"
+          }
+        ]
+      }
+    ],
+    "RunSettings": null,
+    "KeepAlive": false,
+    "DebuggingEnabled": true
+  }
+}
+```
+
+### Custom TestHost Launch (Response)
+CustomTestHostLaunch is the response to GetTestRunnerProcessStartInfoRunAll/GetTestRunnerProcessStartInfoRunSelected request. This message contains the StartInfo for the testhost process.
+
+#### API Payload
+| Key         | Type   | Description                          |
+|-------------|--------|--------------------------------------|
+| MessageType | string | TestSession.CustomTestHostLaunch     |
+| Payload     | object | See details below                    |
+
+**Payload** object is has following structure.
+
+| Key                  | Type    | Description                                                |
+|----------------------|---------|------------------------------------------------------------|
+| FileName             | string  | Name of the host process                                   |
+| Arguments            | string  | Arguments to be passed to the host process                 |
+| WorkingDirectory     | string  | Working directory for the host process                     |
+| EnvironmentVariables | array   | Environment variables associated with host process         |
+| CustomProperties     | array   | Any custom properties that need to set                     |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.CustomTestHostLaunch",
+  "Payload": {
+    "FileName": "C:\\Program Files\\dotnet\\dotnet.exe",
+    "Arguments": "exec --runtimeconfig \"UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.runtimeconfig.json\" --depsfile \"E:\\git\\singh\\vstest\\samples\\UnitTestProject\\bin\\Debug\\netcoreapp1.0\\UnitTestProject.deps.json\" \"E:\\git\\packages\\microsoft.testplatform.testhost/15.0.0-preview-20170106-08\\lib/netstandard1.5/testhost.dll\" --port 64531 --parentprocessid 12292",
+    "WorkingDirectory": "vstest\\samples\\Microsoft.TestPlatform.Protocol",
+    "EnvironmentVariables": {},
+    "CustomProperties": null
+  }
+}
+```
+
+### Custom TestHost LaunchCallback (Acknowledgement)
+CustomTestHostLaunchCallback is the acknowledgement sent to the runner after starting the host process.
+
+#### API Payload
+| Key         | Type   | Description                                  |
+|-------------|--------|----------------------------------------------|
+| MessageType | string | TestSession.CustomTestHostLaunchCallback     |
+| Payload     | object | See details below                            |
+
+**Payload** object is has following structure.
+
+| Key                 | Type    | Description                                                |
+|---------------------|---------|------------------------------------------------------------|
+| HostProcessId       | number  | Process Id of the host process                             |
+| ErrorMessage        | string  | Error message in case host process does not start          |
+
+#### Example
+```json
+{
+  "MessageType": "TestExecution.CustomTestHostLaunchCallback",
+  "Payload": {
+    "HostProcessId": 53572,
+    "ErrorMessage": null
+  }
+}
+```
 
 ## Test Session Messages (Response)
 The log messages are sent as `TestSession.Message`. Error messages are also reported via this message response.
