@@ -1,7 +1,7 @@
 # 0001 Test Platform Architecture
 
 ## Summary
-This document outlines the architecture of Visual Studio Test Platform. It
+This document outlines the architecture of the Visual Studio Test Platform. It
 covers the core components and the runner.
 
 ## Motivation
@@ -12,7 +12,7 @@ and devices.
 
 Based on test strategy of a product, tests are grouped into various categories
 as per semantics (the product area they validate), or the phase they run
-(Developer Machine, Continous Integration or Continous Deployment). Test
+(Developer Machine, Continuous Integration or Continuous Deployment). Test
 platform should allow **selection** of tests. Various aspects of test execution
 may need to be **configurable** and shared across a team. During test execution,
 diagnostics from the product should be available as **reporting**. The reporting
