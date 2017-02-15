@@ -4,13 +4,6 @@ This article will help you build, test and try out local builds of the VS test
 platform.
 
 ## Prerequisites
-The development machine should allow execution of powershell scripts. It can be
-set with following command in an *Administrator* powershell session:
-
-```powershell
-> Set-ExecutionPolicy Unrestricted
-```
-
 Please ensure you have a `.net 4.6.2` or higher installed on the machine.
 
 Clone the repository to a local directory. Rest of this article assumes
