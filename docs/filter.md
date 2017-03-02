@@ -24,7 +24,7 @@ Allowed **operators**:
 * `!=` imples an exact not match
 * `~` implies a contains lookup
 
-**Value** is a string. All the lookups are case sensitive.
+**Value** is a string. All the lookups are case insensitive.
 
 Expressions can be joined with boolean operators. Following boolean operators are supported:
 * `|` implies a boolean `OR`
