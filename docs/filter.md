@@ -8,7 +8,7 @@ This document will help you to selectively execute test based on filtering condi
 **Expression** is of the format __\<property>\<operator>\<value>[|&\<Expression>]__. Expressions can be
 enclosed in paranthesis. E.g. `(Name~MyClass) | (Name~MyClass2)`.
 
-> An expression without any **operator** is automatically considered as a `contains` on `FullyQualifiedName` property.
+> `vstest 15.1+`: An expression without any **operator** is automatically considered as a `contains` on `FullyQualifiedName` property.
 E.g. `dotnet test --filter xyz` is same as `dotnet test --filter FullyQualifiedName~xyz`.
 
 **Property** is an attribute of the `Test Case`. For example, following are the properties
@@ -60,7 +60,7 @@ namespace MSTestNamespace
 
 | Expression | What it does? |
 | ---------- | ------------- |
-| `dotnet test --filter Method` | Runs tests whose `FullyQualifiedName` contains `Method` |
+| `dotnet test --filter Method` | Runs tests whose `FullyQualifiedName` contains `Method`. Available in `vstest 15.1+`. |
 | `dotnet test --filter Name~TestMethod1` | Runs tests whose name contains `TestMethod1`. |
 | `dotnet test --filter ClassName=MSTestNamespace.UnitTestClass1` | Runs tests which are in class  `MSTestNamespace.UnitTestClass1`. <br/>**Note:** ClassName value should have namespace, ClassName=UnitTestClass1 won't work. |
 | `dotnet test --filter FullyQualifiedName!=MSTestNamespace.UnitTestClass1.TestMethod1` | Runs all tests excepts `MSTestNamespace.UnitTestClass1.TestMethod1`. |
@@ -110,7 +110,7 @@ In above code we defined traits with keys `Category` and `Priority` which can be
 
 | Expression | What it does? |
 | ---------- | ------------- |
-| `dotnet test --filter XUnit` | Runs tests whose `FullyQualifiedName` contains `XUnit` |
+| `dotnet test --filter XUnit` | Runs tests whose `FullyQualifiedName` contains `XUnit`.  Available in `vstest 15.1+`. |
 | `dotnet test --filter Category=bvt` | Runs tests which has `[Trait("Category", "bvt")]`. |
 
 #### Using Logical operators `| and &`
