@@ -113,7 +113,8 @@ Subsequent discovery, execution operation don't require an initialization.
 
 ### Initialize Extensions (Request)
 This request ensures that all the extensions that are required for discovery or execution
-get loaded before the actual operation request. This includes path to the test adapters.
+get loaded before the actual operation request.
+While running test targeting .net4x framework, this is required for initializing the test adapters.
 
 #### API Payload
 | Key         | Type   | Description                 |
@@ -435,6 +436,9 @@ A run tests request will trigger test execution for a given test container.
   }
 }
 ```
+
+TargetFramework for the tests can be set using the runsettings.
+See [appendix](#RunSettings.TargetFramework) for details.
 
 ### Test Run Statistics (Response)
 Test results are provided by test platform in batches. An editor should continue
@@ -1284,39 +1288,6 @@ This request is used to the end the current test session.
 ```
 
 ## Appendix
-### Setting Target Framework
-The test runner needs the target framework for running the tests using the appropriate
-hosting environment. It can be set using TargetFrameworkVersion node in the RunSettings
-passed as part of discovery/execution request. TargetFrameworkVersion value is the fullname
-of the target framework. For example, ".NETFramework,Version=v4.5.2". Other supported
-.Net Framework version shortcuts are Framework35, Framework40 and Framework45.
-
-#### Example
-```
-<?xml version=\"1.0\" encoding=\"utf-8\"?>
-<RunSettings>
-  <RunConfiguration>
-    <TargetFrameworkVersion>.NETFramework,Version=v4.5.2</TargetFrameworkVersion>
-  </RunConfiguration>
-</RunSettings>
-```
-
-#### Example for Test Execution Request
-```
-{
-  "MessageType": "TestExecution.RunAllWithDefaultHost",
-  "Payload": {
-    "Sources": [
-      "E:\\UnitTest1\\UnitTest1\\bin\\Debug\\net452\\UnitTest1.dll"
-    ],
-    "TestCases": null,
-    "RunSettings": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RunSettings>\r\n<RunConfiguration>\r\n<TargetFrameworkVersion>Framework45</TargetFrameworkVersion>\r\n</RunConfiguration>\r\n</RunSettings>",
-    "KeepAlive": false,
-    "DebuggingEnabled": false
-  }
-}
-```
-
 ### Key Data Structures
 #### 1. Message<a name="DataStructure.Message"></a>
 A `Message` is basic data unit for the Editor and Test Platform communication
@@ -1578,6 +1549,39 @@ Possible outcomes are:
     "ValueType": "System.DateTimeOffset"
   },
   "Value": "2017-01-06T10:15:40.021772+05:30"
+}
+```
+
+#### 5. TargetFramework<a name="RunSettings.TargetFramework"></a>
+The test runner needs the target framework for running the tests using the appropriate
+hosting environment. It can be set using TargetFrameworkVersion node in the RunSettings
+passed as part of discovery/execution request. TargetFrameworkVersion value is the fullname
+of the target framework. For example, ".NETFramework,Version=v4.5.2". Other supported
+.Net Framework version shortcuts are Framework35, Framework40 and Framework45.
+
+##### Example
+```
+<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<RunSettings>
+  <RunConfiguration>
+    <TargetFrameworkVersion>.NETFramework,Version=v4.5.2</TargetFrameworkVersion>
+  </RunConfiguration>
+</RunSettings>
+```
+
+##### Example for Test Execution Request
+```
+{
+  "MessageType": "TestExecution.RunAllWithDefaultHost",
+  "Payload": {
+    "Sources": [
+      "E:\\UnitTest1\\UnitTest1\\bin\\Debug\\net452\\UnitTest1.dll"
+    ],
+    "TestCases": null,
+    "RunSettings": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RunSettings>\r\n<RunConfiguration>\r\n<TargetFrameworkVersion>Framework45</TargetFrameworkVersion>\r\n</RunConfiguration>\r\n</RunSettings>",
+    "KeepAlive": false,
+    "DebuggingEnabled": false
+  }
 }
 ```
 
