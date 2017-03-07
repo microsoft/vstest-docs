@@ -1,6 +1,8 @@
 # Monitor and analyze test run
 This document will walk you through enabling data collection for a test run.
 
+> Note, this is a draft document. This feature will come in Q2 CY 2017.
+
 > Version note: Data collectors are supported on test platform `15.1.0` onwards.
 
 ## Data Collectors
