@@ -39,7 +39,7 @@ This architecture has four major components:
    (`vstest.console`).
 2. **Test Execution Host** is an architecture and framework specific process
    that actually loads the test container and executes tests.
-3. **Data Collector Host** process hosts the various test execution data
+3. **Data Collector Host** process hosts various test execution data
    listeners.
 4. **IDE/Editor** process is used by developer for Edit/Build the application
    and trigger test runs.
@@ -79,8 +79,8 @@ host. Read more about them in [0002 Test Discovery
 Protocol](0002-Test-Discovery-Protocol.md).
 
 ### Test Execution Host
-The test host actually discovers the test containers, discovers the tests available in it
-and finally runs the tests that match user specified criteria. Within a test
+The test host first discovers the test containers, then discovers the tests available in them
+and finally runs those tests that match user specified criteria. Within a test
 host, the language runtime, version and architecture are fixed. However there's
 one more variable for tests:
 
@@ -107,8 +107,8 @@ Out of process data collectors are hosted in the data collector host process.
 Similar to in-proc data collector, these data collectors also receive test
 run and test case level start/stop events. Usually the data collector
 starts/stops monitoring in these event handlers. Further a data collector can
-generate attachments which are available in the *TestCaseResult*.
-session. E.g. a video data collector can record a browser
+generate attachments which are available in the test results.
+E.g. a video data collector can record a browser
 session while the test case is executing, it may attach the recorded video to
 the test result (if the test case failed) for further analysis by the user.
 
@@ -145,7 +145,7 @@ The protocol between the runner and the test host for discovery and execution is
 
 ![Discovery Protocol](Images/vstest.console-discovery.png)
 
-1. After launching the test host process as detailed above the runner sends a TestDiscovery.Initialize message with the full path to extension assemblies as an `IEnumerable<string>`. The test host then uses this to load the extensions before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
+1. After launching the test host process as detailed above, the runner sends a TestDiscovery.Initialize message with the full path to extension assemblies as an `IEnumerable<string>`. The test host then uses this to load the extensions before hand. This is an optional step and will not be sent if there are no additional extensions but the default.
 2. The runner then sends a TestDiscovery.Start message with a [DiscoveryPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/DiscoveryCriteria.cs) which contains the test containers and the session level settings.
 3. The TestPlatform.Engine component in test host process invokes the loaded adapters with these containers to discover tests.
 4. When the adapter finds a test it notifies the TestPlatform.Engine which caches these test cases.
