@@ -31,7 +31,7 @@ Following is the `.NET` libraries supported by the ObjectModel package:
 | Version   | .NET runtime                      |
 |-----------|-----------------------------------|
 | 11.0.0    | net35, netstandard1.0             |
-| 15.0.0    | netstandard1.3                    |
+| 15.0.0    | netstandard1.5                    |
 
 [ObjectModelNuget]: http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/
 
@@ -59,7 +59,7 @@ Developers can use `Microsoft.TestPlatform.TranslationLayer` nuget package. It i
 
 | Version   | .NET runtime                      |
 |-----------|-----------------------------------|
-| 15.0.0    | netstandard1.3                    |
+| 15.0.0    | netstandard1.5                    |
 
 Protocol specification is available [here](0007-Editors-API-Specification.md).
 
