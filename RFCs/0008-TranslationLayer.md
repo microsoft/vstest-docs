@@ -12,6 +12,11 @@ TranslationLayer provides simple APIs that can be invoked to get the desired res
 * Makes it easier for TestPlatform client writers.
 * Low maintainence for clients, minimal changes required during releases for TestPlatform.
 
+## Sample
+There is a sample project available for reference. Please find the relevant links below.
+* Sample project : `https://github.com/Microsoft/vstest/tree/master/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest`
+* Published nuget package : `https://www.nuget.org/packages/Microsoft.TestPlatform.TranslationLayer`
+
 ## Details
 TranslationLayer provides a IVsTestConsoleWrapper interface that contains main APIs for the required operations.
 VsTestConsoleWrapper provides the implementation for this interface. Please find following the details on the APIs and usage.
