@@ -7,16 +7,12 @@ of test loggers.
 
 ## Test loggers
 A test logger is a test platform extension to control reporting of test results.
-It can perform tasks when a test run message is generated, individual test
+It can perform tasks when a test run message, individual test
 results or the test run completion events are reported by the test platform.
 
 You can author a test logger to print messages on the console, generate result
 files of a specific reporting format, or even report results to various CI/CD
-services.
-
-Default inputs to a test logger can be provided in the command line, or using
-a `runsettings`. For example, you can provide the output path for a generated
-test report.
+services. Default inputs to a test logger can be provided in the command line.
 
 Please refer [todo]() for instructions on creating a test logger and [todo]()
 if you're interested in the architecture of a test logger.
@@ -26,15 +22,19 @@ if you're interested in the architecture of a test logger.
 | -------- | ------------- | ----------------- |
 | Local, CI, CD | Inbuilt | [Trx Logger][] |
 | Local, CI, CD | Inbuilt | [Console Logger][] |
-| Local, CI, CD | XunitXml.TestLogger | [Xunit Logger][] |
-| AppVeyor | AppVeyor.TestLogger | [AppVeyor Logger][] |
-| TeamCity | TeamCity.VSTest.TestAdapter | [Teamcity Logger][] |
+| Local, CI, CD | [XunitXml.TestLogger][xunit.nuget] | [Xunit Logger][] |
+| AppVeyor | [AppVeyor.TestLogger][appveyor.nuget] | [AppVeyor Logger][] |
+| TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
 
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/Faizan2304/LoggerExtensions
 [AppVeyor Logger]: https://github.com/Faizan2304/LoggerExtensions
 [TeamCity Logger]: https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
+
+[xunit.nuget]: https://www.nuget.org/packages/XunitXml.TestLogger
+[appveyor.nuget]: https://www.nuget.org/packages/AppVeyor.TestLogger
+[teamcity.nuget]: https://www.nuget.org/packages/TeamCity.VSTest.TestAdapter
 
 Want to add your logger? Please send a PR with changes in this doc.
 
