@@ -5,7 +5,7 @@ This document will walk you through enabling data collection for a test run.
 
 > Version note: Data collectors are supported on test platform `15.1.0` onwards.
 
-## Data Collectors
+## Data collectors
 A data collector is a test platform extension to monitor test run. It can
 perform tasks when a test run starts, before and after each individual test
 is run, and when the test run finishes.
@@ -20,7 +20,7 @@ location of the file you want to collect and attach to your test results. This
 data can be configured for each test settings that you create.
 
 Please refer [todo]() for instructions on creating a data collector and [todo]()
-if you're interesting in the architecture of data collection.
+if you're interested in the architecture of data collection.
 
 ## Acquisition
 A data collector should be made available either as a NuGet package (preferred)
@@ -42,6 +42,7 @@ to one of the following locations:
 dotnet-cli, the path could be `/sdk/<version>/Extensions` directory.
 2. any well known location on the filesystem
  
+> Version Note: new in 15.1
 In case of #2, user can specify the full path to the location using `/extensions:<path>`
 command line switch. Test platform will locate extensions from the provided
 directory.
