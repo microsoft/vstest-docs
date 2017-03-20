@@ -28,7 +28,7 @@ if you're interested in the architecture of a test logger.
 | Local, CI, CD | Inbuilt | [Console Logger][] |
 | Local, CI, CD | XunitXml.TestLogger | [Xunit Logger][] |
 | AppVeyor | AppVeyor.TestLogger | [AppVeyor Logger][] |
-| TeamCity | TeamCity.VSTest.TestAdapter | [Teamcity][] |
+| TeamCity | TeamCity.VSTest.TestAdapter | [Teamcity Logger][] |
 
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
