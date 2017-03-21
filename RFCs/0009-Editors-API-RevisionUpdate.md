@@ -4,18 +4,32 @@
 This note outlines the proposed changes for the JSON protocol between an Editor/IDE
 and the test platform.
 
+
+Here is the link to v1 specs: [Editors-API-Specification](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0007-Editors-API-Specification.md)
+
+## Motivation
+Here are the key factors:
+* Reducing size of the payload of message responses to improve performance. Refer to [https://github.com/Microsoft/vstest/issues/396](https://github.com/Microsoft/vstest/issues/396)
+* Improvements to versioning and ability to handle future breaking changes.
+
 ## Overview of changes
+* New data structure for communication for v2 and above.
+* Negotiation for protocol version: Editor and Test Runner, Test Runner and Test Host.
+* Json optimization and changes to payloads.
 
-### Communication Message
-Protocol related communication messages between Editor and Test Platform will have the following structure:
+### Messages for communication
+Protocol related communication messages between Editor and Test Platform can have either of the following structures.
 
-#### API Payload
+#### Message
+This is existing Message structure used for communication in v1.
+
+##### API Payload
 | Key         | Type   | Description                                            |
 |-------------|--------|--------------------------------------------------------|
 | MessageType | string | Type of message                                        |
-| Payload     | object | Payload for an operation input or output. Can be null. |
+| Payload     | object | Payload for an operation. Can be null.                 |
 
-#### Example
+##### Example
 ```json
 {
     "MessageType": "ProtocolVersion",
@@ -23,17 +37,18 @@ Protocol related communication messages between Editor and Test Platform will ha
 }
 ```
 
-### Versioned Message
-All other messages between an Editor and Test Platform will be versioned and have the following structure:
+#### Versioned Message
+This is the new data structure for Message introduced in v2. 
+It has an additional version field.
 
-#### API Payload
+##### API Payload
 | Key         | Type   | Description                                            |
 |-------------|--------|--------------------------------------------------------|
 | MessageType | string | Type of message                                        |
 | Version     | int    | Version based on which message should be deserialized  |
 | Payload     | object | Payload for an operation input or output. Can be null. |
 
-#### Example
+##### Example
 ```json
 {
   "MessageType": "Extensions.Initialize",
@@ -44,22 +59,67 @@ All other messages between an Editor and Test Platform will be versioned and hav
 }
 ```
 
-Since now we have two kind of messages, the default serializer should be capable of deserializing both kind of messages.
-For messages with version, this version will be used to choose the respective serializer for serializing and deserializing the payload.
+#### Need for Versioned Message
+A solution can contain projects that depend on different versions of Test Host. The tests from these projects can
+be run in parallel, which means Editor will be receiving test cases/results from both the Test Hosts.
+Editor will be able to deserialize both the messages, based on the version stamped on the responses.
 
-### Version Operation
-An Editor uses the version operation to check the protocol version supported
-by the available test platform. It may modify the protocol for further communication if needed.
+#### Using Correct Message Structures
+Message(v1) is used for protocol version negotiation in the beginning.
+For rest of the communication, the structure for messages is decided based on negotiated version.
+
+* If negotiated version = 1, Message (v1) structure will be used.
+* If negotiated version >= 2, Versioned Message (v2) will be used.
+
+Since now we have two kind of messages, implementation should be capable of deserializing both kind of messages.
+For Versioned Messages, the embedded version will be used to choose the implementation for serializing and deserializing the payloads.
+
+### Version Negotiations
+Editor uses the version operation to negotiate for the highest common version supported
+by the available Test platform.
+Similarly, Test Runner uses version operation to negotiate for the highest common version
+supported by the available Test host.
+All the components will have a range of versions they support.
+
+#### Negotiation Between IDE and Test Runner
+Editor sends version request with highest version.
+Test Runner then sends back the highest common version.
+
+For Example:
+* Editor with range (1-3) sends Version(Request) with version = 3, and Test Runner with range (1-2) will send back version as 2.
+* Editor with range (1-2) sends version(Request) with version = 2, and Test Runner with range (1-3) will send back version as 2.
+
+If Test Runner does not support the Editor, it will send ProtocolError message as discussed in the section below.
+
+At this point the initial handshake between Editor and Test Runner is
+complete. Version operation is required only once per launch of test runner.
+Editor stamps the highest common version on the subsequent requests.
+
+Note: For v1 though, since structure Message(v1) will be used, version is implicit.
+
+#### Negotiation Between Test Runner and Test Host
+Similarly, when the Test Runner receives run/discovery request, it launches and negotiates version
+with Test Host.
+
+Example:
+Let us say, Editor supports range (1-3) and Test Platform Runner supports range (1-3),
+so the version stamped on the run/discovery request will be 3.
+
+* Test Host which supports range (1-2), will send back version as 2.
+* Test Host which supports range (1-3), will send back version as 3.
+
+If the TestHost does not support the version, it will send ProtocolError message to Editor via Runner.
+Hence the version stamped on the response from Test Host will be the highest common
+version for all the three components.
 
 #### Version (Request)
-Editor will have a range of versions it supports. Editor sends version request with maximum supported version.
-Following is the structure of the version message.
+Editor will send this protocol version request with the highest version that it supports.
 
 ##### API Payload
 | Key         | Type   | Description                |
 |-------------|--------|----------------------------|
 | MessageType | string | ProtocolVersion            |
-| Payload     | int    | Maximum supported version  |
+| Payload     | int    | Highest supported version  |
 
 ##### Example
 ```json
@@ -70,14 +130,13 @@ Following is the structure of the version message.
 ```
 
 #### Version (Response)
-Test Platform also has the range of versions it supports. Testplatform then sends back the maximum supported version that
-Editor and Test Platform have in common.  
+Test Runner sends back the highest common version as a response.
 
 ##### API Payload
-| Key         | Type   | Description     |
-|-------------|--------|-----------------|
-| MessageType | string | ProtocolVersion |
-| Payload     | int    | 1               |
+| Key         | Type   | Description               |
+|-------------|--------|---------------------------|
+| MessageType | string | ProtocolVersion           |
+| Payload     | int    | Highest common version    |
 
 ##### Example
 ```json
@@ -87,24 +146,40 @@ Editor and Test Platform have in common.
 }
 ```
 
-#### Version Negotiation
-Editor sends version request with maximum supported version. Testplatform then sends back the maximum common supported version.
+#### Version Error (Response)
+If there is a mismatch, Test Runner or Test Host can send ProtocolError message.
 
-For Example:
-* Editor with range (1-3) sends Version(Request) with version = 3, and then Test Platform with range (1-2) will send back version as 2.
-* Editor with range (1-2) sends version(Request) with version = 2, and then Test Platform with range (1-3) will send back version as 2.
+##### API Payload
+| Key         | Type   | Description                                  |
+|-------------|--------|----------------------------------------------|
+| MessageType | string | ProtocolError                                |
+| Payload     | object | String containing the supported range        |
 
-If TestPlatform does not support the Editor, it will send RnnerProtocolError message as discussed in the section below.
+##### Example
+```json
+{
+    "MessageType": "ProtocolError",
+    "Payload": null
+}
+```
+Note : The Payload should contain the following information
+* Component that reported the mismatch
+* The version range supported by the component
 
-At this point the initial handshake between Editor and Test Platform is
-complete. Above operation is required only once per launch of test platform.
-All the messages henceforth from Editor will have version set based on the protocol negotiation.
+## Json optimization
+There are two objects that largely contribute to the size of the payload in the responses.
+* TestCase object
+* TestResult object
 
-## Discover Tests
-### Start Discovery (Request)
-The TestDiscovery.Start request will have the negotiated version as part of the message. 
+Both these objects contain properties that are well-known and few others that are added by the
+adapters. For the well-known properties, we have reduced the verbosity and made them
+self-describing. Please checkout the following requests and responses for details and examples.
 
-#### API Payload
+### Discover Tests
+#### Start Discovery (Request)
+For v2, TestDiscovery.Start request will have the negotiated version (i.e. 2 currently) as part of the message.
+
+##### API Payload
 | Key         | Type   | Description            |
 |-------------|--------|------------------------|
 | MessageType | string | TestDiscovery.Start    |
@@ -117,7 +192,7 @@ The TestDiscovery.Start request will have the negotiated version as part of the 
 | Sources     | array  | Array of test container paths. |
 | RunSettings | string | Run settings xml               |
 
-#### Example
+##### Example
 ```json
 {
   "MessageType": "TestDiscovery.Start",
@@ -131,27 +206,18 @@ The TestDiscovery.Start request will have the negotiated version as part of the 
 }
 ```
 
-### Tests Found (Response)
+#### Tests Found (Response)
 TestFound response will also have the version based on which Editor will be able to deserialize the message.
-Verbosity for the json of TestCase object inside the TestFound payload has been reduced significantly. Checkout the example for the new json.
+Verbosity for the json of TestCase object inside the TestFound payload has been reduced significantly.
 
-This version will be based on the negotiation that happens between TestHost and Test Platform.
-Hence the version stamped on the response will be the maximum common supported version for all the three components.
-Example:
-Let us say, Editor supports range (1-3) and Test Platform Runner supports range (1-3), so the negotiated stamped on the discovery request will be 3 (maximum common supported version).
-* Test Host supports range (1-2) : This means TestHost will send back version as 2.
-* Test Host supports range (1-3) : This means TestHost will send back version as 3.
-
-If the TestHost does not support the version it will send an error message to Editor via Runner. 
-
-#### API Payload
+##### API Payload
 | Key         | Type   | Description                       |
 |-------------|--------|-----------------------------------|
 | MessageType | string | TestDiscovery.TestFound           |
 | Version     | string | Version of the message            |
-| Payload     | array  | See below for details of Property |
+| Payload     | array  | List of TestCases                 |
 
-#### Example
+##### Example
 ```json
 {
   "MessageType": "TestDiscovery.TestFound",
@@ -207,10 +273,10 @@ If the TestHost does not support the version it will send an error message to Ed
 
 Similarly, DiscoveryComplete result will also have the version stamping.
 
-## Run Tests
+### Run Tests
 Similar to discovery requests, run tests request will also have the version as part of the message. Here are the examples.
 
-### Run Tests (Request) Example
+#### Run Tests (Request) Example
 ```json
 {
   "MessageType": "TestExecution.RunAllWithDefaultHost",
@@ -227,7 +293,7 @@ Similar to discovery requests, run tests request will also have the version as p
 }
 ```
 
-### Test Run Statistics (Response) Example
+#### Test Run Statistics (Response) Example
 ```json
 {
   "MessageType": "TestExecution.Completed",
@@ -322,29 +388,4 @@ Similar to discovery requests, run tests request will also have the version as p
 }
 ```
 
-All the other messages like Cancel, Abort or debugging related messages follow the same pattern.
-
-## Error message for ProtocolVersion mismatch
-
-##### API Payload
-| Key         | Type   | Description                                  |
-|-------------|--------|----------------------------------------------|
-| MessageType | string | ProtocolError                                |
-| Payload     | object | String containing the supported range        |
-
-##### Example
-```json
-{
-    "MessageType": "ProtocolError",
-    "Payload": "Protocol version is not supported. Supported range is (1-2)"
-}
-```
-
-
-
-
-
-
-
-
-
+All the other messages like Cancel, Abort or debugging related messages will follow the same pattern.
