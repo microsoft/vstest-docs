@@ -68,16 +68,67 @@ to load test loggers.
 ## Enable a test logger
 A test logger must be explicitly enabled using the command line. E.g.
 ```
-> vstest.console test_project.dll /logger:mylogger
+ vstest.console test_project.dll /logger:mylogger
 ```
 
 ## Configure reporting
 Additional arguments to a logger can also be passed in the command line. E.g.
 ```
-> vstest.console test_project.dll /logger:mylogger;Setting=Value
+ vstest.console test_project.dll /logger:mylogger;Setting=Value
 ```
 
 It is upto the logger implementation to support additional arguments.
+
+## Syntax and examples of some existing logger
+
+### 1) Console logger
+Console logger is the default logger and it is used to output the test results into console window.
+
+#### Syntax
+
+```
+/logger:console[;verbosity=<Defaults to "minimal">]
+ 
+Argument "verbosity" define the verbosity level of cosnole logger. Allowed values for verbosity are "quiet", "minimal" and "normal".
+```
+
+#### Example
+```
+vstest.console.exe Tests.dll /logger:"console;verbosity=normal"
+
+If you are using "dotnet test", then use the following command
+
+dotnet test Tests.csproj --logger:"console;verbosity=normal"
+
+or you can also use argument "-v | --verbosity" of "dotnet test"
+
+dotnet test Tests.csproj -v normal
+```
+
+
+### 2) trx logger
+trx logger is used to log test results into a Visual Studio Test Results File (TRX).
+
+#### Syntax
+```
+/logger:trx [;LogFileName=<Defaults to unique file name>]
+
+Where "LogFileName" can be absolute or relative path. If path is relative, it will be relative to "TestResults" directory, which will get created in current working directory.
+```
+
+#### Examples
+
+Suppose the current working directory is "c:\tempDirecory".
+```
+1) vstest.console.exe Tests.dll /logger:trx
+trx file will get generated in location "c:\tempDirecory\TestResults"
+
+2) vstest.console.exe Tests.dll /logger:"trx;LogFileName=relativeDir\logFile.txt"
+trx file will be "c:\tempDirecory\TestResults\relativeDir\logFile.txt"
+
+3) vstest.console.exe Tests.dll /logger:"trx;LogFileName=c:\temp\logFile.txt"
+trx file will be "c:\temp\logFile.txt"
+```
 
 ## Related links
 TODO: link to author a test logger
