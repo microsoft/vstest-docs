@@ -184,11 +184,11 @@ Another add a `Debugger.Launch` at the process launch points. E.g.
 CoreCLR for netcoreapp scenario) and step through the code.
 
 ## Running Tests with TPv2 using Test Explorer
-Test Platform (TPv2) is packaged as a `vsix` with VS 2017 RC releases and lights up the .NET core and Live Unit Testing scenarios.  It currently does not support UWP & data collector scenarios (code coverage & fakes). It is placed @ `"%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\qgyll0uu.4m0"`. 
+Test Platform (TPv2) is packaged as a `vsix` with VS 2017 RC releases and lights up the .NET core and Live Unit Testing scenarios.  It currently does not support UWP & data collector scenarios (code coverage & fakes). It is placed @ `"%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\TestPlatform"`. 
 
 Desktop, UWP & Native unit testing continues to use the test platform (TPv1) located @ `"%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow"`.
 
-To use TPv2 for desktop - place `testplatform.config` @ `"%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\qgyll0uu.4m0"` with the contents below.
+To use TPv2 for desktop - place `testplatform.config` @ `"%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\TestPlatform"` with the contents below.
 
 ````
 <?xml version="1.0" encoding="utf-8"?>
