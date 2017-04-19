@@ -14,7 +14,7 @@ You can author a test logger to print messages on the console, generate result
 files of a specific reporting format, or even report results to various CI/CD
 services. Default inputs to a test logger can be provided in the command line.
 
-Please refer [todo]() for instructions on creating a test logger and [todo]()
+ Please refer [todo]() for instructions on creating a test logger and [todo]()
 if you're interested in the architecture of a test logger.
 
 ### Available test loggers
@@ -36,7 +36,7 @@ if you're interested in the architecture of a test logger.
 [appveyor.nuget]: https://www.nuget.org/packages/AppVeyor.TestLogger
 [teamcity.nuget]: https://www.nuget.org/packages/TeamCity.VSTest.TestAdapter
 
-Want to add your logger? Please send a PR with changes in this doc.
+ Want to add your logger? Please send a PR with changes in this doc.
 
 ## Acquisition
 A test logger should be made available as a NuGet package (preferred), or as
@@ -70,16 +70,19 @@ A test logger must be explicitly enabled using the command line. E.g.
 ```
  vstest.console test_project.dll /logger:mylogger
 ```
+Where `mylogger` is the LoggerUri or FriendlyName of the logger.
 
 ## Configure reporting
 Additional arguments to a logger can also be passed in the command line. E.g.
 ```
  vstest.console test_project.dll /logger:mylogger;Setting=Value
 ```
+Where `mylogger` is the LoggerUri or FriendlyName of the logger.
+`Setting` is the name of the additional argument and `Value`is its value.
 
 It is upto the logger implementation to support additional arguments.
 
-## Syntax and examples of some existing logger
+## Syntax of default loggers
 
 ### 1) Console logger
 Console logger is the default logger and it is used to output the test results into console window.
@@ -89,7 +92,7 @@ Console logger is the default logger and it is used to output the test results i
 ```
 /logger:console[;verbosity=<Defaults to "minimal">]
  
-Argument "verbosity" define the verbosity level of cosnole logger. Allowed values for verbosity are "quiet", "minimal" and "normal".
+Argument "verbosity" define the verbosity level of console logger. Allowed values for verbosity are "quiet", "minimal" and "normal".
 ```
 
 #### Example
@@ -113,7 +116,7 @@ trx logger is used to log test results into a Visual Studio Test Results File (T
 ```
 /logger:trx [;LogFileName=<Defaults to unique file name>]
 
-Where "LogFileName" can be absolute or relative path. If path is relative, it will be relative to "TestResults" directory, which will get created in current working directory.
+Where "LogFileName" can be absolute or relative path. If path is relative, it will be relative to "TestResults" directory, created under current working directory.
 ```
 
 #### Examples
