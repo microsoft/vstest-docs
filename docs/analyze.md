@@ -19,7 +19,7 @@ configuration settings file. For example, you can provide information about the
 location of the file you want to collect and attach to your test results. This
 data can be configured for each test settings that you create.
 
-Please refer [todo]() for instructions on creating a data collector and [todo]()
+Please refer [todo]() for instructions on creating a data collector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
 
 ## Acquisition
@@ -51,14 +51,16 @@ directory.
 When test platform is looking for a data collector it will likely need to examine many
 assemblies. As an optimization, test platform will only look at distinctly named
 assemblies; specifically, a data collector must follow the naming convention
-`*datacollector.dll`. By enforcing such a naming convention, test platform can speed up
+`*collector.dll`. By enforcing such a naming convention, test platform can speed up
 locating a data collector assembly. Once located, test platform will load the data
 collector for the entire run.
  
 ## Enable a data collector
 Although loaded, a data collector must be explicitly enabled for it to
-participate during the test run. A data collector can be enabled using the
-`/collect:<friendly name>` command line switch.
+participate during the test run. A specific data collector can be enabled using the
+`/collect:<friendly name>` command line switch. If command line switch is not provided,
+all the data collectors specified in .runsettigns are enabled, unless explicitely disabled
+in .runsettings.
 
 For example, below command line will enable a data collector named `coverage`:
 ```
@@ -76,10 +78,10 @@ below runsettings:
 ```xml
 <DataCollectionRunSettings> 
     <DataCollectors> 
-      <DataCollector friendlyName="coverage" enable="true">
+      <DataCollector friendlyName="coverage" enabled="true">
       </DataCollector> 
   
-      <DataCollector friendlyName="systeminfo">
+      <DataCollector friendlyName="systeminfo" enabled="false">
       </DataCollector> 
     </DataCollectors> 
   </DataCollectionRunSettings>
