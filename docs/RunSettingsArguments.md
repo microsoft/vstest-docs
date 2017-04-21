@@ -1,15 +1,15 @@
 # Passing runsettings arguments through commandline
 You are here because you are looking for syntax & details to pass runsettings configurations to either `vstest.console.exe` or `dotnet test` through commandline.
 
-`runSettings arguments` are used to add/update specific runsettings configurations. The updated runsettings configurations will be available to `TestPlatform` and `test extensions` (E.g. test adapter, etc.) through runsettings.
+`runSettings arguments` are used to add/update specific `runsettings configurations`. The updated `runsettings configurations` will be available to `TestPlatform` and `test extensions` (E.g. test adapter, etc.) through runsettings.
 
-`runSettings arguments` may be specified as name-value pair of the form `[name]=[value]` after `-- `. Note the space after --. Use a space to separate multiple `[name]=[value]`.
+`runSettings arguments` are specified as name-value pair of the form `[name]=[value]` after `-- `. Note the space after --. Use a space to separate multiple `[name]=[value]`.
 
 
 For example, passing argument `-- MSTest.MapInconclusiveToFailed=True` in (1) below is equivalent to passing argument `--settings additionalargs.runsettings` in (2) below.
 
 ```
-1) dotnet test  -- MSTest.MapInconclusiveToFailed=True
+1) dotnet test  -- MSTest.MapInconclusiveToFailed=True MSTest.DeploymentEnabled=False
 ```
 
 ```
@@ -23,7 +23,8 @@ where `additionalargs.runsettings` is:
 <RunSettings>  
   <!-- MSTest adapter -->  
   <MSTest>  
-    <MapInconclusiveToFailed>True</MapInconclusiveToFailed>  
+    <MapInconclusiveToFailed>True</MapInconclusiveToFailed>
+    <DeploymentEnabled>False</DeploymentEnabled>
   </MSTest>   
 </RunSettings> 
 ```
@@ -34,7 +35,7 @@ The syntax in (1) is another way of passing runsettings configuration and you ne
 
 `runsettings arguments` takes precedence over `runsettings`.
 
-For example, in below command the final value for `MapInconclusiveToFailed` will be `False`.
+For example, in below command the final value for `MapInconclusiveToFailed` will be `False` and vale for `DeploymentEnabled` will be unchanged, that is `False`.
 
 ```
 dotnet test --settings additionalargs.runsettings -- MSTest.MapInconclusiveToFailed=False
