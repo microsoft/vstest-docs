@@ -1,12 +1,17 @@
 # Passing runsettings arguments through commandline
-You are here because you are looking for syntax & details to pass runsettings configurations to either `vstest.console.exe` or `dotnet test` through commandline.
+You are here because you are looking for syntax and details to pass runsettings configurations to either `vstest.console.exe` or `dotnet test` through commandline.
 
 `RunSettings arguments` are used to add/update specific `runsettings configurations`. The updated `runsettings configurations` will be available to `TestPlatform` and `test extensions` (E.g. test adapter, etc.) through runsettings.
 
-`RunSettings arguments` are specified as name-value pair of the form `[name]=[value]` after `-- `. Note the space after --. Use a space to separate multiple `[name]=[value]`. All the arguments after `--` will be treated as `RunSettings arguments`, means `RunSettings arguments` should be at the end of the command line.
+## Syntax
 
+* `RunSettings arguments` are specified as name-value pair of the form `[name]=[value]` after `-- `. Note the space after --.
+* Use a space to separate multiple `[name]=[value]`.
+* All the arguments after `--` will be treated as `RunSettings arguments`, means `RunSettings arguments` should be at the end of the command line.
 
-For example, passing argument `-- MSTest.MapInconclusiveToFailed=True` in (1) below is equivalent to passing argument 
+## Example
+
+Passing argument `-- MSTest.MapInconclusiveToFailed=True` in (1) below is equivalent to passing argument 
 `--settings additionalargs.runsettings` in (2) below.
 
 ```
