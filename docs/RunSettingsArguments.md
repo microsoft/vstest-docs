@@ -1,13 +1,17 @@
-
 # Passing runsettings arguments through commandline
-You are here because you are looking for syntax & details to pass runsettings configurations to either `vstest.console.exe` or `dotnet test` through commandline.
+You are here because you are looking for syntax and details to pass runsettings configurations to either `vstest.console.exe` or `dotnet test` through commandline.
 
-`runSettings arguments` are used to add/update specific `runsettings configurations`. The updated `runsettings configurations` will be available to `TestPlatform` and `test extensions` (E.g. test adapter, etc.) through runsettings.
+`RunSettings arguments` are used to add/update specific `runsettings configurations`. The updated `runsettings configurations` will be available to `TestPlatform` and `test extensions` (E.g. test adapter, etc.) through runsettings.
 
-`runSettings arguments` are specified as name-value pair of the form `[name]=[value]` after `-- `. Note the space after --. Use a space to separate multiple `[name]=[value]`.
+## Syntax
 
+* `RunSettings arguments` are specified as name-value pair of the form `[name]=[value]` after `-- `. Note the space after --.
+* Use a space to separate multiple `[name]=[value]`.
+* All the arguments after `--` will be treated as `RunSettings arguments`, means `RunSettings arguments` should be at the end of the command line.
 
-For example, passing argument `-- MSTest.MapInconclusiveToFailed=True` in (1) below is equivalent to passing argument 
+## Example
+
+Passing argument `-- MSTest.MapInconclusiveToFailed=True` in (1) below is equivalent to passing argument 
 `--settings additionalargs.runsettings` in (2) below.
 
 ```
@@ -32,10 +36,10 @@ where `additionalargs.runsettings` is:
 ```
 
 
-The syntax in (1) is another way of passing runsettings configuration and you need not author a runsetting file while using `runsettings arguments`. More details about runsettings can be found [here](https://msdn.microsoft.com/en-us/library/jj635153.aspx).
+The syntax in (1) is another way of passing runsettings configuration and you need not author a runsetting file while using `Runsettings arguments`. More details about runsettings can be found [here](https://msdn.microsoft.com/en-us/library/jj635153.aspx).
 
 
-`runsettings arguments` takes precedence over `runsettings`.
+`Runsettings arguments` takes precedence over `runsettings`.
 
 For example, in below command the final value for `MapInconclusiveToFailed` will be `False` and vale for `DeploymentEnabled` will be unchanged, that is `False`.
 
