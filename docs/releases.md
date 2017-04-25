@@ -1,5 +1,40 @@
 # Release Notes
 
+## 15.3.0-preview-20170425-07
+
+* Data collector support enabled
+* Test Host Extensibility enabled
+* ResultsDirectory argument and Runsettings priority order [#322](https://github.com/Microsoft/vstest/pull/322)
+* Supporting Multiple TestProperty with the same key value [#328](https://github.com/Microsoft/vstest/pull/328)
+* Allow VSTestConsole path to be specified [#325](https://github.com/Microsoft/vstest/pull/325)
+* Adding /InIsolation flag for backward compatibility [#414](https://github.com/Microsoft/vstest/pull/414) 
+* Fixed reading test adapter paths from runsettings [#455](https://github.com/Microsoft/vstest/pull/455)
+* Honor cache timeout for discovery. [#470](https://github.com/Microsoft/vstest/pull/470)
+* Read asynchronously from test host process [#529](https://github.com/Microsoft/vstest/pull/529)
+* Fixing nunit inconclusive tests reported as failure [#533](https://github.com/Microsoft/vstest/pull/533)
+* BatchSize Runsettings [#550](https://github.com/Microsoft/vstest/pull/550)
+* Make default testcase filter property name FullyQualifiedName [#555](https://github.com/Microsoft/vstest/pull/555)
+* Logger extensibility [#557](https://github.com/Microsoft/vstest/pull/557)
+* Update Microsoft.VisualStudio.TestTools.TestPlatform.V2.CLI.vsmanproj [#581](https://github.com/Microsoft/vstest/pull/581)
+* Add Microsoft.NET.Test.Sdk.props to buildMultiTargeting [#580](https://github.com/Microsoft/vstest/pull/580)
+* Moving to Netcoreapp 2.0 [#603](https://github.com/Microsoft/vstest/pull/603)
+* Create config file for test project targeting .NET Framework [#642](https://github.com/Microsoft/vstest/pull/642)
+* Create new RuntimeProvider to be associated with each ProxyOperationManager [#653](https://github.com/Microsoft/vstest/pull/653)
+* Inject entry point only for project targeting netcoreapp [#665](https://github.com/Microsoft/vstest/pull/665)
+* Dotnet test output coloring [#641](https://github.com/Microsoft/vstest/pull/641)
+* Remove binding redirect of Newtonsoft.Json from testhost config file [#663](https://github.com/Microsoft/vstest/pull/663)
+* Resolve testhost from source directory if we couldnt resolve it via nuget cache [#690](https://github.com/Microsoft/vstest/pull/690)
+* Improve testplatform message [#691](https://github.com/Microsoft/vstest/pull/691)
+* Protocol v2 improvements [#672](https://github.com/Microsoft/vstest/pull/672), [#698](https://github.com/Microsoft/vstest/pull/698)
+* Use "dotnet test --verbosity" arg for console verbosity [#735](https://github.com/Microsoft/vstest/pull/735)
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.0.0...v15.3.0-preview-20170425-07).
+
+### Drops
+
+* TestPlatform vsix: [15.3.0-preview-20170425-07](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170425-07;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.3.0-preview-20170425-07](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0-preview-20170425-07)
+
 ## 15.0.0-preview-20170125-04
 
 * Localization for following nuget packages:
