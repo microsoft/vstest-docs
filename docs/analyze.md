@@ -19,7 +19,7 @@ configuration settings file. For example, you can provide information about the
 location of the file you want to collect and attach to your test results. This
 data can be configured for each test settings that you create.
 
-Please refer [todo]() for instructions on creating a data collector and [todo]()
+Please refer [todo]() for instructions on creating a data collector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
 
 ## Acquisition
@@ -51,24 +51,14 @@ directory.
 When test platform is looking for a data collector it will likely need to examine many
 assemblies. As an optimization, test platform will only look at distinctly named
 assemblies; specifically, a data collector must follow the naming convention
-`*datacollector.dll`. By enforcing such a naming convention, test platform can speed up
+`*collector.dll`. By enforcing such a naming convention, test platform can speed up
 locating a data collector assembly. Once located, test platform will load the data
 collector for the entire run.
  
 ## Enable a data collector
-Although loaded, a data collector must be explicitly enabled for it to
-participate during the test run. A data collector can be enabled using the
-`/collect:<friendly name>` command line switch.
-
-For example, below command line will enable a data collector named `coverage`:
-```
-> vstest.console test_project.dll /collect:coverage
-```
- 
-All data collectors specified in the .runsettings files are loaded
-automatically. However, they too need to be explicitly enabled to participate
-during the run. The data collector node in the .runsettings file, will be
-augmented with a boolean valued property named `<enable>`.
+All data collectors configured in the .runsettings files are loaded
+automatically and are enabled to participate for run, unless explicitely disabled
+using boolean valued attribute attribute named `enabled`.
 
 For example, only `coverage` data collector will be enabled for a test run with
 below runsettings:
@@ -76,15 +66,31 @@ below runsettings:
 ```xml
 <DataCollectionRunSettings> 
     <DataCollectors> 
-      <DataCollector friendlyName="coverage" enable="true">
+      <DataCollector friendlyName="coverage">
       </DataCollector> 
   
-      <DataCollector friendlyName="systeminfo">
+      <DataCollector friendlyName="systeminfo" enabled="false">
       </DataCollector> 
     </DataCollectors> 
   </DataCollectionRunSettings>
 ```
+
+A specific data collector can be explicitely enabled using the
+`/collect:<friendly name>` command line switch.
+
+For example, below command line will enable a data collector named `coverage` 
+(and disable other data collectors mentioned in .runsettings):
+```
+> vstest.console test_project.dll /collect:coverage
+```
  
+More than one data collectors can also be enabled using `/collect` command line switch
+
+For example, below command will enable data collectors named `coverage` and `systeminfo`:
+```
+> vstest.console test_project.dll /collect:coverage /collect:systeminfo
+```
+
 ## Configure data collection
 Additional configuration for a data collector should be done via a `.runsettings`
 file. For e.g. a code coverage data collector might want to specify a set of
