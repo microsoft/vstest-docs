@@ -9,6 +9,9 @@ If you are looking for the Visual Studio Test Platform product GitHub repository
 - [Adapter Extensibility](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0004-Adapter-Extensibility.md)
 - [Test Platform SDK](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0005-Test-Platform-SDK.md)
 - [Editors API Specification](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0007-Editors-API-Specification.md)
+- [Data collection Protocol](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
+- [Translation Layer](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0008-TranslationLayer.md)
+- [Editors API Revision Update](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0009-Editors-API-RevisionUpdate.md)
 - [Roadmap](https://github.com/Microsoft/vstest-docs/blob/master/roadmap.md)
 
 ### Contributing
