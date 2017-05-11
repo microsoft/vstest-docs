@@ -8,7 +8,7 @@ coverage][coverage].
 > Data collectors are supported on test platform `15.3.0` onwards. It is part of
 > VS 2017 15.3 and dotnet-cli 2.0.0 builds.
 
-[coverage]: 
+[coverage]: #coverage
 
 ## Data collectors
 A data collector is a test platform extension to monitor test run. It can
@@ -120,7 +120,7 @@ in a `.runsettings` file.
   </DataCollectionRunSettings>
 ```
 
-## Working with Code Coverage
+## Working with Code Coverage<a name="coverage"></a>
 ### Setup a project
 Add a reference to the `Microsoft.CodeCoverage` [nuget package][coveragenuget] to your project. This will bring in
 coverage infrastructure for a test project. Here's a sample project file, please note the xml entities marked as
