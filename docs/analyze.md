@@ -1,9 +1,14 @@
 # Monitor and analyze test run
-This document will walk you through enabling data collection for a test run.
+This document will walk you through enabling data collection for a test run. We will
+start with brief overview of data collectors, followed by instructions for [code
+coverage][coverage].
 
-> Note, this is a draft document. This feature will come in Q2 CY 2017.
+> **Version note:**
+>
+> Data collectors are supported on test platform `15.3.0` onwards. It is part of
+> VS 2017 15.3 and dotnet-cli 2.0.0 builds.
 
-> Version note: Data collectors are supported on test platform `15.1.0` onwards.
+[coverage]: #coverage
 
 ## Data collectors
 A data collector is a test platform extension to monitor test run. It can
@@ -22,7 +27,7 @@ data can be configured for each test settings that you create.
 Please refer [todo]() for instructions on creating a data collector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
 
-## Acquisition
+### Acquisition
 A data collector should be made available either as a NuGet package (preferred)
 or as zip file (for e.g. data collectors for say, Python/C++).
  
@@ -42,12 +47,12 @@ to one of the following locations:
 dotnet-cli, the path could be `/sdk/<version>/Extensions` directory.
 2. any well known location on the filesystem
  
-> Version Note: new in 15.1
+> Version Note: TBD, draft spec
 In case of #2, user can specify the full path to the location using `/extensions:<path>`
 command line switch. Test platform will locate extensions from the provided
 directory.
  
-### Naming
+#### Naming
 When test platform is looking for a data collector it will likely need to examine many
 assemblies. As an optimization, test platform will only look at distinctly named
 assemblies; specifically, a data collector must follow the naming convention
@@ -55,7 +60,7 @@ assemblies; specifically, a data collector must follow the naming convention
 locating a data collector assembly. Once located, test platform will load the data
 collector for the entire run.
  
-## Enable a data collector
+### Enable a data collector
 All data collectors configured in the .runsettings files are loaded
 automatically and are enabled to participate for run, unless explicitely disabled
 using boolean valued attribute attribute named `enabled`.
@@ -91,7 +96,7 @@ For example, below command will enable data collectors named `coverage` and `sys
 > vstest.console test_project.dll /collect:coverage /collect:systeminfo
 ```
 
-## Configure data collection
+### Configure data collection
 Additional configuration for a data collector should be done via a `.runsettings`
 file. For e.g. a code coverage data collector might want to specify a set of
 assemblies to ignore – this is additional configuration, and would be specified
@@ -114,3 +119,51 @@ in a `.runsettings` file.
     </DataCollectors> 
   </DataCollectionRunSettings>
 ```
+
+## Working with Code Coverage<a name="coverage"></a>
+### Setup a project
+Add a reference to the `Microsoft.CodeCoverage` [nuget package][coveragenuget] to your project. This will bring in
+coverage infrastructure for a test project. Here's a sample project file, please note the xml entities marked as
+`Required`.
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    
+    <!-- Required. This is a temporary workaround for https://github.com/Microsoft/vstest/issues/800 -->
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170502-03" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.1.17" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.1.17" />
+    
+    <!-- Required. Include this reference for coverage -->
+    <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>
+```
+
+[coveragenuget]: https://www.nuget.org/packages/Microsoft.CodeCoverage/
+
+### Analyze coverage with Visual Studio
+Use the `Analyze Code Coverage` context menu available in `Test Explorer` tool window to start a coverage run.
+
+After the coverage run is complete, a detailed report will be available in the `Code Coverage Results` tool window.
+
+Please refer the MSDN documentation for additional details: https://msdn.microsoft.com/en-IN/library/dd537628.aspx
+
+### Collect coverage with command line runner
+Use the following command line to collect coverage data for tests:
+
+```
+> C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe --collect:coverage --framework:".NETCoreApp,1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
+```
+
+This will generate a `*.coverage` file in the `d:\testproject\TestResults` directory.
+
+> NOTE: Support for code coverage in `dotnet test` command line is work in progress.
