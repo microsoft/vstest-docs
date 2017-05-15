@@ -166,8 +166,4 @@ Use the following command line to collect coverage data for tests:
 
 This will generate a `*.coverage` file in the `d:\testproject\TestResults` directory.
 
-### Collect coverage in Continuous Integration
-TBD
-
-### Configure coverage data collection
-TBD
+> NOTE: Support for code coverage in `dotnet test` command line is work in progress.
