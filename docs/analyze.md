@@ -161,7 +161,7 @@ Please refer the MSDN documentation for additional details: https://msdn.microso
 Use the following command line to collect coverage data for tests:
 
 ```
-> C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe --collect:coverage --framework:".NETCoreApp,1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
+> C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe --collect:"Code Coverage" --framework:".NETCoreApp,1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
 ```
 
 This will generate a `*.coverage` file in the `d:\testproject\TestResults` directory.
