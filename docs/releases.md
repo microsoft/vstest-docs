@@ -1,5 +1,30 @@
 # Release Notes
 
+## 15.3.0-preview-20170517-02
+
+* Wait for testhost stderr to be available if connection is broken between vstest.console and testhost.
+* Data collector log message improvements.
+* Extracedt socket implementation to allow experimentation with multiple data interchange formats and ipc. Added concept of framing for messages passed between various processes. TestRequestSender2 uses these concepts and is a replacement for the earlier TestRequestSender.
+* Localized new added string.
+* Code cleanup
+
+
+### Issue Fixed
+* https://github.com/Microsoft/vstest/issues/646
+* https://github.com/Microsoft/vstest/issues/706
+* https://github.com/Microsoft/vstest/issues/618
+* https://github.com/Microsoft/vstest/issues/801
+* https://github.com/Microsoft/vstest/issues/799
+
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.3.0-preview-20170427-09...v15.3.0-preview-20170517-02).
+
+### Drops
+
+* TestPlatform vsix: [15.3.0-preview-20170517-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170517-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.3.0-preview-20170517-02](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0-preview-20170517-02)
+
+
 ## 15.3.0-preview-20170425-07
 
 * Data collector support enabled
