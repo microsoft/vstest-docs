@@ -181,19 +181,13 @@ Available elements are:
  
 *Description*
 
-|-------------------|--------|-------------------------------------------------------------------------------------------------|
 | Settings Element  | Type   | Function                                                                                        |
 |-------------------|--------|-------------------------------------------------------------------------------------------------|
 | TargetPlatform    | string | Configures the architecture of test host. Possible values: (x86,  x64)                          |
-|-------------------|--------|-------------------------------------------------------------------------------------------------|
 | TargetFramework   | string | Configures the target runtime for a test run. Possible values: any valid [FrameworkName][]      |
-|-------------------|--------|-------------------------------------------------------------------------------------------------|
 | TestAdaptersPaths | string | Semi-colon separated directories which contain test adapters                                    |
-|-------------------|--------|-------------------------------------------------------------------------------------------------|
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
-|-------------------|--------|-------------------------------------------------------------------------------------------------|
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
-|-------------------|--------|-------------------------------------------------------------------------------------------------|
 
 [FrameworkName]: https://msdn.microsoft.com/en-us/library/dd414023(v=vs.110).aspx
 
@@ -217,17 +211,12 @@ user to provide these settings, if they want to tweak a run.
 
 *Description*
 
-|--------------------------|------|------------------------------------------------------------------------------------|
 | Settings Element         | Type | Function                                                                           |
 |--------------------------|------|------------------------------------------------------------------------------------|
 | DesignMode               | bool | True if test run is triggered in an IDE/Editor context.                            |
-|--------------------------|------|------------------------------------------------------------------------------------|
 | DisableParallelization   | bool | If true, an adapter should disable any test case parallelization                   |
-|--------------------------|------|------------------------------------------------------------------------------------|
 | DisableAppDomain         | bool | If true, an adapter shouldn't create appdomains to run tests                       |
-|--------------------------|------|------------------------------------------------------------------------------------|
 | CollectSourceInformation | bool | If false, an adapter need not parse symbols to provide test case file, line number |
-|--------------------------|------|------------------------------------------------------------------------------------|
 
 3. **Runner settings**
 An IDE/Editor can set these settings to change the behavior of test platform.
@@ -245,11 +234,9 @@ They are not actionable for an adapter.
 
 *Description*
 
-|------------------|------|-------------------------------------------------------------------------------------------------------------|
 | Settings Element | Type | Function                                                                                                    |
 |------------------|------|-------------------------------------------------------------------------------------------------------------|
 | BatchSize        | int  | Configures the frequency of run statistics. Discovered/Test results are send once `n` tests are accumulated |
-|------------------|------|-------------------------------------------------------------------------------------------------------------|
 
 ### Section 2: Data Collection
 ```xml
@@ -315,11 +302,10 @@ following section.
 ``` 
 
 *Description*
-|------------------|--------|---------------------------------------------------------------------------|
+
 | Settings Element | Type   | Function                                                                  |
 |------------------|--------|---------------------------------------------------------------------------|
 | DataCollector    | string | Provides a data collector information. See below for required attributes. |
-|------------------|--------|---------------------------------------------------------------------------|
 
 Required attributes:
 1. `friendlyName` provides a common name for the data collector. It is declared
