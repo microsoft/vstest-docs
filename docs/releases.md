@@ -1,7 +1,27 @@
 # Release Notes
 
+## 15.3.0-preview-20170601-03
+
+* Monitor data Collector Launch and Exit events, log error in case data collector crashes.
+* Fixed for issue where using environment variables in test results directory path in run settings throws error.
+* Added support to handle `CollectSourceInformation` flag in runsettings
+* Fixed scenario where testhost crash info is not coming to Testwindow
+* In case of parallel if test host is aborted, add a new one in place of that
+
+### Issue Fixed
+* https://github.com/Microsoft/vstest/issues/823
+
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.3.0-preview-20170517-02...v15.3.0-preview-20170601-03).
+
+### Drops
+
+* TestPlatform vsix: [15.3.0-preview-20170601-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170601-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.3.0-preview-20170601-03](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0-preview-20170601-03)
+
 ## 15.3.0-preview-20170517-02
 
+* Fakes support.
 * Wait for testhost stderr to be available if connection is broken between vstest.console and testhost.
 * Data collector log message improvements.
 * Extracedt socket implementation to allow experimentation with multiple data interchange formats and ipc. Added concept of framing for messages passed between various processes. TestRequestSender2 uses these concepts and is a replacement for the earlier TestRequestSender.
