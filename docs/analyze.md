@@ -132,7 +132,7 @@ coverage infrastructure for a test project. Here's a sample project file, please
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     
-    <!-- Required. This is a temporary workaround for https://github.com/Microsoft/vstest/issues/800 -->
+    <!-- Required in both test/product projects. This is a temporary workaround for https://github.com/Microsoft/vstest/issues/800 -->
     <DebugType>Full</DebugType>
   </PropertyGroup>
 
