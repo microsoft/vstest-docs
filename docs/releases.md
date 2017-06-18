@@ -1,5 +1,22 @@
 # Release Notes
 
+## 15.3.0-preview-20170618-03
+
+### Issue Fixed
+* https://github.com/Microsoft/vstest/issues/632 
+* https://github.com/Microsoft/vstest/issues/844 
+* https://github.com/Microsoft/vstest/issues/847 
+* https://github.com/Microsoft/vstest/issues/840 
+* https://github.com/Microsoft/vstest/issues/843
+
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.3.0-preview-20170601-03...v15.3.0-preview-20170618-03).
+
+### Drops
+
+* TestPlatform vsix: [15.3.0-preview-20170618-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.3-rtm/20170618-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.3.0-preview-20170618-03](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0-preview-20170618-03)
+
 ## 15.3.0-preview-20170601-03
 
 * Monitor data Collector Launch and Exit events, log error in case data collector crashes.
