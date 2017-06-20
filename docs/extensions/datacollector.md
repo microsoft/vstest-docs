@@ -164,4 +164,4 @@ Attachments sent by DataCollectors will be part of Test Results and can also be 
 Logs sent by DataCollectors will be displayed in console logger and can also be viewed in .trx report, if specified.
 
 ## Samples
-1. We have implemented a sample data collector(here)[https://github.com/Microsoft/vstest/tree/master/test/TestAssets/OutOfProcDataCollector].
+1. We have implemented a sample data collector [here](https://github.com/Microsoft/vstest/tree/master/test/TestAssets/OutOfProcDataCollector).
