@@ -41,14 +41,12 @@ In case of CLI, source information is not required. Hence this flag is set to 'f
 </RunSettings>
 ```
 
-Following are the perf numbers obtained for this flag in IDE scenario for MSTest and XUnit test adapters for a test project having 25K tests:
+Following are the perf numbers obtained for this flag in IDE scenario for MSTest and XUnit test adapters on TPv2 for a test project having 25K tests:
 
-| Adapter         | Test Platform | Without Changes = A (Sec) | With Changes = B (Sec) | Improvement, C = A - B (Sec) | Improvement (%) = C * 100 / A |
-|-----------------|---------------|---------------------------|------------------------|------------------------------|-------------------------------|
-| MSTest V2       | TPv1          |   7.72                    |   6.20                 |  1.02                        | 14.12                         |
-| MSTest V2       | TPv2          |  27.28                    |  26.09                 |  1.19                        |  4.36                         |
-| XUnit           | TPv1          | 252.96                    | 195.30                 | 57.66                        | 22.79                         |
-| XUnit           | TPv2          | 129.97                    |  79.32                 | 50.65                        | 38.97                         |
+| Adapter         | Without Changes = A (Sec) | With Changes = B (Sec) | Improvement, C = A - B (Sec) | Improvement (%) = C * 100 / A |
+|-----------------|---------------------------|------------------------|------------------------------|-------------------------------|
+| MSTest V2       |  27.28                    |  26.09                 |  1.19                        |  4.36                         |
+| XUnit           | 129.97                    |  79.32                 | 50.65                        | 38.97                         |
 
 
 ## How to test this change
@@ -68,4 +66,4 @@ C:\Program Files (x86)\Microsoft Visual Studio\Preview\Enterprise\Common7\IDE\Co
 
 To disable the feature, restore backup file in the Visual Studio location mentioned in (2) and run step (7)
 
-Note that for perf improvement to show up, the test adapter needs to be updated to honor 'CollectSourceInformation' flag.
+Note that for perf improvement to show up, the test adapter needs to be updated to honor 'CollectSourceInformation' flag. In MSTest adapter this functionality has been added in v1.2.0-beta.
