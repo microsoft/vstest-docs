@@ -96,6 +96,9 @@ document.
     <!-- Path relative to solution directory -->  
     <ResultsDirectory>.\TestResults</ResultsDirectory>  
     <SolutionDirectory>.\TestResults</SolutionDirectory>  
+    
+    <!-- CPU cores to use for parallel runs -->
+    <MaxCpuCount>2</MaxCpuCount>  
 
     <!-- 2. Hints to adapters to behave in a specific way -->
     <DesignMode>false</DesignMode>
@@ -175,6 +178,7 @@ Available elements are:
     <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>  
     <ResultsDirectory>.\TestResults</ResultsDirectory>  
     <SolutionDirectory>.\TestResults</SolutionDirectory>  
+    <MaxCpuCount>2</MaxCpuCount>  
   </RunConfiguration>  
 </RunSettings>
 ```
@@ -188,6 +192,7 @@ Available elements are:
 | TestAdaptersPaths | string | Semi-colon separated directories which contain test adapters                                    |
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
+| MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
 
 [FrameworkName]: https://msdn.microsoft.com/en-us/library/dd414023(v=vs.110).aspx
 
