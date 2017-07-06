@@ -188,11 +188,16 @@ Available elements are:
 | Settings Element  | Type   | Function                                                                                        |
 |-------------------|--------|-------------------------------------------------------------------------------------------------|
 | TargetPlatform    | string | Configures the architecture of test host. Possible values: (x86,  x64)                          |
-| TargetFramework   | string | Configures the target runtime for a test run. Possible values: any valid [FrameworkName][]      |
+| TargetFrameworkVersion   | string | Configures the target runtime for a test run. Possible values: any valid [FrameworkName][]      |
 | TestAdaptersPaths | string | Semi-colon separated directories which contain test adapters                                    |
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
+
+Examples of valid `TargetFrameworkVersion`:
+* .NETCoreApp, Version=v1.0
+* .NETCoreApp, Version=v1.1
+* .NETFramework, Version=v4.5
 
 [FrameworkName]: https://msdn.microsoft.com/en-us/library/dd414023(v=vs.110).aspx
 
