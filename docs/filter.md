@@ -71,9 +71,9 @@ namespace MSTestNamespace
 
 | Expression | What it does? |
 | ---------- | ------------- |
-| `dotnet test --filter "FullyQualifiedName~UnitTestClass1|TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName __or__ TestCategory is CategoryA. |
+| `dotnet test --filter "FullyQualifiedName~UnitTestClass1\|TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName __or__ TestCategory is CategoryA. |
 | `dotnet test --filter "FullyQualifiedName~UnitTestClass1&TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName __and__ TestCategory is CategoryA. |
-| `dotnet test --filter "(FullyQualifiedName~UnitTestClass1&TestCategory=CategoryA)|Priority=1"` | Runs tests which have either FullyQualifiedName contains `UnitTestClass1` and TestCategory is CategoryA or Priority is 1. |
+| `dotnet test --filter "(FullyQualifiedName~UnitTestClass1&TestCategory=CategoryA)\|Priority=1"` | Runs tests which have either FullyQualifiedName contains `UnitTestClass1` and TestCategory is CategoryA or Priority is 1. |
 
 ### xUnit
 
@@ -117,6 +117,6 @@ In above code we defined traits with keys `Category` and `Priority` which can be
 
 | Expression | What it does? |
 | ---------- | ------------- |
-| `dotnet test --filter "FullyQualifiedName~TestClass1|Category=Nightly"` | Runs tests which has `TestClass1` in FullyQualifiedName __or__ Category is Nightly. |
+| `dotnet test --filter "FullyQualifiedName~TestClass1\|Category=Nightly"` | Runs tests which has `TestClass1` in FullyQualifiedName __or__ Category is Nightly. |
 | `dotnet test --filter "FullyQualifiedName~TestClass1&Category=Nightly"` | Runs tests which has `TestClass1` in FullyQualifiedName __and__ Category is Nightly. |
-| `dotnet test --filter "(FullyQualifiedName~TestClass1&Category=Nightly)|Priority=1"` | Runs tests which have either FullyQualifiedName contains `TestClass1` and Category is CategoryA or Priority is 1. |
+| `dotnet test --filter "(FullyQualifiedName~TestClass1&Category=Nightly)\|Priority=1"` | Runs tests which have either FullyQualifiedName contains `TestClass1` and Category is CategoryA or Priority is 1. |
