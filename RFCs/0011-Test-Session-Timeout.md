@@ -39,7 +39,7 @@ Passed   TestNameSpace.UnitTestClass.TestMethod2
 Passed   TestNameSpace.UnitTestClass.TestMethod3
 Passed   TestNameSpace.UnitTestClass.TestMethod4
 Passed   TestNameSpace.UnitTestClass.TestMethod5
-Canceling test run as it crossed testSessionTimeout: 10000 milliseconds.
+Canceling test run as it exceeded testSessionTimeout: 10000 milliseconds.
 Passed   TestNameSpace.UnitTestClass.TestMethod6
 Passed   TestNameSpace.UnitTestClass.TestMethod6
 
