@@ -94,9 +94,9 @@ and execute tests. Details of the protocol are available in [test discovery
 protocol][] and [test execution protocol][] documents.
 
 A test host is specific to the language runtime, version and platform architecture
-of the test containers. E.g. `testhost.exe` is the test host for a test
+of the test containers. E.g. `testhost.x86.exe` is the test host for a test
 container (assembly) targeting .NET Framework 4.6, x86 architecture; where as
-`testhost.x86.exe` is spawned for .NET Framework 4.6, x64 architecture. The test
+`testhost.exe` is spawned for .NET Framework 4.6, x64 architecture. The test
 host for .NET Core is platform agnostic and is launched on the required
 `dotnet.exe` (x86 or x64).
 
@@ -255,7 +255,7 @@ is detailed in a different document.
    message.
 7. On execution completion the adapter notifies the engine which then sends a
    TestExecution.Completed message to the runner with a [TestRunCompletePayload][].
-8. On receiving a discovery complete from the test host the runner then ends the
+8. On receiving a execution complete from the test host the runner then ends the
    communication with a TestSession.Terminate.
 9. On receiving a terminate message the test host process cleanly exits.
 
