@@ -100,6 +100,9 @@ document.
     <!-- CPU cores to use for parallel runs -->
     <MaxCpuCount>2</MaxCpuCount>  
 
+    <!-- STA | MTA  default is MTA-->
+    <ExecutionThreadApartmentState>MTA</ExecutionThreadApartmentState>
+
     <!-- 2. Hints to adapters to behave in a specific way -->
     <DesignMode>false</DesignMode>
     <DisableParallelization>false</DisableParallelization>
@@ -108,6 +111,7 @@ document.
 
     <!-- 3. Runner related configuration -->
     <BatchSize>10</BatchSize>
+    
   </RunConfiguration>  
   
   <!-- Configurations for data collectors -->  
@@ -179,6 +183,7 @@ Available elements are:
     <ResultsDirectory>.\TestResults</ResultsDirectory>  
     <SolutionDirectory>.\TestResults</SolutionDirectory>  
     <MaxCpuCount>2</MaxCpuCount>  
+    <ExecutionThreadApartmentState>MTA</ExecutionThreadApartmentState>
   </RunConfiguration>  
 </RunSettings>
 ```
@@ -193,6 +198,8 @@ Available elements are:
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
+| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter APIs. Possible values: (MTA, STA). Default value is MTA. Supported for .NET Framework from version: _15.5+_ |
+
 
 Examples of valid `TargetFrameworkVersion`:
 * .NETCoreApp, Version=v1.0
