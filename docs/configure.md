@@ -98,7 +98,10 @@ document.
     <SolutionDirectory>.\TestResults</SolutionDirectory>  
     
     <!-- CPU cores to use for parallel runs -->
-    <MaxCpuCount>2</MaxCpuCount>  
+    <MaxCpuCount>2</MaxCpuCount>
+    
+    <!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
+    <TestSessionTimeout>10000</TestSessionTimeout>
 
     <!-- 2. Hints to adapters to behave in a specific way -->
     <DesignMode>false</DesignMode>
@@ -144,9 +147,9 @@ document.
 
   <!-- Parameters used by tests at runtime -->  
   <TestRunParameters>  
-    <Parameter name="webAppUrl" value="http://localhost" />  
-    <Parameter name="webAppUserName" value="Admin" />  
-    <Parameter name="webAppPassword" value="Password" />  
+    <Parameter name="webAppUrl" value="http://localhost" /> 
+    <Parameter name="webAppUserName" value="Admin" />
+    <Parameter name="webAppPassword" value="Password" />
   </TestRunParameters>  
 </RunSettings>  
 ```
@@ -178,7 +181,8 @@ Available elements are:
     <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>  
     <ResultsDirectory>.\TestResults</ResultsDirectory>  
     <SolutionDirectory>.\TestResults</SolutionDirectory>  
-    <MaxCpuCount>2</MaxCpuCount>  
+    <MaxCpuCount>2</MaxCpuCount>
+    <TestSessionTimeout>10000</TestSessionTimeout>
   </RunConfiguration>  
 </RunSettings>
 ```
@@ -193,6 +197,7 @@ Available elements are:
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
+| TestSessionTimeout | int   | Testplatform will cancel the test run after it exceeded given TestSessionTimeout and will show the results of tests which ran till that point. **This setting is available from Visual Studio 2017 Update5 onwards.** |
 
 Examples of valid `TargetFrameworkVersion`:
 * .NETCoreApp, Version=v1.0
