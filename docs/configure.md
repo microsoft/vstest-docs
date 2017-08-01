@@ -147,9 +147,9 @@ document.
 
   <!-- Parameters used by tests at runtime -->  
   <TestRunParameters>  
-    <Parameter name="webAppUrl" value="http://localhost" />  
-    <Parameter name="webAppUserName" value="Admin" />  
-    <Parameter name="webAppPassword" value="Password" />  
+    <Parameter name="webAppUrl" value="http://localhost" /> 
+    <Parameter name="webAppUserName" value="Admin" />
+    <Parameter name="webAppPassword" value="Password" />
   </TestRunParameters>  
 </RunSettings>  
 ```
@@ -197,7 +197,7 @@ Available elements are:
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
-| TestSessionTimeout | int   | Testplatform will canceal the test run after it exceeded given TestSessionTimeout and will show the results of tests which ran till that point. |
+| TestSessionTimeout | int   | Testplatform will cancel the test run after it exceeded given TestSessionTimeout and will show the results of tests which ran till that point. **This setting is available from Visual Studio 2017 Update5 onwards.** |
 
 Examples of valid `TargetFrameworkVersion`:
 * .NETCoreApp, Version=v1.0
