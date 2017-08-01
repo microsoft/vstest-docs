@@ -1,5 +1,30 @@
 # Release Notes
 
+## 15.5.0-preview-20170727-01
+
+### Issue Fixed
+* Support for devices: build up the TestHostRuntime APIs
+* Console test runs will not collect File/LineNumber information
+* Several performance improvements
+* Reliability improvements to parallel runs
+* Engineering fixes to build/test
+
+### New Features introduced
+* Blame for vstest. Reports the test which crashes a run
+* Response file support for vstest
+* `TestSessionTimeout` cancels a test run if it exceeds a timeout
+* Mono support for vstest
+* VSTest now runs on .NET 4.5.1 runtime
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/73f4a07adfa802257e3ebe11c197016010f2e080...v15.5.0-preview-20170727-01).
+
+### Drops
+
+* TestPlatform vsix: [15.5.0-preview-20170727-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170727-01;/TestPlatform.vsix)
+
+* Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170727-01](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170727-01)
+
+
 ## 15.3.0-preview-20170618-03
 
 ### Issue Fixed
@@ -16,6 +41,7 @@ A list of all changes since last release are available [here](https://github.com
 
 * TestPlatform vsix: [15.3.0-preview-20170618-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.3-rtm/20170618-03;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel: [15.3.0-preview-20170618-03](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0-preview-20170618-03)
+
 
 ## 15.3.0-preview-20170601-03
 
@@ -35,6 +61,7 @@ A list of all changes since last release are available [here](https://github.com
 
 * TestPlatform vsix: [15.3.0-preview-20170601-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170601-03;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel: [15.3.0-preview-20170601-03](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0-preview-20170601-03)
+
 
 ## 15.3.0-preview-20170517-02
 
@@ -112,6 +139,7 @@ A list of all changes since last release are available [here](https://github.com
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20170125-04](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20170125-04)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20170125-04](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20170125-04)
 
+
 ## 15.0.0-preview-20170123.02
 
 * Allow multiple test properties with same key [#239](https://github.com/Microsoft/vstest/issues/239), [#358](https://github.com/Microsoft/vstest/issues/358)
@@ -127,6 +155,7 @@ A list of all changes since last release are available [here](https://github.com
 * TestPlatform vsix: [TestPlatform.CI.Real-20170123-02](https://devdiv.visualstudio.com/DevDiv/_build/index?buildId=533598&_a=summary)
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20170123-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20170123-02)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20170123-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20170123-02)
+
 
 ## 15.0.0-preview-20170106.08
 
@@ -145,6 +174,7 @@ A list of all changes since last release are available [here](https://github.com
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20170106-08](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20170106-08)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20170106-08](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20170106-08)
 
+
 ## 15.0.0-preview-20161227.02
 
 * Add enhancement: trx logger can take logfile parameter [#282](https://github.com/Microsoft/vstest/pull/282).
@@ -161,6 +191,7 @@ A list of all changes since last release are available [here](https://github.com
 * TestPlatform vsix: [TestPlatform.CI.Real-20161227-02](https://devdiv.visualstudio.com/DevDiv/VS.in%20Agile%20Testing%20IDE/_build/index?buildId=490545&_a=summary&tab=artifacts)
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20161227-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20161227-02)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20161227-02](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20161227-02)
+
 
 ## 15.0.0-preview-20161216.01
 
@@ -190,6 +221,7 @@ A list of all changes since last release are available [here](https://github.com
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20161216-01](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20161216-01)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20161216-01](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20161216-01)
 
+
 ## 15.0.0-preview-20161123.03
 
 * Support for debugging .net core project.
@@ -215,6 +247,7 @@ A list of all changes since last release are available [here](https://github.com
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20161123-03](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20161123-03)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20161123-03](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20161123-03)
 
+
 ## 15.0.0-preview-20160923-03
 
 * New configuration `DisableParallelization` in runsettings. This setting may be used by adapters to disable parallel run in certain scenarios, e.g. test profiling or instrumented runs.
@@ -232,6 +265,7 @@ A list of all changes since last release are available [here](https://github.com
 * TestPlatform vsix: [TestPlatform.CI.Real-20160923-03](https://devdiv.visualstudio.com/DevDiv/VS.in%20Agile%20Testing%20IDE/_build/index?buildId=343725&_a=summary)
 * Microsoft.TestPlatform.ObjectModel: [15.0.0-preview-20160923-03](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.ObjectModel/15.0.0-preview-20160923-03)
 * Microsoft.TestPlatform.TranslationLayer: [15.0.0-preview-20160923-03](https://dotnet.myget.org/feed/vstest/package/nuget/Microsoft.TestPlatform.TranslationLayer/15.0.0-preview-20160923-03)
+
 
 ## 15.0.0-preview-20160914-02
 
