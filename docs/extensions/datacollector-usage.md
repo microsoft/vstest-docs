@@ -1,64 +1,21 @@
 # Using DataCollectors
-DataCollectors can be configured and used to monitor test execution in Visual Studio and CLI.
+DataCollectors can be configured and used to monitor test execution through runSettings, testSettings and vstest.console args.
 
 In this walkthrough, you will learn:
-1. How `DataCollectors` were configured and used in previous version of TestPlatform.
-2. How `DataCollectors` are configured and used in latest version of Test Platform.
+1. How `DataCollectors` were configured and used in previous version of TestPlatform (TPv1).
+2. How `DataCollectors` are configured and used in latest version of Test Platform (TPv2).
 
-This will help in understanding the key differences for using `DataCollectors`, thereby ensuring smoother migration to latest version.
+This will help in understanding the key differences for using `DataCollectors`, thereby ensuring smooth migration to latest version.
 
 
-## Visual Studio
-### Visual Studio [2012, 2017 15.5)
-In the previous versions of Visual Studio, configuring `DataCollectors` involved creating runsettings, adding datacollectors settings to it and executing the tests with runsettings selected.
-
-Below is the sample runsettings for code coverage as documented in [msdn](https://msdn.microsoft.com/en-us/library/jj635153.aspx)
-```xml
-<?xml version="1.0" encoding="utf-8"?>  
-<RunSettings>
-  <!-- Configurations for data collectors -->  
-  <DataCollectionRunSettings>  
-    <DataCollectors>  
-      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">  
-        <Configuration>  
-          <CodeCoverage>  
-            <ModulePaths>  
-              <Exclude>  
-                <ModulePath>.*CPPUnitTestFramework.*</ModulePath>  
-              </Exclude>  
-            </ModulePaths>  
-  
-            <!-- We recommend you do not change the following values: -->  
-            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>  
-            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>  
-            <CollectFromChildProcesses>True</CollectFromChildProcesses>  
-            <CollectAspDotNet>False</CollectAspDotNet>  
-  
-          </CodeCoverage>  
-        </Configuration>  
-      </DataCollector>  
-
-    </DataCollectors>  
-  </DataCollectionRunSettings>  
-</RunSettings>
-```
-
-While bootstrapping DataCollection, `DataCollectorPluginDirectory`, the directory where datacollector could be present was decided as below:
-1. Look into app settings for key `DataCollectorPluginDirectory`. If specified, the path value is validated and used.
-2. Look into `PrivateAssemblies\DataCollectors` folder.
-3. Look into VS Installation directory from registry key.
-4. Look for Test Agent Installation Path from registry key.
-
-Additionally, `Codebase` attribute can be specified with DataCollector settings in runsettings and first attempt is made to load the DataCollector from this path, followed by `DataCollectorPluginDirectory`.
-
-Going forward, from Visual Studio 2017 15.5 release onwards, DataCollectors will continue to use runsettings for configuration.
-Below is the sample for code coverage.
+## Using RunSettings
+Below is the sample runsettings for code coverage DataCollector
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
 <RunSettings>
    <RunConfiguration>      
     <!-- Path to Test Adapters -->  
-    <TestAdaptersPaths><<PathToAdapters>>;<<PathToDataCollectors>></TestAdaptersPaths>  
+    <TestAdaptersPaths>PathToAdapters;PathToDataCollectors</TestAdaptersPaths>  
   </RunConfiguration>  
 
   <!-- Configurations for data collectors -->  
@@ -87,13 +44,32 @@ Below is the sample for code coverage.
 </RunSettings>
 ```
 
-Please note that :
-1. `assemblyQualifiedName` attribute is no more required.
-In previous version, DataCollectors are loaded by finding the Assembly Name from assemblyQualifiedName and loaded from `DataCollectorPluginDirectory` folder.
-In current version, `TestAdaptersPaths` are probed and a cache of `DataCollectors` is created while bootstrapping DataCollection. `DataCollectors` assemblies must follow the naming convention [*collector.dll](https://github.com/Microsoft/vstest-docs/blob/master/docs/analyze.md).
+Please note that:
+1. In previous version, DataCollectors are loaded from `<<VisualStudio Installation Directory>>\Common7\IDE\PrivateAssemblies\DataCollectors`.
+In current version, DataCollectors are loaded from `TestAdaptersPaths` specified in runSettings. `DataCollectors` assemblies must follow the naming convention [*collector.dll](https://github.com/Microsoft/vstest-docs/blob/master/docs/analyze.md).
 
-2. Previous DataCollector settings will continue to work, but additional `TestAdapterPaths` must be specified in runsettings.
+2. Previous DataCollector settings will continue to work, but additional `TestAdaptersPaths` must be specified in runsettings if `DataCollector` is not shipped along with TPv2. `TestAdapterPath` can also be specified through [CLI](# Using vstest.console args).
 
-## CLI
+3. There are breaking changes in latest `DataCollector` interface. Hence, older DataCollectors need to be rebuilt against latest APIs to work with TPv2. For details, refer [here(todo)]();
 
-## Legacy DataCollectors
+## Using TestSettings
+While the recommended way is to use (runsettings)[# Using RunSettings] or (vstest.console args)[# Using vstest.console args], there are few DataCollectors which only worked with testsettings.
+E.g.: `System Information` DataCollector.
+
+```xml
+```
+
+Please note that using testsettings will execute the tests through legacy test platfrom and invokes QtAgent*.exe.
+
+Such DataCollectors can also be rebuilt againt latest APIs in order to work directly with TPv2.
+
+## Using vstest.console args
+In TPv2, DataCollectors can be configured and used throgh first class command line arguments `/collect` and `testadapterpath`. Hence, for common DataCollection scenarios, separate runsettings file may not be required.
+
+Below is the sample command to configure and use Code Coverage DataCollector through vstest.console command line.
+```
+> vstest.console.exe test_project.dll /collect:"Code Coverage"
+> vstest.console.exe test_project.dll /collect:"MyDataCollector" /testadapterpath:<Path to MyDataCollector assembly>
+```
+
+Please note that `testadapterpath` is not required for `DataCollectors` shipped along with TPv2.
