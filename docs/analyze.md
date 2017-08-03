@@ -24,7 +24,7 @@ configuration settings file. For example, you can provide information about the
 location of the file you want to collect and attach to your test results. This
 data can be configured for each test settings that you create.
 
-Please refer [todo]() for instructions on creating a data collector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
+Please refer [here](https://github.com/Microsoft/vstest-docs/blob/master/docs/extensions/datacollector.md) for instructions on creating a data collector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
 
 ### Acquisition
