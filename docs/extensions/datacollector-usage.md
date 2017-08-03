@@ -48,12 +48,12 @@ Please note that:
 1. In previous version, DataCollectors are loaded from `<<VisualStudio Installation Directory>>\Common7\IDE\PrivateAssemblies\DataCollectors`.
 In current version, DataCollectors are loaded from `TestAdaptersPaths` specified in runSettings. `DataCollectors` assemblies must follow the naming convention [*collector.dll](https://github.com/Microsoft/vstest-docs/blob/master/docs/analyze.md).
 
-2. Previous DataCollector settings will continue to work, but additional `TestAdaptersPaths` must be specified in runsettings if `DataCollector` is not shipped along with TPv2. `TestAdapterPath` can also be specified through [CLI](# Using-vstest.console-args).
+2. Previous DataCollector settings will continue to work, but additional `TestAdaptersPaths` must be specified in runsettings if `DataCollector` is not shipped along with TPv2. `TestAdapterPath` can also be specified through [CLI](#Using-vstest.console-args).
 
 3. There are breaking changes in latest `DataCollector` interface. Hence, older DataCollectors need to be rebuilt against latest APIs to work with TPv2. For details, refer [here(todo)]();
 
 ## Using TestSettings
-While the recommended way is to use [runsettings](# Using-RunSettings) or [vstest.console args](# Using-vstest.console-args), there are few DataCollectors which only worked with testsettings.
+While the recommended way is to use [runsettings](#Using-RunSettings) or [vstest.console args](#Using-vstest.console-args), there are few DataCollectors which only worked with testsettings.
 E.g.: `System Information` DataCollector.
 
 ```xml
