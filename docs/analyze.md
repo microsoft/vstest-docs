@@ -1,42 +1,42 @@
 # Monitor and analyze test run
-This document will walk you through enabling data collection for a test run. This document covers:
-1. A brief overview of data collectors.
-2. Configuring data collectors in TPV2.
-3. Key differences for using `DataCollectors` in TPv2 v/S TPv1.
+This document will walk you through enabling data collection for a test run covering:
+1. A brief overview of DataCollectors.
+2. Configuring DataCollectors in TPv2.
+3. Key differences for using DataCollectors in TPv2 v/s TPv1.
 3. Instructions for using [code coverage][coverage].
 
 > **Version note:**
 >
-> Data collectors are supported on test platform `15.3.0` onwards. It is part of
+> DataCollectors are supported on test platform `15.3.0` onwards. It is part of
 > VS 2017 15.3 and dotnet-cli 2.0.0 builds.
 
 [coverage]: #coverage
 
-## Data collector
-A data collector is a test platform extension to monitor test run. It can be extended to perform tasks on specific test exectuion events. Currently, four events are exposed to `DataCollectors`:
+## DataCollector
+A DataCollector is a test platform extension to monitor test run. It can be extended to perform tasks on specific test exectuion events. Currently, four events are exposed to DataCollector:
 1. Test Run Start event.
 2. Test Case Start event
 3. Test Case End event.
 4. Test Run End event.
 
-You can author a data collector to collect code coverage data for a test run,to collect logs when a test case or test run fails, etc.. These additional filesare called Attachments, they can be attached to a test result (trx).
+You can author a DataCollector to collect code coverage data for a test run, to collect logs when a test case or test run fails, etc. These additional files are called Attachments, they can be attached to test result report(trx).
 
-Please refer [here](https://github.com/Microsoft/vstest-docs/blob/master/docs/extensions/datacollector.md) for instructions on creating a data collector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
+Please refer [here](https://github.com/Microsoft/vstest-docs/blob/master/docs/extensions/datacollector.md) for instructions on creating a DataCollector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
  
 #### Naming
-When test platform is looking for a data collector it will likely need to examine many
+When test platform is looking for a DataCollector it will likely need to examine many
 assemblies. As an optimization, test platform will only look at distinctly named
-assemblies; specifically, a data collector must follow the naming convention
+assemblies; specifically, a DataCollector must follow the naming convention
 `*collector.dll`. By enforcing such a naming convention, test platform can speed up
-locating a data collector assembly. Once located, test platform will load the data
+locating a DataCollector assembly. Once located, test platform will load the data
 collector for the entire run.
 
 ## Configure DataCollectors
-`DataCollectors` can be configured for monitoring test execution through runSettings, testSettings or vstest.console args.
+DataCollectors can be configured for monitoring test execution through runSettings, testSettings or vstest.console args.
 
 ### Using RunSettings
-Below is the sample runsettings for code coverage DataCollector
+Below is the sample runsettings for a custom DataCollector
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
 <RunSettings>
@@ -45,7 +45,7 @@ Below is the sample runsettings for code coverage DataCollector
     <TestAdaptersPaths>PathToAdapters;PathToDataCollectors</TestAdaptersPaths>  
   </RunConfiguration>  
 
-  <!-- Configurations for data collectors -->  
+  <!-- Configurations for DataCollectors -->  
   <DataCollectionRunSettings>  
     <DataCollectors>  
       <DataCollector friendlyName="MyDataCollector" uri="datacollector://MyCompany/MyDataCollector/1.0">  
@@ -57,18 +57,19 @@ Below is the sample runsettings for code coverage DataCollector
   </DataCollectionRunSettings>  
 </RunSettings>
 ```
-Below is the sample command for enabling DataCollectors using testsettings
+Below is the sample command for enabling DataCollectors using runsettings
 ```
 > vstest.console.exe test_project.dll /settings:datacollection.runsettings
 ```
 ### Using vstest.console args
-`DataCollectors` can be configured and used throgh first class command line arguments `/collect` and `/testadapterpath`. Hence, for common DataCollection scenarios, separate runsettings file may not be required.
+DataCollectors can be configured and used through first class command line arguments `/collect` and `/testadapterpath`. Hence, for common DataCollection scenarios, separate runsettings file may not be required.
 
 Below is the sample command to configure and use DataCollectors through vstest.console command line.
 ```
 > vstest.console.exe test_project.dll /collect:"Code Coverage"
 > vstest.console.exe test_project.dll /collect:"MyDataCollector" /testadapterpath:<Path to MyDataCollector assembly>
 ```
+Please note that `testadapterpath` is not required for DataCollectors shipped along with TPv2.
 
 ### Using TestSettings
 While the recommended way is to use [runsettings](#Using-RunSettings) or [vstest.console args](#Using-vstest.console-args), there are few DataCollectors which only worked with testsettings.
@@ -94,47 +95,47 @@ Below is the sample command for enabling DataCollectors using testsettings
 ```
 > vstest.console.exe test_project.dll /settings:datacollection.testsettings
 ```
-### Enable/Disable a data collector
-All data collectors configured in the .runsettings files are loaded automatically and are enabled to participate for run, unless explicitely disabled using boolean valued attribute attribute named `enabled`.
+### Enable/Disable a DataCollector
+All DataCollectors configured in the .runsettings files are loaded automatically and are enabled to participate for run, unless explicitely disabled using boolean valued attribute named `enabled`.
 
-For example, only `coverage` data collector will be enabled for a test run with
+For example, only `coverage` DataCollector will be enabled for a test run with
 below runsettings:
 
 ```xml
 <DataCollectionRunSettings> 
-    <DataCollectors> 
-      <DataCollector friendlyName="coverage">
-      </DataCollector> 
+  <DataCollectors> 
+     <DataCollector friendlyName="coverage">
+     </DataCollector> 
   
-      <DataCollector friendlyName="systeminfo" enabled="false">
-      </DataCollector> 
-    </DataCollectors> 
-  </DataCollectionRunSettings>
+     <DataCollector friendlyName="systeminfo" enabled="false">
+     </DataCollector> 
+   </DataCollectors> 
+</DataCollectionRunSettings>
 ```
 
-A specific data collector can be explicitely enabled using the `/collect:<friendly name>` command line switch.
+A specific DataCollector can be explicitely enabled using the `/collect:<friendly name>` command line switch.
 
-For example, below command line will enable a data collector named `coverage` 
-(and disable other data collectors mentioned in .runsettings):
+For example, below command line will enable a DataCollector named `coverage` 
+(and disable other DataCollectors mentioned in .runsettings):
 ```
 > vstest.console test_project.dll /collect:coverage
 ```
  
-More than one data collectors can also be enabled using `/collect` command line switch
+More than one DataCollectors can also be enabled using `/collect` command line switch
 
-For example, below command will enable data collectors named `coverage` and `systeminfo`:
+For example, below command will enable DataCollectors named `coverage` and `systeminfo`:
 ```
 > vstest.console test_project.dll /collect:coverage /collect:systeminfo
 ```
 
-## Key differences for using `DataCollectors` in TPv2 v/S TPv1.
+## Key differences for using DataCollectors in TPv2 v/s TPv1.
 
 1. In TPv1, DataCollectors are loaded from `<<VisualStudio Installation Directory>>\Common7\IDE\PrivateAssemblies\DataCollectors`.
-In TPv2, DataCollectors are loaded from `TestAdaptersPaths` specified in runSettings or `/testadapterpath` argument of `vstest.console.exe`. `DataCollector` assemblies must follow the naming convention *collector.dll.
+In TPv2, DataCollectors are loaded from `TestAdaptersPaths` specified in runSettings or `/testadapterpath` argument of `vstest.console.exe`. DataCollector assemblies must follow the naming convention *collector.dll.
 
-2. Previous DataCollector settings will continue to work, but additional `TestAdaptersPaths` must be specified in runsettings if `DataCollector` is not shipped along with TPv2. `TestAdapterPath` can also be specified through [vstest.console args](#Using-vstest.console-args) from command line.
+2. Previous DataCollector settings will continue to work, but additional `TestAdaptersPaths` must be specified in runsettings if DataCollector is not shipped along with TPv2. `TestAdapterPath` can also be specified through [vstest.console args](#Using-vstest.console-args) from command line.
 
-3. There are breaking changes in latest `DataCollector` interface. Hence, older DataCollectors need to be rebuilt against latest APIs to work with TPv2. For details, refer [here(todo)]();
+3. There are breaking changes in latest DataCollector interface. Hence, older DataCollectors need to be rebuilt against latest APIs to work with TPv2. For details, refer [here(todo)]();
 
 ## Working with Code Coverage<a name="coverage"></a>
 ### Setup a project
