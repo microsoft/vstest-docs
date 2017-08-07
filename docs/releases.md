@@ -24,6 +24,20 @@ A list of all changes since last release are available [here](https://github.com
 
 * Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170727-01](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170727-01)
 
+## 15.3.0
+
+### Issue Fixed
+* Clean testhost before sending discoveryComplete/ExecutionCompltete. 
+* Closing VS should also close vstest.console process.
+
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.3.0-preview-20170618-03...rel/15.3-rtm).
+
+### Drops
+
+* TestPlatform vsix: [15.3.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.3-rtm/20170807-05;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0)
+
 
 ## 15.3.0-preview-20170618-03
 
