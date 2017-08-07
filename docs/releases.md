@@ -24,6 +24,20 @@ A list of all changes since last release are available [here](https://github.com
 
 * Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170727-01](http://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170727-01)
 
+## 15.3.0
+
+### Issue Fixed
+* Fixed the sequence of ProxyExecutionManager.Close and the run request completion event. Ensured that the test host is terminated before discovery/execution completion is raised. This fixes an issue where an IDE/Editor can call discovery successively, but the testhost running for first request could still be running. The fix also allows callers to cleanup resources once they receive execution/discovery events.
+* Closing VS while test discovery is in progress, vstest.console and it's sub process becomes orphans processes whose holds locks on adapters and test dlls. This causes project build fail on subsequent run. With this fix we are ensuring that vstest.console and subprocess are getting killed once the VS is closed.
+
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.3.0-preview-20170618-03...rel/15.3-rtm).
+
+### Drops
+
+* TestPlatform vsix: [15.3.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.3-rtm/20170807-05;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.3.0)
+
 
 ## 15.3.0-preview-20170618-03
 
