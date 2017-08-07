@@ -27,8 +27,8 @@ A list of all changes since last release are available [here](https://github.com
 ## 15.3.0
 
 ### Issue Fixed
-* Fixed the sequence of ProxyExecutionManager.Close and the run request completion event. Ensured that the test host is terminated before discovery/execution completion is raised. This fixes an issue where an IDE/Editor can call discovery successively, but the testhost running for first request could still be running. The fix also allows callers to cleanup resources once they receive execution/discovery events.
-* Closing VS while test discovery is in progress, vstest.console and it's sub process becomes orphans processes whose holds locks on adapters and test dlls. This causes project build fail on subsequent run. With this fix we are ensuring that vstest.console and subprocess are getting killed once the VS is closed.
+* Clean testhost before sending discoveryComplete/ExecutionCompltete. 
+* Closing VS should also close vstest.console process.
 
 
 A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.3.0-preview-20170618-03...rel/15.3-rtm).
