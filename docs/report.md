@@ -64,11 +64,11 @@ to load test loggers.
 > Version Note: < 15.1
 > For 15.0 version, the test loggers are also discovered from *.testadapter.dll
 
-## Write a test logger
-Follow the following step to create a test logger
-1) Take a nuget reference of package `Microsoft.TestPlatform.ObjectModel`.
+## Create a test logger
+Go through the following steps to create your own logger
+1) Add a nuget reference of package `Microsoft.TestPlatform.ObjectModel`.
 2) Implement ITestLoggerWithParameters (or ITestLogger, if your logger is not expecting any parameter). [Logger Example](https://github.com/Faizan2304/LoggerExtensions/blob/master/src/Xunit.Xml.TestLogger/XunitXmlTestLogger.cs#L19)
-3) Name your logger assemlies `*.testlogger.dll`. [Detailed]()
+3) Name your logger assemlby `*.testlogger.dll`. [Detailed]()
 
 ## Enable a test logger
 A test logger must be explicitly enabled using the command line. E.g.
