@@ -1,9 +1,9 @@
-# Migrate your TPv0/TPv1 datacollector to TPv2 datacollector.
+# Migrate your TPv0/TPv1 datacollector to TPv2 datacollector
 DataCollectors were supported in TPv0(mstest.exe)/TPv1(vstest.console.exe). 
 This document will walk you through the changes that are required to migrate your TPv0/TPv1 DataCollector to work with TPv2.
 
 ## Referencing DataCollector Framework
-Previously, `DataCollector` absract clas was present in `Microsoft.VisualStudio.QualityTools.ExecutionCommon.dll` under namespace `Microsoft.VisualStudio.TestTools.Execution`.
+Previously, `DataCollector` absract class was present in `Microsoft.VisualStudio.QualityTools.ExecutionCommon.dll` under namespace `Microsoft.VisualStudio.TestTools.Execution`.
 Now, `DataCollector` is present in Object Model. Add reference to `Microsoft.TestPlatform.ObjectModel` (preview) nuget package. DataCollector APIs are present under namespace `Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection`
 
 ## Deprecated Attributes
@@ -11,7 +11,7 @@ Currently `DataCollectorFriendlyNameAttribute` and `DataCollectorTypeUriAttribut
 Attributes `DataCollectorEnabledByDefaultAttribute`, `DataCollectorDescriptionAttribute`, `DataCollectorConfigurationEditorTypeUriAttribute`, `DataCollectorSupportsTailoredApplicationsAttribute`, `DataCollectorVersionObsoleteAttribute` and `DataCollectorConfigurationEditorAttribute` attributes are depcrecated.
 
 ## Deprecated Events
-Previously, fourteen events were exposed to DataCollectors through `DataCollectionEvents`.
+Previously, fourteen events were exposed to DataCollectors through `DataCollectionEvents`:
 1. Session Start.
 2. Session End.
 3. Session Pause.
@@ -33,5 +33,5 @@ Currently, four events are exposed to DataCollectors through `DataCollectionEven
 3. Test Case End event.
 4. Test Run End event.
 
-## DataCollector RunSettings.
+## DataCollector RunSettings
 DataCollector RunSettings are highly compatible in all the versions of TestPlatform.
