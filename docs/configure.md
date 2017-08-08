@@ -202,8 +202,8 @@ Available elements are:
 | ResultsDirectory  | string | Directory for test run reports. E.g. trx, coverage etc.                                         |
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
-| TestSessionTimeout | int   | Testplatform will cancel the test run after it exceeded given TestSessionTimeout in milliseconds and will show the results of tests which ran till that point. **This setting is available from Visual Studio 2017 Update 5 onwards.** |
-| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter APIs. Possible values: (MTA, STA). Default value is MTA. Supported only for .NET Framework. **This setting is available from Visual Studio 2017 Update 5 onwards.** |
+| TestSessionTimeout | int   | Testplatform will cancel the test run after it exceeded given TestSessionTimeout in milliseconds and will show the results of tests which ran till that point. **Required Version: 15.5+.** |
+| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter's RunTests and Cancel APIs. Possible values: (MTA, STA). Default value is MTA. Supported only for .NET Framework. **Required Version: 15.5+.** [More details.](#execution-thread-apartment-state) |
 
 Examples of valid `TargetFrameworkVersion`:
 * .NETCoreApp, Version=v1.0
@@ -368,3 +368,43 @@ and [nunit config][] for more details.
 
 [mstest config]: TODO
 [nunit config]: TODO
+
+# [Execution thread apartment state](#execution-thread-apartment-state)
+This section explains usage of ExecutionThreadApartmentState element in runsettings and testplatform behavior for same.
+
+### Usage:
+#### using runsettings file:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+     <!-- STA | MTA  default is MTA-->
+     <ExecutionThreadApartmentState>STA</ExecutionThreadApartmentState>
+  </RunConfiguration>
+</RunSettings>
+```
+
+#### using command line:
+vstest.console.exe a.dll -- RunConfiguration.ExecutionThreadApartmentState=STA
+
+dotnet test -f net46 -- RunConfiguration.ExecutionThreadApartmentState=STA
+
+### History
+In Test Platform V1 ExecutionThreadApartmentState property can be set from vstest.executionengine*.exe.config file. Default value is `STA`.
+The drawback with this is product code runs in MTA thread by default where as test code runs in STA thread and difficult to change the property value(may need Administration account).
+
+
+### Behavior
+In Test platform V2 ExecutionThreadApartmentState property default value is `MTA` for all frameworks(.NET Framework, .NET Core). STA value is supported for .NET Framework.
+Warning should be shown on trying to set value `STA` for .NET Core and UAP10.0 frameworks tests.
+
+
+- To support adapters which depends on thread test platform creates may need STA apartment state to run UI tests. `ExecutionThreadApartmentState` option can be used to set apartment state. Example: MSTest v1, MSTest v2 and MSCPPTest adapters.
+
+- The recommended way to make the tests run in STA thread is using custom attributes that adapter provides.
+
+| Adapter | Attribute|
+|-----------|-----------|
+| MSTest v2 | STATestMethod/STATestClass
+| NUnit | Apartment |
+| Xunit | STAFact
