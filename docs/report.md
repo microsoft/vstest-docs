@@ -3,7 +3,6 @@ Test discovery, execution results in a test run can be controlled with test
 loggers. This document will cover details on installation, usage and authoring
 of test loggers.
 
-> Version note: Changes in `15.1` are in draft at this time.
 
 ## Test loggers
 A test logger is a test platform extension to control reporting of test results.
@@ -54,7 +53,7 @@ dotnet-cli, the path could be `/sdk/<version>/Extensions` directory.
 2. any well known location on the filesystem
  
 > Version Note: new in 15.1
-In case of #2, user can specify the full path to the location using `/extensions:<path>`
+In case of #2, user can specify the full path to the location using `/TestAdapterPath:<path>`
 command line switch. Test platform will locate extensions from the provided
 directory.
 
@@ -64,6 +63,12 @@ to load test loggers.
 
 > Version Note: < 15.1
 > For 15.0 version, the test loggers are also discovered from *.testadapter.dll
+
+## Create a test logger
+Go through the following steps to create your own logger
+1) Add a nuget reference of package `Microsoft.TestPlatform.ObjectModel`.
+2) Implement ITestLoggerWithParameters (or ITestLogger, if your logger is not expecting any parameter). [Logger Example](https://github.com/Faizan2304/LoggerExtensions/blob/master/src/Xunit.Xml.TestLogger/XunitXmlTestLogger.cs#L19)
+3) Name your logger assemlby `*.testlogger.dll`. [Detailed]()
 
 ## Enable a test logger
 A test logger must be explicitly enabled using the command line. E.g.
