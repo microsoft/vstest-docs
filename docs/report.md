@@ -13,7 +13,7 @@ You can author a test logger to print messages on the console, generate result
 files of a specific reporting format, or even report results to various CI/CD
 services. Default inputs to a test logger can be provided in the command line.
 
- Please refer [todo]() for instructions on creating a test logger and [todo]()
+ Please refer [todo](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#create-a-test-logger) for instructions on creating a test logger and [todo]()
 if you're interested in the architecture of a test logger.
 
 ### Available test loggers
@@ -68,7 +68,7 @@ to load test loggers.
 Go through the following steps to create your own logger
 1) Add a nuget reference of package `Microsoft.TestPlatform.ObjectModel`.
 2) Implement ITestLoggerWithParameters (or ITestLogger, if your logger is not expecting any parameter). [Logger Example](https://github.com/Faizan2304/LoggerExtensions/blob/master/src/Xunit.Xml.TestLogger/XunitXmlTestLogger.cs#L19)
-3) Name your logger assemlby `*.testlogger.dll`. [Detailed]()
+3) Name your logger assemlby `*.testlogger.dll`. [Detailed](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#naming)
 
 ## Enable a test logger
 A test logger must be explicitly enabled using the command line. E.g.
