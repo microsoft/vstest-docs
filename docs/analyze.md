@@ -14,28 +14,20 @@ This document will walk you through enabling data collection for a test run cove
 
 ## DataCollector
 A DataCollector is a test platform extension to monitor test run. It can be extended to perform tasks on specific test exectuion events. Currently, four events are exposed to DataCollector:
-1. Test Run Start event.
+1. Session Start event.
 2. Test Case Start event
 3. Test Case End event.
-4. Test Run End event.
+4. Session End event.
 
 You can author a DataCollector to collect code coverage data for a test run, to collect logs when a test case or test run fails, etc. These additional files are called Attachments, they can be attached to test result report(trx).
 
 Please refer [here](https://github.com/Microsoft/vstest-docs/blob/master/docs/extensions/datacollector.md) for instructions on creating a DataCollector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
- 
-#### Naming
-When test platform is looking for a DataCollector it will likely need to examine many
-assemblies. As an optimization, test platform will only look at distinctly named
-assemblies; specifically, a DataCollector must follow the naming convention
-`*collector.dll`. By enforcing such a naming convention, test platform can speed up
-locating a DataCollector assembly. Once located, test platform will load the data
-collector for the entire run.
 
 ## Configure DataCollectors
 DataCollectors can be configured for monitoring test execution through runSettings, testSettings or vstest.console args.
 
-### Using RunSettings
+### Using RunSettings<a name="Using-RunSettings"></a>
 Below is the sample runsettings for a custom DataCollector
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -59,21 +51,21 @@ Below is the sample runsettings for a custom DataCollector
 ```
 Below is the sample command for enabling DataCollectors using runsettings
 ```
-> vstest.console.exe test_project.dll /settings:datacollection.runsettings
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /settings:datacollection.runsettings
 ```
-### Using vstest.console args
+### Using vstest.console args<a name="Using-vstest.console-args"></a>
 DataCollectors can be configured and used through first class command line arguments `/collect` and `/testadapterpath`. Hence, for common DataCollection scenarios, separate runsettings file may not be required.
 
 Below is the sample command to configure and use DataCollectors through vstest.console command line.
 ```
-> vstest.console.exe test_project.dll /collect:"Code Coverage"
-> vstest.console.exe test_project.dll /collect:"MyDataCollector" /testadapterpath:<Path to MyDataCollector assembly>
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:"Code Coverage"
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:"MyDataCollector" /testadapterpath:<Path to MyDataCollector assembly>
 ```
 Please note that `testadapterpath` is not required for DataCollectors shipped along with TPv2.
 
 ### Using TestSettings
 While the recommended way is to use [runsettings](#Using-RunSettings) or [vstest.console args](#Using-vstest.console-args), there are few DataCollectors which only worked with testsettings.
-E.g.: `System Information` DataCollector. Below is the sample testsettings for using `System Information` DataCollctor.
+E.g.: `System Information` DataCollector. Below is the sample testsettings for using `System Information` DataCollector.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,39 +85,48 @@ E.g.: `System Information` DataCollector. Below is the sample testsettings for u
 ```
 Below is the sample command for enabling DataCollectors using testsettings
 ```
-> vstest.console.exe test_project.dll /settings:datacollection.testsettings
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /settings:datacollection.testsettings
 ```
 ### Enable/Disable a DataCollector
 All DataCollectors configured in the .runsettings files are loaded automatically and are enabled to participate for run, unless explicitely disabled using boolean valued attribute named `enabled`.
 
-For example, only `coverage` DataCollector will be enabled for a test run with
+For example, only `MyDataCollector1` DataCollector will be enabled for a test run with
 below runsettings:
 
 ```xml
-<DataCollectionRunSettings> 
-  <DataCollectors> 
-     <DataCollector friendlyName="coverage">
-     </DataCollector> 
+<?xml version="1.0" encoding="utf-8"?>  
+<RunSettings>
+   <RunConfiguration>      
+    <!-- Path to Test Adapters -->  
+    <TestAdaptersPaths>PathToAdapters;PathToDataCollectors</TestAdaptersPaths>  
+  </RunConfiguration>  
+
+  <!-- Configurations for DataCollectors -->  
+  <DataCollectionRunSettings> 
+    <DataCollectors> 
+      <DataCollector friendlyName="MyDataCollector1" uri="datacollector://MyCompany/MyDataCollector1/1.0">
+    </DataCollector> 
   
-     <DataCollector friendlyName="systeminfo" enabled="false">
-     </DataCollector> 
-   </DataCollectors> 
-</DataCollectionRunSettings>
+    <DataCollector friendlyName="MyDataCollector2" uri="datacollector://MyCompany/MyDataCollector2/1.0" enabled="false">
+      </DataCollector> 
+    </DataCollectors> 
+  </DataCollectionRunSettings>
+</RunSettings>
 ```
 
 A specific DataCollector can be explicitely enabled using the `/collect:<friendly name>` command line switch.
 
-For example, below command line will enable a DataCollector named `coverage` 
+For example, below command line will enable a DataCollector named `MyDataCollector1` 
 (and disable other DataCollectors mentioned in .runsettings):
 ```
-> vstest.console test_project.dll /collect:coverage
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:MyDataCollector1
 ```
  
 More than one DataCollectors can also be enabled using `/collect` command line switch
 
-For example, below command will enable DataCollectors named `coverage` and `systeminfo`:
+For example, below command will enable DataCollectors named `MyDataCollector1` and `MyDataCollector2`:
 ```
-> vstest.console test_project.dll /collect:coverage /collect:systeminfo
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:MyDataCollector1 /collect:MyDataCollector2
 ```
 
 ## Key differences for using DataCollectors in TPv2 v/s TPv1.
@@ -178,7 +179,7 @@ Please refer the MSDN documentation for additional details: https://msdn.microso
 Use the following command line to collect coverage data for tests:
 
 ```
-> C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe --collect:"Code Coverage" --framework:".NETCoreApp,Version=v1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
+> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" --collect:"Code Coverage" --framework:".NETCoreApp,Version=v1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
 ```
 
 This will generate a `*.coverage` file in the `d:\testproject\TestResults` directory.

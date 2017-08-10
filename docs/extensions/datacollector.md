@@ -5,7 +5,17 @@ In this walkthrough, you will learn how to create your first `DataCollector` and
 
 ## Extend DataCollector
 The very first thing you will need to create is a Class Library project and add reference to `Microsoft.TestPlatform.ObjectModel` nuget package.
+
 Class Library project can target Desktop clr or dotnet core clr or both frameworks.
+
+> **DataCollector Assembly Naming Convention**
+>
+> When test platform is looking for a DataCollector it will likely need to examine many
+> assemblies. As an optimization, test platform will only look at distinctly named
+> assemblies, specifically, a DataCollector must follow the naming convention
+> `*collector.dll`. By enforcing such a naming convention, test platform can speed up
+> locating a DataCollector assembly. Once located, test platform will load the data
+> collector for the entire run.
 
 A new data collector can be implemented by extending the abstract `DataCollector` class. 
 
