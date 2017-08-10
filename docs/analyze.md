@@ -168,6 +168,10 @@ coverage infrastructure for a test project. Here's a sample project file, please
 [coveragenuget]: https://www.nuget.org/packages/Microsoft.CodeCoverage/
 
 ### Analyze coverage with Visual Studio
+> **Version note:**
+> 
+> Try this feature with latest [Visual Studio 2017 15.3.0 Preview](https://www.visualstudio.com/vs/preview/) version.
+
 Use the `Analyze Code Coverage` context menu available in `Test Explorer` tool window to start a coverage run.
 
 After the coverage run is complete, a detailed report will be available in the `Code Coverage Results` tool window.
