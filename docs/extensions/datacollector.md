@@ -5,7 +5,6 @@ In this walkthrough, you will learn how to create your first `DataCollector` and
 
 ## Extend DataCollector
 The very first thing you will need to create is a Class Library project and add reference to `Microsoft.TestPlatform.ObjectModel` nuget package.
-
 Class Library project can target Desktop clr or dotnet core clr or both frameworks.
 
 > **DataCollector Assembly Naming Convention**

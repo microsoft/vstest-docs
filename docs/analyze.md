@@ -8,7 +8,7 @@ This document will walk you through enabling data collection for a test run cove
 > **Version note:**
 >
 > DataCollectors are supported on test platform `15.3.0` onwards. It is part of
-> VS 2017 15.3 and dotnet-cli 2.0.0 builds.
+> VS 2017 15.3 and dotnet-cli 2.0.0 builds. More info in [appendix](#appendix)
 
 [coverage]: #coverage
 
@@ -51,15 +51,15 @@ Below is the sample runsettings for a custom DataCollector
 ```
 Below is the sample command for enabling DataCollectors using runsettings
 ```
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /settings:datacollection.runsettings
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" test_project.dll /settings:datacollection.runsettings
 ```
 ### Using vstest.console args<a name="Using-vstest.console-args"></a>
 DataCollectors can be configured and used through first class command line arguments `/collect` and `/testadapterpath`. Hence, for common DataCollection scenarios, separate runsettings file may not be required.
 
 Below is the sample command to configure and use DataCollectors through vstest.console command line.
 ```
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:"Code Coverage"
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:"MyDataCollector" /testadapterpath:<Path to MyDataCollector assembly>
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:"Code Coverage"
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:"MyDataCollector" /testadapterpath:<Path to MyDataCollector assembly>
 ```
 Please note that `testadapterpath` is not required for DataCollectors shipped along with TPv2.
 
@@ -85,7 +85,7 @@ E.g.: `System Information` DataCollector. Below is the sample testsettings for u
 ```
 Below is the sample command for enabling DataCollectors using testsettings
 ```
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /settings:datacollection.testsettings
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" test_project.dll /settings:datacollection.testsettings
 ```
 ### Enable/Disable a DataCollector
 All DataCollectors configured in the .runsettings files are loaded automatically and are enabled to participate for run, unless explicitely disabled using boolean valued attribute named `enabled`.
@@ -119,14 +119,14 @@ A specific DataCollector can be explicitely enabled using the `/collect:<friendl
 For example, below command line will enable a DataCollector named `MyDataCollector1` 
 (and disable other DataCollectors mentioned in .runsettings):
 ```
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:MyDataCollector1
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:MyDataCollector1
 ```
  
 More than one DataCollectors can also be enabled using `/collect` command line switch
 
 For example, below command will enable DataCollectors named `MyDataCollector1` and `MyDataCollector2`:
 ```
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:MyDataCollector1 /collect:MyDataCollector2
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" test_project.dll /collect:MyDataCollector1 /collect:MyDataCollector2
 ```
 
 ## Key differences for using DataCollectors in TPv2 v/s TPv1.
@@ -179,9 +179,22 @@ Please refer the MSDN documentation for additional details: https://msdn.microso
 Use the following command line to collect coverage data for tests:
 
 ```
-> "C:\Program Files (x86)\Microsoft Visual Studio\xyz\Extensions\TestPlatform\vstest.console.exe" --collect:"Code Coverage" --framework:".NETCoreApp,Version=v1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
+> "%programfiles(x86)%\Microsoft Visual Studio\2017\Extensions\TestPlatform\vstest.console.exe" --collect:"Code Coverage" --framework:".NETCoreApp,Version=v1.1" d:\testproject\bin\Debug\netcoreapp1.1\testproject.dll
 ```
 
 This will generate a `*.coverage` file in the `d:\testproject\TestResults` directory.
 
 > NOTE: Support for code coverage in `dotnet test` command line is work in progress.
+
+## Appendix<a name="Appendix"></a>
+1. DataCollection is supported in Visual Studio 2017 from version 15.3.0 Preview 3 onwards.
+
+  How to find version of Visual Studio:
+  * Start Visual Studio
+  * Click on `Help`.
+  * Click on `About Visual Studio`
+  * Verify the Version. It should be `15.3.0 Preview 3.0 [15.0.26621.2.d15rel]` or above.
+
+  How to find version of dotnet:
+  * In cmd.exe, run command `dotnet --version`
+  * Verify the version is `2.0.0` or above.
