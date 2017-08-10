@@ -189,12 +189,12 @@ This will generate a `*.coverage` file in the `d:\testproject\TestResults` direc
 ## Appendix<a name="Appendix"></a>
 1. DataCollection is supported in Visual Studio 2017 from version 15.3.0 Preview 3 onwards.
 
-  How to find version of Visual Studio:
-  * Start Visual Studio
-  * Click on `Help`.
-  * Click on `About Visual Studio`
-  * Verify the Version. It should be `15.3.0 Preview 3.0 [15.0.26621.2.d15rel]` or above.
+    How to find version of Visual Studio:
+    * Start Visual Studio
+    * Click on `Help`.
+    * Click on `About Visual Studio`
+    * Verify the Version. It should be `15.3.0 Preview 3.0 [15.0.26621.2.d15rel]` or above.
 
-  How to find version of dotnet:
-  * In cmd.exe, run command `dotnet --version`
-  * Verify the version is `2.0.0` or above.
+    How to find version of dotnet:
+    * In cmd.exe, run command `dotnet --version`
+    * Verify the version is `2.0.0` or above.
