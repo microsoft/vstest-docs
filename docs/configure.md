@@ -369,7 +369,7 @@ and [nunit config][] for more details.
 [mstest config]: TODO
 [nunit config]: TODO
 
-# [Execution thread apartment state](#execution-thread-apartment-state)
+# Execution thread apartment state
 This section explains usage of ExecutionThreadApartmentState element in runsettings and testplatform behavior for same.
 
 ### Usage:
