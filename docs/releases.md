@@ -1,5 +1,26 @@
 # Release Notes
 
+## 15.5.0-preview-20170810-02
+
+### Issue Fixed
+* https://github.com/Microsoft/vstest/issues/861
+* https://github.com/Microsoft/vstest/issues/916
+* Made latest testhost compat with older vstest.console and vice versa.
+* Some performance improvement
+
+### New Features introduced
+* Added blame data collector support in `dotnet test`.
+* Add ExecutionThreadApartmentState property in runsettings. [More info here](https://github.com/Microsoft/vstest-docs/blob/master/docs/configure.md#execution-thread-apartment-state)
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/73f4a07adfa802257e3ebe11c197016010f2e080...v15.5.0-preview-20170727-01).
+
+### Drops
+
+* TestPlatform vsix: [15.5.0-preview-20170810-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170810-02;/TestPlatform.vsix)
+
+* Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170810-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170810-02)
+
+
 ## 15.5.0-preview-20170727-01
 
 ### Issue Fixed
