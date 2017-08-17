@@ -39,3 +39,7 @@ In default configuration (through vstest.console.exe args or when <Configuration
 
 ## Use cases for Event Log DataCollector
 Event Log DataCollector is used to get event logs as Attachment and is particularly useful for remote scenarios where logging into the machine and viewing the Event Viewer is not possible. 
+
+> **A note on `Security` Event Log**
+
+>Please note that `Security` event logs can only be collected if the account under with tests are run has admin privileges.
