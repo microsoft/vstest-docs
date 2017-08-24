@@ -1,5 +1,5 @@
 # DataCollector Migration 
-DataCollectors were supported in MSTest.exe/TMI. 
+TestPlatform has introduced differences and enhancements to the data collection infrastructure. If you already have written data collectors for previous versions of TestPlatform, then you will need to migrate them.
 This document will walk you through the changes that are required to migrate your TMI/MSTest.exe based DataCollector to work with TestPlatform.
 
 ## Referencing DataCollector Framework
@@ -19,7 +19,7 @@ Following attributes have been deprecated and should be removed if already being
 5. `DataCollectorVersionObsoleteAttribute` 
 6. `DataCollectorConfigurationEditorAttribute`
 
-These attributes don't serve any purpose in the context of TestPlatform and therefore, removed.
+These attributes don't serve any purpose in TestPlatform and therefore, removed.
 
 ## Deprecated Events
 Currently, four events are exposed to DataCollectors through `DataCollectionEvents`:
@@ -40,7 +40,7 @@ Following ten events that were exposed to DataCollectors through `DataCollection
 9. Data Request.
 10. Custom Notification.
 
-These events are not supported in TestPlatform and hence, these are deprecated.
+These events are no longer supported in TestPlatform and hence, these have been removed from DataCollection infra as well.
 
 ## DataCollector RunSettings
 DataCollector RunSettings are highly compatible in all the versions of TestPlatform and old settings should continue to work with TestPlatform. For more info on runsettings, refer [Configure DataCollectorss](https://github.com/Microsoft/vstest-docs/blob/master/docs/analyze.md#configure-datacollectors)
