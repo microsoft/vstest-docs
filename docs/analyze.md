@@ -230,5 +230,5 @@ The above runsettings will collect event logs from `System` and `Application` ev
 In default configuration (through vstest.console.exe args or when <Configuration> section is empty in runsettings), `System`, `Application` and `Security` logs with entry types `Error`, `Warning` or `FailureAudit` and with any event source are collected.
 
 > **A note on `Security` Event Log**
-
+>
 >Please note that `Security` event logs can only be collected if the account under with tests are run has admin privileges.
