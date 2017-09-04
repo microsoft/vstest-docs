@@ -6,10 +6,12 @@ This note details the Telemetry design for the Test Platform.
 ## Motivation
 We need Telemetry to collect usage information of our tools to make business descisions as well as for improving our features. It helps us to prioritize our work items in a more efficient way.
 
-#### Events to be gathered
+## Events to be gathered
 1. Discover Tests
 2. Run Tests
 3. Run Selected Tests
+
+* We will be collecting the data points for all the above events end to end to improve our features. This events will be gathered for both design mode scenarios and command Line Interfaces which will help us reach out to every possible customers.
 
 ## Data Points
 1. Total number of tests discovered/ran by each adapter.
