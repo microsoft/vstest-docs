@@ -221,7 +221,7 @@ Below runsettings can be used to enable Event Log DataCollector.
             <Setting name="EventLog" value="System,Application" />
             <Setting name="EntryTypes" value="Error,Warning" />
             <Setting name="EventSources" value="CustomEventSource" />
-            <Setting name="MaxEventLogEntriesToCollect" value="CustomEventSource" />
+            <Setting name="MaxEventLogEntriesToCollect" value="5" />
         </Configuration>
       </DataCollector>
     </DataCollectors>
@@ -230,7 +230,7 @@ Below runsettings can be used to enable Event Log DataCollector.
 ```
 The above runsettings will collect event logs from `System` and `Application` event logs which are logged as `Error` or `Warning` and event source is specified as `CustomEventSource`. `MaxEventLogEntriesToCollect` specifies the upper limit on the events that are logged in `Event Log.xml` file corresponding to test cases. There is no upper limit on number of events logged in `Event Log.xml` file for test session. 
 
-In default configuration (through vstest.console.exe args or when <Configuration> section is empty in runsettings), `System`, `Application` and `Security` logs with entry types `Error`, `Warning` or `FailureAudit` and with any event source are collected. Default value of `MaxEventLogEntriesToCollect` is 5000. There is no upper limit on number of events logged in `Event Log.xml` file for test session.
+In default configuration (through vstest.console.exe args or when <Configuration> section is empty in runsettings), `System`, `Application` and `Security` logs with entry types `Error`, `Warning` or `FailureAudit` and with any event source are collected. Default value of `MaxEventLogEntriesToCollect` is 50000. There is no upper limit on number of events logged in `Event Log.xml` file for test session.
 
 > **A note on `Security` Event Log**
 >
