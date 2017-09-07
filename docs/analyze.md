@@ -218,7 +218,7 @@ Below runsettings can be used to enable Event Log DataCollector.
     <DataCollectors> 
       <DataCollector friendlyName="Event Log" uri="datacollector://Microsoft/EventLog/2.0">
         <Configuration>
-            <Setting name="EventLog" value="System,Application" />
+            <Setting name="EventLogs" value="System,Application" />
             <Setting name="EntryTypes" value="Error,Warning" />
             <Setting name="EventSources" value="CustomEventSource" />
             <Setting name="MaxEventLogEntriesToCollect" value="5" />
