@@ -61,14 +61,14 @@ Some adapters packaged as nuget get copied to the output directory of the projec
 Since IDE picks up the adapters from the nuget package location, there is no need to look for adapters in the project output directory.
 Hence, this project output directory will be probed only in case of cli. Further, cli will probe only when testAdapterPath is not specified.
 
-* Recommendation : Use /testadapterpath option with cli. With multiple copies of adapters in the project output directories, each project needs to be run in isolation, which may impact test execution performance via cli.
+* Recommendation : Use /testadapterpath option with cli.
 
 #### Extensions directory
 All the adapters in the extensions directory get loaded by default and all the test sources based on the file extensions are passed to these adapters. Test runner will provide the diagnostics information about adapters used for the test projects.
 
 #### VSIX
 In case of IDE, all vsix based adapters get initialized by default.
-In case of CLI, /UseVsixExtensions argument will be available.
+In case of CLI, /UseVsixExtensions argument will be available. But user will start getting a recommendation to use /TestAdapterpath instead.
 
 * Recommendation for adapter authors : Move to nuget based acquisition for the test adapters.
 * Note : TestPlatform needs to keep supporting this lookup until all adapters can be moved to nuget packages.
