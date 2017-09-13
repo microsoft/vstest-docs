@@ -15,7 +15,10 @@ Following is a list of issues with current design
 3. Adapter lookup logic is consistent across runs.
 4. Adapter lookup logic should be clear and consistent for both IDE/Editor and CLI runs.
 
-## Adapter Sources
+## Proposed Changes
+Here are the proposed changes based on the sources available for lookup of the adapters.
+
+### Adapter Sources
 Here is the list of sources TestPlatform looks up for test adapters.
 
 | Source                   | Remarks                                                                        |
@@ -26,19 +29,9 @@ Here is the list of sources TestPlatform looks up for test adapters.
 | Extensions directory     | Adapters packaged with VS, available in the Extensions directory               |
 | VSIX                     | Adapter ships as a vsix.                                                       |
 
-## Proposed Changes
-Here are the proposed changes based on the sources available for lookup of the adapters.
-
-### Priority order for Lookup
-Following is the priority order for the lookup of the adapters
-
-| Priority | Source                   |
-|----------|--------------------------|
-| 1        | Nuget                    |
-| 2        | TestAdapterPath          |
-| 3        | Project output directory |
-| 4        | Extensions directory     |
-| 5        | VSIX                     |
+### Mulitple verions of Adapter
+In case there are multiple versions of the same adapter found during the lookup, TestPlatform will choose the one with the highest version.
+TestPlatform will notify the user about the conflict and which version was selected for that run.
 
 ### Details for lookup
 
@@ -70,9 +63,6 @@ Hence, this project output directory will be probed only in case of cli. Further
 
 * Recommendation : Use /testadapterpath option with cli. With multiple copies of adapters in the project output directories, each project needs to be run in isolation, which may impact test execution performance via cli.
 
-##### Open for discussion
-Should the adapters even be copied to the project output directory ?
-
 #### Extensions directory
 All the adapters in the extensions directory get loaded by default and all the test sources based on the file extensions are passed to these adapters. Test runner will provide the diagnostics information about adapters used for the test projects.
 
@@ -88,4 +78,4 @@ Here are a few changes for improving diagnosibilty of Test Platform
 
 1. Diagnostics information should include the information for all the loaded adapters along with their URIs.
 2. Information regarding which source was given to which adapter gets surfaced.
-3. TestPlatform will give a warning in case an attempt is made to load multiple versions of same adapter or adapters with the same URI.
+3. TestPlatform will give a warning in case an attempt is made to load multiple versions of same adapter.
