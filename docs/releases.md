@@ -20,7 +20,7 @@
 * Introduced /UseVsixExtensions argument in CLI.
 * https://github.com/Microsoft/vstest/pull/1060
 
-A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.5.0-preview-20170810-02...v15.5.0-preview-20170914-09).
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.5.0-preview-20170810-02...f8020e56e418f3a14637d401928fd154a061c9c4).
 
 ### Drops
 
