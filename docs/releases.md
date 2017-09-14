@@ -11,6 +11,7 @@
 * Fixed issue related to /EnableCodeCoverage. [More info here](https://github.com/Microsoft/vstest/pull/1072)
 * https://github.com/Microsoft/vstest/issues/902
 * Highest version filtering for extensions. [More info here](https://github.com/Microsoft/vstest/pull/1051)
+* https://github.com/Microsoft/vstest/pull/1060
 
 
 ### New Features introduced
@@ -18,7 +19,6 @@
 * Added Verbosity Level as prefix for loggers. [More info here](https://github.com/Microsoft/vstest/pull/967)
 * Event Log Data Collector. [More info here](https://github.com/Microsoft/vstest-docs/blob/master/docs/analyze.md#event-log-data-collector)
 * Introduced /UseVsixExtensions argument in CLI.
-* https://github.com/Microsoft/vstest/pull/1060
 
 A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.5.0-preview-20170810-02...f8020e56e418f3a14637d401928fd154a061c9c4).
 
