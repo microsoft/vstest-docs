@@ -98,12 +98,13 @@ Console logger is the default logger and it is used to output the test results i
 /logger:console[;verbosity=<Defaults to "minimal">;prefix=<Defaults to false>]
  
 Argument "verbosity" defines the verbosity level of console logger. Allowed values for verbosity are "quiet", "minimal" and "normal".
-Argument "prefix" is used to decide whether Verbose level should be added as prefix or not in log messages. Allowed values for prefix are "true and "false.
+Argument "prefix" is used to decide whether Verbose level should be added as prefix or not in log messages. Allowed values for prefix are "true" and "false".
 ```
 
 #### Example
 ```
 vstest.console.exe Tests.dll /logger:"console;verbosity=normal"
+vstest.console.exe Tests.dll /logger:"console;verbosity=normal;perfix=true"
 
 If you are using "dotnet test", then use the following command
 
