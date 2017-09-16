@@ -190,12 +190,14 @@ Desktop, UWP & Native unit testing continues to use the test platform (TPv1) loc
 
 To use TPv2 for desktop - place `testplatform.config` @ `"%programfiles(x86)%\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\TestPlatform"` with the contents below.
 
-````
+````xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <appSettings>
+    <add key="feature.net35" value="true" />
     <add key="feature.net40" value="true" />
+    <add key="feature.datacollector" value="true"/>
   </appSettings>
 </configuration>
 ````
-If `feature.net40` is set to `true`, VS Test Explorer will use TPv2 for desktop flow.
+If `feature.net35` and `feature.net40` are set to `true`, VS Test Explorer will use TPv2 for desktop flow for tests targetting net35 and net40 frameworks. If `feature.datacollector` is set to `true`, VS Test Explorer will use TPv2 when data collectors are enabled.
