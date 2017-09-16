@@ -95,9 +95,10 @@ Console logger is the default logger and it is used to output the test results i
 #### Syntax
 
 ```
-/logger:console[;verbosity=<Defaults to "minimal">]
+/logger:console[;verbosity=<Defaults to "minimal">;prefix=<Defaults to false>]
  
-Argument "verbosity" define the verbosity level of console logger. Allowed values for verbosity are "quiet", "minimal" and "normal".
+Argument "verbosity" defines the verbosity level of console logger. Allowed values for verbosity are "quiet", "minimal" and "normal".
+Argument "prefix" is used to decide whether Verbose level should be added as prefix or not in log messages. Allowed values for prefix are "true and "false.
 ```
 
 #### Example
