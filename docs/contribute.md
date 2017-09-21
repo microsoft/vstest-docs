@@ -200,4 +200,4 @@ To use TPv2 for desktop - place `testplatform.config` @ `"%programfiles(x86)%\Mi
   </appSettings>
 </configuration>
 ````
-If `feature.net35` and `feature.net40` are set to `true`, VS Test Explorer will use TPv2 for desktop flow for tests targetting net35 and net40 frameworks. If `feature.datacollector` is set to `true`, VS Test Explorer will use TPv2 when data collectors are enabled.
+If `feature.net35` and `feature.net40` are set to `true`, VS Test Explorer will use TPv2 for desktop flow for tests targetting net35 and net40 frameworks respectively. If `feature.datacollector` is set to `true`, VS Test Explorer will use TPv2 when data collectors are enabled.
