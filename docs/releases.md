@@ -1,5 +1,35 @@
 # Release Notes
 
+## 15.5.0-preview-20170914-09
+
+### Issue Fixed
+* https://github.com/Microsoft/vstest/issues/979
+* https://github.com/Microsoft/vstest/pull/992
+* Made TestPlatform.ObjectModel CLS-compliant
+* Made Microsoft.CodeCoverage as nuget package dependency for Microsoft.NET.Test.Sdk nuget package. [More info here](https://github.com/Microsoft/vstest/issues/852)
+* Perf improvements. [More info here](https://github.com/Microsoft/vstest/pull/1041)
+* Fixed issue related to /EnableCodeCoverage. [More info here](https://github.com/Microsoft/vstest/pull/1072)
+* https://github.com/Microsoft/vstest/issues/902
+* Highest version filtering for extensions. [More info here](https://github.com/Microsoft/vstest/pull/1051)
+* https://github.com/Microsoft/vstest/pull/1060
+
+
+### New Features introduced
+* InProc execution of tests inside vstest.console process. [More info here](https://github.com/Microsoft/vstest/pull/1009)
+* Added Verbosity Level as prefix for loggers. [More info here](https://github.com/Microsoft/vstest/pull/967)
+* Event Log Data Collector. [More info here](https://github.com/Microsoft/vstest-docs/blob/master/docs/analyze.md#event-log-data-collector)
+* Introduced /UseVsixExtensions argument in CLI.
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.5.0-preview-20170810-02...f8020e56e418f3a14637d401928fd154a061c9c4).
+
+### Drops
+
+* TestPlatform vsix: [15.5.0-preview-20170914-09](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170914-09;/TestPlatform.vsix)
+
+* Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170914-09](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170914-09)
+
+
+
 ## 15.5.0-preview-20170810-02
 
 ### Issue Fixed
