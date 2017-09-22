@@ -15,9 +15,9 @@ These protocol changes provides the following improvements to dotnet-test:
 * **IDE adapter (existing dotnet-test)** : Component that listens to messages from dotnet-test and populates the IDE with tests discovered or test results. For VS IDE this is the projectK Adapter.
 * **TestRunner**: The test framework specific runner that discovers/executes tests in a container for that framework. This is dotnet-test-mstest / dotnet-test-xunit / dotnet-test-nunit.
 * **Dotnet-test/vstest.console(Runner)**: Orchestrator of discovery or execution operations with one or more test host processes which then communicates back to the adapter the test cases or test results received from the test host process. This component also hosts the logger functionality which logs the test results in a file or posts them to a server.
-* **Test host process**: The host process that loads the rocksteady engine which then calls into the Rocksteady adapters to discover/execute tests. This component communicates back to the client (dotnet-test or vstest.console.exe) with set of tests discovered or test results.
+* **Test host process**: The host process that loads the rocksteady engine which then calls into the Rocksteady adapters to discover/execute tests. This component communicates back to the client (dotnet-test or vstest.console.exe) with the set of tests discovered or test results.
 * **Rocksteady adapter**: The framework specific adapter that discovers or executes tests of that framework. These adapters are invoked in-proc by the rocksteady engine via the ITestDiscoverer and ITestExecutor interfaces.
-* **TP V2**: The new cross-plat test platform which encompasses the Runner, test host and the adapters. This is the framework that enables users to run tests.
+* **TPV2**: The new cross-plat test platform which encompasses the Runner, test host and the adapters. This is the framework that enables users to run tests.
 
 ### Protocol
 This is the existing dotnet-test integration with IDEs:
@@ -34,7 +34,7 @@ And this protocol helps one launch a custom host or perform debugging:
 ### Breaking changes for Adapter(IDE)
 1. The object model used via the wire protocol will change from using [Microsoft.Extensions.Testing.Abstractions.Test](https://github.com/dotnet/cli/blob/rel/1.0.0/src/Microsoft.Extensions.Testing.Abstractions/Test.cs) and [Microsoft.Extensions.Testing.Abstractions.TestResult](https://github.com/dotnet/cli/blob/rel/1.0.0/src/Microsoft.Extensions.Testing.Abstractions/TestResult.cs) to [Microsoft.VisualStudio.TestPlatform.ObjectModel.TestCase](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) and [Microsoft.VisualStudio.TestPlatform.ObjectModel.TestResult](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/TestCase.cs) appropriately.
 2. The IDE adapter would now be sending the test Containers along with test platform settings to dotnet-test.
-3. The  IDE adapter would now receive test results in a batch in the [TestRunStatsPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunStatsPayload.cs) as opposed to a test start, test result and a test end earlier. The TestRunStatsPayload will also have the statistics of passed/failed/skipped tests so far along with list of tests currently being run.
+3. The IDE adapter would now receive test results in a batch in the [TestRunStatsPayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunStatsPayload.cs) as opposed to a test start, test result and a test end earlier. The TestRunStatsPayload will also have the statistics of passed/failed/skipped tests so far along with list of tests currently being run.
 4. The IDE Adapter would now receive a [TestRunCompletePayload](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunCompletePayload.cs) with TestExecution.Completed which would have the run statistics along with the results for last set of tests run.
 
 ### Breaking Changes for Frameworks
@@ -65,4 +65,4 @@ This flow would have the same protocol to bootstrap the test platform which is e
 After these set of actions the protocol is the same as the default flow above, which is essentially from Step #4 above.
 	
 ### Notes:
-1. Since TP V2 supports execution on multiple containers with a bunch of settings the Adapter can now pass in the containers as a List<string> to dotnet-test. Dotnet-test would then orchestrate among (multiple) test host processes and update the Adapter with the test results.
+1. Since TPV2 supports execution on multiple containers with a bunch of settings the Adapter can now pass in the containers as a List<string> to dotnet-test. Dotnet-test would then orchestrate among (multiple) test host processes and update the Adapter with the test results.
