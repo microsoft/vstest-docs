@@ -19,13 +19,13 @@ it doesn't exist.
 
 ### Dotnet test
 
-Use the `--diag` option for `dotnet test` command. This will also produce same
+The `--diag` option is supported on the `dotnet test` command as well. This will also produce same
 set of log files: `log.txt` and `log.*.txt`.
 ```
 > dotnet test --diag:log.txt
 ```
 
-To get traces for VSTest build task, enable the following environment variable.
+To get traces for VSTest build task, enable the following environment variable:
 
 ```
 > set VSTEST_BUILD_TRACE=1
@@ -36,7 +36,7 @@ or
 
 ## Collect trace using config file
 
-Second technique to enable tracing is via a configuration file. Create
+Tracing can also be enabled via a configuration file. Create
 a `vstest.console.exe.config` configuration file in the same directory as
 `vstest.console`. Similar configuration is also possible for `testhost.exe` or `testhost.x86.exe`.
 
@@ -91,7 +91,7 @@ Add the following content to the config file (`vstest.console.exe.config` or `te
 ## Debug test platform components
 
 The runner and test host processes support waiting for debugger attach. You can
-enable following environment variable to keep `vstest.console.exe` waiting for
+enable the following environment variable to keep `vstest.console.exe` waiting for
 debugger attach:
 
 ```
