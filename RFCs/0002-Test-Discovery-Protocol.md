@@ -4,7 +4,7 @@
 This note details the protocol improvements in the new dotnet-test integration with IDE's. The focus will be more on the delta with the older protocol and the breaking changes.
 
 ## Motivation
-These protocol changes provides the following improvements to dotnet-test:
+These protocol changes provide the following improvements to dotnet-test:
 * Ability to accept multiple containers
 * Consistent experience with the capabilities that vstest.console provides - Rocksteady adapter and Logger extensibility.
 
@@ -14,9 +14,9 @@ These protocol changes provides the following improvements to dotnet-test:
 * **IDE adapter (existing dotnet-test)** : Component that listens to messages from dotnet-test and populates the IDE with tests discovered or test results. For VS IDE this is the projectK Adapter.
 * **TestRunner**: The test framework specific runner that discovers/executes tests in a container for that framework. This is dotnet-test-mstest / dotnet-test-xunit / dotnet-test-nunit.
 * **Dotnet-test/vstest.console(Runner)**: Orchestrator of discovery or execution operations with one or more test host processes which then communicates back to the adapter the test cases or test results received from the test host process. This component also hosts the logger functionality which logs the test results in a file or posts them to a server.
-* **Test host process**: The host process that loads the rocksteady engine which then calls into the Rocksteady adapters to discover/execute tests. This component communicates back to the client (dotnet-test or vstest.console.exe) with set of tests discovered or test results.
+* **Test host process**: The host process that loads the rocksteady engine which then calls into the Rocksteady adapters to discover/execute tests. This component communicates back to the client (dotnet-test or vstest.console.exe) with the set of tests discovered or test results.
 * **Rocksteady adapter**: The framework specific adapter that discovers or executes tests of that framework. These adapters are invoked in-proc by the rocksteady engine via the ITestDiscoverer and ITestExecutor interfaces.
-* **TP V2**: The new cross-plat test platform which encompasses the Runner, test host and the adapters. This is the framework that enables users to run tests.
+* **TPV2**: The new cross-plat test platform which encompasses the Runner, test host and the adapters. This is the framework that enables users to run tests.
 
 ### Protocol
 This is the existing dotnet-test integration with IDEs:
@@ -48,4 +48,4 @@ Here is what the changed wire protocol looks like after TPV2 integrates with dot
 9. Once the IDE adapter is done, it sends dotnet-test a TestSession.Terminate which will cause dotnet test to shutdown.
 
 ### Notes
-1. Since TP V2 supports discovery on multiple containers with a bunch of settings the IDE adapter can now pass in the containers as a List<string> to dotnet-test. Dotnet-test would then orchestrate among (multiple) test host processes and update the Adapter with the tests found.
+1. Since TPV2 supports discovery on multiple containers with a bunch of settings, the IDE adapter can now pass in the containers as a List<string> to dotnet-test. Dotnet-test would then orchestrate among (multiple) test host processes and update the Adapter with the tests found.
