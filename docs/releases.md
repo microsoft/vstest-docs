@@ -1,5 +1,28 @@
 # Release Notes
 
+## 15.5.0-preview-20170923-02
+
+### Issue Fixed
+* Feature flag for executing net35 tests through TPv2 in compat mode.
+* Removed unnecessary binding redirects from app.configs. [More info here](https://github.com/Microsoft/vstest/pull/1117)
+* Put quotes around TestHost path so in case of spaces in name it starts correctly. [More info here](https://github.com/Microsoft/vstest/pull/1108)
+* Performance Automation Infra.
+
+### New Features introduced
+* Added filter support on test case discovery.
+* Added Telemetry Collection Infrastructure.
+* Added support for listing fully qualified test cases.
+* Exposed discovery events to loggers. 
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/f8020e56e418f3a14637d401928fd154a061c9c4...v15.5.0-preview-20170923-02).
+
+### Drops
+
+* TestPlatform vsix: [15.5.0-preview-20170923-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170923-02;/TestPlatform.vsix)
+
+* Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170923-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170923-02)
+
+
 ## 15.5.0-preview-20170914-09
 
 ### Issue Fixed
@@ -27,7 +50,6 @@ A list of all changes since last release are available [here](https://github.com
 * TestPlatform vsix: [15.5.0-preview-20170914-09](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20170914-09;/TestPlatform.vsix)
 
 * Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20170914-09](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20170914-09)
-
 
 
 ## 15.5.0-preview-20170810-02
