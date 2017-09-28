@@ -100,7 +100,7 @@ document.
     <!-- CPU cores to use for parallel runs -->
     <MaxCpuCount>2</MaxCpuCount>
     
-    <!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
+    <!-- Specify timeout in milliseconds. A valid value should be >= 0. If 0, timeout will be infinity-->
     <TestSessionTimeout>10000</TestSessionTimeout>
 
     <!-- STA | MTA  default is MTA-->
