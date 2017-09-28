@@ -1,10 +1,10 @@
-# 0012 Telemetry Design
+# 0014 Telemetry Design
 
 ## Summary
 This note details the Telemetry design for the Test Platform.
 
 ## Motivation
-We need Telemetry to collect usage information of our tools to make business descisions as well as for improving our features. It helps us to prioritize our work items in a more efficient way.
+Telemetry will help us make the test experience better.
 
 ## Events to be gathered
 1. Discover Tests
@@ -99,7 +99,7 @@ Currently, At the end of Discovery Complete, we are sending ** TestDiscovery.Com
 ### Publishing Data
 
 For Publishing data, there are two scenarios:
-* Design Mode: We will be aggregating all the data in vstest.console and send to various IDE's(VS,VSCode,Rider etc) giving the IDE's options to add this telemetry data along with thier own Telemetry.This will require a protcol change at translation layer.
+* Design Mode: We will be aggregating all the data in vstest.console and send to various IDE's(VS, VSCode etc) giving the IDE's options to add this telemetry data along with thier own Telemetry. This will require a protcol change at translation layer.
 
 * Non-Design Mode:
 We will be using VSTelemetry for first phase as of now to cover all windows scenarios. In phase 2, we will be extending support for crossplat.
