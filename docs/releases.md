@@ -13,9 +13,8 @@
 ### New Features introduced
 * Added Telemetry Infra for Design Mode.
 * Supported running .Net Framework v35 in compat mode.
-* Loclization changes.
+* Localization changes.
 * Automatically find Platform and Framework if not specified explicitly.
-* Changes for making Test Platform as default in Visual Studio.
 * Adding object model changes and Telemetry optin status.
 
 A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.5.0-preview-20170923-02...v15.5.0-preview-20171012-09).
