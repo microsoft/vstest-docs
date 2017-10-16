@@ -1,12 +1,20 @@
 # Testplatform Migration Known issues
-This document tracks known issues those customer may encounter during the migration to latest [vstest](https://github.com/Microsoft/vstest).
+Here are the current known issues you may face when running tests, along with available workarounds.
 
+# Known Issues
+- [Change in Thread.CurrentPrincipal value.](CurrentPrincipal)
+- [Change in test execution processes name.](processname)
 
-| S.No | Issue | Workaround|
-| ---- | ----- | --------- |
-| 1 | JavaScript Test Runner Chutzpah < 4.0.0 not supported. | Update Chutzpah NuGet package to >= 4.0.0.
-| 2 | In previous version, Tests runs in processes like vstest.console.exe, vstest.executionengine.exe and vstest.executionengine.x86.exe depending on run configuration. Test depends on process name which runs the tests may fail. | Update the process name to vstest.console.exe, testhost.exe,testhost.x86.exe and dotnet.exe.
+### <b>Change in Thread.CurrentPrincipal value.</b><a name="CurrentPrincipal"></a>
+- <b>Issue:</b> <br/>
+Tests depends on `Thread.CurrentPrincipal` may fail. This is due to change in inter process commincation in Testplatform.
+- <b>Workaround:</b> <br/>
+Use alternative like `System.Security.Principal.WindowsIdentity.GetCurrent()`
 
-### TODO: More issues need to be added.
+### <b>Change in test execution processes name.</b><a name="processname"></a>
+- <b>Issue:</b> <br/>
+Tests depends on currnet running process name may fail.
+- <b>Workaround:</b> <br/>
+Tests runs in one of following process vstest.console.exe, testhost.exe, testhost.x86.exe and dotnet.exe based on run configuration (/platform and /framework). Update test according to current process name.
 
 
