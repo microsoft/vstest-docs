@@ -203,7 +203,7 @@ Available elements are:
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
 | TestSessionTimeout | int   | Testplatform will cancel the test run after it exceeded given TestSessionTimeout in milliseconds and will show the results of tests which ran till that point. **Required Version: 15.5+.** |
-| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter's RunTests and Cancel APIs. Possible values: (MTA, STA). default is STA for .NET Full and MTA for .NET Core.  STA supported for only .NET Full **Required Version: 15.5+.** [More details.](#execution-thread-apartment-state) |
+| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter's RunTests and Cancel APIs. Possible values: (MTA, STA). default is STA for .NET Full and MTA for .NET Core.  STA supported only for .NET Full **Required Version: 15.5+.** [More details.](#execution-thread-apartment-state) |
 
 Examples of valid `TargetFrameworkVersion`:
 * .NETCoreApp, Version=v1.0
