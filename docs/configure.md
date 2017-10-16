@@ -103,8 +103,8 @@ document.
     <!-- Specify timeout in milliseconds. A valid value should be >= 0. If 0, timeout will be infinity-->
     <TestSessionTimeout>10000</TestSessionTimeout>
 
-    <!-- STA | MTA  default is MTA-->
-    <ExecutionThreadApartmentState>MTA</ExecutionThreadApartmentState>
+    <!-- STA | MTA  default is STA for .NET Full and MTA for .NET Core-->
+    <ExecutionThreadApartmentState>STA</ExecutionThreadApartmentState>
 
     <!-- 2. Hints to adapters to behave in a specific way -->
     <DesignMode>false</DesignMode>
@@ -187,7 +187,7 @@ Available elements are:
     <SolutionDirectory>.\TestResults</SolutionDirectory>  
     <MaxCpuCount>2</MaxCpuCount>
     <TestSessionTimeout>10000</TestSessionTimeout>
-    <ExecutionThreadApartmentState>MTA</ExecutionThreadApartmentState>
+    <ExecutionThreadApartmentState>STA</ExecutionThreadApartmentState>
   </RunConfiguration>  
 </RunSettings>
 ```
@@ -203,7 +203,7 @@ Available elements are:
 | SolutionDirectory | string | Working directory for test invocation. Results directory can be relative to this. Used by IDEs. |
 | MaxCpuCount       | int    | Degree of parallelization, spawns `n` test hosts to run tests. Default: 1. Max: Number of cpu cores. |
 | TestSessionTimeout | int   | Testplatform will cancel the test run after it exceeded given TestSessionTimeout in milliseconds and will show the results of tests which ran till that point. **Required Version: 15.5+.** |
-| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter's RunTests and Cancel APIs. Possible values: (MTA, STA). Default value is MTA. Supported only for .NET Framework. **Required Version: 15.5+.** [More details.](#execution-thread-apartment-state) |
+| ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter's RunTests and Cancel APIs. Possible values: (MTA, STA). default is STA for .NET Full and MTA for .NET Core.  STA supported for only .NET Full **Required Version: 15.5+.** [More details.](#execution-thread-apartment-state) |
 
 Examples of valid `TargetFrameworkVersion`:
 * .NETCoreApp, Version=v1.0
@@ -378,7 +378,6 @@ This section explains usage of ExecutionThreadApartmentState element in runsetti
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <RunConfiguration>
-     <!-- STA | MTA  default is MTA-->
      <ExecutionThreadApartmentState>STA</ExecutionThreadApartmentState>
   </RunConfiguration>
 </RunSettings>
@@ -391,11 +390,9 @@ dotnet test -f net46 -- RunConfiguration.ExecutionThreadApartmentState=STA
 
 ### History
 In Test Platform V1 ExecutionThreadApartmentState property can be set from vstest.executionengine*.exe.config file. Default value is `STA`.
-The drawback with this is product code runs in MTA thread by default where as test code runs in STA thread and difficult to change the property value(may need Administration account).
-
 
 ### Behavior
-In Test platform V2 ExecutionThreadApartmentState property default value is `MTA` for all frameworks(.NET Framework, .NET Core). STA value is supported for .NET Framework.
+In Test platform V2 ExecutionThreadApartmentState property default value is `MTA` for .NET Core and `STA` for .NET Full. `STA` value is only supported for .NET Framework.
 Warning should be shown on trying to set value `STA` for .NET Core and UAP10.0 frameworks tests.
 
 
