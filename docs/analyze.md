@@ -154,7 +154,7 @@ coverage infrastructure for a test project. Here's a sample project file, please
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170502-03" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.17" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.17" />
     
@@ -170,7 +170,7 @@ coverage infrastructure for a test project. Here's a sample project file, please
 ### Analyze coverage with Visual Studio
 > **Version note:**
 > 
-> Try this feature with latest [Visual Studio 2017 15.3.0 Preview](https://www.visualstudio.com/vs/preview/) version.
+> Try this feature with [Visual Studio 2017 15.3.0](https://www.visualstudio.com/vs) or later.
 
 Use the `Analyze Code Coverage` context menu available in `Test Explorer` tool window to start a coverage run.
 
