@@ -7,14 +7,14 @@ Here are the current known issues you may face when running tests, along with av
 
 ### <b>Change in Thread.CurrentPrincipal value.</b><a name="CurrentPrincipal"></a>
 - <b>Issue:</b> <br/>
-Tests depends on `Thread.CurrentPrincipal` may fail. This is due to change in inter process commincation in Testplatform.
+Tests that depend on `Thread.CurrentPrincipal` may fail. This is due to change in inter process commincation in Testplatform.
 - <b>Workaround:</b> <br/>
-Use alternative like `System.Security.Principal.WindowsIdentity.GetCurrent()`
+Use an alternative like `System.Security.Principal.WindowsIdentity.GetCurrent()`
 
 ### <b>Change in test execution processes name.</b><a name="processname"></a>
 - <b>Issue:</b> <br/>
-Tests depends on currnet running process name may fail.
+Tests that depend on the name of the currnet running processmay fail.
 - <b>Workaround:</b> <br/>
-Tests runs in one of following process vstest.console.exe, testhost.exe, testhost.x86.exe and dotnet.exe based on run configuration (/platform and /framework). Update test according to current process name.
+Tests run in one of following process vstest.console.exe, testhost.exe, testhost.x86.exe or dotnet.exe based on run configuration (/platform and /framework). if hte tests depend on the process name, then update the tests accordingly.
 
 
