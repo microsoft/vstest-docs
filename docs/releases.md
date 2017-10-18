@@ -1,5 +1,31 @@
 # Release Notes
 
+## 15.5.0-preview-20171012-09
+
+### Issue Fixed
+* Fixed Data Collector Attachment issues for legacy TMI test execution workflow.
+* Added error message and help when vstest.console is invoked without arguments.
+* Fixed failure in loading extensions without Identifier Data.
+* Handled Test Host close.
+* TestCase Display Name is displayed instead of FullyQualifiedName.
+* Fixed issues with Static Cover Coverage, Ordered tests through TMI.
+
+### New Features introduced
+* Added Telemetry Infra for Design Mode.
+* Supported running .Net Framework v35 in compat mode.
+* Localization changes.
+* Automatically find Platform and Framework if not specified explicitly.
+* Adding object model changes and Telemetry optin status.
+
+A list of all changes since last release are available [here](https://github.com/Microsoft/vstest/compare/v15.5.0-preview-20170923-02...v15.5.0-preview-20171012-09).
+
+### Drops
+
+* TestPlatform vsix: [15.5.0-preview-20171012-09](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20171012-09;/TestPlatform.vsix)
+
+* Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20171012-09](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20171012-09)
+
+
 ## 15.5.0-preview-20170923-02
 
 ### Issue Fixed
