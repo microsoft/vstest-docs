@@ -1,6 +1,6 @@
 # 0014 - Packaging
 ## Motivation
-As mentioned the roadmap, vstest is looking to broaden its reach to all scenarios across Visual Studio and Visual Studio Team Services (VSTS) and Team Foundation Server (TFS) – i.e. extending it to .NET Framework, the VSTest task in VSTS and in TFS. We aspire to ship a standalone package that can be potentially used in other CI systems even.
+As mentioned in the roadmap, vstest is looking to broaden its reach to all scenarios across Visual Studio and Visual Studio Team Services (VSTS) and Team Foundation Server (TFS) – i.e. extending it to .NET Framework, the VSTest task in VSTS and in TFS. We aspire to ship a standalone package that can be potentially used in other CI systems even.
 Appropriate packaging is essential for such broad reach.
 The following document describes how the Visual Studio Test Platform will be packaged.
 
