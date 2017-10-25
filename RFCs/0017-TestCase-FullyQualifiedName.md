@@ -4,7 +4,7 @@
 This note clarifies the guidelines that test adapters should consider when setting the FullyQualifiedName on test cases before returning them from the discovery process.
 
 ## Overview
-There are a broad variety of choices that current Test Adapter implementers have made when setting the FullyQualifiedName on TestCase objects created during test discovery. This note lays out some basic guidelines to make the usage of FullyQualifiedName more useful across adapters.
+There are a broad variety of choices that current Test Adapter implementers have made when setting the FullyQualifiedName on TestCase objects created during test discovery. This note lays out some basic guidelines to make the usage of FullyQualifiedName more useful across adapters. These guidelines are focused on languages that support namespaces, classes and methods for structuring test cases (e.g. C# & VB). Other languages may not fit these guidelines.
 
 ## Usage of FullyQualifiedName
 The Test Platform uses FullyQualifiedName as a string moniker to name tests during discovery. Visual Studio may filter tests by FullyQualifiedName in order to more quickly filter and run specific tests. The guidelines below clarify the usage of FullyQualifiedName so that these optimized test execution scenarios can be realized.
@@ -46,3 +46,4 @@ When referencing test cases by FullyQualifiedName, the test platform recognizes 
 
 The normalized form allows the test platform to reference groups of tests in a more general form without having to interpret the logic that the test adapter uses when constructing the fully qualified name. 
 
+NOTE: Normalization is currently only used for languages that support source-based test discovery. At the time of this writing, that includes MSTest, NUnit and xUnit tests written in C# or VB.
