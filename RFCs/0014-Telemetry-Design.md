@@ -48,6 +48,7 @@ So, for sending consent from Vstest.console process to Test Host, Command line a
 
 #### Aggregating data points in Test Host process
 We will create a Dictonary which will contain dictionary as <string,object> key pair and we will collect all the data points in this dictionary.
+
     /// <summary>
     /// This Interface Provides API's to Collect Metrics.
     /// </summary>
