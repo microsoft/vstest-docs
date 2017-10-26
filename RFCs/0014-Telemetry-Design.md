@@ -6,66 +6,33 @@ This note details the Telemetry design for the Test Platform.
 ## Motivation
 Telemetry will help us make the test experience better.
 
-## Events to be gathered
-1. Discover Tests
-2. Run Tests
-3. Run Selected Tests
-
-* We will be collecting the data points for all the above events end to end to improve our features. This events will be gathered for both design mode scenarios and command Line Interfaces which will help us reach out to every possible customers.
-
-## Data Points
+## Data Points gathered
 1. Total number of tests discovered/ran by each adapter.
 2. Total number of adapters discovered.
-3. Time taken to start Execution/Discovery Engine.
-4. Number of sources sent for discovery/execution.
-5. Total time taken by each adapter to run/discover Tests.
-6. Total adapters used to run/discover tests.
-7. Total time taken for discovery/execution.
-8. Paralled enabled or not.
-9. Data Collectors Enabled or not.
-10. Peak Working set for Run.
-11. Discovery/Execution State.
+3. Number of sources sent for discovery/execution.
+4. Total time taken by each adapter to run/discover Tests.
+5. Total adapters used to run/discover tests.
+6. Total time taken for discovery/execution.
+7. Paralled enabled or not.
+8. List of Data Collectors Enabled.
+9. List of loggers Used.
+10. Discovery/Execution State.
+11. TargetOS.
+12. Target Framework.
+13. Target Platform.
+14. Target Device.
+15. MaxCPU count.
+16. TestPlatform Version.
+17. CommandLine switches Used {/Settings, /Parallel, /EnableCodeCoverage, /InIsolation, /Platform, /Framework, /UseVsixExtensions}.
 
 ## Telemetry Design 
 ### Sending Consent for Collecting Metrics in Test Platform for Design Mode Scenarios.
-We have given options in TestPlatformOptions to send consent from Design Mode Scenarios. The users have to set CollectMetrics to send whether to collect Metrics or not.
+The "CollectMetrics" field has been added in [TestPlatformOptions](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/TestPlatformOptions.cs) to send consent from Design Mode Scenarios(Visual Stusio IDE etc) to TestPlatform. The users have to set "CollectMetrics" so that TestPlatform can collect Metrics and send it back to the users.
 
-    /// <summary>
-    /// Options to be passed into the Test Platform during Discovery/Execution.
-    /// </summary>
-    [DataContract]
-    public class TestPlatformOptions
-    {
-        /// <summary>
-        /// Gets or sets the filter criteria for test cases.
-        /// </summary>
-        /// <remarks>
-        /// This is only used when running tests with sources.
-        /// </remarks>
-        [DataMember]
-        public string TestCaseFilter { get; set; }
-
-        /// <summary>
-        /// Gets or sets the filter options if there are any.
-        /// </summary>
-        /// <remarks>
-        /// This will be valid only if TestCase filter is present.
-        /// </remarks>
-        [DataMember]
-        public FilterOptions FilterOptions { get; set; }
-
-        /// <summary>
-        ///  Gets or sets whether Metrics should be collected or not.
-        /// </summary>
-        [DataMember]
-        public bool CollectMetrics { get; set; }
-    }
-    
-How to use?
-
+The [IVsTestConsole Wrapper](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs) contains API's that support TestPlatformOptions. Users have to use that API's to send consent to the TestPlatform for collecting Metrics.
 
 ### Collecting Data
-* Collect Telemetry Data Points in various process(testhost,datacollector etc) and send it to vstest.console process where it will be uploaded.
+* Collect Telemetry Data Points in various process(testhost,datacollector etc) and send it to vstest.console process where it will be uploaded. 
 
 **For eg:**
 * In Test Host Process:
@@ -74,9 +41,13 @@ We have to collect how much time does each executor took to run test, Time taken
 * In Vstest.console:
 We have to collect Total Discovery Time taken, Total Tests Run in case of parallel scenarios.
 
+**Collection in Test Platform will only happen if TestPlatform receives consent from the consumers.**
+
+It may happen that TestHost is on a newer version whereas vstest.console is on older version. So,TestHost process should not collect Metrics if there is no consent given to test host by vstest.console process.
+So, for sending consent from Vstest.console process to Test Host, Command line argument i.e. boolean "TelemetryOptedIn" is sent to TestHost Process from Vstest.console process.
+
 #### Aggregating data points in Test Host process
 We will create a Dictonary which will contain dictionary as <string,object> key pair and we will collect all the data points in this dictionary.
-
     /// <summary>
     /// This Interface Provides API's to Collect Metrics.
     /// </summary>
@@ -97,30 +68,8 @@ We will create a Dictonary which will contain dictionary as <string,object> key 
     }
 
 #### Sending Metrics from TestHost process to vstest.console process
-Currently, At the end of Discovery Complete, we are sending ** TestDiscovery.Complete ** message event along with DiscoveryCompletePayload, so we will add our collected Metrics along with DiscoveryCompletePayload. Similar will be done at end of ** TestExecution.Complete ** event where we will add the Metrics in TestExecutionCompletePayload. This helps us in sending whole metrics in one go and helps us to decrease performance overhead of sending messages from test host process to vstest.console process.
+Currently, At the end of Discovery Complete, we are sending ** TestDiscovery.Complete ** message event along with DiscoveryCompletePayload, so we will add our collected Metrics along with DiscoveryCompletePayload. Similar will be done at end of ** TestExecution.Complete ** event where we will add the Metrics in TestRunCompleteEventArgs. This helps us in sending whole metrics in one go and helps us to decrease performance overhead of sending messages from test host process to vstest.console process.
 
-    public class DiscoveryCompletePayload
-    {
-        /// <summary>
-        /// Gets or sets the total number of tests discovered.
-        /// </summary>
-        public long TotalTests { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last chunk of discovered tests.
-        /// </summary>
-        public IEnumerable<TestCase> LastDiscoveredTests { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether discovery was aborted.
-        /// </summary>
-        public bool IsAborted { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Metrics
-        /// </summary>
-        public IDictionary<string, object> Metrics { get; set; }
-    }
 
 ### Publishing Data
 
@@ -131,4 +80,12 @@ For Publishing data, there are two scenarios:
 We will be using VSTelemetry for first phase as of now to cover all windows scenarios. In phase 2, we will be extending support for crossplat.
 
 ### Posting data back to Design Mode Scenarios.
+Consumers can get the Metrics in the Event Handler itslelf.
+
+The whole aggregated metrics will be appended in vstest.console process in the final Execution/Disocvery Complete message and it will be send back to the consumers.When users use API's that are available in [IVSTestConsoleWrapper](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs), they have to pass the event handler which will contain API's to get back the Metrics from TestPlatform.
+
+In Case of Execution, users will pass [ITestRunEventsHandler](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Interfaces/ITestRunEventsHandler.cs), which contains [TestRunCompleteEventArgs](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Events/TestRunCompleteEventArgs.cs) which will have Metrics in it which users can consume.
+
+
+In Case of Discovery, users have to pass new interface [ITestDiscoveryEventsHandler2](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Interfaces/ITestDiscoveryEventsHandler2.cs) which contains [DiscoveryCompleteEventArgs](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Events/DiscoveryCompleteEventArgs.cs) which will have metrics in it which users can consume.
 
