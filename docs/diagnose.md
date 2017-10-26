@@ -88,6 +88,16 @@ Add the following content to the config file (`vstest.console.exe.config` or `te
 </configuration>
 ```
 
+## Collect trace in VSTS CI (VSTest Task)
+Add a variable to the build definition named `System.Debug` with value `True`. This can
+be done while a new build is queued.
+
+This variable will ensure:
+* Exact command line of `vstest.console.exe` is reported. It can be used to isolate if there
+are errors in translating user inputs in the task to command line options of vstest.console.exe.
+* The task invokes `vstest.console.exe` with `/diag` option. The log files can be uploaded
+as artifacts for diagnosing errors.
+
 ## Debug test platform components
 
 The runner and test host processes support waiting for debugger attach. You can
