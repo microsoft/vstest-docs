@@ -27,6 +27,42 @@ Telemetry will help us make the test experience better.
 11. Discovery/Execution State.
 
 ## Telemetry Design 
+### Sending Consent for Collecting Metrics in Test Platform for Design Mode Scenarios.
+We have given options in TestPlatformOptions to send consent from Design Mode Scenarios. The users have to set CollectMetrics to send whether to collect Metrics or not.
+
+    /// <summary>
+    /// Options to be passed into the Test Platform during Discovery/Execution.
+    /// </summary>
+    [DataContract]
+    public class TestPlatformOptions
+    {
+        /// <summary>
+        /// Gets or sets the filter criteria for test cases.
+        /// </summary>
+        /// <remarks>
+        /// This is only used when running tests with sources.
+        /// </remarks>
+        [DataMember]
+        public string TestCaseFilter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the filter options if there are any.
+        /// </summary>
+        /// <remarks>
+        /// This will be valid only if TestCase filter is present.
+        /// </remarks>
+        [DataMember]
+        public FilterOptions FilterOptions { get; set; }
+
+        /// <summary>
+        ///  Gets or sets whether Metrics should be collected or not.
+        /// </summary>
+        [DataMember]
+        public bool CollectMetrics { get; set; }
+    }
+    
+How to use?
+
 
 ### Collecting Data
 * Collect Telemetry Data Points in various process(testhost,datacollector etc) and send it to vstest.console process where it will be uploaded.
@@ -38,35 +74,27 @@ We have to collect how much time does each executor took to run test, Time taken
 * In Vstest.console:
 We have to collect Total Discovery Time taken, Total Tests Run in case of parallel scenarios.
 
-#### Aggregating data points in Test Host and Data Collector process
-We will create a Dictonary which will contain dictionary as <string,string> key pair and we will collect all the data points in this dictionary. 
+#### Aggregating data points in Test Host process
+We will create a Dictonary which will contain dictionary as <string,object> key pair and we will collect all the data points in this dictionary.
 
     /// <summary>
-    /// This Interface Provides API's to Collect Metrics in TestHost and DataCollector Processes.
+    /// This Interface Provides API's to Collect Metrics.
     /// </summary>
-    public interface IMetricsCollector
-    { 
+    public interface IMetricsCollection
+    {
         /// <summary>
         /// Add Metric in the Metrics Cache
         /// </summary>
-        /// <param name="message">Metirc Message</param>
+        /// <param name="metric">Metric Message</param>
         /// <param name="value">Value associated with Metric</param>
-        void AddMetric(string message, string value);
+        void Add(string metric, object value);
 
         /// <summary>
         /// Get Metrics
         /// </summary>
-        /// <returns>Returns Metrics</returns>
-        IDictionary<string, string> GetMetrics();
-
-        /// <summary>
-        /// Flush the Metrics
-        /// </summary>
-        void FlushMetrics();
+        /// <value>Returns the Telemetry Data Points</value>
+        IDictionary<string, object> Metrics { get; }
     }
-
-This class will be part of TestPlatform.Common and will have access in TestHost and DataCollector processes.
-
 
 #### Sending Metrics from TestHost process to vstest.console process
 Currently, At the end of Discovery Complete, we are sending ** TestDiscovery.Complete ** message event along with DiscoveryCompletePayload, so we will add our collected Metrics along with DiscoveryCompletePayload. Similar will be done at end of ** TestExecution.Complete ** event where we will add the Metrics in TestExecutionCompletePayload. This helps us in sending whole metrics in one go and helps us to decrease performance overhead of sending messages from test host process to vstest.console process.
@@ -91,63 +119,16 @@ Currently, At the end of Discovery Complete, we are sending ** TestDiscovery.Com
         /// <summary>
         /// Gets or sets the Metrics
         /// </summary>
-        public IDictionary<string, string> Metrics { get; set; }
+        public IDictionary<string, object> Metrics { get; set; }
     }
-
-* Similar approach can be used for Data Collector process, where when the session ends then we will append our metrics to last event sent.
 
 ### Publishing Data
 
 For Publishing data, there are two scenarios:
-* Design Mode: We will be aggregating all the data in vstest.console and send to various IDE's(VS, VSCode etc) giving the IDE's options to add this telemetry data along with thier own Telemetry. This will require a protcol change at translation layer.
+* Design Mode: We will be aggregating all the data in vstest.console and send to various IDE's(VS, VSCode etc) giving the IDE's options to add this telemetry data along with thier own Telemetry.
 
 * Non-Design Mode:
 We will be using VSTelemetry for first phase as of now to cover all windows scenarios. In phase 2, we will be extending support for crossplat.
 
+### Posting data back to Design Mode Scenarios.
 
-### Posting data back to server.
-* We will have IUnitTestTelemetryServiceProvider which be used in vstest.console.exe to aggregate the events and sending back to the server.
-        
-        public interface IUnitTestTelemetryServiceProvider
-        {
-        /// <summary>
-        /// Log Event
-        /// This Method will Aggregate all the properties with values in the eventName
-        /// </summary>
-        /// <param name="eventName">Name of the event</param>
-        /// <param name="property">Name of the property in that event</param>
-        /// <param name="value">Value of Property</param>
-        public void LogEvent(string eventName, string property, string value);
-
-        /// <summary>
-        /// Post Event
-        /// This method will Post the event back to the server
-        /// </summary>
-        /// <param name="eventName">Name of the event</param>
-        pubic void PostEvent(string eventName);
-
-        /// <summary>
-        /// Dispose the Telemetry Service Provider
-        /// </summary>
-        public void Dispose();
-        }
-
-* Since, we want a minimal change if in future if API(like VSTelemetry, Application Insights) is changed, we will be creating TelemetryServiceProviderFactory to return the API to be used.
-
-        /// <summary>
-        /// The telemetry service provider factory.
-        /// </summary>
-        public static class TelemetryServiceProviderFactory
-        {
-        /// <summary>
-        /// The Default telemetry service provider.
-        /// Returns the default Telemetry Service Provider.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="IUnitTestTelemetryServiceProvider"/>.
-        /// </returns>
-        public static IUnitTestTelemetryServiceProvider GetDefaultTelemetryServiceProvider()
-        {
-            return new UnitTestTelemetryServiceProvider();
-        }
-        }
