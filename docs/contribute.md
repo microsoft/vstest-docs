@@ -19,6 +19,16 @@ link [here](https://www.microsoft.com/net/core#windowsvs2017).
 
 If you're _not_ planning to use **Visual Studio** and only use CLI. You will need to install [.Net 46 targeting pack](https://www.microsoft.com/en-us/download/details.aspx?id=48136). The download link has two msis. Both needs to be installed. Otherwise build will fail asking to install net 46.
 
+### Unix requirements
+Install common tools
+```shell
+$ sudo apt install libcurl4-openssl-dev
+```
+
+Follow the instructions on [Mono Installation][mono-linux] page to install latest bits.
+
+[mono-linux]: http://www.mono-project.com/download/#download-lin
+
 Rest of the article will provide steps for VS and CLI/Editors development.
 ## Build
 
