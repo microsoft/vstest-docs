@@ -1,5 +1,20 @@
 # Release Notes
 
+## 15.5.0-preview-20171031-01
+
+### Issue Fixed
+* Add LocalExtensionData property to TestCase Class.
+* Do not crash data collector if extension fails to initialize or set environment variables.
+* Use TPv2 as default for .NET 3.5 test projects.
+* Loading native dll's correctly for UWP release mode.
+* Insertion PR: https://github.com/Microsoft/vstest/pull/1250
+
+### Drops
+
+* TestPlatform vsix: [15.5.0-preview-20171031-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.5/20171031-01;/TestPlatform.vsix)
+
+* Microsoft.TestPlatform.ObjectModel: [15.5.0-preview-20171031-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0-preview-20171031-01)
+
 ## 15.5.0-preview-20171012-09
 
 ### Issue Fixed
