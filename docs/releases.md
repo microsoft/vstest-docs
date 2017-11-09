@@ -3,10 +3,11 @@
 ## 15.5.0
 
 ### Issue Fixed
-* Removed compile time dependency on castle.core.dll
-* Fix test run for x64 c++ tests.
-* Localization fixes for error scenarios.
-* Updating codecoverage analysis dll's in external package
+* Removed compile time dependency on castle.core.dll. [#1246](https://github.com/Microsoft/vstest/pull/1246)
+* Fix test run for x64 c++ tests. [#1269](https://github.com/Microsoft/vstest/pull/1269)
+* Localization fixes for error scenarios. [#1266](https://github.com/Microsoft/vstest/pull/1266)
+* Fix for FastFilter issue with TestCaseFilter. [#1252](https://github.com/Microsoft/vstest/pull/1252)
+* Updating codecoverage analysis dll's in external package. [#1282](https://github.com/Microsoft/vstest/pull/1282)
 
 ### Drops
 
