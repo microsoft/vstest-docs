@@ -1,5 +1,19 @@
 # Release Notes
 
+## 15.5.0
+
+### Issue Fixed
+* Removed compile time dependency on castle.core.dll. [#1246](https://github.com/Microsoft/vstest/pull/1246)
+* Fix test run for x64 c++ tests. [#1269](https://github.com/Microsoft/vstest/pull/1269)
+* Localization fixes for error scenarios. [#1266](https://github.com/Microsoft/vstest/pull/1266)
+* Fix for FastFilter issue with TestCaseFilter. [#1252](https://github.com/Microsoft/vstest/pull/1252)
+* Updating codecoverage analysis dll's in external package. [#1282](https://github.com/Microsoft/vstest/pull/1282)
+
+### Drops
+
+* TestPlatform vsix: [15.5.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.5/20171108-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.5.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.5.0)
+
 ## 15.5.0-preview-20171031-01
 
 ### Issue Fixed
