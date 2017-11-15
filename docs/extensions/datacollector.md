@@ -34,25 +34,25 @@ public class NewDataCollector : DataCollector
             DataCollectionSink dataSink,
             DataCollectionLogger logger,
             DataCollectionEnvironmentContext environmentContext)
-        {
-            events.SessionStart += this.SessionStarted_Handler;
-            events.TestCaseStart += this.Events_TestCaseStart;
-            logFileName = configurationElement["LogFileName"];
-        }
+    {
+        events.SessionStart += this.SessionStarted_Handler;
+        events.TestCaseStart += this.Events_TestCaseStart;
+        logFileName = configurationElement["LogFileName"];
+    }
     
     private void SessionStarted_Handler(object sender, SessionStartEventArgs args)
-        {
-            var filename = Path.Combine(AppContext.BaseDirectory, logFileName);
-            File.WriteAllText(filename, "SessionStarted");
-            this.dataCollectionSink.SendFileAsync(this.context.SessionDataCollectionContext, filename, true);
-            this.logger.LogWarning(this.context.SessionDataCollectionContext, "SessionStarted");
-        }
+    {
+        var filename = Path.Combine(AppContext.BaseDirectory, logFileName);
+        File.WriteAllText(filename, "SessionStarted");
+        this.dataCollectionSink.SendFileAsync(this.context.SessionDataCollectionContext, filename, true);
+        this.logger.LogWarning(this.context.SessionDataCollectionContext, "SessionStarted");
+    }
 
 
     private void Events_TestCaseStart(object sender, TestCaseStartEventArgs e)
-        {
-            this.logger.LogWarning(this.context.SessionDataCollectionContext, "TestCaseStarted " + e.TestCaseName);
-        }
+    {
+        this.logger.LogWarning(this.context.SessionDataCollectionContext, "TestCaseStarted " + e.TestCaseName);
+    }
 }
 ```
 TestPlatform uniquely identifies each of the DataCollector by `DataCollectorFriendlyName` and `DataCollectorTypeUri`.
@@ -80,11 +80,11 @@ For supporting those scenarios, configuration xml can be passed to DataCollector
 XmlElement logFileElement = configurationElement[LogFileName];
 string logFile = logFileElement != null ? logFileElement.InnerText : string.Empty;
 if (!File.Exists(logFile))
-    {
-            // Create a file to write to.
-            string createText = "Hello and Welcome" + Environment.NewLine;
-            File.WriteAllText(path, createText);
-    }
+{
+    // Create a file to write to.
+    string createText = "Hello and Welcome" + Environment.NewLine;
+    File.WriteAllText(path, createText);
+}
 ```
 
 ### DataCollectionEvents
@@ -92,7 +92,7 @@ DataCollectors can choose to subscribe to any of the four events exposed by `Dat
 1. TestSessionStart : Raised when test execution session starts.
 2. TestSessionEnd : Raised when test execution session ends.
 3. TestCaseStart : Raised when test case execution starts.
-4. TestCaseEng : Raised when test case execution ends.
+4. TestCaseEnd : Raised when test case execution ends.
 
 ```csharp
 events.SessionStart += this.SessionStarted_Handler;
@@ -121,12 +121,12 @@ Test case level context can be accessed through `TestCaseStartEventArgs.Context`
 
 ```csharp
 private void Events_TestCaseStart(object sender, TestCaseStartEventArgs e)
-        {
-            // Session level attachment
-            this.dataCollectionSink.SendFileAsync(this.context.SessionDataCollectionContext, filename, true);
-            // TestCase level attachment
-            this.dataCollectionSink.SendFileAsync(e.Context, filename, true);
-        }
+{
+    // Session level attachment
+    this.dataCollectionSink.SendFileAsync(this.context.SessionDataCollectionContext, filename, true);
+    // TestCase level attachment
+    this.dataCollectionSink.SendFileAsync(e.Context, filename, true);
+}
 ```
 
 ### DataCollectionLogger
@@ -137,11 +137,11 @@ logger.LogWarning(this.context.SessionDataCollectionContext, "my warning");
 ```
 
 ### DataCollection Environment Variables
-DataCollectors can choose to specify information about how the test execution environment should be set up by implementing `ITestExecutionEnvironmentSpecifier`
+DataCollectors can choose to specify information about how the test execution environment should be set up by implementing `ITestExecutionEnvironmentSpecifier`.
 E.g. setting up the Environment Variables required by profiler engine for code coverage.
 
 ```csharp
-DataCollectorFriendlyName("NewDataCollector")]
+[DataCollectorFriendlyName("NewDataCollector")]
 [DataCollectorTypeUri("my://new/datacollector")]
 class NewDataCollector : DataCollector, ITestExecutionEnvironmentSpecifier
 {
