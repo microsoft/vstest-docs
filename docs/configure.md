@@ -37,10 +37,10 @@ you're using dotnet test to execute tests.
 Order of priority (in case of conflicting settings) is as follows:
 
 1. If a command line switch is available, it takes priority. E.g. `/platform`
-   wins over `<Platform>` specified in the `runsettings` file.
+   wins over `<TargetPlatform>` specified in the `runsettings` file.
 2. If a command line runsettings is available, it takes priority over the
    content of `runsettings` file. E.g. in case of `dotnet test -s
-   test.runsettings -- RunConfiguration.Platform=x86`, platform is set to
+   test.runsettings -- RunConfiguration.TargetPlatform=x86`, platform is set to
    `x86` even if `test.runsettings` specifies `x64` as platform.
 3. If a `runsettings` file is provided, it is used for the test run.
 
