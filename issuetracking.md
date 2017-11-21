@@ -25,7 +25,7 @@ Issues will then be tagged as follows:
 - Else, the issue will be tagged as a ***bug***.
 
 ## Secondary triage – assignment and follow through
-As an when an issue get assigned to a team member, the following secondary triage will happen
+As and when an issue get assigned to a team member, the following secondary triage will happen
 - When a team member picks up an issue, they will first assign it to themselves.
 - Ensure that the issue has an appropriate tag (***question***, ***enhancement***, ***bug***).
 - If an issue needs a repro, tag it with ***need-repro*** and ask for a repro in a comment.
