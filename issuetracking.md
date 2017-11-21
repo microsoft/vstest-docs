@@ -10,14 +10,12 @@ If you find your issue already exists, make relevant comments and add your [reac
 If you cannot find an existing issue that describes your issue, submit it using the [issue template](https://github.com/Microsoft/vstest/blob/master/.github/ISSUE_TEMPLATE.md). Remember to follow the instruction mentioned therein carefully.
 
 ## Issue triage
-Please follow the guidelines in the issue template when filing an issue or a pull request
-New issues or pull requests submitted by the community are triaged by a team member using the inbox query.
+Please follow the guidelines in the issue template when filing an issue or a pull request.
+New issues or pull requests submitted by the community are triaged by a team member using the inbox query below.
 
 ## Inbox query
-The [inbox query](https://github.com/Microsoft/vstest/issues?utf8=%E2%9C%93&q=is%3Aopen%20no%3Aassignee%20-label%3Abacklog%20-label%3Aenhancement) will contain all the
-- Open issues or pull requests that 
-- Are not enhancements and
-- Have no owner assigned
+The [inbox query](https://github.com/Microsoft/vstest/issues?utf8=%E2%9C%93&q=is%3Aopen%20no%3Aassignee%20-label%3Abacklog%20-label%3Aenhancement) will return the following:
+- Open issues or pull requests that are not enhancements and that have no owner assigned.
 
 ## Initial triage - Issue tagging
 Issues will then be tagged as follows:
