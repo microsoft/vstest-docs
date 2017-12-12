@@ -139,7 +139,7 @@ In TPv2, DataCollectors are loaded from `TestAdaptersPaths` specified in runSett
 
 ## Working with Code Coverage<a name="coverage"></a>
 ### Setup a project
-Here's a sample project file, please note the xml entities marked as `Required`. Previously, the `Microsoft.VisualStudio.CodeCoverage` was required, but is now shipped with the SDK.
+Here's a sample project file, please note the xml entity marked as `Required`. Previously, the `Microsoft.VisualStudio.CodeCoverage` was required, but is now shipped with the SDK.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
