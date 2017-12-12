@@ -139,9 +139,7 @@ In TPv2, DataCollectors are loaded from `TestAdaptersPaths` specified in runSett
 
 ## Working with Code Coverage<a name="coverage"></a>
 ### Setup a project
-Add a reference to the `Microsoft.CodeCoverage` [nuget package][coveragenuget] to your project. This will bring in
-coverage infrastructure for a test project. Here's a sample project file, please note the xml entities marked as
-`Required`.
+Here's a sample project file, please note the xml entities marked as `Required`. Previously, the `Microsoft.VisualStudio.CodeCoverage` was required, but is now shipped with the SDK.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -157,9 +155,6 @@ coverage infrastructure for a test project. Here's a sample project file, please
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.17" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.17" />
-    
-    <!-- Required. Include this reference for coverage -->
-    <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" />
   </ItemGroup>
 
 </Project>
