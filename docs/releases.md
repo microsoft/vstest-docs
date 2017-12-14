@@ -9,6 +9,12 @@
 * Fixed Supporting multiple paths is TestAdaoterPath Argument. [#1320](https://github.com/Microsoft/vstest/pull/1320)
 * Perf: Using Event based communication over sockets using LengthPrefix communication channel. [1294](https://github.com/Microsoft/vstest/pull/1294)
 
+### Drops
+
+* TestPlatform vsix: [15.6.0-preview-20171211-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20171211-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.6.0-preview-20171211-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.6.0-preview-20171211-02)
+
+
 ## 15.5.0
 
 ### Issue Fixed
