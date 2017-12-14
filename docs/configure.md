@@ -143,10 +143,13 @@ document.
   
   <!-- Configurations for in-proc data collectors -->  
   <InProcDataCollectionRunSettings>  
-    <DataCollectors>  
-      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0">
-      </DataCollector>
-    </DataCollectors>
+    <InProcDataCollectors>
+      <InProcDataCollector friendlyName="InProcDataCollectionExample" uri="InProcDataCollector://Vstest.Datacollectors/InProcDataCollectionExample/1.0" codebase="C:\Users\samadala\src\vstest.datacollectors\Examples\bin\Debug\net46\ExamplesDataCollector.dll" assemblyQualifiedName="Vstest.Datacollectors.Examples.InProcDataCollectionExample, ExamplesDataCollector, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" >
+      <Configuration>
+          <Port>4312</Port>
+        </Configuration>
+      </InProcDataCollector>
+    </InProcDataCollectors>
   </InProcDataCollectionRunSettings>
 
   <!-- Parameters used by tests at runtime -->  
