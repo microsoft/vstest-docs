@@ -5,8 +5,8 @@
 ### Issue Fixed
 * Removed warning for AnyCPU assemblies
 * Fix updating runsettings in dotnet core.
-* Fixed Exception in Event Log DataCollector. [#1288](https://github.com/Microsoft/vstest/pull/1288)
-* Fixed Supporting multiple paths is TestAdaoterPath Argument. [#1320](https://github.com/Microsoft/vstest/pull/1320)
+* Fix exception in Event Log DataCollector. [#1288](https://github.com/Microsoft/vstest/pull/1288)
+* Fix support for multiple paths is TestAdapterPath Argument. [#1320](https://github.com/Microsoft/vstest/pull/1320)
 * Perf: Using Event based communication over sockets using LengthPrefix communication channel. [1294](https://github.com/Microsoft/vstest/pull/1294)
 
 ### Drops
