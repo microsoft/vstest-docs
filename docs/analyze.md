@@ -138,6 +138,8 @@ In TPv2, DataCollectors are loaded from `TestAdaptersPaths` specified in runSett
 3. There are breaking changes in latest DataCollector interface. Hence, older DataCollectors need to be rebuilt against latest APIs to work with TPv2. For details, refer [here(todo)]();
 
 ## Working with Code Coverage<a name="coverage"></a>
+> **Requirements:**
+> Code Coverage requires the machine to have Visual Studio 2017 Enterprise ([15.3.0](https://www.visualstudio.com/vs) or later installed and a Windows operating system.
 ### Setup a project
 Add a reference to the `Microsoft.CodeCoverage` [nuget package][coveragenuget] to your project. This will bring in
 coverage infrastructure for a test project. Here's a sample project file, please note the xml entities marked as
