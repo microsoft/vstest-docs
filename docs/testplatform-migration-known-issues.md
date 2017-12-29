@@ -13,8 +13,6 @@ Use an alternative like `System.Security.Principal.WindowsIdentity.GetCurrent()`
 
 ### <b>Change in test execution processes name.</b><a name="processname"></a>
 - <b>Issue:</b> <br/>
-Tests that depend on the name of the currnet running processmay fail.
+Tests that depend on the name of the currnet running process may fail.
 - <b>Workaround:</b> <br/>
-Tests run in one of following process vstest.console.exe, testhost.exe, testhost.x86.exe or dotnet.exe based on run configuration (/platform and /framework). if hte tests depend on the process name, then update the tests accordingly.
-
-
+Tests run in one of following process ```vstest.console.exe```, ```testhost.exe```, ```testhost.x86.exe``` or ```dotnet.exe``` based on run configuration (```/Platform``` and ```/Framework```). If the tests depend on the process name, then update the tests accordingly.
