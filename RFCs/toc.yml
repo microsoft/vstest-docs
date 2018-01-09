@@ -12,4 +12,5 @@
   href: 0006-DataCollection-Protocol.md
 - name: 0010 - Source Information For Discovered Tests
   href: 0010-Source-Information-For-Discovered-Tests.md
-  
+- name: 0016 - Loggers
+  href: 0016-Loggers.md
