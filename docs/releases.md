@@ -4,12 +4,12 @@
 
 ### Issue Fixed
 * Make latest ObjectModel API compatible with ObjectModel 11.0.0. [#1251](https://github.com/Microsoft/vstest/pull/1251/) 
-* Fix No error message in case of invalid runsettings. [#1344](https://github.com/Microsoft/vstest/pull/1344)
-* Fix CodedUI debug issue. [#1352](https://github.com/Microsoft/vstest/pull/1352)
+* Fix no error message in case of invalid runsettings. [#1344](https://github.com/Microsoft/vstest/pull/1344)
+* Fix CodedUI debug broken. [#1352](https://github.com/Microsoft/vstest/pull/1352)
 * Fix debug stop causing 10s or indefinite wait in test explorer.  [#1358](https://github.com/Microsoft/vstest/pull/1358)
 * Fix video datacollector assemblies first changes exception while running tests .  [#1362](https://github.com/Microsoft/vstest/pull/1362)
-* Fix datacollector initialization on slow machines. [#1355](https://github.com/Microsoft/vstest/pull/1355)
-* Fix running fakes and code coverage with testsettings. [#1364](https://github.com/Microsoft/vstest/pull/1364)
+* Fix datacollector initialization failure on slow machines. [#1355](https://github.com/Microsoft/vstest/pull/1355)
+* Fix running fakes and code coverage with embedded testsettings in runsettings. [#1364](https://github.com/Microsoft/vstest/pull/1364)
 
 ### New Features introduced
 * Support reflection based discovery for UWP C++ Unit tests projects.[#1336](https://github.com/Microsoft/vstest/pull/1336)
