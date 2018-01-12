@@ -64,7 +64,7 @@ Test platform loads custom logger assemblies from test adapter paths and source 
 3. Multiple Loggers can be added in runsettings by adding `Logger` node in `LoggerRunSettings.Loggers` section.
 4. Configuration is optional in `Logger` node.
 5. Atleast one attribute among `uri`, `friendlyName`, `assemblyQualifiedName` should be present in `Logger` node.
-6. If more than one attributes among `uri`, `friendlyName`, `assemblyQualifiedName` are present, then precedence order is assemblyQualifiedName > uri > friendlyName. Attributes other than precedent attribute are ignored.
+6. If more than one attributes among `uri`, `friendlyName`, `assemblyQualifiedName` are present, then precedence order is `assemblyQualifiedName > uri > friendlyName`. Attributes other than precedent attribute are ignored.
 7. Logger can be enabled or disabled using `enabled` attribute in `Logger` node. For example to disable a logger: `<Logger friendlyName="sampleLogger" enabled="false" />`.
 
 ## Error and Warning scenarios:
@@ -77,7 +77,7 @@ In case of exception, test run is aborted. Following are the exception scenarios
 5. `Logger` node has any attribute other than `uri`, `assemblyQualifiedName`, `friendlyName`, or `enabled`.
 6. Invalid format `uri` is given.
 7. Unable to find logger using precedent attribute.
-8. If none of the attributes `uri`, `assemblyName`, `friendlyName` is given.
+8. If none of the attributes `uri`, `assemblyQualifiedName`, `friendlyName` is given.
 
 Warning scenarios:
 1. Key value pair has empty or whitespace value. Example: `<Key1></Key1>`.
