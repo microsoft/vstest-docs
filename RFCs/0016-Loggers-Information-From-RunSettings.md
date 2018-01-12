@@ -61,11 +61,11 @@ Test platform loads custom logger assemblies from test adapter paths and source 
 ## Specification
 1. If same logger is specified both in command line arguments and run settings, command line takes precedence.
 2. User can override existing logger value in runsettings from command line. For example `vstest.console foo.dll -- LoggerRunSettings.Loggers="<Logger friendlyName=\"sampleLoggerwithParameters\" />"`.
-2. Multiple Loggers can be added in runsettings by adding `Logger` node in `LoggerRunSettings.Loggers` section.
-3. Configuration is optional in `Logger` node.
-4. Atleast one attribute among `uri`, `friendlyName`, `assemblyQualifiedName` should be present in `Logger` node.
-5. If more than one attributes among `uri`, `friendlyName`, `assemblyQualifiedName` are present, then precedence order is assemblyQualifiedName > uri > friendlyName. Attributes other than precedent attribute are ignored.
-6. Logger can be enabled or disabled using `enabled` attribute in `Logger` node. For example to disable a logger: `<Logger friendlyName="sampleLogger" enabled="false" />`.
+3. Multiple Loggers can be added in runsettings by adding `Logger` node in `LoggerRunSettings.Loggers` section.
+4. Configuration is optional in `Logger` node.
+5. Atleast one attribute among `uri`, `friendlyName`, `assemblyQualifiedName` should be present in `Logger` node.
+6. If more than one attributes among `uri`, `friendlyName`, `assemblyQualifiedName` are present, then precedence order is assemblyQualifiedName > uri > friendlyName. Attributes other than precedent attribute are ignored.
+7. Logger can be enabled or disabled using `enabled` attribute in `Logger` node. For example to disable a logger: `<Logger friendlyName="sampleLogger" enabled="false" />`.
 
 ## Error and Warning scenarios:
 Exception scenarios: 
@@ -92,7 +92,8 @@ Following are the proposed design changes for enabling logger support for protoc
   * Enabling and triggering logger events.
   * Disposing logger events.
 
-2. TestPlatform will create and initialize TestLoggerManager and will pass this TestLoggerManager instance to TestRunRequest and DiscoveryRequest.
-3. TestRunRequest and DiscoveryRequest will hold the TestLoggerManager instance. On receiving any run/discovery events, respective methods of TestLoggerManager will be invoked. i.e. TestLoggerManager will no longer register logger events with run or discovery events.
-4. On test run/discovery completion, TestLoggerManager will be disposed by TestRunRequest and DiscoveryRequest.
-5. Limitation with this approach is that if TestRunRequest users like TestRequestManager tries to call `TestRunRequest.ExecuteAsync()` second time, then logger events will not be invoked as TestLoggerManager will already be disposed in first run.
+2. TestEngine API will have GetLoggerManager method which will return new TestLoggerManager instance on every call.
+3. TestPlatform will get instance from TestEngine and initialize TestLoggerManager and will pass this TestLoggerManager instance to TestRunRequest and DiscoveryRequest.
+4. TestRunRequest and DiscoveryRequest will hold the TestLoggerManager instance. On receiving any run/discovery events, respective methods of TestLoggerManager will be invoked. i.e. TestLoggerManager will no longer register logger events with run or discovery events.
+5. On test run/discovery completion, TestLoggerManager will be disposed by TestRunRequest and DiscoveryRequest.
+6. Limitation with this approach is that if TestRunRequest users like TestRequestManager tries to call `TestRunRequest.ExecuteAsync()` second time, then logger events will not be invoked as TestLoggerManager will already be disposed in first run.
