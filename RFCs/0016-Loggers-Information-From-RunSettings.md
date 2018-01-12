@@ -93,6 +93,6 @@ Following are the proposed design changes for enabling logger support for protoc
   * Disposing logger events.
 
 2. TestPlatform will create and initialize TestLoggerManager and will pass this TestLoggerManager instance to TestRunRequest and DiscoveryRequest.
-3. TestRunRequest and DiscoveryRequest will hold the TestLoggerManager instance. On receving any run/discovery events, respective methods of TestLoggerManager will be invoked. i.e. TestLoggerManager will no longer register logger events with run or discovery events.
+3. TestRunRequest and DiscoveryRequest will hold the TestLoggerManager instance. On receiving any run/discovery events, respective methods of TestLoggerManager will be invoked. i.e. TestLoggerManager will no longer register logger events with run or discovery events.
 4. On test run/discovery completion, TestLoggerManager will be disposed by TestRunRequest and DiscoveryRequest.
-5. Limitaion with this approach is that if TestRunRequestusers like TestRequestManager tries to call `TestRunRequest.ExecuteAsync()` second time, then logger events will not be invoked as TestLoggerManager will already be disposed in first run.
+5. Limitation with this approach is that if TestRunRequest users like TestRequestManager tries to call `TestRunRequest.ExecuteAsync()` second time, then logger events will not be invoked as TestLoggerManager will already be disposed in first run.
