@@ -1,4 +1,4 @@
-# 0014 Guidelines for setting the FullyQualifiedName on TestCase
+# 0017 Guidelines for setting the FullyQualifiedName on TestCase
 
 ## Summary
 This note clarifies the guidelines that test adapters should consider when setting the FullyQualifiedName on test cases before returning them from the discovery process.
