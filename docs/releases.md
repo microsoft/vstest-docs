@@ -1,5 +1,14 @@
 # Release Notes
 
+## 15.6.0-preview-20180207-05
+
+### Issue Fixed
+* Enabling diagnostics for UWP causes app to hang. [#1387](https://github.com/Microsoft/vstest/pull/1387) 
+
+### Drops
+
+* Microsoft.TestPlatform.ObjectModel: [v15.6.0-preview-20180207-05](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.6.0-preview-20180207-05)
+
 ## 15.6.0-preview-20180109-01
 
 ### Issue Fixed
