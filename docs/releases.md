@@ -1,5 +1,16 @@
 # Release Notes
 
+## 15.6.0
+
+### Issue Fixed
+* Fix for Communication b/w testhost, & datacollector fails causing tests processes to hang. [#1406](https://github.com/Microsoft/vstest/pull/1406) 
+* Fix for Cancellation hanging TestExplorer with the unclickable cancelling. [#1398](https://github.com/Microsoft/vstest/pull/1398)
+
+### Drops
+
+* TestPlatform vsix: [15.6.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.6/20180215-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [v15.6.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.6.0)
+
 ## 15.6.0-preview-20180207-05
 
 ### Issue Fixed
