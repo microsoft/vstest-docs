@@ -12,12 +12,12 @@ User would specify timeout using runsetting or through commandline.
 
 ### User can specify timeout using runsettings as follows:
 ```xml
-<Runsettings>
+<RunSettings>
   <RunConfiguration>
      <!-- Specify timeout in milliseconds. A valid value should be greater than 0 -->
      <TestSessionTimeout>10000</TestSessionTimeout>
   </RunConfiguration>
-</Runsettings>
+</RunSettings>
 ```
 
 ### User can specify timeout using commandline as follows:
