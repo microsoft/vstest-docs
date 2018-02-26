@@ -4,14 +4,10 @@
 
 ### Issue Fixed
 * Adding Category to Test Category mapping for ListFullyQualifiedTests. [#1369](https://github.com/Microsoft/vstest/pull/1369)
-* DataCollector Environment Variables propogation during debugging. [#1371](https://github.com/Microsoft/vstest/pull/1371)
-* Support escaping , in Test filter. [#1374](https://github.com/Microsoft/vstest/pull/1374)
-* Set JsonNetVersion for CI build definition.  [#1356](https://github.com/Microsoft/vstest/pull/1356)
+* Support escaping "," in Test filter. [#1374](https://github.com/Microsoft/vstest/pull/1374)
 * Generate proper default settings for EnableCodeCoverage. [#1390](https://github.com/Microsoft/vstest/pull/1390)
 * Test run directory fix for loggers. [#1399](https://github.com/Microsoft/vstest/pull/1399)
 * Fixed the normal verbosity level to not log the full information for non-failed tests. [#1396](https://github.com/Microsoft/vstest/pull/1396)
-* Added playback engine to signing list and added thumbprint of uia interop dll in verify signing script. [#1404](https://github.com/Microsoft/vstest/pull/1404)
-* Porting the fix for the flaky tests. [#1407](https://github.com/Microsoft/vstest/pull/1407)
 * Ignore case for targetframework input. [#1420](https://github.com/Microsoft/vstest/pull/1420)
 * Fixed logger to have additonal lines after std output. [#1421](https://github.com/Microsoft/vstest/pull/1421)
 * Fixed the error message. [#1422](https://github.com/Microsoft/vstest/pull/1422)
