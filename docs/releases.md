@@ -1,5 +1,30 @@
 # Release Notes
 
+## 15.7.0-preview-20180221-13
+
+### Issue Fixed
+* Adding Category to Test Category mapping for ListFullyQualifiedTests. [#1369](https://github.com/Microsoft/vstest/pull/1369)
+* Support escaping "," in Test filter. [#1374](https://github.com/Microsoft/vstest/pull/1374)
+* Generate proper default settings for EnableCodeCoverage. [#1390](https://github.com/Microsoft/vstest/pull/1390)
+* Test run directory fix for loggers. [#1399](https://github.com/Microsoft/vstest/pull/1399)
+* Fixed the normal verbosity level to not log the full information for non-failed tests. [#1396](https://github.com/Microsoft/vstest/pull/1396)
+* Ignore case for targetframework input. [#1420](https://github.com/Microsoft/vstest/pull/1420)
+* Fixed logger to have additonal lines after std output. [#1421](https://github.com/Microsoft/vstest/pull/1421)
+* Fixed the error message. [#1422](https://github.com/Microsoft/vstest/pull/1422)
+* Fix: Logger attachments not coming in vsts test run. [#1431](https://github.com/Microsoft/vstest/pull/1431)
+* Fixed help test to mention default value of verbosity in console logger. [#1433](https://github.com/Microsoft/vstest/pull/1433)
+* Exceptions flow to Translation layer [#1434](https://github.com/Microsoft/vstest/pull/1434)
+
+### New Features introduced
+* Logger support in run settings.[#1382](https://github.com/Microsoft/vstest/pull/1382)
+* Added CUIT package in vstest xcopy package. [#1394](https://github.com/Microsoft/vstest/pull/1394)
+* Making Trx Logger Hierarchical for ordered test and data driven tests. [#1330](https://github.com/Microsoft/vstest/pull/1330)
+
+### Drops
+
+* TestPlatform vsix: [15.7.0-preview-20180221-13](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180221-13;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180221-13](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180221-13)
+
 ## 15.6.0
 
 ### Issue Fixed
