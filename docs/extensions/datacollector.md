@@ -93,12 +93,14 @@ DataCollectors can choose to subscribe to any of the four events exposed by `Dat
 2. TestSessionEnd : Raised when test execution session ends.
 3. TestCaseStart : Raised when test case execution starts.
 4. TestCaseEnd : Raised when test case execution ends.
+5. TestHostInitialized : Raised when test host process has been initialized.
 
 ```csharp
 events.SessionStart += this.SessionStarted_Handler;
 events.SessionEnd += this.SessionEnded_Handler;
 events.TestCaseStart += this.Events_TestCaseStart;
 events.TestCaseEnd += this.Events_TestCaseEnd;
+events.TestHostInitialized += this.TestHostInitialized_Handler
 ```
 ```csharp
 private void Events_TestCaseStart(object sender, TestCaseStartEventArgs e)
