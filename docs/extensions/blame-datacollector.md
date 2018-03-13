@@ -8,7 +8,7 @@ Certain execution sequences can crash the testhost process spawned by the vstest
 If the testhost process had crashed, then the fully qualified names of the tests in their sequence of execution up to and including the specific test that was running at the time of the crash, is emitted into a sequence.xml file created under the TestResults folder.
 
 ## Example
-here is an example of the emitted xml file.
+Here is an example of the emitted xml file.
 
 ```xml
 <?xml version="1.0"?>
@@ -17,3 +17,4 @@ here is an example of the emitted xml file.
   <Test Name="TestProject.UnitTest1.TestMethodAAA" Source="D:\repos\TestProject\TestProject\bin\Debug\TestProject.dll" />
 </TestSequence>
 ```
+In this case, the <Test Name> listed last is the test that was running at the time of the crash.  
