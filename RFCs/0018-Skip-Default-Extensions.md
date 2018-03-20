@@ -17,7 +17,8 @@ Example: Default extensions can't run/discover XUnit tests, still we initialize 
 ## API Changes
 1. Adding of field SkipDefaultExtensions in TestPlatformOptions.
 2. TestPlatform's CreateDiscoveryRequest/CreateTestRunRequest will accept TestPlatformOptions as additional argument.
-3. IProxyDiscoveryManager and IProxyExecutionManager's Initialize method will accept SkipDefaultExtensions as additional argument.
+3. Making TestPlatform internal as it is not meant to be exposed. TestPlatform supports entry point only via command line and translation layer.
+4. IProxyDiscoveryManager and IProxyExecutionManager's Initialize method will accept SkipDefaultExtensions as additional argument.
 
 ## Alternatives
 **Alternative 1**: Passing SkipDefaultExtensions via runsettings
