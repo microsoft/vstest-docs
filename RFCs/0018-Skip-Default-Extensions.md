@@ -4,9 +4,9 @@
 This note outlines the proposed changes for adding option for skipping lookup and initialization of default extensions.
 
 ## Motivation
-In addition to test adapters provided via TestAdaptersPaths, test platform requires default adapters present in Extensions folder. This folder lies where vstest.console.exe lies. Even if default extensions can't run/discover tests, we still pass test assembly to default extensions and thus increase adapter lookup and initialization cost. 
+In addition to test adapters provided via TestAdaptersPaths, test platform loads default adapters present in Extensions folder. This folder is present alongside vstest.console.exe. Even for test sources where default extensions can't run/discover tests, we still pass test source assembly to them, this causes both increase adapter lookup, their initialization cost, & adds overhead to execution time.
 
-Example: Default extensions can't run/discover XUnit tests, still we initialize default adapters and pass test assembly to them. Thus we   
+Example: Default extensions can't run/discover XUnit tests, still testplatform initializes default adapters and pass XUnit test assemblies to them.
 
 ## Proposed Changes
 1. Design mode clients can skip default extensions by setting TestPlatformOptions.SkipDefaultExtensions as true.
