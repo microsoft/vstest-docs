@@ -8,6 +8,8 @@ In addition to test adapters provided via TestAdaptersPaths, test platform loads
 
 Example: Default extensions can't run/discover XUnit tests, still testplatform initializes default adapters and pass XUnit test assemblies to them.
 
+Proposed changes are focused on improving performance of test run/discovery by allowing option to skip default extensions.
+
 ## Proposed Changes
 1. Design mode clients can skip default extensions by setting TestPlatformOptions.SkipDefaultExtensions as true.
 2. TestRequestManager passes SkipDefaultExtensions flag to TestPlatform via CreateDiscoveryRequest/CreateTestRunRequest.
@@ -19,6 +21,12 @@ Example: Default extensions can't run/discover XUnit tests, still testplatform i
 2. TestPlatform's CreateDiscoveryRequest/CreateTestRunRequest will accept TestPlatformOptions as additional argument.
 3. Making TestPlatform internal as it is not meant to be exposed. TestPlatform supports entry point only via command line and translation layer.
 4. IProxyDiscoveryManager and IProxyExecutionManager's Initialize method will accept SkipDefaultExtensions as additional argument.
+
+## Performance Improvement Analysis
+Following are the performance improvements which are achieved when default extensions are skipped.
+**Sample**: XUnit test project
+**Discovery Request**: We save around 500 ms while adapter initialization and 250 ms while adapter lookup.
+**Execution Request**: We save around 500 ms while adapter initialization.
 
 ## Alternatives
 **Alternative 1**: Passing SkipDefaultExtensions via runsettings
