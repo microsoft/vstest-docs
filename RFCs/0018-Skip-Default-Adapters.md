@@ -1,7 +1,7 @@
 # 0018 Skip Default Adapters
 
 ## Summary
-This note outlines the proposed changes for adding option for skipping initialization of default adapters and thus skipping default adapters to take part in test discovery/execution.
+This note outlines the proposed changes for skipping default adapters so that they don't take part in test discovery and execution.
 
 ## Motivation
 In addition to test adapters provided via TestAdaptersPaths, test platform loads default adapters present in Extensions folder. This folder is present alongside vstest.console.exe. Even for test sources which can't be discovered/executed by default adapters, we pass those test sources to default adapters. This causes following problems:
@@ -13,7 +13,7 @@ Example: Default adapters can't run/discover XUnit tests, still testplatform ini
 Proposed changes are focused on improving performance of test discovery/execution by allowing option to skip initialization of default adapters.
 
 ## Proposed Changes
-1. Design mode clients can skip default adapters by setting TestPlatformOptions.SkipDefaultAdapters as true.
+1. Translation layer clients can skip default adapters by setting TestPlatformOptions.SkipDefaultAdapters as true.
 2. TestRequestManager passes SkipDefaultAdapters flag to TestPlatform via CreateDiscoveryRequest/CreateTestRunRequest.
 3. TestPlatform passes SkipDefaultAdapters flag to ProxyDiscoveryManager/ProxyExecutionManager via initialize method.
 4. ProxyDiscoveryManager/ProxyExecutionManager stores this value and uses it to skip default adapters to be passed to test host whenever test host extensions are initialized.
@@ -26,6 +26,7 @@ Proposed changes are focused on improving performance of test discovery/executio
 
 ## Performance Improvement Analysis
 Following are the performance improvements which are achieved when default adapters are skipped.
+
 **Sample**: XUnit test project
 
 | Discovery Request      | Before Changes | After Changes | Improvement |
