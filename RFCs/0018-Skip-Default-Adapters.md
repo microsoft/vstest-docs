@@ -5,7 +5,7 @@ This note outlines the proposed changes for adding option for skipping initializ
 
 ## Motivation
 In addition to test adapters provided via TestAdaptersPaths, test platform loads default adapters present in Extensions folder. This folder is present alongside vstest.console.exe. Even for test sources which can't be discovered/executed by default adapters, we pass those test sources to default adapters. This causes following problems:
-1. Adapters initilization cost increases.
+1. Adapters initialization cost increases.
 2. Discovery/Execution time taken by adapters increases as test source is passed to default adapters as well for discovery/execution.
 
 Example: Default adapters can't run/discover XUnit tests, still testplatform initializes default adapters and pass XUnit test assemblies to them to discover/execute.
@@ -37,7 +37,7 @@ Following are the performance improvements which are achieved when default adapt
 |------------------------|----------------|---------------|-------------|
 | Adapter Initialization | 608 ms         | 126 ms        | 482 ms      |
 
-Test Exeuction is not affected by these changes as while test execution, test source is passed to the matching adapter executor URI only.
+Test Execution is not affected by these changes as while test execution, test source is passed to the matching adapter executor URI only.
 
 ## Alternatives
 **Alternative 1**: Passing SkipDefaultAdapters via runsettings
