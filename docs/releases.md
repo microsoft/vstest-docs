@@ -1,5 +1,20 @@
 # Release Notes
 
+## 15.7.0-preview-20180320-02
+
+### Issue Fixed
+* Fixing the tests for string comparison issue. [#1462](https://github.com/Microsoft/vstest/pull/1462)
+* Sync for binarywriter writes.[#1470](https://github.com/Microsoft/vstest/pull/1470)
+* Usability Fixes [#1478](https://github.com/Microsoft/vstest/pull/1478)
+* Fix for Design mode clients hang for errors [1451](https://github.com/Microsoft/vstest/pull/1451)
+* Fix datacollectors temporary files cleanup [1483](https://github.com/Microsoft/vstest/pull/1483)
+
+### Drops
+
+* TestPlatform vsix: [15.7.0-preview-20180320-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180320-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180320-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180320-02)
+
+
 ## 15.7.0-preview-20180221-13
 
 ### Issue Fixed
