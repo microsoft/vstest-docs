@@ -12,7 +12,20 @@ In past we have seen customer hitting issue with Appdomain.Unload. There are two
 
 1. Hang in Appdoamin.Unload (Tracking issue https://github.com/Microsoft/testfx/issues/225)
 
-2. AppDomain.Unload call crashes the process even if you have an exception handler in code. This is due to a CLR and OS bug which ends up ignoring the exception handler in code and terminates the process.
+2. AppDomain.Unload call can crash the process even if you have an exception handler in code (check next section for details)
+
+
+## Details of one such crash during Appdomain.Unload
+
+Below is one of the analysis done for one of the crash dump while calling Appdomain.Unload
+
+1.	An HWND (call it X) has a WndProc that is implemented in managed code.
+2.	The app domain that owns the WndProc code shuts down.
+3.	The OS delivers a message to window X.
+4.	The CLR tries to run the WndProc, but throws AppDomainUnloadedException when it sees that the WndProc is in a dead app domain.
+5.	The AppDomainUnloadedException propagates back into the OS window message dispatcher.
+6.	The OS window message dispatcher immediately reports the exception as unhandled (ignoring all exception handlers that might exist "further back" on the stack), which generally has the same effect as a failfast and tears down the process.
+
 
 ## Proposed changes
 
