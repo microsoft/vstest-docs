@@ -16,7 +16,7 @@ In past we have seen customer hitting issue with Appdomain.Unload. There are two
 
 ## Proposed changes
 
-Proposed guidelines are for customers and test adapters who wants to run test relaibly.
+Proposed guidelines are for customers and test adapters who wants to avoid tese issues.
 
 **Adapters**
 1. Test Adapter should honour ```<DisableAppDomain>``` setting inside RunConfiguration node of runsettings. Check https://github.com/Microsoft/vstest-docs/blob/master/docs/configure.md for information on this setting. This will ensure that adapters dont create AppDomain at all to run tests
@@ -25,6 +25,4 @@ Proposed guidelines are for customers and test adapters who wants to run test re
 
 1. Change in test platform to merge the app.config for a test assembly when ```<DisableAppDomain>``` is set. This is to ensure test's app.config is honoured while running tests
 
-2. Make sure when ```<DisableAppDomain>``` is set, test platform should make ```<MaxCpuCount>``` count to 1 (or use MaxCpuCount specified by the user if there). This is to ensure each test source have isolation
-
-3. Test Platform in above case creates a default appdomain. Make a change in test platform to not Unload the domain. This to ensure we dont hit issues related to unload
+2. Make sure when ```<DisableAppDomain>``` is set, test platform should make ```<MaxCpuCount>``` to 1 (or use MaxCpuCount specified by the user if there). This is to ensure each test source have isolation. In case MaxCPUCount is set to 1 there will be one test host process created for each source dll.
