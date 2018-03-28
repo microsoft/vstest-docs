@@ -16,7 +16,7 @@ In past we have seen customer hitting issue with Appdomain.Unload. There are two
 
 ## Proposed changes
 
-Proposed guidelines are for customers and test adapters who wants to avoid tese issues.
+Proposed guidelines are for customers and test adapters who wants to avoid these issues.
 
 **Adapters**
 1. Test Adapter should honour ```<DisableAppDomain>``` setting inside RunConfiguration node of runsettings. Check https://github.com/Microsoft/vstest-docs/blob/master/docs/configure.md for information on this setting. This will ensure that adapters dont create AppDomain at all to run tests

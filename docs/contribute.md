@@ -141,10 +141,10 @@ default, `Debug` configuration is run.
 > test.cmd -c release
 ```
 
-If you want to run a perticular test. Eg: Test Name that contains Blame in Acceptance test
+If you want to run a particular test. Eg: Test Name that contains Blame in Acceptance test
 
 ```
-> test.cmd -p accept -f net451 -filter disable
+> test.cmd -p accept -f net451 -filter blame
 ```
 
 ## Deployment
