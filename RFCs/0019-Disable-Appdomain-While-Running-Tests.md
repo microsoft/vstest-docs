@@ -25,4 +25,4 @@ Proposed guidelines are for customers and test adapters who wants to avoid these
 
 1. Change in test platform to merge the app.config for a test assembly when ```<DisableAppDomain>``` is set. This is to ensure test's app.config is honoured while running tests
 
-2. Make sure when ```<DisableAppDomain>``` is set, test platform should make ```<MaxCpuCount>``` to 1 (or use MaxCpuCount specified by the user if there). This is to ensure each test source have isolation. In case MaxCPUCount is set to 1 there will be one test host process created for each source dll.
+2. Make sure when ```<DisableAppDomain>``` is set, each test source have isolation. This is done by spawning testhost process for each test source.
