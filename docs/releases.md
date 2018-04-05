@@ -1,5 +1,22 @@
 # Release Notes
 
+## 15.7.0
+
+### Issue Fixed
+* Code coverage fix for runsettings. [#1510](https://github.com/Microsoft/vstest/pull/1510)
+* Logging fix for UWP.[#1508](https://github.com/Microsoft/vstest/pull/1508)
+* Perf improvements for LUT [#1517](https://github.com/Microsoft/vstest/pull/1517)
+* Fix for preserving CR LF line endings in TRX file. [#1521](https://github.com/Microsoft/vstest/pull/1521)
+* Fix socket exception on datacollection in parallel. [#1514](https://github.com/Microsoft/vstest/pull/1514)
+
+### New Features introduced
+* Introduced running UWP test using ".appx" file as input, for CLI.
+
+### Drops
+
+* TestPlatform vsix: [15.7.0]( https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.7/20180403-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0)
+
 ## 15.7.0-preview-20180320-02
 
 ### Issue Fixed
