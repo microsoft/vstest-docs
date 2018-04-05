@@ -17,6 +17,7 @@ Proposed solution allows adapters to specify which assembly type is supported, a
 ## Proposed Solution
 1. System.ComponentModel.CategoryAttribute will be used for passing native and managed support. Adapter can specify native assemblies support by adding `[Category("native")]` in their discoverer. Similarly for managed support, `[Category("managed")]` can be specified.
 2. `[Category("native")]` and `[Category("managed")]` will be ignored if adapter doesn't support assemblies i.e. none of `[FileExtension(".dll")]` or `[FileExtension(".exe")]` is present in adapter discoverer.
+3. `Category` value other than `[Category("native")]` and `[Category("managed")]` will be ignored.
 
 ## Changes required by adapters
 Adapter can use `CategoryAttribute` to specify native or managed assemblies support.
