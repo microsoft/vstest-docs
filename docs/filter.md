@@ -21,7 +21,7 @@ supported by popular unit test frameworks.
 
 Allowed **operators**:
 * `=` implies an exact match
-* `!=` imples an exact not match
+* `!=` implies an exact not match
 * `~` implies a contains lookup
 
 **Value** is a string. All the lookups are case insensitive.
