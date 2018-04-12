@@ -197,7 +197,7 @@ More info on Event Viewer [here](https://technet.microsoft.com/en-us/library/cc9
 #### Use cases for Event Log DataCollector
 Event Log DataCollector is used to get event logs as Attachment and is particularly useful for remote scenarios where logging into the machine and viewing the Event Viewer is not possible. 
 
-#### Eanbling Event Log DataCollector
+#### Enabling Event Log DataCollector
 There are two ways of enabling Event Log DataCollector for a test run:
 ##### 1. Using vstest.console argument. 
 Use the following command to enable Event Log DataCollector with default configuration:
