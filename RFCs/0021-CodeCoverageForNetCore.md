@@ -1,7 +1,8 @@
-# Summary
+# 0021 - Code Coverage for .NET Core
+## Summary
 This note provides an overview of the support for Code Coverage in .NET Core.
 
-# Motivation
+## Motivation
 The asks for Code Coverage support for .NET Core are the most commented issue on vstest repo:
 - [https://github.com/Microsoft/vstest/issues/981](https://github.com/Microsoft/vstest/issues/981)
 - [https://github.com/Microsoft/vstest/issues/1312](https://github.com/Microsoft/vstest/issues/1312)
@@ -12,7 +13,7 @@ NOTE:
 3. The coverage information will still be emitted as a .coverage file. Support for alternate forms of rendering will be considered separately in a subsequent effort.
 4. Support for Linux and Mac will be considered separately in a subsequent effort.
 
-# Scenarios to support
+## Scenarios to support
 Code coverage collection will continue to be enabled with a dedicated gesture. The following table summarizes the support that needs to be added:
 
 | Entry point | How will code coverage be enabled? | Syntax                                                               |
@@ -26,7 +27,7 @@ Code coverage collection will continue to be enabled with a dedicated gesture. T
 NOTE:
 These gestures explicitly do not need the user to specify the path of the code coverage data collector. There is spike planned to ascertain feasibility. If it turns out to be infeasible the user will need to provide a path to the code coverage datacollector using `/TestAdapterPath`.
 
-# Support Matrix
+## Support Matrix
 The support matrix is in terms of the following:
 - __Core Runner__ aka `dotnet test`/`dotnet vstest`/`dotnet vstest.console.dll`, built for .NET Core
 - __Desktop runner__ aka `vstest.console.exe`, and built for .NET Framework.
@@ -42,14 +43,14 @@ Here is how these runners can be installed:
 | Visual Studio | Desktop runner | .NET Core             | Yes                              |
 | Visual Studio | Desktop runner | .NET Framework        | Yes                              |
 
-# Acquisition
-## Potential acquisition approaches
-### Option 1: bundle code coverage binaries into the dotnet SDK.
+## Acquisition
+### Potential acquisition approaches
+#### Option 1: bundle code coverage binaries into the dotnet SDK.
 __Pros:__ Simple user experience. No additional installation required by the user. As long as the user has the latest .NET Core SDK, code coverage lights up.
 
 __Cons:__ dotnet SDK is cross-plat and, as mentioned, the current code coverage effort focuses on .NET Core (Windows) only. Thus code coverage binaries will get restored even on non-Windows machines, where it will not work (yet).
 
-### Option 2: bundle code coverage binaries as a separate NuGet package, and make the test platform SDK depend on it.
+#### Option 2: bundle code coverage binaries as a separate NuGet package, and make the test platform SDK depend on it.
 - Ship the code coverage binaries as a separate NuGet package. Repurpose the [Microsoft.CodeCoverage package](https://www.nuget.org/packages/Microsoft.CodeCoverage/) that we already ship on NuGet.
 - Make that a dependency for our [test platform SDK](https://www.nuget.org/packages/Microsoft.NET.Test.Sdk/).
 - Now during a NuGet restore that happens in any context (CI, IDE, CLI), the required code coverage binaries will get automatically installed.
@@ -58,7 +59,7 @@ __Pros:__ Simple user experience. No additional installation required by the use
 
 __Cons:__ The test platform SDK is cross-plat, and as mentioned the current code coverage effort will focus on .NET Core (Windows) only. Thus code coverage binaries will get restored even on non-Windows machines, where it will not work (yet).
 
-### Option 3: ship code coverage binaries as a separate NuGet package, that the user has to explicitly reference.
+#### Option 3: ship code coverage binaries as a separate NuGet package, that the user has to explicitly reference.
 - Ship the code coverage binaries as a separate NuGet package. Repurpose the [Microsoft.CodeCoverage package](https://www.nuget.org/packages/Microsoft.CodeCoverage/) that we already ship on NuGet, and version it at say 15.8.
 - Rename the Shims package
 	- Ship the shim functionality that we currently ship in [Microsoft.CodeCoverage package](https://www.nuget.org/packages/Microsoft.CodeCoverage/) in a new Microsoft.CodeCoverage.Shim1.0 package.
@@ -69,10 +70,10 @@ __Pros:__ The test platform SDK does not need to be carry the code coverage bina
 
 __Cons:__ Poor user experience. User has to explicitly add the code coverage NuGet package reference to every test project for which for which they want to collect coverage.
 
-## Chosen option
+### Chosen option
 To provide a good user experience, we will go with __Option 2__.
 
-# Work involved
+## Work involved
 - [ ] CLI support to condition code coverage collection via a switch [this is already in place]
 - [ ] Spike to validate early drops of portable PDB support.
 - [ ] Publish as an RFC on GitHub.
@@ -88,5 +89,5 @@ To provide a good user experience, we will go with __Option 2__.
 - [ ] MSDN doc updated
 - [ ] RTW to NuGet
 
-# Expected Ship date
+## Expected Ship date
 From Microsoft.NET.Test.Sdk v15.8 (Q3 2018) onwards.
