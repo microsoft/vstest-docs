@@ -8,7 +8,7 @@ The asks for Code Coverage support for .NET Core are the most commented issue on
 
 NOTE:
 1. We are starting by enabling code coverage on .NET Core for Windows.
-2. The functionality will enalbe support for .portable/embedded PDBs.
+2. The functionality will enable support for .portable/embedded PDBs.
 3. The coverage information will still be emitted as a .coverage file. Support for alternate forms of rendering will be considered separately in a subsequent effort.
 4. Support for Linux and Mac will be considered separately in a subsequent effort.
 
@@ -47,14 +47,14 @@ Here is how these runners can be installed:
 ### Option 1: bundle code coverage binaries into the dotnet SDK.
 __Pros:__ Simple user experience. No additional installation required by the user. As long as the user has the latest .NET Core SDK, code coverage lights up.
 
-__Cons:__ dotnet SDK is cross-plat and, as mentioned, the current code coverage effort focuswa on .NET Core (Windows) only. Thus code coverage binaries will get restored even on non-Windows machines, where it will not work (yet).
+__Cons:__ dotnet SDK is cross-plat and, as mentioned, the current code coverage effort focuses on .NET Core (Windows) only. Thus code coverage binaries will get restored even on non-Windows machines, where it will not work (yet).
 
-### Option 2: bundle code coverage binaries a separate NuGet package, and make the Test SDK depend on it.
+### Option 2: bundle code coverage binaries as a separate NuGet package, and make the test platform SDK depend on it.
 - Ship the code coverage binaries as a separate NuGet package. Repurpose the [Microsoft.CodeCoverage package](https://www.nuget.org/packages/Microsoft.CodeCoverage/) that we already ship on NuGet.
 - Make that a dependency for our [test platform SDK](https://www.nuget.org/packages/Microsoft.NET.Test.Sdk/).
 - Now during a NuGet restore that happens in any context (CI, IDE, CLI), the required code coverage binaries will get automatically installed.
 
-__Pros:__ Simple user experience. No additional installation required by the user. As long as the user's project is using the latest Test SDK, code coverage lights up.
+__Pros:__ Simple user experience. No additional installation required by the user. As long as the user's project is using the latest test platform SDK, code coverage lights up.
 
 __Cons:__ The test platform SDK is cross-plat, and as mentioned the current code coverage effort will focus on .NET Core (Windows) only. Thus code coverage binaries will get restored even on non-Windows machines, where it will not work (yet).
 
