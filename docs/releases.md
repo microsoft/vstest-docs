@@ -1,5 +1,22 @@
 # Release Notes
 
+## 15.7.0
+
+### Issue Fixed
+* Code coverage fix for runsettings. [#1510](https://github.com/Microsoft/vstest/pull/1510)
+* Logging fix for UWP.[#1508](https://github.com/Microsoft/vstest/pull/1508)
+* Perf improvements for LUT [#1517](https://github.com/Microsoft/vstest/pull/1517)
+* Fix for preserving CR LF line endings in TRX file. [#1521](https://github.com/Microsoft/vstest/pull/1521)
+* Fix socket exception on datacollection in parallel. [#1514](https://github.com/Microsoft/vstest/pull/1514)
+
+### New Features introduced
+* Introduced running UWP test using ".appx" file as input, for CLI.
+
+### Drops
+
+* TestPlatform vsix: [15.7.0]( https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.7/20180403-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0)
+
 ## 15.7.0-preview-20180320-02
 
 ### Issue Fixed
@@ -13,6 +30,16 @@
 
 * TestPlatform vsix: [15.7.0-preview-20180320-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180320-02;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180320-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180320-02)
+
+## 15.7.0-preview-20180307-01
+
+### Issue Fixed
+* Fix CUIT tests fail to run on no VS installed machine.  [#1450](https://github.com/Microsoft/vstest/pull/1450)
+
+### Drops
+
+* TestPlatform vsix: [15.7.0-preview-20180307-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180307-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180307-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180307-01)
 
 
 ## 15.7.0-preview-20180221-13
@@ -39,6 +66,29 @@
 
 * TestPlatform vsix: [15.7.0-preview-20180221-13](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180221-13;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180221-13](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180221-13)
+
+## 15.6.2
+
+### Issue Fixed
+* Fix socket exception on datacollection in parallel  [#1505](https://github.com/Microsoft/vstest/pull/1505)
+* Fix datacollectors temporary files cleanup [#1506](https://github.com/Microsoft/vstest/pull/1506)
+
+
+### Drops
+
+* TestPlatform vsix: [15.6.2](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.6/20180326-08;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [v15.6.2](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.6.2)
+
+## 15.6.1
+
+### Issue Fixed
+* Synchronize concurrent writes to communication channel  [#1457](https://github.com/Microsoft/vstest/pull/1457)
+
+
+### Drops
+
+* TestPlatform vsix: [15.6.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.6/20180307-08;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [v15.6.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.6.1)
 
 ## 15.6.0
 

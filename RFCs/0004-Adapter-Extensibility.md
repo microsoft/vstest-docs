@@ -74,7 +74,9 @@ Interface ITestDiscoverer
     IMessageLogger logger, ITestCaseDiscoverySink discoverySink)}
 }
 ```
-The test platform iterates through all the loaded adapters and probes each one with the set of containers to get all the test cases defined in them. To optimize this process each adapter can have a FileExtension attribute defined that informs the test platform what file extension types each adapter is interested in. The following section details this with an example.
+The test platform iterates through all the loaded adapters and probes each one with the set of containers to get all the test cases defined in them. To optimize this process each adapter can have:
+1. FileExtension attribute that informs the test platform what file extension types each adapter is interested in. The following section details this with an example.
+2. [Category attribute](0020-Improving-Logic-To-Pass-Sources-To-Adapters.md) that informs the test platform whether adapter supports native or managed assemblies (applicable only when adapters support assemblies i.e. .dll and .exe file extensions).
 
 For a single adapter the test platform calls ITestDiscoverer.DiscoverTests() during Discovery where the test platform provides the containers to discover tests from. The adapter uses the discoverySink instance to report back on test cases that it finds to the test platform. The adapter can also log any status/ warnings via the logger instance passed in and can use the discoveryContext to figure out the settings used for the current session. More on this follows in a later section.  If the adapter finds a test case it understands in a container, it creates a TestCase object and stamps an executor URI on the object. The URI notifies the test platform of the ITestExecutor that can run that test case. This avoids another probing operation during execution.
 
