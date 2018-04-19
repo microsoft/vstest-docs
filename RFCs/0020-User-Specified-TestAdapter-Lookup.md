@@ -18,12 +18,15 @@ Following the above adapter look up logic, we pass down test sources to adapters
 
 ## Motivation
 
+Select the correct adapter for the run. Most managed adapters are available in the test source directory, hence can be picked up from later for the test run.
+
 In .NetCore scenario, we only pick adapters from test Source location, this helps
-* Testplatform, as it knows where to look for adapters
-* Test Framework/Adapter writers, they know where to drop adapters so they are consumed by platform,& finally
+* Testplatform, as it knows where to look for adapters.
+* Test Framework/Adapter writers, they know where to drop adapters so they are consumed by platform.
 * Users as they don't have to specify any additional location for adapters, & they know exactly what adapter is used for the run.
 
 We want to move to the same model for FullCLR projects as well.
+
 
 ## Principles
 1. The adapter referenced in the project should be used for test execution
@@ -31,23 +34,17 @@ We want to move to the same model for FullCLR projects as well.
 3. Adapter lookup logic is consistent across runs.
 4. Adapter lookup logic should be clear and consistent for both IDE/Editor and CLI runs.
 
-## Proposed Changes
-User can restrict adapter lookup to only adapters close to source location, & those present in TestAdapterPath under RunSettings, via setting an option IDE to true.
 
-The option would be present at Tool->Option->Test.
+## RoadMap
 
-Once enabled IDE will modify the runsettings it passes to platform during discovery/execution, by adding **UseSpecifedAdapterLocations** flag in RunSettings, & setting it to **true**.
-
+1. Introduce an option(**UseSpecifedAdapterLocations**) to pick adapter from test source location, this option would be present at Tool->Option->Test.
+2. Deprecate **Extensions** directory: From VS 15.8 we will show a warning message to users, for whom adapters from Extensions directory were used to discovery/run tests. We will stop picking adapters from Extensions directory from next Major VS release.
 
 ### Details for lookup
 
-* If the flag "UseSpecifedAdapterLocations" is set to true, then adapters only from source, & TestAdapterPaths would be picked.
+* If the option "UseSpecifedAdapterLocations" is set to true, then adapters only from source, & TestAdapterPaths would be picked.
 
 ### Perf Improvements
 Restricting adapters via above logic also results in perf improvements, as it filters out unnecessary adapters which should be not used for a given test source, primarily for a managed test source, it filters our native adapters, as they are acquired only via Vsix, or from default **Extensions** folder.
 
-The improvement is however seen when a few tests are run, for e.g. when running two tests via RunSelected options from IDE, we see the time reduced from **0:00:01.4782809** to **0:00:01.1312048** in IDE Test Output pane 
-
-## Open Questions:
-* Should there be a UI option to set value UseSpecifedAdapterLocations, under Tool->Option->Test ? Yes, this would be available in IDE.
-* Should we spawn a new testhost for each test source when above option is enabled? No, as discussed internally this will cause a perf degradation.
+The improvement is however seen when a few tests are run, for e.g. when running two tests via RunSelected options from IDE, we see the time reduced from **0:00:01.4782809** to **0:00:01.1312048** in IDE Test Output pane
