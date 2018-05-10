@@ -20,8 +20,8 @@
 
 ### Drops
 
-* TestPlatform vsix: [15.7.0-preview-20180221-13](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180221-13;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180221-13](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180221-13)
+* TestPlatform vsix: [15.8.0-preview-20180510-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180510-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.8.0-preview-20180510-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.8.0-preview-20180510-03)
 
 ## 15.7.0
 
