@@ -1,5 +1,28 @@
 # Release Notes
 
+## 15.8.0-preview-20180510-03
+
+### Issue Fixed
+* Extend FastFilter to support multiple properties. [#1523](https://github.com/Microsoft/vstest/pull/1523)
+* Make all communication timeouts configurable. [#1538](https://github.com/Microsoft/vstest/pull/1538)
+* Honoring cancel and abort request in test platform. [#1543](https://github.com/Microsoft/vstest/pull/1543)
+* FilterOptions serialization issue when running .NET core tests. [#1551](https://github.com/Microsoft/vstest/pull/1551)
+* Telemetry points for legacy settings.. [#1564](https://github.com/Microsoft/vstest/pull/1564)
+* Flushing test results even if RecordEnd is not called. [#1573](https://github.com/Microsoft/vstest/pull/1573)
+* Searching adapters in Test Source directory in all scenarios. [#1574](https://github.com/Microsoft/vstest/pull/1574)
+* Filtering non existent adapter paths. [#1578](https://github.com/Microsoft/vstest/pull/1578)
+* Duplicate tests throwing error in case of mstest v1 adapter. [#1579](https://github.com/Microsoft/vstest/pull/1579)
+* Allowing authentication for TestCase datasource using PAT token via vstest task. [#1579](https://github.com/Microsoft/vstest/pull/1579)
+* Send test results with parent result information for mstest v1 adapter. [#1579](https://github.com/Microsoft/vstest/pull/1579)
+
+### New Features introduced
+* Introduced category attribtue for adapter to specify supported assembly type.[#1528](https://github.com/Microsoft/vstest/pull/1528), [#1529](https://github.com/Microsoft/vstest/pull/1529), [#1537](https://github.com/Microsoft/vstest/pull/1537)
+
+### Drops
+
+* TestPlatform vsix: [15.7.0-preview-20180221-13](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180221-13;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.0-preview-20180221-13](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.0-preview-20180221-13)
+
 ## 15.7.0
 
 ### Issue Fixed
