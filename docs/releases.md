@@ -20,6 +20,16 @@
 * TestPlatform vsix: [15.8.0-preview-20180510-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180510-03;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel: [15.8.0-preview-20180510-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.8.0-preview-20180510-03)
 
+## 15.7.2
+
+### Issue Fixed
+* Code coverage fix for async functions. [242314](https://developercommunity.visualstudio.com/content/problem/242314/code-coverage-doesnt-show-async-methods.html)
+
+### Drops
+
+* TestPlatform vsix: [15.7.2]( https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.7/20180514-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.7.2](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.7.2)
+
 ## 15.7.0
 
 ### Issue Fixed
