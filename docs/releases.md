@@ -3,7 +3,7 @@
 ## 15.7.2
 
 ### Issue Fixed
-* [Code coverage fix for async functions.] (https://developercommunity.visualstudio.com/content/problem/242314/code-coverage-doesnt-show-async-methods.html)
+* Code coverage fix for async functions. [242314](https://developercommunity.visualstudio.com/content/problem/242314/code-coverage-doesnt-show-async-methods.html)
 
 ### Drops
 
