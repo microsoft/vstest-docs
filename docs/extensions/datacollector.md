@@ -88,7 +88,7 @@ if (!File.Exists(logFile))
 ```
 
 ### DataCollectionEvents
-DataCollectors can choose to subscribe to any of the four events exposed by `DataCollectionEvents` 
+DataCollectors can choose to subscribe to the following events exposed by `DataCollectionEvents` 
 1. TestSessionStart : Raised when test execution session starts.
 2. TestSessionEnd : Raised when test execution session ends.
 3. TestCaseStart : Raised when test case execution starts.
