@@ -44,7 +44,7 @@ We are standardizing the `FullyQualifiedName` property on a TestCase in the foll
 
 * The type name must be fully qualified (in the CLR sense), including its namespace. Any generic classes must also include an arity value using backtick notation (`# where # is the number of type arguments that the class requires).
 * Nested classes are appended with a '+' and must also include an arity if generic.
-* There should be no extra whitespace included in the segment
+* There must be no whitespace included in the segment
 
 `{method}` - The `method` segment includes the fully specified method including the method name and a list of its parameter types inside parentheses separated by commas.
 
@@ -52,8 +52,43 @@ We are standardizing the `FullyQualifiedName` property on a TestCase in the foll
 
 * If the method accepts no parameters, then the parentheses should be omitted.
 * If the method is generic, then an arity must be specified (in the same way as the type segment).
-* Insignificant whitespace should not be included in the segment.
-* The list of parameter types must be encoded in the same way that a type in the `{type}` segment of the FQN is encoded.
+* There must be no whitespace included in the segment
+* The list of parameter types must be encoded using the type specification below.
+* Return types are not encoded.
+
+### Parameter Type Encoding
+
+Parameters are encoded as a comma-separated list of strings in parentheses at the end of the `method` segment. Each parameter is encoded using the rules below.
+
+* Basic Types - Most basic types should be written out using their namespace and type name with no extra whitespace. For example (`NamespaceA.NamespaceB.Class`). Native types should be written using their CLR type names (`System.Int32`,`System.String`). Return types are not encoded.
+* Array Types - Arrays should be encoded as the element type followed by square brackets (`[]`). Multidimensional arrays are encoded the same as single dimensional arrays.
+* Generic Types - Generic types should be encoded as the type name, followed by comma-separated type arguments in angle brackets (`<>`).
+* Generic Parameters - Parameters that are typed by a generic argument on the containing type are encoded with an exclamation point (`!`) followed by the ordinal index of the parameter in the generic argument list.
+* Generic Method Parameters - Parameters that are typed by a generic argument on the method are encoded with a double exclamation point (`!!`) followed by the ordinal index of the parameter in the method's generic argument list.
+* Pointer Types - Pointer types should be encoded as the type name, followed by an asterisk (`*`).
+* Dynamic Types - Dynamic types should be represented as System.Object.
+
+#### Examples
+```csharp
+
+Method(NamespaceA.NamespaceB.Class) // Custom Types
+Method(System.String,System.Int32) // Native Types
+Method(System.String[]) // Array Types
+Method(List<System.String>) // Generic Types
+Method(!0) // Generic Type Parameters
+Method(!!0) // Generic Method Parameters
+Method(List<!0>) // Generic Type with a Generic Type Parameter
+```
+
+### Special Methods
+
+The CLR has some features that are implemented by way of special methods. While these methods are unlikely to be used to represent tests, the list below indicates how they should be encoded, if necessary.
+
+* Explicit Interface Implementation - methods that explicitly implement an interface should be prefixed with the interface typename. For example the method name for the explicit implementation of IEnumerable<T>.GetEnumerator would look like this; `System.Collections.Generic.IEnumerable<T>.GetEnumerator`. Note that this is only the `method` portion of the FQN. The `type` portion would still include the namespace of the class on which this method is declared.
+* Constructors - constructors should be referenced using the name `.ctor`
+* Operators - operators are a language specific feature, and are translated into methods using compiler-specific rules. Use the underlying compiler-generated method name to reference the operator. For instance, in C#, `operator+` would be represented by a method named `op_Addition`.
+* Finalizers - finalizers should be referenced using the name `Finalize`
+
 
 ## Custom Test Naming
 
