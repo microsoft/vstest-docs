@@ -77,7 +77,7 @@ The Microsoft distribution of vstest is licensed with the [Link](https://www.vis
 ## Sending Consent for collecting Telemetry Metrics in Test Platform in Design Mode
 **Collection in Test Platform will only happen if TestPlatform receives consent from the consumers.**
 
-The "CollectMetrics" field has been added in [TestPlatformOptions](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/TestPlatformOptions.cs) to send consent from Design Mode Scenarios(VS, VSCode etc) to TestPlatform. The users have to set "CollectMetrics" to "true" so that TestPlatform can collect Metrics and send it back to the users.
+The "CollectMetrics" field has been added in [TestPlatformOptions](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/TestPlatformOptions.cs) to send consent from Design Mode Scenarios(VS, VSCode etc) to TestPlatform. The users have to set "CollectMetrics" to "true" so that TestPlatform can collect Metrics and send it back to the client.
 
 The [IVsTestConsoleWrapper](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs) and [IVsTestConsoleWrapperAsync](https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapperAsync.cs) contains API's that support TestPlatformOptions. Users must use these API's to send consent to the TestPlatform for collecting Metrics.
 
