@@ -31,6 +31,7 @@ RunSettings will start supporting these features previously supported only via T
 ## Migration
 
 A tool named SettingsMigrator will be introduced with test platform, which can be used to migrate your existing testsettings files to runsettings as follows:
+
 SettingsMigrator.exe <Full path to testsettings file or runsettings file to be migrated>
 SettingsMigrator.exe <Full path to testsettings file or runsettings file to be migrated> <Full path to runsettings file to be created>
 Examples:
@@ -41,4 +42,4 @@ SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings E:\MyTest\MyNewRunS
 
 ## Expected Ship Date
 
-Support for the new legacy nodes in runsettings is expected to come in the next release. The deprecation of testsettings for automated unit and functional testing scenarios is expected to be in effect from the next major VS release.
+Support for the new legacy settings in runsettings is expected to come in the next release. The deprecation of testsettings for automated unit and functional testing scenarios is expected to be in effect from the next major VS release.
