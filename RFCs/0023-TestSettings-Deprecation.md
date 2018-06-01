@@ -1,16 +1,20 @@
-# 0023 TestSettings Deprecation
+# 0023 TestSettings deprecation for automated unit and functional testing scenarios.
 
 ## Summary
 
-This note outlines the proposed changes to deprecate support for testsettings in test runs.
+This note outlines the proposed changes to deprecate support for using .testsettings in automated unit and functional testing scenarios.
 
 ## Motivation
 
-Today there are two types of files to configure tests: *.testsettings and *.rusnettings. To simplify the experience, we are planning to deprecate support for *.testsettings.
+Today there are two types of files to configure test runs: *.testsettings and *.runsettings. To simplify the experience, we are planning to deprecate support for *.testsettings in automated unit and functional testing scenarios.
+Please note that *.testsettings will continue to be supported for load test scenarios.
 
 ## RoadMap
 
-RunSettings will start supporting the features previously supported only via TestSettings. The following table specifies the new nodes and attributes, that will be introduced in runsettings and how they are mapped from the existing nodes in testsettings.
+The recommendation for those who are using testsettings in automated unit and functional testing scenarios, is to move to runsettings. [Here](http://aka.ms/runsettings) is a documentation of how to use runsettings to configure test runs.
+
+If you are not able to achieve all your existing configurations in testsettings via runsettings, you may try to achieve the same using the below legacy nodes that will be newly introduced in runsettings.
+RunSettings will start supporting these features previously supported only via TestSettings. The following table specifies the new nodes and attributes, that will be introduced and how they are mapped from the existing nodes in testsettings.
 
 | TestSettings Node                                                   | RunSettings Node                                                           |
 |---------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -24,8 +28,17 @@ RunSettings will start supporting the features previously supported only via Tes
 |/TestSettings/Execution/Hosts                                        |/RunSettings/LegacySettings/Execution/Hosts                                 |
 |/TestSettings/Execution/TestTypeSpecific/WebTestRunConfiguration     |/RunSettings/WebTestRunConfiguration                                        |
 
-You can migrate your existing testsettings file to runsettings file using a migrator tool that will ship with test platform.
+## Migration
+
+A tool named SettingsMigrator will be introduced with test platform, which can be used to migrate your existing testsettings files to runsettings as follows:
+SettingsMigrator.exe <Full path to testsettings file or runsettings file to be migrated>
+SettingsMigrator.exe <Full path to testsettings file or runsettings file to be migrated> <Full path to runsettings file to be created>
+Examples:
+SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings
+SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings
+SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings E:\MyTest\MyNewRunSettings.runsettings
+SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings E:\MyTest\MyNewRunSettings.runsettings
 
 ## Expected Ship Date
 
-These changes are expected to be in effect from the next major release.
+Support for the new legacy nodes in runsettings is expected to come in the next release. The deprecation of testsettings for automated unit and functional testing scenarios is expected to be in effect from the next major VS release.
