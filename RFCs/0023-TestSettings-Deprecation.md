@@ -32,8 +32,8 @@ RunSettings will start supporting these features previously supported only via T
 
 A tool named SettingsMigrator will be introduced with test platform, which can be used to migrate your existing testsettings files to runsettings as follows:
 
-SettingsMigrator.exe <Full path to testsettings file or runsettings file to be migrated>
-SettingsMigrator.exe <Full path to testsettings file or runsettings file to be migrated> <Full path to runsettings file to be created>
+SettingsMigrator.exe {Full path to testsettings file or runsettings file to be migrated}
+SettingsMigrator.exe {Full path to testsettings file or runsettings file to be migrated} {Full path to runsettings file to be created}
 Examples:
 SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings
 SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings
