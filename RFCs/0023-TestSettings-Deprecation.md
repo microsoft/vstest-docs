@@ -6,14 +6,14 @@ This note outlines the proposed changes to deprecate support for using .testsett
 
 ## Motivation
 
-Today there are two types of files to configure test runs: *.testsettings and *.runsettings. To simplify the experience, we are planning to deprecate support for *.testsettings in automated unit and functional testing scenarios.
+Today there are two types of files to configure test runs: *.testsettings and *.runsettings. To simplify the experience, we are planning to deprecate support for *.testsettings in automated unit and functional testing scenarios.  
 Please note that *.testsettings will continue to be supported for load test scenarios.
 
 ## RoadMap
 
 The recommendation for those who are using testsettings in automated unit and functional testing scenarios, is to move to runsettings. [Here](http://aka.ms/runsettings) is a documentation of how to use runsettings to configure test runs.
 
-If you are not able to achieve all your existing configurations in testsettings via runsettings, you may try to achieve the same using the below legacy nodes that will be newly introduced in runsettings.
+If you are not able to achieve all your existing configurations in testsettings via runsettings, you may try to achieve the same using the below legacy nodes that will be newly introduced in runsettings.  
 RunSettings will start supporting these features previously supported only via TestSettings. The following table specifies the new nodes and attributes, that will be introduced and how they are mapped from the existing nodes in testsettings.
 
 | TestSettings Node                                                   | RunSettings Node                                                           |
@@ -32,13 +32,14 @@ RunSettings will start supporting these features previously supported only via T
 
 A tool named SettingsMigrator will be introduced with test platform, which can be used to migrate your existing testsettings files to runsettings as follows:
 
-SettingsMigrator.exe {Full path to testsettings file or runsettings file to be migrated}
-SettingsMigrator.exe {Full path to testsettings file or runsettings file to be migrated} {Full path to runsettings file to be created}
-Examples:
-SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings
-SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings
-SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings E:\MyTest\MyNewRunSettings.runsettings
-SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings E:\MyTest\MyNewRunSettings.runsettings
+SettingsMigrator.exe {Full path to testsettings file or runsettings file to be migrated}  
+SettingsMigrator.exe {Full path to testsettings file or runsettings file to be migrated} {Full path to runsettings file to be created}  
+
+Examples:  
+SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings  
+SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings  
+SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings E:\MyTest\MyNewRunSettings.runsettings  
+SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings E:\MyTest\MyNewRunSettings.runsettings  
 
 ## Expected Ship Date
 
