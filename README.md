@@ -12,7 +12,7 @@ If you are looking for the Visual Studio Test Platform product GitHub repository
 - [Data collection Protocol](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 - [Translation Layer](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0008-TranslationLayer.md)
 - [Editors API Revision Update](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0009-Editors-API-RevisionUpdate.md)
-- [Roadmap](https://github.com/Microsoft/vstest-docs/blob/master/roadmap.md)
+- [Roadmap](https://github.com/Microsoft/vstest-docs/blob/master/docs/releases.md)
 
 ### Contributing
 There are many ways to contribute to VSTest
