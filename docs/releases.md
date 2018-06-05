@@ -1,5 +1,24 @@
 # Release Notes
 
+## 15.8.0-preview-20180605-02
+
+### Issue Fixed
+* Fix Exception thrown while creating framework based on default enums. [#1598](https://github.com/Microsoft/vstest/pull/1598)
+* Deprecate Testplatform\Extensions path for Adapters [#1602](https://github.com/Microsoft/vstest/pull/1602)
+* Update Test Source with Package for Inprogress Tests [#1605](https://github.com/Microsoft/vstest/pull/1605)
+* Use DateTime.UtcNow instead of DateTime.Now for consistency across test reporting data [#1612](https://github.com/Microsoft/vstest/pull/1612)
+* Fixed RecordResult to SendTestCaseEnd if not already for datacollectors to end and get attachments correctly [#1615](https://github.com/Microsoft/vstest/pull/1615)
+* Fix attachment uri in trx if same attachment filename is same [#1625](https://github.com/Microsoft/vstest/pull/1625)
+* Add support to escape/unescape testcase filter strings [#1627](https://github.com/Microsoft/vstest/pull/1627)
+
+### New Features introduced
+* Add a tool to migrate testsettings to runsettings [#1600](https://github.com/Microsoft/vstest/pull/1600)
+
+### Drops
+
+* TestPlatform vsix: [15.8.0-preview-20180605-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180605-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.8.0-preview-20180605-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.8.0-preview-20180605-02)
+
 ## 15.8.0-preview-20180510-03
 
 ### Issue Fixed
