@@ -26,6 +26,19 @@ Allowed **operators**:
 
 **Value** is a string. All the lookups are case insensitive.
 
+**Escape Sequences** must be used to represent characters in the value that have special meanings in filter, i.e. filter operators.
+
+| Escape Sequence | Represents |
+| -------------- | -------------------- |
+| \\\\            |  \\                   |
+| \\(             |  (                   |
+| \\)             |  )                   |
+| \\&             |  &                   |
+| \\\|             |  \|                   |
+| \\=             |  =                   |
+| \\!             |  !                   |
+| \\~             |  ~                   |
+
 Expressions can be joined with boolean operators. Following boolean operators are supported:
 * `|` implies a boolean `OR`
 * `&` implies a boolean `AND`
