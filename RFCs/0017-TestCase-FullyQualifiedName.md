@@ -69,8 +69,8 @@ Parameters are encoded as a comma-separated list of strings in parentheses at th
 * Dynamic Types - Dynamic types should be represented as System.Object.
 
 #### Examples
-```csharp
 
+```csharp
 Method(NamespaceA.NamespaceB.Class) // Custom Types
 Method(System.String,System.Int32) // Native Types
 Method(System.String[]) // Array Types
@@ -89,6 +89,28 @@ The CLR has some features that are implemented by way of special methods. While 
 * Operators - operators are a language specific feature, and are translated into methods using compiler-specific rules. Use the underlying compiler-generated method name to reference the operator. For instance, in C#, `operator+` would be represented by a method named `op_Addition`.
 * Finalizers - finalizers should be referenced using the name `Finalize`
 
+### Nested Generic Type Parameter Numbering
+
+If a generic type is nested in another generic type, then the generic arguments of the containing type are also reflected in the nested type, even if it's not reflected in the language syntax. This means that the numbering of generic parameters take into account the generic parameters of the containing type as if they are declared on the local type.
+
+```csharp
+// type A has arity 1, and one generic argument T
+public class A<T>
+{
+    // type B has arity 1, but two generic arguments T and X
+    public class B<X> { 
+
+        // FQN for this method would be fqn://clr/m/A`1+B`1/Method(!0, !1)
+        public void Method(T t, X x) {}
+
+        // FQN for this method would be fqn://clr/m/A`1+B`1/Method(!1)
+        public void Method(X x) {}
+
+        // FQN for this method would be fqn://clr/m/A`1+B`1/Method(!0, !1, !!0)
+        public void Method<U>(T t, X x, U u) {}
+    }
+}
+```
 
 ## Custom Test Naming
 
@@ -102,7 +124,7 @@ There can be a situation where a test is declared on an abstract base type (synt
 
 ## Managed Tests that are Not Type/Method Based
 
-It is possible to create unit tests in managed code where tests are not necessarily based on types & methods. While this is somewhat uncommon, we need to be able to handle this situation gracefully. Some examples are gherkin-dotnet and custom discoverers in xUnit. In these examples, an externally parsed definition file may determine the tests. For these cases, we have defined the 'other' form of FQN. FQNs in this form will look similar to the following.
+It is possible to create unit tests in managed code where tests are not necessarily based on types & methods. While this is somewhat uncommon, we need to be able to handle this situation gracefully. Some examples are custom discoverers written for xUnit and SpecFlow tests created from configuration. In these examples, an externally parsed definition file may determine the tests. For these cases, we have defined the 'other' form of FQN. FQNs in this form will look similar to the following.
 
     fqn://clr/o/{extension}/{other}/{url}/{segments}…
 
