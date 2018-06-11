@@ -1,5 +1,15 @@
 # Release Notes
 
+## 15.8.0-preview-20180610-02
+
+### New Features introduced
+* Collect Code coverage with dotnet core sdk on windows. [#981](https://github.com/Microsoft/vstest/issues/981)
+
+### Drops
+
+* TestPlatform vsix: [15.8.0-preview-20180610-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180610-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.8.0-preview-20180610-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.8.0-preview-20180610-02)
+
 ## 15.8.0-preview-20180605-02
 
 ### Issue Fixed
