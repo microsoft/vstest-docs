@@ -74,16 +74,15 @@ __Cons:__ Poor user experience. User has to explicitly add the code coverage NuG
 To provide a good user experience, we will go with __Option 2__.
 
 ## Work involved
-- [ ] CLI support to condition code coverage collection via a switch [this is already in place]
-- [ ] Spike to validate early drops of portable PDB support.
-- [ ] Publish as an RFC on GitHub.
-- [ ] Port the TraceDataCollector to .NET Standard.
-- [ ] Spike for automatic discovery of TraceDataCollector (for the case where dotnet test is used to run tests targeting .NET Framework)
-- [ ] The code coverage profiler (covrun32.dll/covrun64.dll) to support portable PDB [this will use MSDIA]
-- [ ] The code coverage profiler (covrun32.dll/covrun64.dll) to support embedded PDB [this will use MSDIA]
-- [ ] The code coverage Logger(CodeCoverage.exe) and code coverage profiler to be appropriately packaged so they are available to the .NET Core user
-- [ ] Customer validation
-- [ ] Drop to MyGet
+- [x] CLI support to condition code coverage collection via a switch [this is already in place]
+- [x] Spike to validate early drops of portable PDB support.
+- [x] Publish as an RFC on GitHub.
+- [x] Port the TraceDataCollector to .NET Standard.
+- [x] Spike for automatic discovery of TraceDataCollector (for the case where dotnet test is used to run tests targeting .NET Framework)
+- [x] The code coverage profiler (covrun32.dll/covrun64.dll) to support portable PDB [this will use MSDIA]
+- [x] The code coverage profiler (covrun32.dll/covrun64.dll) to support embedded PDB [this will use MSDIA]
+- [x] The code coverage Logger(CodeCoverage.exe) and code coverage profiler to be appropriately packaged so they are available to the .NET Core user
+- [x] "preview" to NuGet
 - [ ] Beta to NuGet
 - [ ] Blog on DevOps blog
 - [ ] MSDN doc updated
