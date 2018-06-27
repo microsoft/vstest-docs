@@ -4,15 +4,15 @@
 This document standardizes additional properties on TestCase to support test cases written in managed languages.
 
 ## Overview
-There are a broad variety of choices that current Test Adapter implementers have made when setting the `FullyQualifiedName` on TestCase objects created during test discovery. `FullyQualifiedName` typically identifies the type and method that implements a test case in managed code, but because there has been no standardization, VS cannot rely on the format of the `FullyQualifiedName`. We've considered standardizing the format of `FullyQualifiedName`, but this presents migration & compatibility issues. Rather, we are adding two new properties to TestCase that represent the type and method for each test case. These additional properties are only applicable to unit tests written in managed languages (e.g. C# & VB).
+There are a broad variety of choices that current test adapter implementers have made when setting the `FullyQualifiedName` on TestCase objects created during test discovery. `FullyQualifiedName` typically identifies the type and method that implements a test case in managed code, but because there has been no standardization, VS cannot rely on the format of the `FullyQualifiedName`. We've considered standardizing the format of `FullyQualifiedName`, but this presents migration & compatibility costs that outweigh the benefits. Instead, we are adding two new properties to TestCase that represent the type (`ManagedType`) and method (`ManagedMethod`) for each test case. These additional properties are only applicable to unit tests written in managed languages (e.g. C# & VB, et al.).
 
 ## Specification
 
-TestCases for managed code must include a string-valued property named `ManagedType` property and a string-valued property named `ManagedMethod`.
+TestCases for managed code must include a string-valued property named `ManagedType` property and a string-valued property named `ManagedMethod`. The specification below outlines the requirements for the contents of these two properties.
 
 **`ManagedType` Property**
 
-The `ManagedType` test case property is the fully specified type name in metadata format:
+The `ManagedType` test case property represents the fully specified type name in metadata format:
 
     NamespaceA.NamespaceB.ClassName`1+InnerClass`2
 
@@ -36,7 +36,7 @@ The `ManagedMethod` test case property is the fully specified method including t
 
 Parameters are encoded as a comma-separated list of strings in parentheses at the end of the `ManagedMethod` property. Each parameter is encoded using the rules below.
 
-* Basic Types - Most basic types should be written using their namespace and type name with no extra whitespace. For example (`NamespaceA.NamespaceB.Class`). Native types should be written using their CLR type names (`System.Int32`,`System.String`). Return types are not encoded.
+* Basic Types - Types should be written using their namespace and type name with no extra whitespace. For example (`NamespaceA.NamespaceB.Class`). Native types should be written using their CLR type names (`System.Int32`,`System.String`). Return types are not encoded.
 * Array Types - Arrays should be encoded as the element type followed by square brackets (`[]`). Multidimensional arrays are encoded the same as single dimensional arrays.
 * Generic Types - Generic types should be encoded as the type name, followed by comma-separated type arguments in angle brackets (`<>`).
 * Generic Parameters - Parameters that are typed by a generic argument on the containing type are encoded with an exclamation point (`!`) followed by the ordinal index of the parameter in the generic argument list.
@@ -98,8 +98,5 @@ There can be a situation where a test is declared on an abstract base type (synt
 
 ## Managed Tests that are Not Type/Method Based
 
-It is possible to create unit tests in managed code where tests are not necessarily based on types & methods. While this is somewhat uncommon, we need to be able to handle this situation gracefully. If a test adapter cannot provide a mapping between a testcase and a managed type and method, then it should not provide those properties. When `ManagedType` and `ManagedMethod` properties are not provided, the end-user may lose access to certain features such as test-case source location, type hierarchy in the test window, or fast test execution.
+It is possible to create unit tests in managed code where tests are not necessarily based on types & methods. While this is somewhat uncommon, we need to be able to handle this situation gracefully. If a test adapter cannot provide a mapping between a testcase and a managed type and method, then it should not provide those properties. When `ManagedType` and `ManagedMethod` properties are not provided, the end-user may lose access to some features in the Test Explorer such as fast test execution by name, or source linking.
 
-## Tests Returning Multiple Results
-
-There are some situations where the number of test cases cannot be determined at discovery time. In these cases, when the tests are executed multiple results are returned for a single discovered test case.
