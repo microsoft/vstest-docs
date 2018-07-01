@@ -103,3 +103,7 @@ It is possible to create unit tests in managed code where tests are not necessar
 ## Tests Returning Multiple Results
 
 There are some situations where the number of test cases cannot be determined at discovery time. In these cases, when the tests are executed multiple results are returned for a single discovered test case.
+
+## Uniqueness
+
+The combination of `ManagedType` and `ManagedMethod` will be unique to a particular method within an assembly, but are not unique to a test case. This is due to the fact that when tests are data-driven, there can be many test cases that are executed by the same method. The test case ID is expected to be unique for every test case within an assembly. The test case ID should also be deterministic with respect to the method and its arguments. In other words, the test ID should not change given a particular method and a set of argument values (if any).
