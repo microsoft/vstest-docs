@@ -17,7 +17,7 @@ interesting since that process actually loads the adapters and runs the tests. I
 is also possible provide a path `/tmp/dir/log.txt`. `/tmp/dir` will be created if
 it doesn't exist.
 
-Trace level can be changed usign below command line:
+Trace level can be changed using below command line:
 
 ```
 > vstest.console testApp.dll --diag:log.txt;tracelevel=verbose
