@@ -12,9 +12,7 @@
 
 ### New Features introduced
 * Auto-generate F# program file. [#1664](https://github.com/Microsoft/vstest/pull/1664)
-* Enable code coverage in release pipeline with 'dotnet vstest' [#1672](https://github.com/Microsoft/vstest/pull/1672)
-* Make codecoverage.exe running event configurable [#1670](https://github.com/Microsoft/vstest/pull/1670)
-* Support code coverage for portable pdbs with VSTest tools installer [#1665](https://github.com/Microsoft/vstest/pull/1665)
+* Added support for dotnet test --collect:"Code Coverage" (windows only) [#981](https://github.com/Microsoft/vstest/issues/981)
 
 ### Drops
 
