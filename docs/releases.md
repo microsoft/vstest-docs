@@ -5,6 +5,10 @@
 ### Issue Fixed
 * Fix vstest.console.exe grabs exclusive read access to its test container [#1660](https://github.com/Microsoft/vstest/pull/1660)
 * Registring correct property attributes during deserialization [#1644](https://github.com/Microsoft/vstest/pull/1644)
+* Fixed test platform messages on cancellation request [#1667](https://github.com/Microsoft/vstest/pull/1667)
+* Fixed warning messages for scenario when no tests are found matching TestCaseFilter [#1656](https://github.com/Microsoft/vstest/pull/1656)
+* Fixed UWP VC++ unit tests not executing [#1649](https://github.com/Microsoft/vstest/pull/1649)
+* Handling null value deserialization in TestCategory [#1640](https://github.com/Microsoft/vstest/pull/1640)
 
 ### New Features introduced
 * Auto-generate F# program file. [#1664](https://github.com/Microsoft/vstest/pull/1664)
