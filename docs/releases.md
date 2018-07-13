@@ -1,5 +1,22 @@
 # Release Notes
 
+## 15.8.0
+
+### Issue Fixed
+* Fix vstest.console.exe grabs exclusive read access to its test container [#1660](https://github.com/Microsoft/vstest/pull/1660)
+* Registring correct property attributes during deserialization [#1644](https://github.com/Microsoft/vstest/pull/1644)
+
+### New Features introduced
+* Auto-generate F# program file. [#1664](https://github.com/Microsoft/vstest/pull/1664)
+* Enable code coverage in release pipeline with 'dotnet vstest' [#1672](https://github.com/Microsoft/vstest/pull/1672)
+* Make codecoverage.exe running event configurable [#1670](https://github.com/Microsoft/vstest/pull/1670)
+* Support code coverage for portable pdbs with VSTest tools installer [#1665](https://github.com/Microsoft/vstest/pull/1665)
+
+### Drops
+
+* TestPlatform vsix: [15.8.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180710-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.8.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.8.0)
+
 ## 15.8.0-preview-20180610-02
 
 ### New Features introduced
