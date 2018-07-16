@@ -1,5 +1,24 @@
 # Release Notes
 
+## 15.8.0
+
+### Issue Fixed
+* Fix vstest.console.exe grabs exclusive read access to its test container [#1660](https://github.com/Microsoft/vstest/pull/1660)
+* Registring correct property attributes during deserialization [#1644](https://github.com/Microsoft/vstest/pull/1644)
+* Fixed test platform messages on cancellation request [#1667](https://github.com/Microsoft/vstest/pull/1667)
+* Fixed warning messages for scenario when no tests are found matching TestCaseFilter [#1656](https://github.com/Microsoft/vstest/pull/1656)
+* Fixed UWP VC++ unit tests not executing [#1649](https://github.com/Microsoft/vstest/pull/1649)
+* Handling null value deserialization in TestCategory [#1640](https://github.com/Microsoft/vstest/pull/1640)
+
+### New Features introduced
+* Auto-generate F# program file. [#1664](https://github.com/Microsoft/vstest/pull/1664)
+* Added support for dotnet test --collect:"Code Coverage" (windows only) [#981](https://github.com/Microsoft/vstest/issues/981)
+
+### Drops
+
+* TestPlatform vsix: [15.8.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180710-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [15.8.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.8.0)
+
 ## 15.8.0-preview-20180610-02
 
 ### New Features introduced
