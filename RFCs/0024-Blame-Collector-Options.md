@@ -16,7 +16,8 @@ CollectAlways: If you choose to collect dump even when there is no process crash
 DumpType: If you choose to collect a full process dump. It takes values full/mini.
 
 ### Help text
-Here is how the new help text will look like:
+
+Here is how the new command line help text will look like:
 
 --Blame|/Blame:[CollectDump];[Key1]=[Value1];[Key2]=[Value2]
       Runs the test in blame mode. This option is helpful in isolating the problematic test causing test host crash.
@@ -30,6 +31,26 @@ Here is how the new help text will look like:
       Example: /Blame
                /Blame:CollectDump
                /Blame:CollectDump;CollectAlways=true;DumpType=full
+
+These may also be specified in the runsettings as below:
+
+<RunSettings>
+    <LoggerRunSettings>
+        <Loggers>
+            <Logger friendlyName="blame" enabled="True" />
+        </Loggers>
+    </LoggerRunSettings>
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="blame" enabled="True">
+                <Configuration>
+                    <ResultsDirectory>C:\TestResults</ResultsDirectory>
+                    <CollectDump CollectAlways="true" DumpType="mini" />
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+</RunSettings>
 
 ### Errors and warnings
 If the format of the specified options is wrong, the run will stop and throw an error:
