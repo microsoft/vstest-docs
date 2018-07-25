@@ -26,6 +26,22 @@ Allowed **operators**:
 
 **Value** is a string. All the lookups are case insensitive.
 
+**Escape Sequences** must be used to represent characters in the value that have special meanings in filter, i.e. filter operators. 
+
+| Escape Sequence | Represents |
+| -------------- | -------------------- |
+| \\\\            |  \\                   |
+| \\(             |  (                   |
+| \\)             |  )                   |
+| \\&             |  &                   |
+| \\\|             |  \|                   |
+| \\=             |  =                   |
+| \\!             |  !                   |
+| \\~             |  ~                   |
+
+A helper method `Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities.FilterHelper.Esacpe`
+is also available by referencing `Microsoft.VisualStudio.TestPlatform.ObjectModel` NuGet package, which can be used to escape strings programatically.
+
 Expressions can be joined with boolean operators. Following boolean operators are supported:
 * `|` implies a boolean `OR`
 * `&` implies a boolean `AND`
