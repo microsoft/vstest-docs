@@ -1,7 +1,7 @@
 # 0024 Blame collector options
 
 ## Summary
-This note outlines the proposed changes for adding more options to test blame data collector.
+This note outlines the proposed changes for enhancing test blame data collector options.
 
 ## Motivation
 To enable a first-class option to support troubleshooting scenarios, including unattended execution in the pipeline, we need some additional options to be added to the existing test blame data collector.
