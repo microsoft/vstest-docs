@@ -11,11 +11,19 @@ traces to a log file. Invoke the runner using below command line:
 > vstest.console testApp.dll --diag:log.txt
 ```
 
-Verbose trace information will be available in the `log.txt` file. The testhost
+Trace information will be available in the `log.txt` file. The testhost
 execution logs will be in a `log.host.*.txt` file. Testhost logs will be most
 interesting since that process actually loads the adapters and runs the tests. It
 is also possible provide a path `/tmp/dir/log.txt`. `/tmp/dir` will be created if
 it doesn't exist.
+
+Trace level can be changed using below command line:
+
+```
+> vstest.console testApp.dll --diag:log.txt;tracelevel=verbose
+```
+
+Allowed values for tracelevel are: off, error, warning, info and verbose.
 
 ### Dotnet test
 
