@@ -52,7 +52,6 @@ These may also be specified in the runsettings as below:
         </DataCollectors>
     </DataCollectionRunSettings>
 </RunSettings>
-
 ```
 
 ### Errors and warnings
@@ -63,9 +62,9 @@ If an incorrect parameter is used with blame, it will be ignored with a warning 
 The blame parameter specified, 'Parameter1' is not valid. Ignoring this parameter.
 
 If an incorrect key is used with blame, it will be ignored with a warning such as:
-The blame parameter key specified 'Key1' is not valid. Ignoring this parameter.
+The blame parameter key specified 'Key1' is not valid. Ignoring this key.
 
 If an incorrect value is specified for a key, it will be ignored with a warning such as:
-The blame parameter key 'Key1' can only support values Value1/Value2. Ignoring this parameter.
+The blame parameter key 'Key1' can only support values Value1/Value2. Ignoring this key.
 
 
