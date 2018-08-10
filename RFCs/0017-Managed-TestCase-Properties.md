@@ -36,8 +36,8 @@ The `ManagedMethod` test case property is the fully specified method including t
 
 Parameters are encoded as a comma-separated list of strings in parentheses at the end of the `ManagedMethod` property. Each parameter is encoded using the rules below.
 
-* Basic Types - Types should be written using their namespace and type name with no extra whitespace. For example (`NamespaceA.NamespaceB.Class`). Native types should be written using their CLR type names (`System.Int32`,`System.String`). Return types are not encoded.
-* Array Types - Arrays should be encoded as the element type followed by square brackets (`[]`). Multidimensional arrays are encoded the same as single dimensional arrays.
+* Basic Types - Types should be written using their namespace and type name with no extra whitespace. For example (`NamespaceA.NamespaceB.Class`). Native types should be written using their CLR type names (`System.Int32`,`System.String`).
+* Array Types - Arrays should be encoded as the element type followed by square brackets (`[]`). Multidimensional arrays are indicated with commas inside the square brackets. There should be one less comma than the number of dimensions (i.e. 2 dimensional array is encoded as `[,]`, 3 dimensional array as `[,,]` ).
 * Generic Types - Generic types should be encoded as the type name, followed by comma-separated type arguments in angle brackets (`<>`).
 * Generic Parameters - Parameters that are typed by a generic argument on the containing type are encoded with an exclamation point (`!`) followed by the ordinal index of the parameter in the generic argument list.
 * Generic Method Parameters - Parameters that are typed by a generic argument on the method are encoded with a double exclamation point (`!!`) followed by the ordinal index of the parameter in the method's generic argument list.
