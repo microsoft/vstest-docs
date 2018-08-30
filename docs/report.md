@@ -95,10 +95,10 @@ Console logger is the default logger and it is used to output the test results i
 #### Syntax
 
 ```
-For dotnet :
+For dotnet test or dotnet vstest :
 --logger:console[;verbosity=<Defaults to "minimal">]
 
-For vstest.console :
+For vstest.console.exe :
 /logger:console[;verbosity=<Defaults to "normal">]
  
 Argument "verbosity" define the verbosity level of console logger. Allowed values for verbosity are "quiet", "minimal", "normal" and "detailed".
