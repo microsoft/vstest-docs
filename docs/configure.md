@@ -86,7 +86,7 @@ document.
 <RunSettings>  
   <!-- Configurations that affect the Test Framework -->  
   <RunConfiguration>  
-    <!-- Test related settings -->
+    <!-- 1. Test related settings -->
     <!-- [x86] | x64: architecture of test host -->  
     <TargetPlatform>x86</TargetPlatform>
   
@@ -169,31 +169,6 @@ document.
 
     <!-- Set up scripts for setup and clean up-->
     <Scripts setupScript=""C:\SetupScript.bat"" cleanupScript=""C:\CleanupScript.bat"" />
-
-    <Execution parallelTestCount=""5"" hostProcessPlatform=""MSIL"">
-      <!-- Configure test timeout, use TestSessionTimeout in Runconfiguration to configure session timeout -->
-      <Timeouts testTimeout=""6000"" />
-
-      <!-- Configure the Hosts-->
-      <Hosts skipUnhostableTests=""false"">
-        <AspNet name=""ASP.NET"" executionType=""Iis"" urlToTest=""http://localhost"" />
-      </Hosts>
-
-      <!-- Add assembly resolution -->
-      <TestTypeSpecific>
-        <UnitTestRunConfig testTypeId=""13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b"">
-          <AssemblyResolution applicationBaseDirectory=""E:\AppBaseDir"">
-            <TestDirectory useLoadContext=""false"" />
-            <RuntimeResolution>
-              <Directory path=""E:\RuntimeResolutionDir"" includeSubDirectories=""false"" />
-            </RuntimeResolution>
-            <DiscoveryResolution>
-              <Directory path=""E:\DiscoveryResolutionDir"" includeSubDirectories=""true"" />
-            </DiscoveryResolution>
-          </AssemblyResolution>
-        </UnitTestRunConfig>
-      </TestTypeSpecific>
-    </Execution>
   </LegacySettings>
 
   <!-- Parameters used by tests at runtime -->  
@@ -391,6 +366,59 @@ a test run.
 > collectors.
 
 ### Other Sections
+
+**Legacy Settings**
+
+This section allows users to configure settings that were earlier required to be
+set using *testsettings file.
+These settings can be used for Ordered tests and MSTest based tests when running in legacy mode.
+
+Users can now migrate their testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0023-TestSettings-Deprecation.md#migration)
+
+Here is an example:
+```xml
+<Runsettings>
+  <MSTest>
+    <!-- Enable legacy mode, legacy setting are honored only when this flag is set to true -->
+    <ForcedLegacyMode>true</ForcedLegacyMode>
+  </MSTest>
+
+  <LegacySettings>
+    <Deployment>
+      <DeploymentItem filename=""C:\DeploymentDir\DeploymentFile"" />
+    </Deployment>
+
+    <!-- Set up scripts for setup and clean up-->
+    <Scripts setupScript=""C:\SetupScript.bat"" cleanupScript=""C:\CleanupScript.bat"" />
+
+    <Execution parallelTestCount=""5"" hostProcessPlatform=""MSIL"">
+      <!-- Configure test timeout, use TestSessionTimeout in Runconfiguration to configure session timeout -->
+      <Timeouts testTimeout=""6000"" />
+
+      <!-- Configure the Hosts-->
+      <Hosts skipUnhostableTests=""false"">
+        <AspNet name=""ASP.NET"" executionType=""Iis"" urlToTest=""http://localhost"" />
+      </Hosts>
+
+      <!-- Add assembly resolution -->
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId=""13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b"">
+          <AssemblyResolution applicationBaseDirectory=""E:\AppBaseDir"">
+            <TestDirectory useLoadContext=""false"" />
+            <RuntimeResolution>
+              <Directory path=""E:\RuntimeResolutionDir"" includeSubDirectories=""false"" />
+            </RuntimeResolution>
+            <DiscoveryResolution>
+              <Directory path=""E:\DiscoveryResolutionDir"" includeSubDirectories=""true"" />
+            </DiscoveryResolution>
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+      </TestTypeSpecific>
+    </Execution>
+  </LegacySettings>
+</Runsettings>
+  ```
+
 **Run Parameters**
 ```xml
   <!-- Parameters used by tests at runtime -->  
