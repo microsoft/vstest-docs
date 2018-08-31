@@ -88,17 +88,19 @@ if (!File.Exists(logFile))
 ```
 
 ### DataCollectionEvents
-DataCollectors can choose to subscribe to any of the four events exposed by `DataCollectionEvents` 
+DataCollectors can choose to subscribe to the following events exposed by `DataCollectionEvents` 
 1. TestSessionStart : Raised when test execution session starts.
 2. TestSessionEnd : Raised when test execution session ends.
 3. TestCaseStart : Raised when test case execution starts.
 4. TestCaseEnd : Raised when test case execution ends.
+5. TestHostLaunched : Raised when test host process has been initialized. **Note: This will be available from 15.7**
 
 ```csharp
 events.SessionStart += this.SessionStarted_Handler;
 events.SessionEnd += this.SessionEnded_Handler;
 events.TestCaseStart += this.Events_TestCaseStart;
 events.TestCaseEnd += this.Events_TestCaseEnd;
+events.TestHostLaunched += this.TestHostLaunched_Handler
 ```
 ```csharp
 private void Events_TestCaseStart(object sender, TestCaseStartEventArgs e)
