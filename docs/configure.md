@@ -56,6 +56,7 @@ The `runsettings` file is a xml file with following sections:
 2. Data Collection
 3. Runtime Parameters
 4. Adapter Configuration
+5. Legacy Settings
 
 We will cover these sections in detail later in the document. Let's discuss few
 core principles for runsettings.
@@ -72,6 +73,8 @@ core principles for runsettings.
    test run via the test platform APIs. It may use it to read its own settings
    or take decisions (e.g. an adapter needs to disable appdomains if
    `DisableAppDomain` setting is provided via run settings).
+5. Users can now configure settings used for legacy scenarios like deployment,
+   scripts using run settings.
 
 ### Sample
 Given below is a complete `runsettings` file with all available options. Each
@@ -83,19 +86,19 @@ document.
 <RunSettings>  
   <!-- Configurations that affect the Test Framework -->  
   <RunConfiguration>  
-    <!-- 1. Test related settings -->
+    <!-- Test related settings -->
     <!-- [x86] | x64: architecture of test host -->  
-    <TargetPlatform>x86</TargetPlatform>  
+    <TargetPlatform>x86</TargetPlatform>
   
     <!-- Framework35 | [Framework40] | Framework45 -->  
-    <TargetFrameworkVersion>Framework40</TargetFrameworkVersion>  
+    <TargetFrameworkVersion>Framework40</TargetFrameworkVersion>
   
     <!-- Path to Test Adapters -->  
-    <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>  
+    <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>
 
     <!-- Path relative to solution directory -->  
-    <ResultsDirectory>.\TestResults</ResultsDirectory>  
-    <SolutionDirectory>.\TestResults</SolutionDirectory>  
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <SolutionDirectory>.\TestResults</SolutionDirectory>
     
     <!-- CPU cores to use for parallel runs -->
     <MaxCpuCount>2</MaxCpuCount>
@@ -151,6 +154,47 @@ document.
       </InProcDataCollector>
     </InProcDataCollectors>
   </InProcDataCollectionRunSettings>
+
+  <!-- Adapter Configuration -->
+  <MSTest>
+    <!-- Enable legacy mode, legacy setting are honored only when this flag is set to true -->
+    <ForcedLegacyMode>true</ForcedLegacyMode>
+  </MSTest>
+
+  <!-- Settings used for Ordered tests and MSTest based tests when running in legacy mode -->
+  <LegacySettings>
+    <Deployment>
+      <DeploymentItem filename=""C:\DeploymentDir\DeploymentFile"" />
+    </Deployment>
+
+    <!-- Set up scripts for setup and clean up-->
+    <Scripts setupScript=""C:\SetupScript.bat"" cleanupScript=""C:\CleanupScript.bat"" />
+
+    <Execution parallelTestCount=""5"" hostProcessPlatform=""MSIL"">
+      <!-- Configure test timeout, use TestSessionTimeout in Runconfiguration to configure session timeout -->
+      <Timeouts testTimeout=""6000"" />
+
+      <!-- Configure the Hosts-->
+      <Hosts skipUnhostableTests=""false"">
+        <AspNet name=""ASP.NET"" executionType=""Iis"" urlToTest=""http://localhost"" />
+      </Hosts>
+
+      <!-- Add assembly resolution -->
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId=""13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b"">
+          <AssemblyResolution applicationBaseDirectory=""E:\AppBaseDir"">
+            <TestDirectory useLoadContext=""false"" />
+            <RuntimeResolution>
+              <Directory path=""E:\RuntimeResolutionDir"" includeSubDirectories=""false"" />
+            </RuntimeResolution>
+            <DiscoveryResolution>
+              <Directory path=""E:\DiscoveryResolutionDir"" includeSubDirectories=""true"" />
+            </DiscoveryResolution>
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+      </TestTypeSpecific>
+    </Execution>
+  </LegacySettings>
 
   <!-- Parameters used by tests at runtime -->  
   <TestRunParameters>  
