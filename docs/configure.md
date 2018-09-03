@@ -73,8 +73,6 @@ core principles for runsettings.
    test run via the test platform APIs. It may use it to read its own settings
    or take decisions (e.g. an adapter needs to disable appdomains if
    `DisableAppDomain` setting is provided via run settings).
-5. Users can now configure settings used for legacy scenarios like deployment,
-   scripts using run settings.
 
 ### Sample
 Given below is a complete `runsettings` file with all available options. Each
@@ -371,9 +369,9 @@ a test run.
 
 This section allows users to configure settings that were earlier required to be
 set using *testsettings file.
-These settings can be used for Ordered tests and MSTest based tests when running in legacy mode.
+These settings can be used for Ordered tests and MSTest v1 based tests when running in legacy mode.
 
-Users can now migrate their testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0023-TestSettings-Deprecation.md#migration)
+Users can now migrate testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0023-TestSettings-Deprecation.md#migration)
 
 Here is an example:
 ```xml
