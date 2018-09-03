@@ -56,6 +56,7 @@ The `runsettings` file is a xml file with following sections:
 2. Data Collection
 3. Runtime Parameters
 4. Adapter Configuration
+5. Legacy Settings
 
 We will cover these sections in detail later in the document. Let's discuss few
 core principles for runsettings.
@@ -85,17 +86,17 @@ document.
   <RunConfiguration>  
     <!-- 1. Test related settings -->
     <!-- [x86] | x64: architecture of test host -->  
-    <TargetPlatform>x86</TargetPlatform>  
+    <TargetPlatform>x86</TargetPlatform>
   
     <!-- Framework35 | [Framework40] | Framework45 -->  
-    <TargetFrameworkVersion>Framework40</TargetFrameworkVersion>  
+    <TargetFrameworkVersion>Framework40</TargetFrameworkVersion>
   
     <!-- Path to Test Adapters -->  
-    <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>  
+    <TestAdaptersPaths>%SystemDrive%\Temp\foo;%SystemDrive%\Temp\bar</TestAdaptersPaths>
 
     <!-- Path relative to solution directory -->  
-    <ResultsDirectory>.\TestResults</ResultsDirectory>  
-    <SolutionDirectory>.\TestResults</SolutionDirectory>  
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <SolutionDirectory>.\TestResults</SolutionDirectory>
     
     <!-- CPU cores to use for parallel runs -->
     <MaxCpuCount>2</MaxCpuCount>
@@ -151,6 +152,22 @@ document.
       </InProcDataCollector>
     </InProcDataCollectors>
   </InProcDataCollectionRunSettings>
+
+  <!-- Adapter Configuration -->
+  <MSTest>
+    <!-- Enable legacy mode, legacy setting are honored only when this flag is set to true -->
+    <ForcedLegacyMode>true</ForcedLegacyMode>
+  </MSTest>
+
+  <!-- Settings used for Ordered tests and MSTest based tests when running in legacy mode -->
+  <LegacySettings>
+    <Deployment>
+      <DeploymentItem filename=""C:\DeploymentDir\DeploymentFile"" />
+    </Deployment>
+
+    <!-- Set up scripts for setup and clean up-->
+    <Scripts setupScript=""C:\SetupScript.bat"" cleanupScript=""C:\CleanupScript.bat"" />
+  </LegacySettings>
 
   <!-- Parameters used by tests at runtime -->  
   <TestRunParameters>  
@@ -347,6 +364,59 @@ a test run.
 > collectors.
 
 ### Other Sections
+
+**Legacy Settings**
+
+This section allows users to configure settings that were earlier required to be
+set using *testsettings file.
+These settings can be used for Ordered tests and MSTest v1 based tests when running in legacy mode.
+
+Users can now migrate testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0023-TestSettings-Deprecation.md#migration)
+
+Here is an example:
+```xml
+<Runsettings>
+  <MSTest>
+    <!-- Enable legacy mode, legacy setting are honored only when this flag is set to true -->
+    <ForcedLegacyMode>true</ForcedLegacyMode>
+  </MSTest>
+
+  <LegacySettings>
+    <Deployment>
+      <DeploymentItem filename=""C:\DeploymentDir\DeploymentFile"" />
+    </Deployment>
+
+    <!-- Set up scripts for setup and clean up-->
+    <Scripts setupScript=""C:\SetupScript.bat"" cleanupScript=""C:\CleanupScript.bat"" />
+
+    <Execution parallelTestCount=""5"" hostProcessPlatform=""MSIL"">
+      <!-- Configure test timeout, use TestSessionTimeout in Runconfiguration to configure session timeout -->
+      <Timeouts testTimeout=""6000"" />
+
+      <!-- Configure the Hosts-->
+      <Hosts skipUnhostableTests=""false"">
+        <AspNet name=""ASP.NET"" executionType=""Iis"" urlToTest=""http://localhost"" />
+      </Hosts>
+
+      <!-- Add assembly resolution -->
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId=""13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b"">
+          <AssemblyResolution applicationBaseDirectory=""E:\AppBaseDir"">
+            <TestDirectory useLoadContext=""false"" />
+            <RuntimeResolution>
+              <Directory path=""E:\RuntimeResolutionDir"" includeSubDirectories=""false"" />
+            </RuntimeResolution>
+            <DiscoveryResolution>
+              <Directory path=""E:\DiscoveryResolutionDir"" includeSubDirectories=""true"" />
+            </DiscoveryResolution>
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+      </TestTypeSpecific>
+    </Execution>
+  </LegacySettings>
+</Runsettings>
+  ```
+
 **Run Parameters**
 ```xml
   <!-- Parameters used by tests at runtime -->  
