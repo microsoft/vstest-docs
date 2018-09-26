@@ -1,5 +1,21 @@
 # Release Notes
 
+## 15.9.0-preview-20180925-03
+
+### Issue Fixed
+* Fix Video Datacollector errors [#1719](https://github.com/Microsoft/vstest/pull/1719)
+* Show error message on Framework35 [#1723](https://github.com/Microsoft/vstest/pull/1723)
+* Suggest publish for running on an isolated machine[#1726](https://github.com/Microsoft/vstest/pull/1726)
+* Fix UWP tests app socket exception [#1728](https://github.com/Microsoft/vstest/pull/1728)
+* Run tests only for test projects in "dotnet test my.sln" scenario [#1745](https://github.com/Microsoft/vstest/pull/1745)
+
+
+### Drops
+
+* TestPlatform vsix: [15.9.0-preview-20180925-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180925-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [15.9.0-preview-20180925-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180925-03)
+
+
 ## 15.9.0-preview-20180807-05
 	
 ### Issue Fixed
