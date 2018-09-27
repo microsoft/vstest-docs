@@ -1,6 +1,6 @@
 # Release Notes
 
-## 15.9.0-preview-20180925-03
+## 15.9.0-preview-20180924-03
 
 ### Issue Fixed
 * Fix Video Datacollector errors [#1719](https://github.com/Microsoft/vstest/pull/1719)
@@ -12,8 +12,8 @@
 
 ### Drops
 
-* TestPlatform vsix: [15.9.0-preview-20180925-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180925-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [15.9.0-preview-20180925-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180925-03)
+* TestPlatform vsix: [15.9.0-preview-20180924-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180924-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [15.9.0-preview-20180924-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180924-03)
 
 
 ## 15.9.0-preview-20180807-05
