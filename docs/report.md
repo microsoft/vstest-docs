@@ -13,7 +13,7 @@ You can author a test logger to print messages on the console, generate result
 files of a specific reporting format, or even report results to various CI/CD
 services. Default inputs to a test logger can be provided in the command line.
 
- Please refer [todo](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#create-a-test-logger) for instructions on creating a test logger and [todo]()
+ Please refer to [this section](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#create-a-test-logger) for instructions on creating a test logger and [todo]()
 if you're interested in the architecture of a test logger.
 
 ### Available test loggers
