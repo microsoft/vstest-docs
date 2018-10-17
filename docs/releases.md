@@ -5,7 +5,7 @@
 ### Issue Fixed
 * Unstable testId for nunit tests [#1785](https://github.com/Microsoft/vstest/pull/1785)
 * Run tests only for test projects [#1745](https://github.com/Microsoft/vstest/pull/1745)
-* Add info log if try to run tests with no IsTestProject prop[#1778](https://github.com/Microsoft/vstest/pull/1778)
+* Add info log if try to run tests with no IsTestProject prop [#1778](https://github.com/Microsoft/vstest/pull/1778)
 
 ### Drops
 
