@@ -1,5 +1,18 @@
 # Release Notes
 
+## 15.9.0
+
+### Issue Fixed
+* Unstable testId for nunit tests [#1785](https://github.com/Microsoft/vstest/pull/1785)
+* Run tests only for test projects [#1745](https://github.com/Microsoft/vstest/pull/1745)
+* Add info log if try to run tests with no IsTestProject prop [#1778](https://github.com/Microsoft/vstest/pull/1778)
+
+### Drops
+
+* TestPlatform vsix: [15.9.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.9/20181008-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [15.9.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0)
+
+
 ## 15.9.0-preview-20180924-03
 
 ### Issue Fixed
