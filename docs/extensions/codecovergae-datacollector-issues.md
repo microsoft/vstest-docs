@@ -10,7 +10,7 @@ A coverage file, which contains detailed report on what all code was hit when un
 
 * We have often observed failures/crashes when tests are run with Code Coverage enabled on Windows 8.1(&Lower), or Windows Server 2012(& Lower), failing with ```Access Violation in covrun32.dll```
 
-For such issues we recommened users to use coverage configuration specified at https://github.com/Microsoft/vstest/blob/master/src/DataCollectors/TraceDataCollector/VanguardCollector/DefaultCodeCoverageConfig.xml
+  For such issues we recommened users to use coverage configuration specified at https://github.com/Microsoft/vstest/blob/master/src/DataCollectors/TraceDataCollector/VanguardCollector/DefaultCodeCoverageConfig.xml
 
 * Coverage file fails to open in VS E.g. https://github.com/Microsoft/vstest/issues/1814
 
