@@ -39,7 +39,7 @@ Allowed **operators**:
 | \\!             |  !                   |
 | \\~             |  ~                   |
 
-A helper method `Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities.FilterHelper.Esacpe`
+A helper method `Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities.FilterHelper.Escape`
 is also available by referencing `Microsoft.VisualStudio.TestPlatform.ObjectModel` NuGet package, which can be used to escape strings programatically.
 
 Expressions can be joined with boolean operators. Following boolean operators are supported:
