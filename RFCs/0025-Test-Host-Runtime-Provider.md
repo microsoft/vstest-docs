@@ -24,7 +24,7 @@ The interfaces would be part of Object Model.
 
 ### Discovering TestHost
 
-Default Test Host required by the test platform are packaged along with it in a directory that always gets probed. This directory called "Extensions" resides next to vstest.console.exe. Any assembly placed in this directory is a candidate extension and in this case, a candidate Test Runtime provider.
+Default Test Host required by the test platform are packaged along with it in a directory that always gets probed. This directory called "Extensions" resides next to vstest.console.exe. An assembly with name ending with *RuntimeProvider.dll* placed in this directory is a candidate Test Runtime provider.
 
 ### Choosing the right TestHost
 
