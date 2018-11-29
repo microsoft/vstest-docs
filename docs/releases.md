@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.0.0-preview-20181128-01
+
+### Issue Fixed
+* Allow external use of the TRX Logger [#1792](https://github.com/Microsoft/vstest/pull/1792)
+* Add "!~" operator to test filter [#1803](https://github.com/Microsoft/vstest/pull/1803)
+* Simplify SDK languages support [#1804](https://github.com/Microsoft/vstest/pull/1804)
+* Make Translation Layer connection timeout configurable [#1843](https://github.com/Microsoft/vstest/pull/1843)
+* Fixed issue where proc dump was not getting terminated on no crash [#1849](https://github.com/Microsoft/vstest/pull/1849)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0-preview-20181128-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20181128-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20181128-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20181128-01)
+
+
 ## 15.9.0
 
 ### Issue Fixed
