@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.0.0-preview-20181205-02
+
+### Issue Fixed
+* Stop trying to connect if the test host exits unexpectedly [#1853](https://github.com/Microsoft/vstest/pull/1853)
+* Move warning into a target to fix msbuild error [#1856](https://github.com/Microsoft/vstest/pull/1856)
+* Adding the missing assemblyInfo files and updating the copyrights [#1859](https://github.com/Microsoft/vstest/pull/1859)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0-preview-20181205-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20181205-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20181205-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20181205-02)
+
+
 ## 16.0.0-preview-20181128-01
 
 ### Issue Fixed
