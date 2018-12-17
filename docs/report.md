@@ -23,16 +23,19 @@ if you're interested in the architecture of a test logger.
 | Local, CI, CD | Inbuilt | [Console Logger][] |
 | Local, CI, CD | [XunitXml.TestLogger][xunit.nuget] | [Xunit Logger][] |
 | AppVeyor | [AppVeyor.TestLogger][appveyor.nuget] | [AppVeyor Logger][] |
+| Azure Pipelines | [AzurePipelines.TestLogger][azurepipelines.nuget] | [Azure Pipelines Logger][] |
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
 
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/Faizan2304/LoggerExtensions
 [AppVeyor Logger]: https://github.com/Faizan2304/LoggerExtensions
+[Azure Pipelines Logger]: https://github.com/daveaglick/AzurePipelines.TestLogger
 [TeamCity Logger]: https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
 
 [xunit.nuget]: https://www.nuget.org/packages/XunitXml.TestLogger
 [appveyor.nuget]: https://www.nuget.org/packages/AppVeyor.TestLogger
+[azurepipelines.nuget]: https://www.nuget.org/packages/AzurePipelines.TestLogger
 [teamcity.nuget]: https://www.nuget.org/packages/TeamCity.VSTest.TestAdapter
 
  Want to add your logger? Please send a PR with changes in this doc.
