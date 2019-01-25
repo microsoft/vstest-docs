@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.0.0-preview-20190124-02
+
+### Issue Fixed
+* Downgrade Test.Sdk to net40 [#1860](https://github.com/Microsoft/vstest/pull/1860)
+* Fix xml exception when we are dealing with special chars [#1872](https://github.com/Microsoft/vstest/pull/1872)
+* Fix - dotnet test on a multi-target projects logs only the last target [#1877](https://github.com/Microsoft/vstest/pull/1877)
+* Avoid usage of JsonConvert in test host process [#1881](https://github.com/Microsoft/vstest/pull/1881)
+* Fixing logging error in event sources [#1897](https://github.com/Microsoft/vstest/pull/1897)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0-preview-20190124-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190124-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20190124-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190124-02)
+
+
 ## 16.0.0-preview-20181205-02
 
 ### Issue Fixed
