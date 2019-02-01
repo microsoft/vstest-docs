@@ -1,5 +1,17 @@
 # Release Notes
 
+## 16.0.0-preview-20190201-03
+
+### Issue Fixed
+* Running NETFramework 3.5 tests in compat mode [#1906](https://github.com/Microsoft/vstest/pull/1906)
+* Make timeouts for translation layer timeout configurable. [#1909](https://github.com/Microsoft/vstest/pull/1909)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0-preview-20190201-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190201-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20190201-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190201-03)
+
+
 ## 16.0.0-preview-20190124-02
 
 ### Issue Fixed
