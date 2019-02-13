@@ -159,7 +159,8 @@ document.
     <ForcedLegacyMode>true</ForcedLegacyMode>
   </MSTest>
 
-  <!-- Settings used for Ordered tests and MSTest based tests when running in legacy mode -->
+  <!-- Settings used for Ordered tests and MSTest v1 based tests when running in legacy mode -->
+  <!-- Note: These settings do not apply to MSTest v2 tests -->
   <LegacySettings>
     <Deployment>
       <DeploymentItem filename=""C:\DeploymentDir\DeploymentFile"" />
@@ -365,7 +366,7 @@ a test run.
 
 ### Other Sections
 
-**Legacy Settings**
+#### Legacy Settings
 
 This section allows users to configure settings that were earlier required to be
 set using *testsettings file.
@@ -381,6 +382,8 @@ Here is an example:
     <ForcedLegacyMode>true</ForcedLegacyMode>
   </MSTest>
 
+  <!-- Settings used for Ordered tests and MSTest v1 based tests when running in legacy mode -->
+  <!-- Note: These settings do not apply to MSTest v2 tests -->
   <LegacySettings>
     <Deployment>
       <DeploymentItem filename=""C:\DeploymentDir\DeploymentFile"" />
@@ -417,7 +420,7 @@ Here is an example:
 </Runsettings>
   ```
 
-**Run Parameters**
+#### Run Parameters
 ```xml
   <!-- Parameters used by tests at runtime -->  
   <TestRunParameters>  
@@ -435,7 +438,7 @@ available to tests during runtime.
 > E.g. the mstest framework makes these settings available as part of the
 > `TestContext` API.
 
-**Adapter Configuration**
+#### Adapter Configuration
 An adapter may provide a section in runsettings for users. See [mstest config][]
 and [nunit config][] for more details.
 
