@@ -1,15 +1,15 @@
-DataCollector Extensibility - Adding testSources parameter
+# 0026 DataCollector Extensibility - Adding testSources parameter
 
 ## Summary
-Exposing testSources parameter to datacollector extensions. List of test sources can be used by datacollectors for processing before test run start.
+Exposing `testSources` parameter to datacollector extensions. List of test sources can be used by datacollectors for processing before test run start.
 
 ## Motivation
-Data collectors initialzation might need test sources list. Example: Static code coverage data collector needs to instrument the test sources before test run start.
+Data collector might need test sources list while initialization. Example: Static code coverage data collector needs to instrument the test sources before test run start.
 
 ## Using testSources parameter in DataCollector
 
 Refer [datacollector](https://github.com/Microsoft/vstest/tree/master/test/TestAssets/OutOfProcDataCollector) doc for more details on how to write a datacollector.
-To use testSources parameter in DataCollector:
+To use `testSources` parameter in `DataCollector`:
 
 ```csharp
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
@@ -62,5 +62,13 @@ public class NewDataCollector : DataCollector
     }
 }
 ```
-DataCollector exposes a `Initialize(System.Xml.XmlElement configurationElement, IEnumerable<string> testSources, DataCollectionEvents events, DataCollectionSink dataSink, DataCollectionLogger logger, DataCollectionEnvironmentContext environmentContext)` in addition to existing `Initialize(System.Xml.XmlElement configurationElement, DataCollectionEvents events, DataCollectionSink dataSink, DataCollectionLogger logger, DataCollectionEnvironmentContext environmentContext)` to expose testSources list to DataCollector.
-testSources parameter is a IEnumerable of test source file path.
+DataCollector exposes
+
+`Initialize(System.Xml.XmlElement configurationElement, IEnumerable<string> testSources, DataCollectionEvents events, DataCollectionSink dataSink, DataCollectionLogger logger, DataCollectionEnvironmentContext environmentContext)`
+
+in addition to existing
+
+`Initialize(System.Xml.XmlElement configurationElement, DataCollectionEvents events, DataCollectionSink dataSink, DataCollectionLogger logger, DataCollectionEnvironmentContext environmentContext)`
+
+to expose `testSources` list to `DataCollector`.
+`testSources` parameter is a IEnumerable of test source file path.
