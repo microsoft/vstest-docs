@@ -71,4 +71,4 @@ in addition to existing
 `Initialize(System.Xml.XmlElement configurationElement, DataCollectionEvents events, DataCollectionSink dataSink, DataCollectionLogger logger, DataCollectionEnvironmentContext environmentContext)`
 
 to expose `testSources` list to `DataCollector`.
-`testSources` parameter is a IEnumerable of test source file path.
+`testSources` parameter is an IEnumerable of test source file path.
