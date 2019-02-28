@@ -1,5 +1,17 @@
 # Release Notes
 
+## 16.0.0
+
+### Issue Fixed
+* Added missing Utilities dependency to netstandard1.5 [#1913](https://github.com/Microsoft/vstest/pull/1913)
+* Add support for xplat vstest console in translationlayer [#1893](https://github.com/Microsoft/vstest/pull/1893)
+* Aborting test run when source and target frameworks/architectures are incompatible. [#1789](https://github.com/Microsoft/vstest/pull/1789)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190228-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0)
+
 ## 16.0.0-preview-20190201-03
 
 ### Issue Fixed
