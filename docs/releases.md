@@ -1,5 +1,15 @@
 # Release Notes
 
+## 16.0.1
+
+### Issue Fixed
+* Reverted aborting test run when source and target frameworks/architectures are incompatible. [#1935](https://github.com/Microsoft/vstest/pull/1935)
+
+### Drops
+
+* TestPlatform vsix: [16.0.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190304-05;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.1)
+
 ## 16.0.0
 
 ### Issue Fixed
