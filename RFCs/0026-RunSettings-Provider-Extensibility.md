@@ -53,3 +53,7 @@ public class SettingsProviderOptions
 
 ### RunSettingsProvider assembly naming convention 
 Separate assembly is not required for RunSettingsProvider. RunSettingsProvider can be specified in same assembly as of its target extension (like DataCollector, Logger). Thus, naming convention is similar to target extension (`*collector.dll` or `*logger.dll`)
+
+## Notes
+1. Unlike DataCollectors/Loggers, RunSettingsProvider extension will always be plugged in test platform. RunSettingsProvider extensions are not required to be plugged in via runsettings or command line.
+2. In case extension required by RunSettingsProvider is not present in runsettings, `null` value will be passed to RunSettingsProvider extension. RunSettingsProvider can return new extension element in that case, thus adding the extension in runsettings (if not present)
