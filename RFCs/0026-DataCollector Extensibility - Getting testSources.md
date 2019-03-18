@@ -6,50 +6,65 @@ Getting `testSources` as part of property bag. List of test sources can be used 
 ## Motivation
 Data collector might need test sources list while initialization. Example: Static code coverage data collector needs to instrument the test sources before test run start.
 
-The datacollector will receive a property bag in sessionStartEventArgs
-
+In `sessionStartEventArgs` the field `IDictionary<string, object> Properties` will contain all properties we need to pass to the datacollector.
+The public APIs exposed in `SessionStartEventArgs` would be as given below.
 ```csharp
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
-
-[DataCollectorFriendlyName("NewDataCollector")]
-[DataCollectorTypeUri("my://new/datacollector")]
-public class NewDataCollector : DataCollector
+ /// <summary>
+/// Returns the Session Start Properties currently specified.
+/// </summary>
+public IEnumerator<KeyValuePair<string, object>> GetProperties()
 {
-    private string logFileName;
-	private IEnumerable<string> testSources;
-    private DataCollectionEnvironmentContext context;
+    return this.Properties.GetEnumerator();
+}
 
-    public override void Initialize(
-            System.Xml.XmlElement configurationElement,
-            DataCollectionEvents events,
-            DataCollectionSink dataSink,
-            DataCollectionLogger logger,
-            DataCollectionEnvironmentContext environmentContext)
+/// <summary>
+/// Returns the property value
+/// </summary>
+/// <param name="value">
+/// Value of the property
+/// </param>
+/// <param name="property">
+/// Name of the property
+/// </param>
+public T GetPropertyValue<T>(string property, T value)
+{
+    ValidateArg.NotNullOrEmpty(property, "property");
+
+    if (this.Properties.TryGetValue(property, out object propertyValue) && propertyValue != null)
     {
-        events.SessionStart += this.SessionStarted_Handler;
-        events.TestCaseStart += this.Events_TestCaseStart;
-        this.logFileName = configurationElement["LogFileName"];
-		this.context = environmentContext;
+        value = (T)propertyValue;
     }
-    
-    private void SessionStarted_Handler(object sender, SessionStartEventArgs sessionStartEventArgs)
+    else
     {
-        var filename = Path.Combine(AppContext.BaseDirectory, logFileName);
-        File.WriteAllText(filename, "SessionStarted");
-        this.testSources = sessionStartEventArgs.Properties.GetPropertyValue(Properties.TestSources);
-        this.dataCollectionSink.SendFileAsync(this.context.SessionDataCollectionContext, filename, true);
-        this.logger.LogWarning(this.context.SessionDataCollectionContext, "SessionStarted");
+        value = default(T);
     }
 
+    return value;
+}
+/// <summary>
+/// Sets the property value
+/// </summary>
+/// <param name="property">
+/// Name of the property
+/// </param>
+/// <param name="value">
+/// Value of the property
+/// </param>
+public void SetPropertyValue(string property, object value)
+{
+    ValidateArg.NotNull(property, "property");
 
-    private void Events_TestCaseStart(object sender, TestCaseStartEventArgs e)
+    if (value != null)
     {
-        this.logger.LogWarning(this.context.SessionDataCollectionContext, "TestCaseStarted " + e.TestCaseName);
+        this.Properties.Add(property, value);
     }
 }
 ```
 
-The property bag will be added in DataCollectionEventArgs so that it is available to all EventArgs which inherits from it.
+At present, we will be adding `testSources` to `sessionStartEventArgs.Properties` which can be taken use by the datacollector.
 
-`SessionStartEventArgs.Property` will contain an `IEnumerable<string>` of `testSources` which can be taken use by the datacollector and is an extensible model.
-This can be further extended for sending other properties to the datacollector.
+In the datacollector, the user can get test sources as given below.
+```csharp
+IEnumerable<string> sources = new List<string>();
+sessionStartEventArgs.GetPropertyValue("testSources", out sources);
+```
