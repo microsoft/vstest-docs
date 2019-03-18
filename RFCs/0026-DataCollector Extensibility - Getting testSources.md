@@ -7,10 +7,10 @@ Passing TestPlatform properties as part of property bag to datacollectors. These
 Data collector might need test platform properties while initialization. Example: Static code coverage data collector needs to instrument the test sources before test run start thus need list of test sources during initialization.
 
 ## Design
-In `SessionStartEventArgs` will contain `Properties` which are passed to the data collector in `SessionStart` event.<br/>
+In `SessionStartEventArgs` will contain `Properties` which are passed to the data collector in `SessionStart` event.
 Currently test platform passes following properties to the datacollector extensions :
-    1. "TestSources" : IEnumerable <br/>
-        TestSources is an enumerable of all test sources that is used by the test run.
+1. **"TestSources"** : IEnumerable
+    TestSources is an enumerable of all test sources that is used by the test run.
 
 The public APIs exposed in `SessionStartEventArgs` would be as given below.
 ```csharp
