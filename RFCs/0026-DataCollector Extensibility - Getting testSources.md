@@ -66,5 +66,5 @@ At present, we will be adding `testSources` to `sessionStartEventArgs.Properties
 In the datacollector, the user can get test sources as given below.
 ```csharp
 IEnumerable<string> sources = new List<string>();
-sessionStartEventArgs.GetPropertyValue("testSources", out sources);
+sources = sessionStartEventArgs.GetPropertyValue("testSources", sources);
 ```
