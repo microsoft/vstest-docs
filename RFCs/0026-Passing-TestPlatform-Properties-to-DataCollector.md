@@ -9,8 +9,8 @@ Data collector might need test platform properties while initialization. Example
 ## Design
 `SessionStartEventArgs` will contain `Properties` which are passed to the data collector in `SessionStart` event.
 Currently test platform passes following properties to the datacollector extensions :
-    1. "TestSources" : IEnumerable
-        TestSources is an enumerable of all test sources that is used by the test run.
+1. **"TestSources"** : IEnumerable
+    TestSources is an enumerable of all test sources that is used by the test run.
 
 The public APIs exposed in `SessionStartEventArgs` would be as given below.
 ```csharp
