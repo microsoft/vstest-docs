@@ -10,7 +10,7 @@ Data collector might need test platform properties. Example: Static code coverag
 `SessionStartEventArgs` will contain `Properties` which are passed to the data collector in `SessionStart` event.
 Currently test platform passes following properties to the datacollector extensions :
 
-**"TestSources"** : `IEnumerable<string>`
+**"TestSources"** : `IEnumerable<string>`<br/>
 TestSources is an enumerable of string of all test sources that is used by the test run.
 
 The public APIs exposed in `SessionStartEventArgs` would be as given below.
