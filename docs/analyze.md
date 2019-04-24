@@ -19,7 +19,7 @@ A DataCollector is a test platform extension to monitor test run. It can be exte
 3. Test Case End event.
 4. Session End event.
 
-You can author a DataCollector to collect code coverage data for a test run, to collect logs when a test case or test run fails, etc. These additional files are called Attachments,and they can be attached to test result report(trx).
+You can author a DataCollector to collect code coverage data for a test run, to collect logs when a test case or test run fails, etc. These additional files are called Attachments and they can be attached to test result report(trx).
 
 Please refer [here](https://github.com/Microsoft/vstest-docs/blob/master/docs/extensions/datacollector.md) for instructions on creating a DataCollector and [here](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0006-DataCollection-Protocol.md)
 if you're interested in the architecture of data collection.
