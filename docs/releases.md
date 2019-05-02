@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.0.2-Preview-20190502-01
+
+### Issue Fixed
+* Improve the cli experience for dotnet test. [#1964](https://github.com/Microsoft/vstest/pull/1964)
+* Improve readability of dotnet test [#1960](https://github.com/Microsoft/vstest/pull/1960)
+* Make testhost.x86 large address aware [#1986](https://github.com/Microsoft/vstest/pull/1986)
+* Vstest.console Should not message to Testhost process if it has exited [#1994](https://github.com/Microsoft/vstest/pull/1994)
+* [Revert] Fix for dotnet test on a multi-target projects logs only the last target [#1996](https://github.com/Microsoft/vstest/pull/1996)
+* [Trxlogger] Fixing the code to preserve newline for adapter logs to stdout [#1999](https://github.com/Microsoft/vstest/pull/1999)
+
+### Drops
+
+* TestPlatform vsix: [16.0.2-preview-20190502-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190502-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.2-preview-20190502-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.2-preview-20190502-01)
+
 ## 16.0.1
 
 ### Issue Fixed
