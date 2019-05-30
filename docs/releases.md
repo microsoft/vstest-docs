@@ -1,5 +1,19 @@
 # Release Notes
 
+## 16.1.1
+
+### Issue Fixed
+* Prevent unnecessary progress indicator refresh to improve test run time. [#2024](https://github.com/microsoft/vstest/pull/2024)
+* Changes to allow clients to provide environment variable while initializing VsTestConsoleWrapper [#2023](https://github.com/microsoft/vstest/pull/2023)
+* Fix for the trx classname being wrongly stamped when testname and fullyqualifiedname are same. [#2014](https://github.com/microsoft/vstest/pull/2014)
+* Search datacollectors in output directory as well. [#2015](https://github.com/microsoft/vstest/pull/2015)
+* Changes to avoid restoring of packages that are not required for the BuildFromSource scenario. [#2017](https://github.com/microsoft/vstest/pull/2017)
+
+### Drops
+
+* TestPlatform vsix: [16.1.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190529-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.1.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.1.1)
+
 ## 16.0.2-Preview-20190502-01
 
 ### Issue Fixed
