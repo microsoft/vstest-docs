@@ -5,6 +5,9 @@
 ### Issue Fixed
 * Prevent unnecessary progress indicator refresh to improve test run time. [#2024](https://github.com/microsoft/vstest/pull/2024)
 * Changes to allow clients to provide environment variable while initializing VsTestConsoleWrapper [#2023](https://github.com/microsoft/vstest/pull/2023)
+* Fix for the trx classname being wrongly stamped when testname and fullyqualifiedname are same. [#2014](https://github.com/microsoft/vstest/pull/2014)
+* Search datacollectors in output directory as well. [#2015](https://github.com/microsoft/vstest/pull/2015)
+* Changes to avoid restoring of packages that are not required for the BuildFromSource scenario. [#2017](https://github.com/microsoft/vstest/pull/2017)
 
 ### Drops
 
