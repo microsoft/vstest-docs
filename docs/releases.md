@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.2.0-preview-20190606-02
+
+### Issue Fixed
+* Spurious vstest.console process spin up fixed. [#2035](https://github.com/microsoft/vstest/pull/2035)
+* Test host locking pdb fixed [#2029](https://github.com/microsoft/vstest/pull/2029)
+* Encoding change from UCS-2 to UTF-8. [#2044](https://github.com/microsoft/vstest/pull/2044)
+* Unable to find Microsoft.VisualStudio.ArchitectureTools.PEReader fixed. [#2008](https://github.com/microsoft/vstest/pull/2008)
+
+### Drops
+
+* TestPlatform vsix: [16.2.0-preview-20190606-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190606-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.2.0-preview-20190606-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0-preview-20190606-02)
+
 ## 16.1.1
 
 ### Issue Fixed
