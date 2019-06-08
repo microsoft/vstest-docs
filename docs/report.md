@@ -28,7 +28,7 @@ if you're interested in the architecture of a test logger.
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/Faizan2304/LoggerExtensions
-[AppVeyor Logger]: https://github.com/Faizan2304/LoggerExtensions
+[AppVeyor Logger]: https://github.com/spekt/appveyor.testlogger
 [TeamCity Logger]: https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
 
 [xunit.nuget]: https://www.nuget.org/packages/XunitXml.TestLogger
