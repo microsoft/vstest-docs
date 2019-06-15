@@ -22,16 +22,19 @@ if you're interested in the architecture of a test logger.
 | Local, CI, CD | Inbuilt | [Trx Logger][] |
 | Local, CI, CD | Inbuilt | [Console Logger][] |
 | Local, CI, CD | [XunitXml.TestLogger][xunit.nuget] | [Xunit Logger][] |
+| Local, CI, CD | [NunitXml.TestLogger][nunit.nuget] | [Nunit Logger][] |
 | AppVeyor | [AppVeyor.TestLogger][appveyor.nuget] | [AppVeyor Logger][] |
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
 
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
-[Xunit Logger]: https://github.com/Faizan2304/LoggerExtensions
+[Xunit Logger]: https://github.com/spekt/xunit.testlogger
+[Nunit Logger]: https://github.com/spekt/nunit.testlogger
 [AppVeyor Logger]: https://github.com/spekt/appveyor.testlogger
 [TeamCity Logger]: https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
 
 [xunit.nuget]: https://www.nuget.org/packages/XunitXml.TestLogger
+[nunit.nuget]: https://www.nuget.org/packages/NUnitXml.TestLogger/
 [appveyor.nuget]: https://www.nuget.org/packages/AppVeyor.TestLogger
 [teamcity.nuget]: https://www.nuget.org/packages/TeamCity.VSTest.TestAdapter
 
