@@ -83,10 +83,10 @@ To provide a good user experience, we will go with __Option 2__.
 - [x] The code coverage profiler (covrun32.dll/covrun64.dll) to support embedded PDB [this will use MSDIA]
 - [x] The code coverage Logger(CodeCoverage.exe) and code coverage profiler to be appropriately packaged so they are available to the .NET Core user
 - [x] "preview" to NuGet
-- [ ] Beta to NuGet
-- [ ] Blog on DevOps blog
-- [ ] MSDN doc updated
-- [ ] RTW to NuGet
+- [x] Beta to NuGet
+- [x] Blog on DevOps blog
+- [x] MSDN doc updated
+- [x] RTW to NuGet
 
 ## Ship date
 Microsoft.NET.Test.Sdk v15.8 (Q3 2018).
