@@ -88,5 +88,5 @@ To provide a good user experience, we will go with __Option 2__.
 - [ ] MSDN doc updated
 - [ ] RTW to NuGet
 
-## Expected Ship date
-From Microsoft.NET.Test.Sdk v15.8 (Q3 2018) onwards.
+## Ship date
+Microsoft.NET.Test.Sdk v15.8 (Q3 2018).
