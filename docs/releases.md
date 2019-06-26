@@ -1,5 +1,47 @@
 # Release Notes
 
+## 16.2.0-preview-20190606-02
+
+### Issue Fixed
+* Spurious vstest.console process spin up fixed. [#2035](https://github.com/microsoft/vstest/pull/2035)
+* Test host locking pdb fixed [#2029](https://github.com/microsoft/vstest/pull/2029)
+* Encoding change from UCS-2 to UTF-8. [#2044](https://github.com/microsoft/vstest/pull/2044)
+* Unable to find Microsoft.VisualStudio.ArchitectureTools.PEReader fixed. [#2008](https://github.com/microsoft/vstest/pull/2008)
+
+### Drops
+
+* TestPlatform vsix: [16.2.0-preview-20190606-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190606-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.2.0-preview-20190606-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0-preview-20190606-02)
+
+## 16.1.1
+
+### Issue Fixed
+* Prevent unnecessary progress indicator refresh to improve test run time. [#2024](https://github.com/microsoft/vstest/pull/2024)
+* Changes to allow clients to provide environment variable while initializing VsTestConsoleWrapper [#2023](https://github.com/microsoft/vstest/pull/2023)
+* Fix for the trx classname being wrongly stamped when testname and fullyqualifiedname are same. [#2014](https://github.com/microsoft/vstest/pull/2014)
+* Search datacollectors in output directory as well. [#2015](https://github.com/microsoft/vstest/pull/2015)
+* Changes to avoid restoring of packages that are not required for the BuildFromSource scenario. [#2017](https://github.com/microsoft/vstest/pull/2017)
+
+### Drops
+
+* TestPlatform vsix: [16.1.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190529-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.1.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.1.1)
+
+## 16.0.2-Preview-20190502-01
+
+### Issue Fixed
+* Improve the cli experience for dotnet test. [#1964](https://github.com/Microsoft/vstest/pull/1964)
+* Improve readability of dotnet test [#1960](https://github.com/Microsoft/vstest/pull/1960)
+* Make testhost.x86 large address aware [#1986](https://github.com/Microsoft/vstest/pull/1986)
+* Vstest.console Should not message to Testhost process if it has exited [#1994](https://github.com/Microsoft/vstest/pull/1994)
+* [Revert] Fix for dotnet test on a multi-target projects logs only the last target [#1996](https://github.com/Microsoft/vstest/pull/1996)
+* [Trxlogger] Fixing the code to preserve newline for adapter logs to stdout [#1999](https://github.com/Microsoft/vstest/pull/1999)
+
+### Drops
+
+* TestPlatform vsix: [16.0.2-preview-20190502-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190502-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.2-preview-20190502-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.2-preview-20190502-01)
+
 ## 16.0.1
 
 ### Issue Fixed
