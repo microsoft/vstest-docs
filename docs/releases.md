@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.2.0
+
+### Issue Fixed
+* Updated TestPlatform.ObjectModel.nuspec. [#2055](https://github.com/microsoft/vstest/pull/2055)
+* Fixed incorrect timeout message when test host crashes [#2056](https://github.com/microsoft/vstest/pull/2056)
+* Incomapatible framework message fix. [#2044](https://github.com/microsoft/vstest/pull/2044)
+* Cleaned up remaining set of dependencies for source build. [#2058](https://github.com/microsoft/vstest/pull/2058)
+
+### Drops
+
+* TestPlatform vsix: [16.2.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190626-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.2.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0)
+
 ## 16.2.0-preview-20190606-02
 
 ### Issue Fixed
