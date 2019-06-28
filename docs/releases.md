@@ -5,7 +5,7 @@
 ### Issue Fixed
 * Updated TestPlatform.ObjectModel.nuspec. [#2055](https://github.com/microsoft/vstest/pull/2055)
 * Fixed incorrect timeout message when test host crashes [#2056](https://github.com/microsoft/vstest/pull/2056)
-* Incomapatible framework message fix. [#2044](https://github.com/microsoft/vstest/pull/2044)
+* Incompatible framework message fix. [#2044](https://github.com/microsoft/vstest/pull/2044)
 * Cleaned up remaining set of dependencies for source build. [#2058](https://github.com/microsoft/vstest/pull/2058)
 
 ### Drops
