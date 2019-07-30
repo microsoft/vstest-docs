@@ -70,7 +70,7 @@ to load test loggers.
 ## Create a test logger
 Go through the following steps to create your own logger
 1) Add a nuget reference of package `Microsoft.TestPlatform.ObjectModel`.
-2) Implement ITestLoggerWithParameters (or ITestLogger, if your logger is not expecting any parameter). [Logger Example](https://github.com/Faizan2304/LoggerExtensions/blob/master/src/Xunit.Xml.TestLogger/XunitXmlTestLogger.cs#L19)
+2) Implement ITestLoggerWithParameters (or ITestLogger, if your logger is not expecting any parameter). [Logger Example](https://github.com/spekt/xunit.testlogger/blob/master/src/Xunit.Xml.TestLogger/XunitXmlTestLogger.cs#L19)
 3) Name your logger assemlby `*.testlogger.dll`. [Detailed](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#naming)
 
 ## Enable a test logger
