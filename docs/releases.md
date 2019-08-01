@@ -1,5 +1,17 @@
 # Release Notes
 
+## 16.3.0-preview-20190715-02
+
+### Issue Fixed
+* TestPlatform targeting netstandard2.0. [#2076](https://github.com/microsoft/vstest/pull/2076)
+* Implemented the cancellation of discovery request [#2076](https://github.com/microsoft/vstest/pull/2076)
+* Generating manifest for publishing to BAR. [#2069](https://github.com/microsoft/vstest/pull/2069)
+
+### Drops
+
+* TestPlatform vsix: [16.3.0-preview-20190715-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190715-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190715-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190715-02)
+
 ## 16.2.0
 
 ### Issue Fixed
