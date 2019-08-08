@@ -18,7 +18,7 @@ Below is a sample runsettings for passing environment variables.
 <RunSettings>
   <RunConfiguration>
     <EnvironmentVariables>
-      <!-- List of environment variables we want to set as element name and its value-->
+      <!-- List of environment variables we want to set-->
       <DOTNET_ROOT>C:\ProgramFiles\dotnet</DOTNET_ROOT>
       <SDK_PATH>C:\Codebase\Sdk</SDK_PATH>
     </EnvironmentVariables>
