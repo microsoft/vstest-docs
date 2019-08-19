@@ -21,7 +21,7 @@ Solution: Generate different target trx files in separate folders inside the tes
 
 For case (b), the trx file will still be overwritten with a warning.
 
-### Option 2: Specify LogFilePrefix Parameter
+### Option 2: Specify LogFilePrefix Parameter with date time appended
 
 Introduce a LogFilePrefix parameter in trx logger. Example : `dotnet test "--logger:trx;LogFilePrefix=results"`  
 With this, if we want all trx files in a multi target project, instead of specifying a logFileName, we provide a LogFilePrefix.  
@@ -30,5 +30,17 @@ The trx file name prefix is appended with time stamp to generate multi target tr
 For example : `dotnet test "--logger:trx;LogFilePrefix=results"` will generate  
 &nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_2018-12-24_14-01-07-176.trx  
 &nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_2018-12-24_14-01-08-111.trx  
+
+The behavior of  `dotnet test "--logger:trx;LogFileName=results.trx"` will remain same with overwriting being done, and warning to switch to LogFilePrefix.
+
+### Option 3: Specify LogFilePrefix Parameter with target framework appended
+
+Introduce a LogFilePrefix parameter in trx logger. Example : `dotnet test "--logger:trx;LogFilePrefix=results"`  
+With this, if we want all trx files in a multi target project, instead of specifying a logFileName, we provide a LogFilePrefix.  
+The trx file name prefix is appended with target framework to generate multi target trx files.  
+
+For example : `dotnet test "--logger:trx;LogFilePrefix=results"` will generate  
+&nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_net451.trx  
+&nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_netcoreapp20.trx  
 
 The behavior of  `dotnet test "--logger:trx;LogFileName=results.trx"` will remain same with overwriting being done, and warning to switch to LogFilePrefix.
