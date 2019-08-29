@@ -11,7 +11,7 @@
 ### Drops
 
 * TestPlatform vsix: [16.3.0-preview-20190828-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190828-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190715-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190828-03)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190828-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190828-03)
 
 
 ## 16.3.0-preview-20190715-02
