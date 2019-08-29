@@ -1,5 +1,19 @@
 # Release Notes
 
+## 16.3.0-preview-20190828-03
+
+### Issue Fixed
+* Add noprogress parameter to disable progress indicator [#2117](https://github.com/microsoft/vstest/pull/2117)
+* Accept short names for framewwork [#2116](https://github.com/microsoft/vstest/pull/2116)
+* Specifying environment variables in RunSettings file [#2128](https://github.com/microsoft/vstest/pull/2128)
+* VsTestConsoleWrapper endsession should shut down vstest console process [#2145](https://github.com/microsoft/vstest/pull/2145)
+
+### Drops
+
+* TestPlatform vsix: [16.3.0-preview-20190828-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190828-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190828-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190828-03)
+
+
 ## 16.3.0-preview-20190715-02
 
 ### Issue Fixed
