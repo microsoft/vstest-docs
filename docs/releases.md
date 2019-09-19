@@ -1,5 +1,149 @@
 # Release Notes
 
+## 16.3.0
+
+### Issue Fixed
+* Html logger [#2103](https://github.com/microsoft/vstest/pull/2103)
+* Add LogFilePrefix Parameter for supporting trx for multi-targetted projects [#2140](https://github.com/microsoft/vstest/pull/2140)
+* Support x86 platform targeting for .NET core tests [#2161](https://github.com/microsoft/vstest/pull/2161)
+* Add logging for Translation layer [#2166](https://github.com/microsoft/vstest/pull/2166)
+
+### Drops
+
+* TestPlatform vsix: [16.3.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190919-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0)
+
+
+## 16.3.0-preview-20190828-03
+
+### Issue Fixed
+* Add noprogress parameter to disable progress indicator [#2117](https://github.com/microsoft/vstest/pull/2117)
+* Accept short names for framewwork [#2116](https://github.com/microsoft/vstest/pull/2116)
+* Specifying environment variables in RunSettings file [#2128](https://github.com/microsoft/vstest/pull/2128)
+* VsTestConsoleWrapper endsession should shut down vstest console process [#2145](https://github.com/microsoft/vstest/pull/2145)
+
+### Drops
+
+* TestPlatform vsix: [16.3.0-preview-20190828-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190828-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190828-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190828-03)
+
+
+## 16.3.0-preview-20190715-02
+
+### Issue Fixed
+* TestPlatform targeting netstandard2.0. [#2076](https://github.com/microsoft/vstest/pull/2076)
+* Implemented the cancellation of discovery request [#2076](https://github.com/microsoft/vstest/pull/2076)
+* Generating manifest for publishing to BAR. [#2069](https://github.com/microsoft/vstest/pull/2069)
+
+### Drops
+
+* TestPlatform vsix: [16.3.0-preview-20190715-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190715-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190715-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190715-02)
+
+## 16.2.0
+
+### Issue Fixed
+* Updated TestPlatform.ObjectModel.nuspec. [#2055](https://github.com/microsoft/vstest/pull/2055)
+* Fixed incorrect timeout message when test host crashes [#2056](https://github.com/microsoft/vstest/pull/2056)
+* Incompatible framework message fix. [#2044](https://github.com/microsoft/vstest/pull/2044)
+* Cleaned up remaining set of dependencies for source build. [#2058](https://github.com/microsoft/vstest/pull/2058)
+
+### Drops
+
+* TestPlatform vsix: [16.2.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190626-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.2.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0)
+
+## 16.2.0-preview-20190606-02
+
+### Issue Fixed
+* Spurious vstest.console process spin up fixed. [#2035](https://github.com/microsoft/vstest/pull/2035)
+* Test host locking pdb fixed [#2029](https://github.com/microsoft/vstest/pull/2029)
+* Encoding change from UCS-2 to UTF-8. [#2044](https://github.com/microsoft/vstest/pull/2044)
+* Unable to find Microsoft.VisualStudio.ArchitectureTools.PEReader fixed. [#2008](https://github.com/microsoft/vstest/pull/2008)
+
+### Drops
+
+* TestPlatform vsix: [16.2.0-preview-20190606-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190606-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.2.0-preview-20190606-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0-preview-20190606-02)
+
+## 16.1.1
+
+### Issue Fixed
+* Prevent unnecessary progress indicator refresh to improve test run time. [#2024](https://github.com/microsoft/vstest/pull/2024)
+* Changes to allow clients to provide environment variable while initializing VsTestConsoleWrapper [#2023](https://github.com/microsoft/vstest/pull/2023)
+* Fix for the trx classname being wrongly stamped when testname and fullyqualifiedname are same. [#2014](https://github.com/microsoft/vstest/pull/2014)
+* Search datacollectors in output directory as well. [#2015](https://github.com/microsoft/vstest/pull/2015)
+* Changes to avoid restoring of packages that are not required for the BuildFromSource scenario. [#2017](https://github.com/microsoft/vstest/pull/2017)
+
+### Drops
+
+* TestPlatform vsix: [16.1.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190529-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.1.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.1.1)
+
+## 16.0.2-Preview-20190502-01
+
+### Issue Fixed
+* Improve the cli experience for dotnet test. [#1964](https://github.com/Microsoft/vstest/pull/1964)
+* Improve readability of dotnet test [#1960](https://github.com/Microsoft/vstest/pull/1960)
+* Make testhost.x86 large address aware [#1986](https://github.com/Microsoft/vstest/pull/1986)
+* Vstest.console Should not message to Testhost process if it has exited [#1994](https://github.com/Microsoft/vstest/pull/1994)
+* [Revert] Fix for dotnet test on a multi-target projects logs only the last target [#1996](https://github.com/Microsoft/vstest/pull/1996)
+* [Trxlogger] Fixing the code to preserve newline for adapter logs to stdout [#1999](https://github.com/Microsoft/vstest/pull/1999)
+
+### Drops
+
+* TestPlatform vsix: [16.0.2-preview-20190502-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190502-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.2-preview-20190502-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.2-preview-20190502-01)
+
+## 16.0.1
+
+### Issue Fixed
+* Reverted aborting test run when source and target frameworks/architectures are incompatible. [#1935](https://github.com/Microsoft/vstest/pull/1935)
+
+### Drops
+
+* TestPlatform vsix: [16.0.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190304-05;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.1)
+
+## 16.0.0
+
+### Issue Fixed
+* Added missing Utilities dependency to netstandard1.5 [#1913](https://github.com/Microsoft/vstest/pull/1913)
+* Add support for xplat vstest console in translationlayer [#1893](https://github.com/Microsoft/vstest/pull/1893)
+* Aborting test run when source and target frameworks/architectures are incompatible. [#1789](https://github.com/Microsoft/vstest/pull/1789)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190228-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0)
+
+## 16.0.0-preview-20190201-03
+
+### Issue Fixed
+* Running NETFramework 3.5 tests in compat mode [#1906](https://github.com/Microsoft/vstest/pull/1906)
+* Make timeouts for translation layer timeout configurable. [#1909](https://github.com/Microsoft/vstest/pull/1909)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0-preview-20190201-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190201-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20190201-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190201-03)
+
+
+## 16.0.0-preview-20190124-02
+
+### Issue Fixed
+* Downgrade Test.Sdk to net40 [#1860](https://github.com/Microsoft/vstest/pull/1860)
+* Fix xml exception when we are dealing with special chars [#1872](https://github.com/Microsoft/vstest/pull/1872)
+* Fix - dotnet test on a multi-target projects logs only the last target [#1877](https://github.com/Microsoft/vstest/pull/1877)
+* Avoid usage of JsonConvert in test host process [#1881](https://github.com/Microsoft/vstest/pull/1881)
+* Fixing logging error in event sources [#1897](https://github.com/Microsoft/vstest/pull/1897)
+
+### Drops
+
+* TestPlatform vsix: [16.0.0-preview-20190124-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190124-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20190124-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190124-02)
+
+
 ## 16.0.0-preview-20181205-02
 
 ### Issue Fixed

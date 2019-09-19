@@ -41,7 +41,7 @@ The syntax in (1) is another way of passing runsettings configuration and you ne
 
 `Runsettings arguments` takes precedence over `runsettings`.
 
-For example, in below command the final value for `MapInconclusiveToFailed` will be `False` and vale for `DeploymentEnabled` will be unchanged, that is `False`.
+For example, in below command the final value for `MapInconclusiveToFailed` will be `False` and value for `DeploymentEnabled` will be unchanged, that is `False`.
 
 ```
 dotnet test --settings additionalargs.runsettings -- MSTest.MapInconclusiveToFailed=False
