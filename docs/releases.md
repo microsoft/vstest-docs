@@ -1,5 +1,19 @@
 # Release Notes
 
+## 16.3.0
+
+### Issue Fixed
+* Html logger [#2103](https://github.com/microsoft/vstest/pull/2103)
+* Add LogFilePrefix Parameter for supporting trx for multi-targetted projects [#2140](https://github.com/microsoft/vstest/pull/2140)
+* Support x86 platform targeting for .NET core tests [#2161](https://github.com/microsoft/vstest/pull/2161)
+* Add logging for Translation layer [#2166](https://github.com/microsoft/vstest/pull/2166)
+
+### Drops
+
+* TestPlatform vsix: [16.3.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190919-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0)
+
+
 ## 16.3.0-preview-20190828-03
 
 ### Issue Fixed
