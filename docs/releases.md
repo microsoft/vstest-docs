@@ -18,7 +18,7 @@
 
 ### Issue Fixed
 * Add noprogress parameter to disable progress indicator [#2117](https://github.com/microsoft/vstest/pull/2117)
-* Accept short names for framewwork [#2116](https://github.com/microsoft/vstest/pull/2116)
+* Accept short names for framework [#2116](https://github.com/microsoft/vstest/pull/2116)
 * Specifying environment variables in RunSettings file [#2128](https://github.com/microsoft/vstest/pull/2128)
 * VsTestConsoleWrapper endsession should shut down vstest console process [#2145](https://github.com/microsoft/vstest/pull/2145)
 
