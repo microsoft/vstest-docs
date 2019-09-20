@@ -21,6 +21,7 @@ if you're interested in the architecture of a test logger.
 | -------- | ------------- | ----------------- |
 | Local, CI, CD | Inbuilt | [Trx Logger][] |
 | Local, CI, CD | Inbuilt | [Console Logger][] |
+| Local, CI, CD | Inbuilt | [Html Logger][] |
 | Local, CI, CD | [XunitXml.TestLogger][xunit.nuget] | [Xunit Logger][] |
 | Local, CI, CD | [NunitXml.TestLogger][nunit.nuget] | [Nunit Logger][] |
 | AppVeyor | [AppVeyor.TestLogger][appveyor.nuget] | [AppVeyor Logger][] |
@@ -28,6 +29,7 @@ if you're interested in the architecture of a test logger.
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
 
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
+[Html Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.HtmlLogger
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/spekt/xunit.testlogger
 [Nunit Logger]: https://github.com/spekt/nunit.testlogger
@@ -123,9 +125,8 @@ or you can also use argument "-v | --verbosity" of "dotnet test"
 dotnet test Tests.csproj -v normal
 ```
 
-
-### 2) trx logger
-trx logger is used to log test results into a Visual Studio Test Results File (TRX).
+### 2) Trx logger
+Trx logger is used to log test results into a Visual Studio Test Results File (TRX).
 
 #### Syntax
 ```
@@ -147,6 +148,32 @@ trx file will be "c:\tempDirecory\TestResults\relativeDir\logFile.txt"
 3) vstest.console.exe Tests.dll /logger:"trx;LogFileName=c:\temp\logFile.txt"
 trx file will be "c:\temp\logFile.txt"
 ```
+
+### 3) Html logger
+Html logger is used to log test results into a html file.
+
+#### Syntax
+```
+/logger:html [;LogFileName=<Defaults to unique file name>]
+
+Where "LogFileName" can be absolute or relative path. If path is relative, it will be relative to "TestResults" directory, created under current working directory.
+
+```
+
+#### Examples
+
+Suppose the current working directory is "c:\tempDirecory".
+```
+1) vstest.console.exe Tests.dll /logger:html
+Html file will get generated in location "c:\tempDirecory\TestResults"
+
+2) vstest.console.exe Tests.dll /logger:"html;LogFileName=relativeDir\logFile.html"
+Html file will be "c:\tempDirecory\TestResults\relativeDir\logFile.html"
+
+3) vstest.console.exe Tests.dll /logger:"html;LogFileName=c:\temp\logFile.html"
+Html file will be "c:\temp\logFile.html"
+```
+
 
 ## Related links
 TODO: link to author a test logger
