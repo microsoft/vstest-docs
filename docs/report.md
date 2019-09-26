@@ -24,6 +24,7 @@ if you're interested in the architecture of a test logger.
 | Local, CI, CD | Inbuilt | [Html Logger][] |
 | Local, CI, CD | [XunitXml.TestLogger][xunit.nuget] | [Xunit Logger][] |
 | Local, CI, CD | [NunitXml.TestLogger][nunit.nuget] | [Nunit Logger][] |
+| Local, CI, CD | [JunitXml.TestLogger][junit.nuget] | [Junit Logger][] |
 | AppVeyor | [AppVeyor.TestLogger][appveyor.nuget] | [AppVeyor Logger][] |
 | Azure Pipelines | [AzurePipelines.TestLogger][azurepipelines.nuget] | [Azure Pipelines Logger][] |
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
@@ -33,12 +34,14 @@ if you're interested in the architecture of a test logger.
 [Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/spekt/xunit.testlogger
 [Nunit Logger]: https://github.com/spekt/nunit.testlogger
+[Junit Logger]: https://github.com/spekt/junit.testlogger
 [AppVeyor Logger]: https://github.com/spekt/appveyor.testlogger
 [Azure Pipelines Logger]: https://github.com/daveaglick/AzurePipelines.TestLogger
 [TeamCity Logger]: https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
 
 [xunit.nuget]: https://www.nuget.org/packages/XunitXml.TestLogger
 [nunit.nuget]: https://www.nuget.org/packages/NUnitXml.TestLogger/
+[junit.nuget]: https://www.nuget.org/packages/JUnitXml.TestLogger/
 [appveyor.nuget]: https://www.nuget.org/packages/AppVeyor.TestLogger
 [azurepipelines.nuget]: https://www.nuget.org/packages/AzurePipelines.TestLogger
 [teamcity.nuget]: https://www.nuget.org/packages/TeamCity.VSTest.TestAdapter
