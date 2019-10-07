@@ -1,5 +1,16 @@
 # Release Notes
 
+##  16.4.0-preview-20191007-01
+
+### Issues Fixed / Features Added
+
+* Redirect procdump process output to diag files [#2181](https://github.com/microsoft/vstest/pull/2181)
+* Implemented cancellation of individual source files discovery [#2134](https://github.com/microsoft/vstest/pull/2134)
+* Enabling native code debugging of test host [#2190](https://github.com/microsoft/vstest/pull/2190)
+* Logging Adapter Load issues to console [#2156](https://github.com/microsoft/vstest/pull/2156)
+* Fixed DataCollector to load with only uri (and not friendly name) specified in Runsettings [#2177](https://github.com/microsoft/vstest/pull/2177)
+* Added env var support to blame test results directory path and fixed blame aborting without killing the test host process on hang timeout when there is an error with dump collection/attachment [#2216](https://github.com/microsoft/vstest/pull/2216)
+
 ## 16.3.0
 
 ### Issue Fixed
@@ -18,7 +29,7 @@
 
 ### Issue Fixed
 * Add noprogress parameter to disable progress indicator [#2117](https://github.com/microsoft/vstest/pull/2117)
-* Accept short names for framework [#2116](https://github.com/microsoft/vstest/pull/2116)
+* Accept short names for framewwork [#2116](https://github.com/microsoft/vstest/pull/2116)
 * Specifying environment variables in RunSettings file [#2128](https://github.com/microsoft/vstest/pull/2128)
 * VsTestConsoleWrapper endsession should shut down vstest console process [#2145](https://github.com/microsoft/vstest/pull/2145)
 
