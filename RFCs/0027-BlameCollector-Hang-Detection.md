@@ -9,8 +9,9 @@ Whenever running tests in CI systems if a hang occurred it would generally lead 
 ## Working
 If the testhost does not send any messages to the datacollector for the specified duration then it is inferred as a hang and a dump is collected and the testhost process is killed to ensure any available attachments and logs are gracefully attached to the trx file and propagated up to the chain in case of a CI system for further analysis of the hang.
 
-Note: Proc dump path needs to be set using the environment variable PROCDUMP_PATH
-Note: This works along with (but can also be used independent of) the existing collect dump option introduced in https://github.com/microsoft/vstest-docs/blob/master/RFCs/0024-Blame-Collector-Options.md
+## Steps to configure
+Proc dump path needs to be set using the environment variable PROCDUMP_PATH
+Add the required settings as shown below in the runsettings file
 
 Sample runsettings
 
@@ -28,6 +29,8 @@ Sample runsettings
     </DataCollectionRunSettings>
 </RunSettings>
 ```
+
+Note: This works along with (but can also be used independent of) the existing collect dump option introduced in https://github.com/microsoft/vstest-docs/blob/master/RFCs/0024-Blame-Collector-Options.md
 
 ## Supported options
 DumpType: If you choose to collect a full process dump. It takes values mini/full. By default, a mini dump will be created.
