@@ -36,3 +36,6 @@ Note: This works along with (but can also be used independent of) the existing c
 DumpType: If you choose to collect a full process dump. It takes values mini/full. By default, a mini dump will be created.
 TestTimeout: Duration of inactivity (no test events from the test host) after which the data collector assumes a hang has occurred and proceeds to collect a dump and kill the test host process.
 ResultsDirectory: Location to temporarily store the collected process dump
+
+## VsTest task usage
+As of now this can be used in the vstest task by making the above changes to runsettings and also enabling "advanced diagnostics" with collect dump set to "never" in the task UI if you just want hang dumps. (If both crash and hang detection needs to be enabled then set collect dump to "on abort only").
