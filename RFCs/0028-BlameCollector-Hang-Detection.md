@@ -34,7 +34,7 @@ Note: This works along with (but can also be used independent of) the existing c
 
 ## Supported options
 DumpType: If you choose to collect a full process dump. It takes values mini/full. By default, a mini dump will be created.
-TestTimeout: Duration of inactivity (no test events from the test host) after which the data collector assumes a hang has occurred and proceeds to collect a dump and kill the test host process.
+TestTimeout: Duration of inactivity in milliseconds (no test events from the test host) after which the data collector assumes a hang has occurred and proceeds to collect a dump and kill the test host process.
 ResultsDirectory: Location to temporarily store the collected process dump
 
 ## VsTest task usage
