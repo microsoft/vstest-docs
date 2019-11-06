@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.4.0
+
+### Issue Fixed
+* Adding log prefixkey to html logger [#2204](https://github.com/microsoft/vstest/pull/2204)
+* AnyCPU tests to choose default architecture based on process [#2206](https://github.com/microsoft/vstest/pull/2206)
+* Only send Coverlet in proc datacollector dll to testhost [#2226](https://github.com/microsoft/vstest/pull/2226)
+* Missing Cancel Implementation [#2227](https://github.com/microsoft/vstest/pull/2227)
+
+### Drops
+
+* TestPlatform vsix: [16.4.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20191025-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.4.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.4.0)
+
 ##  16.4.0-preview-20191007-01
 
 ### Issues Fixed / Features Added
