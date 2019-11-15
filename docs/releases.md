@@ -5,6 +5,11 @@
 ### Issue Fixed
 * Fixed Coverlet in-process collector not loaded for version > 1.0.0 [#2204](https://github.com/microsoft/vstest/pull/2221)
 
+### Drops
+
+* TestPlatform vsix: [16.5.0-preview-20191115-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20191115-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20191115-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20191115-01)
+
 ## 16.4.0
 
 ### Issue Fixed
