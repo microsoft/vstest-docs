@@ -1,5 +1,10 @@
 # Release Notes
 
+## 16.5.0-preview-20191115-01
+
+### Issue Fixed
+* Fixed Coverlet in-process collector not loaded for version > 1.0.0 [#2204](https://github.com/microsoft/vstest/pull/2221)
+
 ## 16.4.0
 
 ### Issue Fixed
