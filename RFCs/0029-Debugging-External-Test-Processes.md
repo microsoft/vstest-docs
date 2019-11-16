@@ -10,7 +10,7 @@ Some test frameworks (examples include [TAEF](https://docs.microsoft.com/en-us/w
 
 2. Even though a test adapter can launch a child process with debugger attached as described above, today the debugger is always attached to the `testhost*.exe` process as well. This means that **Visual Studio ends up debugging two processes** instead of just the single process where tests are running.
 
-Debugging of Python tests is supported in VS today. However, the Python adapter works around the above limiations by talking to the Python extension inside VS whenever `ITestExecutor.RunTests()` is invoked and `IRunContext.IsBeingDebugged` is true. The Python extension in VS then attaches VS debugger to the Python test process independently and also detaches the `testhost*.exe` process to achieve the desired behavior.
+Debugging of Python tests is supported in VS today. However, the Python adapter works around the above limiations by talking to the Python extension inside VS whenever `ITestExecutor.RunTests()` is invoked (and `IRunContext.IsBeingDebugged` is `true`). The Python extension in VS then attaches VS debugger to the Python test process independently and also detaches the `testhost*.exe` process to achieve the desired behavior.
 
 While this works for Python, not all test frameworks that need to support debugging of tests running in external processes would want their users to also install a VS extension. For this reason, debugging of TAEF tests is currently not supported in VS.
 
