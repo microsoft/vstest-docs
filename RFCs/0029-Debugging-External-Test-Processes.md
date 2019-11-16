@@ -50,7 +50,7 @@ void ITestExecutor.RunTests(IEnumerable<TestCase> tests, IRunContext runContext,
 }
 ```
 
-2. (Optional) Introduce a new `ITestExecutor2` interface that inherits [`ITestExecutor`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L15) and adds the following `RunTests()` API. Newer adapters can choose to implement `ITestExecutor2` instead of `ITestExecutor`. This would allow them to access `IFrameworkHandle2` without needing to cast from `IFrameworkHandle` to `IFrameworkHandle2`.
+2. **[Optional]** Introduce a new `ITestExecutor2` interface that inherits [`ITestExecutor`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L15) and adds the following `RunTests()` API. Newer adapters can choose to implement `ITestExecutor2` instead of `ITestExecutor`. This would allow them to access `IFrameworkHandle2` without needing to cast from `IFrameworkHandle` to `IFrameworkHandle2`.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
@@ -104,7 +104,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Interfaces
 
 ```
 
-4. (Optional) Introduce a new `IVsTestConsoleWrapper2` interface that inherits [`IVsTestConsoleWrapper`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs#L15) and adds the following `RunTestsWithCustomTestHost()` APIs. Visual Studio's Test Explorer can call this API and directly supply instance of `ITestHostLauncher2` without the needing to cast from `ITestHostLauncher2` to [`ITestHostLauncher`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Interfaces/ITestHostLauncher.cs#L11).
+4. **[Optional]** Introduce a new `IVsTestConsoleWrapper2` interface that inherits [`IVsTestConsoleWrapper`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs#L15) and adds the following `RunTestsWithCustomTestHost()` APIs. Visual Studio's Test Explorer can call this API and directly supply instance of `ITestHostLauncher2` without the needing to cast from `ITestHostLauncher2` to [`ITestHostLauncher`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Interfaces/ITestHostLauncher.cs#L11).
 
 ```
 namespace Microsoft.TestPlatform.VsTestConsole.TranslationLayer.Interfaces
