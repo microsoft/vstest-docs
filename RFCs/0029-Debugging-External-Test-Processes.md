@@ -155,7 +155,9 @@ namespace Microsoft.TestPlatform.VsTestConsole.TranslationLayer.Interfaces
 }
 ```
 
-5. Introduce a new well-known `TestProperty` - `TestCaseProperties.UsesCustomTestHostProcess` - that an adapter can tack on to `TestCase`s that will execute in a separate external process distinct from `testhost*.exe`. If all selected tests in a debugging session have this property attached, then the Test Platform and Visual Studio can avoid attaching debugger to the `testhost*.exe` process. Note: This may have some perf implication when debugging large selections (as the check will be performed even in cases where the property is not present). However, the scenario where someone wants to debug a large enough number of `TestCase`s where this would become a problem should be rare. I assume that the overhead of checking presence of one `TestProperty` on the selected `TestCases`s should not be huge for most regular debugging operations.
+5. Introduce a new well-known `TestProperty` - `TestCaseProperties.UsesCustomTestHostProcess` - that an adapter can tack on to `TestCase`s that will execute in a separate external process distinct from `testhost*.exe`. If all selected tests in a debugging session have this property attached, then the Test Platform and Visual Studio can avoid attaching debugger to the `testhost*.exe` process. 
+
+    This may have some perf implication when debugging large selections (as the check will be performed even in cases where the property is not present). However, the scenario where someone wants to debug a large enough number of `TestCase`s where this would become a problem should be rare. I assume that the overhead of checking presence of one `TestProperty` on the selected `TestCases`s should not be huge for most regular debugging operations.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel
