@@ -6,6 +6,9 @@ Blame data collector now supports a new mode meant to help detect and fix hangs 
 ## Motivation
 Whenever running tests in CI systems if a hang occurred it would generally lead to a timeout and abrupt cancelling of the CI pipeline without giving an oppurturnity for the test platform or other scripts to attach the necessary logs/dumps required to analyse the hang.
 
+## Pre-Requisites
+This was introduced in testplatform version 16.4.0-preview-20191007-01 (This or a higher version is required)
+
 ## Working
 If the testhost does not send any messages to the datacollector for the specified duration then it is inferred as a hang and a dump is collected and the testhost process is killed to ensure any available attachments and logs are gracefully attached to the trx file and propagated up to the chain in case of a CI system for further analysis of the hang.
 
