@@ -1,5 +1,17 @@
 # Release Notes
 
+## 16.5.0-preview-20191216-02
+
+### Issue Fixed
+* Trx changes for fqdn mapping in test method name [#2259](https://github.com/microsoft/vstest/pull/2259)
+* Fix for test discovery not working on mac machines [#2266](https://github.com/microsoft/vstest/pull/2266)
+* Use RunSettingsFilePath from project file when using dotnet test [#2272](https://github.com/microsoft/vstest/pull/2272)
+
+### Drops
+
+* TestPlatform vsix: [16.5.0-preview-20191216-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20191216-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20191216-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20191216-02)
+
 ## 16.5.0-preview-20191115-01
 
 ### Issue Fixed
