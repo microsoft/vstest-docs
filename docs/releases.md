@@ -1,5 +1,15 @@
 # Release Notes
 
+## 16.5.0-preview-20200102-01
+
+### Issue Fixed
+* Test run parameter added as part of CLI runsettings args [#2251](https://github.com/microsoft/vstest/pull/2251)
+
+### Drops
+
+* TestPlatform vsix: [16.5.0-preview-20200102-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200102-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200102-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200102-01)
+
 ## 16.5.0-preview-20191216-02
 
 ### Issue Fixed
