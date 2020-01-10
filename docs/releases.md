@@ -1,5 +1,19 @@
 # Release Notes
 
+## 16.5.0-preview-20200110-02
+
+### Issue Fixed 
+* Remove duplicate counting of test results in Consolelogger [#2267](https://github.com/microsoft/vstest/pull/2267) 
+* Cap version of VS to <16.0 [#2285](https://github.com/microsoft/vstest/pull/2285)
+* Use patched version of TestPlatform.Extensions [#2283](https://github.com/microsoft/vstest/pull/2283)
+
+See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-20200102-01...v16.5.0-preview-20200110-02)
+
+### Drops
+
+* TestPlatform vsix: [16.5.0-preview-20200110-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200110-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200110-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200110-02)
+
 ## 16.5.0-preview-20200102-01
 
 ### Issue Fixed
