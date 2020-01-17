@@ -1,5 +1,19 @@
 # Release Notes
 
+## 16.5.0-preview-20200116-01
+
+### Issue Fixed 
+* Revert "Use patched version of TestPlatform.Extensions (#2283)" [#2307](https://github.com/microsoft/vstest/pull/2307)
+* Update arcade [#2302](https://github.com/microsoft/vstest/pull/2302)
+* Fix SocketCommunicationManager [#2290](https://github.com/microsoft/vstest/pull/2290)
+
+See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-20200110-02...v16.5.0-preview-20200116-01)
+
+### Drops
+
+* TestPlatform vsix: [16.5.0-preview-20200116-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200116-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200116-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200116-01)
+
 ## 16.5.0-preview-20200110-02
 
 ### Issue Fixed 
