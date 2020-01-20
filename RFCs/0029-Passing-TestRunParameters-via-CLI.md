@@ -9,10 +9,10 @@ removes burden of editing run settings every time.
 
 ## Syntax
 
-`vstest.console.exe  abc.dll -- TestRunParaeters.Parameter(name="<name>",value="<value>")`
+`vstest.console.exe  abc.dll -- TestRunParaeters.Parameter(name="YourParameterName",value="YourParameterValue ")`
 
 ### Argument description 
-` -- TestRunParaeters.Parameter(name="<name>",value="<value>")` <br>
+` -- TestRunParaeters.Parameter(name="YourParamterName",value="YourParameterValue ")` <br>
 
 The above argument reflects the following change in runsettings. 
 
@@ -20,7 +20,7 @@ The above argument reflects the following change in runsettings.
 <RunSettings>
     <RunConfiguration>
         <TestRunParameters>
-          <Parameter name="<name>",value="<value>"/>
+          <Parameter name="YourParameterName",value="YourParameterValue"/>
         </TestRunParameters>
     </RunConfiguration>
 </RunSettings>
@@ -28,15 +28,15 @@ The above argument reflects the following change in runsettings.
 
 <ul>
 <li>TestRunParameters as Node</li>
-<li>Parametr as child element of TestRunParamter node</li>
-<li><name> as Attribute name </li>
-<li><value> as Attribute value </li>
+<li>Parameter as child element of TestRunParamter node</li>
+<li>YourParamterName as Attribute name </li>
+<li>YourParameterValue as Attribute value </li>
 </ul>
 
 ## Design
 Eventually the arguments are parsed and we get `attribute name` and `attribute value` of `test run parameter`.
 Later an xml element is overrode if exists with `attribute name` or created with `'Parameter'` as it's name and with attributes that are obtained by the above step.
-Finally we get `test run parameter` node if exits or created and append the created xml element to child nodes list of it.
+Finally we get `test run parameter` node if exists or created and append the created xml element to child nodes list of it.
 
 
 ## Allowed Characters
@@ -47,4 +47,4 @@ Finally we get `test run parameter` node if exits or created and append the crea
 
 ### Note
 Some special characters like &,<,> are converted to their escaped form and stored in runsettings. <br>
-For more Info on escpaed strings refer [this](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/rwlp_xml_escape.html).
+For more info on escaped strings refer [this](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/rwlp_xml_escape.html).
