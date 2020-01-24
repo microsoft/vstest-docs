@@ -75,9 +75,10 @@ This case will not override results as along with framework, we will append the 
 
 ## Approach Taken
 
-Option 4 : This generates unique test results for different frameworks and different projects.
+Option 4 : This generates unique test results for different frameworks and different projects. 
 Introduced a LogFilePrefix parameter in trx logger. 
-Example : `dotnet test "--logger:trx;LogFilePrefix=results"`.
+Example : `dotnet test "--logger:trx;LogFilePrefix=results"`. 
+ 
 For example : `dotnet test "--logger:trx;LogFilePrefix=results"` will generate  
 &nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_net451_2018_12-24_14-01-07-176.trx  
-&nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_netcoreapp20_2018-12-24_14-01-08-111.trx
+&nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_netcoreapp20_2018-12-24_14-01-08-111.trx 
