@@ -1,4 +1,4 @@
-# 0028 Dotnet test on multi target project logging on multiple targets
+# 0029 Dotnet test on multi target project logging on multiple targets
 
 ## Summary
 Dotnet test on a multi-target projects logs only the last target. In multi target project, the log file name provided is being overwritten and ending up in data loss. Issue: [https://github.com/microsoft/vstest/issues/1603](https://github.com/microsoft/vstest/issues/1603)
@@ -72,3 +72,12 @@ ResultsDirectory: C:\temp, and the solution contains
 This case will not override results as along with framework, we will append the timestamp.  
 &nbsp;&nbsp;&nbsp;&nbsp; C:\temp\results_net451_2018_12-24_14-01-07-176.trx  
 &nbsp;&nbsp;&nbsp;&nbsp; C:\temp\results_net451_2018-12-24_14-01-08-111.trx  
+
+## Approach Taken
+
+Option 4 : This generates unique test results for different frameworks and different projects.
+Introduced a LogFilePrefix parameter in trx logger. 
+Example : `dotnet test "--logger:trx;LogFilePrefix=results"`.
+For example : `dotnet test "--logger:trx;LogFilePrefix=results"` will generate  
+&nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_net451_2018_12-24_14-01-07-176.trx  
+&nbsp;&nbsp;&nbsp;&nbsp;UnitTestProject/TestResults/results_netcoreapp20_2018-12-24_14-01-08-111.trx
