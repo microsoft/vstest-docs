@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.5.0-preview-20200203-01
+
+### Issue Fixed
+* Use version of external package with fixes [#2315](https://github.com/microsoft/vstest/pull/2315)
+* Use latest version of VS that is available [#2314](https://github.com/microsoft/vstest/pull/2314)
+* Pass coverlet codebase in runsettings for inproc data collector initialization [#2288](https://github.com/microsoft/vstest/pull/2288)
+* Make --verbosity case insensitive [#2300](https://github.com/microsoft/vstest/pull/2300)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.5.0-preview-20200116-01...v16.5.0-preview-20200203-01)
+
+### Drops
+
+* TestPlatform vsix: [16.5.0-preview-20200203-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200203-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200203-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200203-01)  
+
 ## 16.5.0-preview-20200116-01
 
 ### Issue Fixed 
