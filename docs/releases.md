@@ -1,5 +1,42 @@
 # Release Notes
 
+## 16.5.0
+
+### Issues fixed (since 16.4.0)
+
+* Use version of external package with fixes [#2315](https://github.com/microsoft/vstest/pull/2315)
+* Use latest version of VS that is available [#2314](https://github.com/microsoft/vstest/pull/2314)
+* Pass coverlet codebase in runsettings for inproc data collector initialization [#2288](https://github.com/microsoft/vstest/pull/2288)
+* Make --verbosity case insensitive [#2300](https://github.com/microsoft/vstest/pull/2300)
+* Revert "Use patched version of TestPlatform.Extensions (#2283)" [#2307](https://github.com/microsoft/vstest/pull/2307)
+* Update arcade [#2302](https://github.com/microsoft/vstest/pull/2302)
+* Fix SocketCommunicationManager [#2290](https://github.com/microsoft/vstest/pull/2290)
+* Use patched version of TestPlatform.Extensions [#2283](https://github.com/microsoft/vstest/pull/2283)
+* Cap version of VS to <16.0 [#2285](https://github.com/microsoft/vstest/pull/2285)
+* Remove duplicate counting of test results in Consolelogger [#2267](https://github.com/microsoft/vstest/pull/2267)
+* Test run parameter added as part of CLI runsettings args [#2251](https://github.com/microsoft/vstest/pull/2251)
+* Initialize only coverlet data collector [#2274](https://github.com/microsoft/vstest/pull/2274)
+* Use RunSettingsFilePath from when using dotnet test [#2272](https://github.com/microsoft/vstest/pull/2272)
+* Eqt trace error was thrown if extension uri is not given [#2264](https://github.com/microsoft/vstest/pull/2264)
+* Fix for discovery not working on Mac machines [#2266](https://github.com/microsoft/vstest/pull/2266)
+* Disable reusing nodes when building localization [#2268](https://github.com/microsoft/vstest/pull/2268)
+* Trx changes for fqdn mapping in test method name [#2259](https://github.com/microsoft/vstest/pull/2259)
+* Expand environment variables in codeBase before loading extension [#1871](https://github.com/microsoft/vstest/pull/1871)
+* Coverlet in-process collector is not loaded for version > 1.0.0 [#2221](https://github.com/microsoft/vstest/pull/2221)
+* fix path in ngen [#2246](https://github.com/microsoft/vstest/pull/2246)
+* LOC CHECKIN | Microsoft/vstest master | 20191104 [#2241](https://github.com/microsoft/vstest/pull/2241)
+* Move Tp version to 16.5 [#2243](https://github.com/microsoft/vstest/pull/2243)
+* Add support for an arg to enable progress indicator, disabled by default. [#2234](https://github.com/microsoft/vstest/pull/2234)
+* Correct name and link for RFC 17 [#2232](https://github.com/microsoft/vstest/pull/2232)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.4.0...v16.5.0)
+See changes since the last preview [here](https://github.com/microsoft/vstest/compare/16.5.0-preview-20200203-01...v16.5.0)
+
+### Drops
+
+* TestPlatform vsix: [16.5.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/v16.5.0;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.5.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0)
+
 ## 16.5.0-preview-20200203-01
 
 ### Issue Fixed
