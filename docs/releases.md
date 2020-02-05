@@ -34,7 +34,7 @@ See changes since the last preview [here](https://github.com/microsoft/vstest/co
 
 ### Drops
 
-* TestPlatform vsix: [16.5.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/v16.5.0;/TestPlatform.vsix)
+* TestPlatform vsix: [16.5.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200205-01;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [16.5.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0)
 
 ## 16.5.0-preview-20200203-01
