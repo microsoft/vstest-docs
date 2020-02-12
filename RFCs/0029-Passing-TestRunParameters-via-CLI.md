@@ -9,10 +9,10 @@ removes burden of editing run settings every time.
 
 ## Syntax
 
-`vstest.console.exe  abc.dll -- TestRunParaeters.Parameter(name="YourParameterName",value="YourParameterValue ")`
+`vstest.console.exe  abc.dll -- TestRunParaeters.Parameter(name=\"YourParameterName\",value=\"YourParameterValue\")`
 
 ### Argument description 
-` -- TestRunParaeters.Parameter(name="YourParamterName",value="YourParameterValue ")` <br>
+` -- TestRunParameters.Parameter(name=\"YourParamterName\",value=\"YourParameterValue\")` <br>
 
 The above argument reflects the following change in runsettings. 
 
@@ -34,10 +34,7 @@ The above argument reflects the following change in runsettings.
 </ul>
 
 ## Design
-Eventually the arguments are parsed and we get `attribute name` and `attribute value` of `test run parameter`.
-Later an xml element is overrode if exists with `attribute name` or created with `'Parameter'` as it's name and with attributes that are obtained by the above step.
-Finally we get `test run parameter` node if exists or created and append the created xml element to child nodes list of it.
-
+The arguments are parsed and `attribute name` and `attribute value` are fetched from the `TestRunParameter` argument. Then, an xml element is overrode if exists with `attribute name` or created with `'Parameter'` as it's name and with attributes that are obtained by the above step. Finally, we get `TestRunParameter` node if exists or created and append the newly created xml element to list of child nodes.
 
 ## Allowed Characters
 |  Attributes | Vaild Characters |
