@@ -63,7 +63,7 @@ Running this test is as simple as passing the path to the node module and the pa
 Since the default test framework for JSTest is Jasmine, let's try to run the tests with Mocha. 
 
 ```powershell
-> vstest.console.exe --TetsAdapterPath:.\node_modules\jstestadapter .\calculatortest.js -- JSTest.TestFramework=mocha
+> vstest.console.exe --TestAdapterPath:.\node_modules\jstestadapter .\calculatortest.js -- JSTest.TestFramework=mocha
 ```
 
 `... -- JSTest.TestFramework=mocha` is how run-settings are provided to VSTest. Run setting configurations can also be defined in an xml and passed as a CLI argument to vstest.console.exe, `--Settings:runsettings.xml`. Run settings can also contain configurations specific to the test framework/runner in question. Now let's try this with Jest, since Jest uses file patterns to check for test files, package.json is used as the test file container for running tests through Jest.
