@@ -1,5 +1,23 @@
 # Release Notes
 
+## 16.6.0-preview-20200226-03
+
+### Issue Fixed
+* Spelling / conventions and grammar fixes [#2338](https://github.com/microsoft/vstest/pull/2338)
+* Small build fixes [#2345](https://github.com/microsoft/vstest/pull/2345)
+* Fix race condition on testhost exit before we connect [#2344](https://github.com/microsoft/vstest/pull/2344)
+* Move test publish to the bottom [#2342](https://github.com/microsoft/vstest/pull/2342)
+* Do not crash on Debug.Assert [#2335](https://github.com/microsoft/vstest/pull/2335)
+* Switch arguments for expected and actual in Assert.AreEquals in multiple tests [#2329](https://github.com/microsoft/vstest/pull/2329)
+* Run acceptance tests against the locally built sources [#2340](https://github.com/microsoft/vstest/pull/2340)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.5.0-preview-20200203-01...v16.6.0-preview-20200226-03)
+
+### Drops
+
+* TestPlatform vsix: [16.6.0-preview-20200226-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200226-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200226-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200226-03)
+
 ## 16.5.0
 
 ### Issues fixed (since 16.4.0)
