@@ -173,7 +173,7 @@ Use the `Analyze Code Coverage` context menu available in `Test Explorer` tool w
 
 After the coverage run is complete, a detailed report will be available in the `Code Coverage Results` tool window.
 
-Please refer the MSDN documentation for additional details: https://msdn.microsoft.com/en-IN/library/dd537628.aspx
+Please refer the documentation for additional details: https://docs.microsoft.com/en-us/visualstudio/test/using-code-coverage-to-determine-how-much-code-is-being-tested
 
 ### Collect coverage with command line runner
 Use the following command line to collect coverage data for tests:
