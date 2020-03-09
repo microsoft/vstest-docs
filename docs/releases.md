@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.6.0-preview-20200309-01
+
+### Issue Fixed
+* Add coverlet smoke test [#2348](https://github.com/microsoft/vstest/pull/2348)
+* Fix splitting of test name from fully qualified name [#2355](https://github.com/microsoft/vstest/pull/2355)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0-preview-20200226-03...v16.6.0-preview-20200309-01)
+
+### Drops
+
+* TestPlatform vsix: [16.6.0-preview-20200309-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200309-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200309-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200309-01)
+
 ## 16.6.0-preview-20200226-03
 
 ### Issue Fixed
