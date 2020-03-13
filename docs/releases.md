@@ -1,5 +1,19 @@
 # Release Notes
 
+## 16.6.0-preview-20200310-03
+
+### Issue Fixed
+* Fix running self-contained apps on Windows [#2358](https://github.com/microsoft/vstest/pull/2358)
+* Remove unused usings. [#2350](https://github.com/microsoft/vstest/pull/2350)
+* Better error when discoverer defaultExecutorUri is not set. [#2354](https://github.com/microsoft/vstest/pull/2354)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0-preview-20200309-01...v16.6.0-preview-20200310-03)
+
+### Drops
+
+* TestPlatform vsix: [16.6.0-preview-20200310-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200310-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200310-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200310-03)
+
 ## 16.6.0-preview-20200309-01
 
 ### Issue Fixed
