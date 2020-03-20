@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.6.0-preview-20200318-01
+
+### Issue Fixed
+* Fix writing to trx when error has no message [#2364](https://github.com/microsoft/vstest/pull/2364)
+* Fix symbols [#2363](https://github.com/microsoft/vstest/pull/2363)
+* Report informational messages when platform logs are enabled [#2361](https://github.com/microsoft/vstest/pull/2361)
+* Add option to specify custom test host [#2359](https://github.com/microsoft/vstest/pull/2359)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0-preview-20200310-03...v16.6.0-preview-20200318-01)
+
+### Drops
+
+* TestPlatform vsix: [16.6.0-preview-20200318-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200318-01;/TestPlatform.vsix)        
+* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200318-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200318-01)
+
 ## 16.6.0-preview-20200310-03
 
 ### Issue Fixed
