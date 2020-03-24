@@ -9,7 +9,7 @@ removes burden of editing run settings every time.
 
 ## Syntax
 
-`vstest.console.exe  abc.dll -- TestRunParaeters.Parameter(name=\"YourParameterName\",value=\"YourParameterValue\")`
+`vstest.console.exe  abc.dll -- TestRunParameters.Parameter(name=\"YourParameterName\",value=\"YourParameterValue\")`
 
 ### Argument description 
 ` -- TestRunParameters.Parameter(name=\"YourParamterName\",value=\"YourParameterValue\")` <br>
