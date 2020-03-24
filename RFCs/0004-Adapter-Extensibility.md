@@ -21,7 +21,7 @@ Adapters can be provided to the test platform in one of the following ways:
 1. "/testadapterpath:<PathToTheAdapter>" This is a switch to vstest.console.exe that feeds in the location of the adapter to the test platform. The PathToAdapter is either the full path to the adapter directory or the relative path to the current directory. For instance:                 
 
     ```
-    /testapdaterpath:"C:\Adapters\"
+    /testadapterpath:"C:\Adapters\"
     ```
 
     This picks up files which have ***.TestAdapter.dll**  in their name from C:\Adapters\ and loads them in as adapters to the test platform. This is done to optimize the number of assemblies the test platform considers as adapters.  
