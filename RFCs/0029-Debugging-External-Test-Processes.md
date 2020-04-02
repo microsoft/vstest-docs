@@ -15,7 +15,7 @@ Debugging of Python tests is supported in VS today. However, the Python adapter 
 While this works for Python, not all test frameworks that need to support debugging of tests running in external processes would want their users to also install a VS extension. For this reason, debugging of TAEF tests is currently not supported in VS.
 
 # Proposed Changes
-1. Introduce a new interface `IFrameworkHandle2` that inherits [`IFrameworkHandle`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/IFrameworkHandle.cs#L12) and adds the following `AttachDebuggerToProcess()` API that an adapter can invoke from within [`ITestExecutor.RunTests()`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L23). 
+1. Introduce a new `IFrameworkHandle2` interface that inherits [`IFrameworkHandle`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/IFrameworkHandle.cs#L12) and adds the following `AttachDebuggerToProcess()` API that an adapter can invoke from within [`ITestExecutor.RunTests()`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L23) to attach debugger to an already running process. 
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
@@ -50,7 +50,7 @@ void ITestExecutor.RunTests(IEnumerable<TestCase> tests, IRunContext runContext,
 }
 ```
 
-2. Introduce a new `ITestExecutor2` interface that inherits [`ITestExecutor`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L15) and adds the following `ShouldAttachToTestHost()` API. Newer adapters can choose to implement `ITestExecutor2` instead of `ITestExecutor`. This would allow them to control the behavior of the test host when attaching the debugger to the process indicated by the adapter. If all the tests to be executed by the current adapter need to run in a separate test host, then the Test Platform and Visual Studio can avoid attaching debugger to the `testhost*.exe` process.
+2. Introduce a new `ITestExecutor2` interface that inherits [`ITestExecutor`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L15) and adds the following `ShouldAttachToTestHost()` API. Newer adapters can choose to implement `ITestExecutor2` instead of `ITestExecutor`. If implemented, `ITestExecutor.ShouldAttachToTestHost()` is invoked before `ITestExecutor.RunTests()` is invoked for any test execution. `ITestExecutor2.ShouldAttachToTestHost()` is provided the same set of inputs as `ITestExecutor.RunTests()`. This allows adapters to control whether or not the debugger should be attached to `testhost*.exe` for the subsequent invocation of `ITestExecutor.RunTests()` with the same inputs.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
@@ -65,19 +65,19 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
     public interface ITestExecutor2 : ITestExecutor
     {
         /// <summary>
-        /// Asks the adapter about attaching to the default test host.
+        /// Indicates whether or not the default test host process should be attached to.
         /// </summary>
         /// <param name="sources">Path to test container files to look for tests in.</param>
         /// <param name="runContext">Context to use when executing the tests.</param>
-        /// <returns>True if must attach to the default test host, false otherwise.</returns>
+        /// <returns><see cref="true"/> if the default test host process should be attached to, <see cref="false"/> otherwise.</returns>
         bool ShouldAttachToTestHost(IEnumerable<string> sources, IRunContext runContext);
 
         /// <summary>
-        /// Asks the adapter about attaching to the default test host.
+        /// Indicates whether or not the default test host process should be attached to.
         /// </summary>
         /// <param name="tests">Tests to be run.</param>
         /// <param name="runContext">Context to use when executing the tests.</param>
-        /// <returns>True if must attach to the default test host, false otherwise.</returns>
+        /// <returns><see cref="true"/> if the default test host process should be attached to, <see cref="false"/> otherwise.</returns>
         bool ShouldAttachToTestHost(IEnumerable<TestCase> tests, IRunContext runContext);
     }
 }
@@ -89,7 +89,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Interfaces
 {
     /// <summary>
-    /// Interface defining contract for custom test host implementations
+    /// Interface defining contract for custom test host implementations.
     /// </summary>
     public interface IDebugTestHostLauncher : ITestHostLauncher
     {
