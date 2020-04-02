@@ -50,7 +50,7 @@ void ITestExecutor.RunTests(IEnumerable<TestCase> tests, IRunContext runContext,
 }
 ```
 
-2. Introduce a new `ITestExecutor2` interface that inherits [`ITestExecutor`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L15) and adds the following `ShouldAttachToTestHost()` API. Newer adapters can choose to implement `ITestExecutor2` instead of `ITestExecutor`. If implemented, `ITestExecutor.ShouldAttachToTestHost()` is invoked before `ITestExecutor.RunTests()` is invoked for any test execution. `ITestExecutor2.ShouldAttachToTestHost()` is provided the same set of inputs as `ITestExecutor.RunTests()`. This allows adapters to control whether or not the debugger should be attached to `testhost*.exe` for the subsequent invocation of `ITestExecutor.RunTests()` with the same inputs.
+2. Introduce a new `ITestExecutor2` interface that inherits [`ITestExecutor`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Adapter/Interfaces/ITestExecutor.cs#L15) and adds the following `ShouldAttachToTestHost()` API. Newer adapters can choose to implement `ITestExecutor2` instead of `ITestExecutor`. If implemented, `ITestExecutor.ShouldAttachToTestHost()` will be invoked before `ITestExecutor.RunTests()` is invoked for any test execution. `ITestExecutor2.ShouldAttachToTestHost()` will also be supplied the same set of inputs as `ITestExecutor.RunTests()`. This would allow adapters to control whether or not the debugger should be attached to `testhost*.exe` for the subsequent invocation of `ITestExecutor.RunTests()`.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
