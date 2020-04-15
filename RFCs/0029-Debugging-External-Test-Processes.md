@@ -83,7 +83,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Adapter
 }
 ```
 
-3. Introduce a new `IDebugTestHostLauncher` interface that inherits [`ITestHostLauncher`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Interfaces/ITestHostLauncher.cs#L11) and adds the following `AttachDebuggerToProcess()` API. Visual Studio's Test Explorer will supply an implementation of this interface via [`IVsTestConsoleWrapper.RunTestsWithCustomTestHost()`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs#L120) and `IDebugTestHostLauncher.AttachDebuggerToProcess()` will be called when  `IFrameworkHandler2.AttachDebuggerToProcess()` is called within an adapter.
+3. Introduce a new `ITestHostLauncher2` interface that inherits [`ITestHostLauncher`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/Interfaces/ITestHostLauncher.cs#L11) and adds the following `AttachToProcess()` API. Visual Studio's Test Explorer will supply an implementation of this interface via [`IVsTestConsoleWrapper.RunTestsWithCustomTestHost()`](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs#L120) and `ITestHostLauncher2.AttachToProcess()` will be called when  `IFrameworkHandle2.AttachDebuggerToProcess()` is called within an adapter.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Interfaces
@@ -91,22 +91,22 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Interfaces
     /// <summary>
     /// Interface defining contract for custom test host implementations.
     /// </summary>
-    public interface IDebugTestHostLauncher : ITestHostLauncher
+    public interface ITestHostLauncher2 : ITestHostLauncher
     {
         /// <summary>
-        /// Attach debugger to already running custom test host process.
+        /// Attach to already running custom test host process.
         /// </summary>
-        /// <param name="pid">Process ID of the process to which the debugger should be attached.</param>
-        /// <returns><see cref="true"/> if the debugger was successfully attached to the requested process, <see cref="false"/> otherwise.</returns>
-        bool AttachDebuggerToProcess(int pid);
+        /// <param name="pid">Process ID of the process to attach.</param>
+        /// <returns><see cref="true"/> if the attach was successful, <see cref="false"/> otherwise.</returns>
+        bool AttachToProcess(int pid);
 
         /// <summary>
-        /// Attach debugger to already running custom test host process.
+        /// Attach to already running custom test host process.
         /// </summary>
-        /// <param name="pid">Process ID of the process to which the debugger should be attached.</param>
+        /// <param name="pid">Process ID of the process to attach.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns><see cref="true"/> if the debugger was successfully attached to the requested process, <see cref="false"/> otherwise.</returns>
-        bool AttachDebuggerToProcess(int pid, CancellationToken cancellationToken);
+        /// <returns><see cref="true"/> if the attach was successful, <see cref="false"/> otherwise.</returns>
+        bool AttachToProcess(int pid, CancellationToken cancellationToken);
     }
 }
 
