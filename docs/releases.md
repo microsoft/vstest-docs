@@ -1,4 +1,41 @@
 # Release Notes
+## 16.6.0
+
+### Issue Fixed
+* Fix null reference in Fakes [#2400](https://github.com/microsoft/vstest/pull/2400)
+* Changed new configurator method name [#2397](https://github.com/microsoft/vstest/pull/2397)
+* Fixes Test Platform. [#2393](https://github.com/microsoft/vstest/pull/2393)
+* Bump to 16.7.0-preview [#2388](https://github.com/microsoft/vstest/pull/2388)
+* Fixing a typo for the method arguments for the Fakes utility method. [#2385](https://github.com/microsoft/vstest/pull/2385)
+* Ignore flaky test [#2386](https://github.com/microsoft/vstest/pull/2386)
+* LOC CHECKIN | Microsoft/vstest master | 20200403 [#2383](https://github.com/microsoft/vstest/pull/2383)
+* Upgrade CppUnitTestFramework to newest version [#2381](https://github.com/microsoft/vstest/pull/2381)
+* Added method to look for new api in fakes datacollector [#2339](https://github.com/microsoft/vstest/pull/2339)
+* Take TestCaseFilter from runsettings [#2356](https://github.com/microsoft/vstest/pull/2356)
+* Pin dotnet [#2373](https://github.com/microsoft/vstest/pull/2373)
+* Fix writing to trx when error has no message [#2364](https://github.com/microsoft/vstest/pull/2364)
+* Fix symbols [#2363](https://github.com/microsoft/vstest/pull/2363)
+* Report informational messages when platform logs are enabled [#2361](https://github.com/microsoft/vstest/pull/2361)
+* Add option to specify custom test host [#2359](https://github.com/microsoft/vstest/pull/2359)
+* Fix running self-contained apps on Windows [#2358](https://github.com/microsoft/vstest/pull/2358)
+* Remove unused usings. [#2350](https://github.com/microsoft/vstest/pull/2350)
+* Better error when discoverer defaultExecutorUri is not set. [#2354](https://github.com/microsoft/vstest/pull/2354)
+* Add coverlet smoke test [#2348](https://github.com/microsoft/vstest/pull/2348)
+* Fix splitting of test name from fully qualified name [#2355](https://github.com/microsoft/vstest/pull/2355)
+* Spelling / conventions and grammar fixes [#2338](https://github.com/microsoft/vstest/pull/2338)
+* Small build fixes [#2345](https://github.com/microsoft/vstest/pull/2345)
+* Fix race condition on testhost exit before we connect [#2344](https://github.com/microsoft/vstest/pull/2344)
+* Move test publish to the bottom [#2342](https://github.com/microsoft/vstest/pull/2342)
+* Do not crash on Debug.Assert [#2335](https://github.com/microsoft/vstest/pull/2335)
+* Switch arguments for expected and actual in Assert.AreEquals in multiple tests [#2329](https://github.com/microsoft/vstest/pull/2329)
+* Run acceptance tests against the locally built sources [#2340](https://github.com/microsoft/vstest/pull/2340)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.5.0...v16.6.0)
+
+### Drops
+
+* TestPlatform vsix: [16.6.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.6/20200414-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.6.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0)
 
 ## 16.6.0-preview-20200318-01
 
