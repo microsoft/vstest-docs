@@ -1,4 +1,18 @@
 # Release Notes
+
+## 16.6.1
+
+### Issue Fixed
+
+* Fix fakes version [#2412](https://github.com/microsoft/vstest/pull/2412)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0...v16.6.1)
+
+### Drops
+
+* TestPlatform vsix: [16.6.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.6/20200423-06;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.6.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.1)
+
 ## 16.6.0
 
 ### Issue Fixed
