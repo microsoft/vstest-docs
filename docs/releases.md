@@ -1,5 +1,26 @@
 # Release Notes
 
+## 16.7.0-preview-20200428-01
+
+### Issue Fixed
+* Update telemetry to latest [#2421](https://github.com/microsoft/vstest/pull/2421)
+* Merge test run parameters that have spaces [#2409](https://github.com/microsoft/vstest/pull/2409)
+* updated package version [#2412](https://github.com/microsoft/vstest/pull/2412)
+* update externals [#2406](https://github.com/microsoft/vstest/pull/2406)
+* VS Depencencies from 16.7.0 signed build [#2382](https://github.com/microsoft/vstest/pull/2382)
+* Changed new configurator method name (#2397) [#2403](https://github.com/microsoft/vstest/pull/2403)
+* Fix null reference [#2401](https://github.com/microsoft/vstest/pull/2401)
+* Fix null reference [#2400](https://github.com/microsoft/vstest/pull/2400)
+* Changed new configurator method name [#2398](https://github.com/microsoft/vstest/pull/2398)
+* Changed new configurator method name [#2397](https://github.com/microsoft/vstest/pull/2397)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.6.1...v16.7.0-preview-20200428-01)
+
+### Drops
+
+* TestPlatform vsix: [16.7.0-preview-20200428-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200428-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.7.0-preview-20200428-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0-preview-20200428-01)
+
 ## 16.6.1
 
 ### Issue Fixed
