@@ -18,6 +18,7 @@ supported by popular unit test frameworks.
 | -------------- | -------------------- |
 | MSTest         | <ul><li>FullyQualifiedName</li><li>Name</li><li>ClassName</li><li>Priority</li><li>TestCategory</li></ul> |
 | Xunit          | <ul><li>FullyQualifiedName</li><li>DisplayName</li><li>Traits</li></ul> |
+| MSpec          | <ul><li>FullyQualifiedName</li><li>DisplayName</li><li>Tag</li><li>Subject</li></ul> |
 
 Allowed **operators**:
 * `=` implies an exact match
@@ -27,7 +28,7 @@ Allowed **operators**:
 
 **Value** is a string. All the lookups are case insensitive.
 
-**Escape Sequences** must be used to represent characters in the value that have special meanings in the filter, i.e. filter operators. 
+**Escape Sequences** must be used to represent characters in the value that have special meanings in the filter, i.e. filter operators.
 
 | Escape Sequence | Represents |
 | -------------- | -------------------- |
@@ -137,3 +138,27 @@ In above code we defined traits with keys `Category` and `Priority` which can be
 | `dotnet test --filter "FullyQualifiedName~TestClass1\|Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName __or__ Category is Nightly. |
 | `dotnet test --filter "FullyQualifiedName~TestClass1&Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName __and__ Category is Nightly. |
 | `dotnet test --filter "(FullyQualifiedName~TestClass1&Category=Nightly)\|Priority=1"` | Runs tests which have either FullyQualifiedName contains `TestClass1` and Category is CategoryA or Priority is 1. |
+
+### Machine Spec
+
+| Expression | What it does? |
+| ---------- | ------------- |
+| `dotnet test --filter DisplayName=MSpecNamespace.TestClass1.Test1` | Runs only one test `MSpecNamespace.TestClass1.Test1`. |
+| `dotnet test --filter Tag!=SlowTests` | Runs all tests except tests with `[Tags("SlowTests")]` |
+| `dotnet test --filter Subject~WebAPI` | Runs tests whose `Subject` name contains `WebAPI`. |
+
+#### Using traits for filter
+```CSharp
+namespace MSpecNamespace
+{
+    [Subject(typeof(TestClass1))]
+    public class TestClass1Tests
+    {
+        [Tags("SlowTests")]
+        public void Foo()
+        {
+        }
+    }
+}
+```
+In above code we defined traits with keys `Subject` and `Tags` which can be used for filtering.
