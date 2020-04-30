@@ -40,7 +40,6 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0...v16.6.
 * Fix null reference in Fakes [#2400](https://github.com/microsoft/vstest/pull/2400)
 * Changed new configurator method name [#2397](https://github.com/microsoft/vstest/pull/2397)
 * Fixes Test Platform. [#2393](https://github.com/microsoft/vstest/pull/2393)
-* Bump to 16.7.0-preview [#2388](https://github.com/microsoft/vstest/pull/2388)
 * Fixing a typo for the method arguments for the Fakes utility method. [#2385](https://github.com/microsoft/vstest/pull/2385)
 * Ignore flaky test [#2386](https://github.com/microsoft/vstest/pull/2386)
 * LOC CHECKIN | Microsoft/vstest master | 20200403 [#2383](https://github.com/microsoft/vstest/pull/2383)
