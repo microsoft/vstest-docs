@@ -152,13 +152,18 @@ In above code we defined traits with keys `Category` and `Priority` which can be
 namespace MSpecNamespace
 {
     [Subject(typeof(TestClass1))]
+    [Tags("SlowTests")]
     public class TestClass1Tests
     {
-        [Tags("SlowTests")]
-        public void Foo()
-        {
-        }
+        Establish context = () =>
+            _class = new TestClass1();
+
+        Because of = () =>
+           _result = _class.Do();
+
+        It should_have_assertions = () =>
+           _result.ShouldNotBeNull();
     }
 }
 ```
-In above code we defined traits with keys `Subject` and `Tags` which can be used for filtering.
+In above code we defined traits with keys `Subject` and `Tags` (Tag) which can be used for filtering.
