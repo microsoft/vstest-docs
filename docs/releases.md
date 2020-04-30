@@ -10,9 +10,7 @@
 * VS Depencencies from 16.7.0 signed build [#2382](https://github.com/microsoft/vstest/pull/2382)
 * Changed new configurator method name (#2397) [#2403](https://github.com/microsoft/vstest/pull/2403)
 * Fix null reference [#2401](https://github.com/microsoft/vstest/pull/2401)
-* Fix null reference [#2400](https://github.com/microsoft/vstest/pull/2400)
 * Changed new configurator method name [#2398](https://github.com/microsoft/vstest/pull/2398)
-* Changed new configurator method name [#2397](https://github.com/microsoft/vstest/pull/2397)
 
 See full log [here](https://github.com/microsoft/vstest/compare/v16.6.1...v16.7.0-preview-20200428-01)
 
