@@ -1,5 +1,24 @@
 # Release Notes
 
+## 16.7.0-preview-20200519-01
+
+### Issue Fixed
+* Upgrade TestPlatform external dependencies [#2440](https://github.com/microsoft/vstest/pull/2440)
+* Added support for debugging external test processes [#2325](https://github.com/microsoft/vstest/pull/2325)
+* Add the parameters to VSTestTask to allow dotnet test to work [#2438](https://github.com/microsoft/vstest/pull/2438)
+* Add hangdump and crash dump capabilities and options [#2434](https://github.com/microsoft/vstest/pull/2434)
+* Update arcade tooling to latest [#2436](https://github.com/microsoft/vstest/pull/2436)
+* More verbose info in datacollector log [#2430](https://github.com/microsoft/vstest/pull/2430)
+* Support /TestCaseFilter and /Tests arguments at the same time [#2371](https://github.com/microsoft/vstest/pull/2371)
+* Wrap error message/stack trace content in <pre> [#2419](https://github.com/microsoft/vstest/pull/2419)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0-preview-20200428-01...v16.7.0-preview-20200519-01)
+
+### Drops
+
+* TestPlatform vsix: [16.7.0-preview-20200519-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200519-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.7.0-preview-20200519-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0-preview-20200519-01)
+
 ## 16.7.0-preview-20200428-01
 
 ### Issue Fixed
