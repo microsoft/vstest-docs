@@ -10,7 +10,7 @@
 * Update arcade tooling to latest [#2436](https://github.com/microsoft/vstest/pull/2436)
 * More verbose info in datacollector log [#2430](https://github.com/microsoft/vstest/pull/2430)
 * Support /TestCaseFilter and /Tests arguments at the same time [#2371](https://github.com/microsoft/vstest/pull/2371)
-* Wrap error message/stack trace content in <pre> [#2419](https://github.com/microsoft/vstest/pull/2419)
+* Wrap error message/stack trace content in `<pre>` [#2419](https://github.com/microsoft/vstest/pull/2419)
 
 See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0-preview-20200428-01...v16.7.0-preview-20200519-01)
 
