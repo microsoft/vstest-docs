@@ -11,7 +11,7 @@ The [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test
 When `Run All Tests` is performed in VS, tests for projects can be executed separately. In this case also combining/merging of data attachments is not performed. Coverage reports are not merged. `Analyze Code Coverage for All Tests` is showing coverage report for only one of the test projects.
 
 # Proposed Changes
-1. Introduce a `IDataCollectorAttachments` interface which can be implemented by Test Platform extensions and provide custom logic to combine/merge attachments. Below interface should be used only for providing logic to combine/merge information from data attachments from independent test executions. This interface should **not be** used to for modifying separated data attachment. Test Platform will invoke `HandleDataCollectionAttachmentSets` only if at least 2 data attachments related to Collector (through `GetExtensionUris`) are created by independent test executions.
+1. Introduce a `IDataCollectorAttachments` interface which can be implemented by Test Platform extensions and provide custom logic to combine/merge attachments. Below interface should be used only for providing logic to combine/merge information from data attachments from independent test executions. This interface should **not be** used for modifying separated data attachment. Test Platform will invoke `HandleDataCollectionAttachmentSets` only if at least 2 data attachments related to Collector (through `GetExtensionUris`) are created by independent test executions.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
