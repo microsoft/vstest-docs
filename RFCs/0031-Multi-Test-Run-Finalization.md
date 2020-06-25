@@ -27,7 +27,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
         IEnumerable<Uri> GetExtensionUris();
 
         /// <summary>
-        /// Indicates whether HandleDataCollectionAttachmentSets is associative (e.g. f([a, b, c]) = f([f([a, b]), c]) = f([a , f([b, c])]))
+        /// Indicates whether HandleDataCollectionAttachmentSets is associative (e.g. f([a, b, c]) = f([f([a, b]), c]) = f([a, f([b, c])]))
         /// </summary>
         bool IsAssociative  { get; }
 
