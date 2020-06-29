@@ -1,33 +1,33 @@
 # 0031 Multi Test Run Finalization
 
 # Summary
-Introduce APIs to perform data attachments reprocessing (e.g. combining, merging) after two or more independent test executions.
+This document details a data collector extensibility point to reporcess (combine/merge) attachments obtained across test executions in both design mode and commandline scenarios.
 
 # Motivation
-Today when Test Platform executes tests in parallel only code coverage reports are merged (attachments with uri: `datacollector://microsoft/CodeCoverage/2.0`). For other attachments processing is skipped and all attachments are returned by Test Platform.
+Today when Test Platform executes tests in parallel only code coverage reports are merged (data collector attachments with uri: `datacollector://microsoft/CodeCoverage/2.0`). For other data collector attachments reprocessing is skipped and all of them are returned by Test Platform.
 
-The [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command is used to execute unit tests in a given solution. The `dotnet test` command builds the solution and runs a test host application for each test project in the solution. However, currently there is no way to combine/merge attachments associated with each project execution. Coverage reports are not merged.
+The [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command is used to execute unit tests in a given solution. The `dotnet test` command builds the solution and runs a test host application for each test project in the solution. However, currently there is no way to reporcess (combine/merge) data collector attachments associated with each project execution. Code coverage reports are not merged.
 
-When `Run All Tests` is performed in VS, tests for projects can be executed separately. In this case also combining/merging of data attachments is not performed. Coverage reports are not merged. `Analyze Code Coverage for All Tests` is showing coverage report for only one of the test projects.
+When `Run All Tests` is performed in VS, tests for projects can be executed separately based on target platform/target framework amongst other criteria. In this case also combining/merging of data collector attachments is not performed (e.g. code overage reports are not merged). `Analyze Code Coverage for All Tests` is showing coverage report for only some test projects in the run.
 
 # Proposed Changes
-1. Introduce a `IDataCollectorAttachments` interface which can be implemented by Test Platform extensions and provide custom logic to combine/merge attachments. Below interface should be used only for providing logic to combine/merge information from data attachments from independent test executions. This interface should **not be** used for modifying separated data attachment. Test Platform will invoke `HandleDataCollectionAttachmentSets` only if at least 2 data attachments related to Collector (through `GetExtensionUris`) are created by independent test executions.
+1. Introduce a `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Below interface should be used only for providing logic to reprocess information from data collector attachments from independent test executions. This interface should **not be** used for modifying any single data collector attachment. Test Platform will invoke `ProcessAttachmentSets` only if at least 2 data collector attachments related to processor (through `GetExtensionUris`) are created by independent test executions.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
 {
     /// <summary>
-    /// Interface for data collectors add-ins that choose to handle generated attachments
+    /// Interface for data collectors add-ins that choose to reprocess generated attachments
     /// </summary>
-    public interface IDataCollectorAttachments
+    public interface IDataCollectorAttachmentProcessor
     {
         /// <summary>
-        /// Gets the attachments Uris, which are handled by current Collector
+        /// Gets the attachments Uris, which are handled by processor
         /// </summary>
         IEnumerable<Uri> GetExtensionUris();
 
         /// <summary>
-        /// Indicates whether HandleDataCollectionAttachmentSets is associative (e.g. f([a, b, c]) = f([f([a, b]), c]) = f([a, f([b, c])]))
+        /// Indicates whether ProcessAttachmentSets is associative (e.g. f([a, b, c]) = f([f([a, b]), c]) = f([a, f([b, c])]))
         /// </summary>
         bool IsAssociative  { get; }
 
@@ -39,24 +39,24 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
         /// <param name="logger">Message logger</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Attachments after reprocessing</returns>
-        ICollection<AttachmentSet> HandleDataCollectionAttachmentSets(ICollection<AttachmentSet> attachments, IProgress<int> progressReporter, IMessageLogger logger, CancellationToken cancellationToken);
+        ICollection<AttachmentSet> ProcessAttachmentSets(ICollection<AttachmentSet> attachments, IProgress<int> progressReporter, IMessageLogger logger, CancellationToken cancellationToken);
     }
 }
 ```
 
-Method `GetExtensionUris` should provide all Uris for data attachments which are handled by current collector. Test platform will provide to collector only attachments with such Uris. It's also required that result of method `HandleDataCollectionAttachmentSets` will contain only attachments with such Uris.
+Method `GetExtensionUris` should provide all Uris for data collector attachments which are handled by current processor. Test platform will provide to processor only data collector attachments with such Uris. Result of method `ProcessAttachmentSets` shouyld contain only data collector attachments with such Uris.
 
-`IsAssociative` should indicate if `HandleDataCollectionAttachmentSets` is [associative](https://en.wikipedia.org/wiki/Associative_property).
+`IsAssociative` should indicate if `ProcessAttachmentSets` is [associative](https://en.wikipedia.org/wiki/Associative_property).
 
-If `IsAssociative` is `True` Test Platform may try to speed up executions/merging by combining/merging data attachments as soon as possible when any two test executions are done. For example let's assume we have 5 test executions which are generating 5 data attachments: `a1`, `a2`, `a3`, `a4` and `a5`. Test platform could perform invocations:
-* `var result1 = HandleDataCollectionAttachmentSets([a1, a2, a3], ...);` when first 3 executions are done
-* `var result2 = HandleDataCollectionAttachmentSets(result1.Concat([a4]), ...);` when 4th execution is done
-* `var finalResult = HandleDataCollectionAttachmentSets(result2.Concat([a5]), ...);` when last test execution is done
+If `IsAssociative` is `True` Test Platform may try to speed up whole process by reprocessing data collector attachments as soon as possible when any two test executions are done. For example let's assume we have 5 test executions which are generating 5 data collector attachments: `a1`, `a2`, `a3`, `a4` and `a5`. Test platform could perform invocations:
+* `var result1 = ProcessAttachmentSets([a1, a2, a3], ...);` when first 3 executions are done
+* `var result2 = ProcessAttachmentSets(result1.Concat([a4]), ...);` when 4th execution is done
+* `var finalResult = ProcessAttachmentSets(result2.Concat([a5]), ...);` when last test execution is done
 
-If `IsAssociative` is `False` then Test Platform will wait for all test executions to finish and call `HandleDataCollectionAttachmentSets` only once:
-* `var finalResult = HandleDataCollectionAttachmentSets([a1, a2, a3, a4, a5], ...);`
+If `IsAssociative` is `False` then Test Platform will wait for all test executions to finish and call `ProcessAttachmentSets` only once:
+* `var finalResult = ProcessAttachmentSets([a1, a2, a3, a4, a5], ...);`
 
-By default `IsAssociative` should be `False`, unless processing can take longer time and it's beneficial to start handling as soon as possible.
+By default `IsAssociative` should be `False`, unless processing can take longer time and it's beneficial to start the process as soon as possible.
 
 
 
@@ -74,6 +74,7 @@ By default `IsAssociative` should be `False`, unless processing can take longer 
 Task FinalizeMultiTestRunAsync(IEnumerable<AttachmentSet> attachments, bool multiTestRunCompleted, bool collectMetrics, IMultiTestRunFinalizationEventsHandler eventsHandler, CancellationToken cancellationToken);
 ```
 
+Method can be used to start a new Multi Test Run Finalization process, which is reprocessing all data collector attachments passed as first argument using all available processors.
 
 
 3. Introduce a new `IMultiTestRunFinalizationEventsHandler` interface:
@@ -106,10 +107,10 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
     }
 }
 ```
-Interface provides callbacks from Multi Test Run Finalization process. For every finalization process `HandleMultiTestRunFinalizationComplete` will be called once and will provide last chunk or all data attachments. During finalization process `HandleFinalisedAttachments` can be invoked several times providing data attachments that are already processed. Method `HandleMultiTestRunFinalizationProgress` will be invoked every time when `progressReporter` is used by `IDataCollectorAttachments` implementation and will provide information about current collector: progress, uris and index of collector. Additionally event will contain also number of collectors.
+Interface provides callbacks from Multi Test Run Finalization process. For every such process `HandleMultiTestRunFinalizationComplete` will be called once and will provide last chunk or all data collector attachments. During finalization process `HandleFinalisedAttachments` can be invoked several times providing data collector attachments that are already processed. Method `HandleMultiTestRunFinalizationProgress` will be invoked every time when `progressReporter` is used by `IDataCollectorAttachmentProcessor` implementation and will provide information about current collector: progress, uris and index of collector. Additionally event will contain also number of processors.
 
 
-4. Use above logic to combine/merge data attachments for parallel test executions and VS scenarios (e.g. `Run All Tests`, `Analyze Code Coverage for All Tests`). In case of `Analyze Code Coverage for All Tests` VS will use `vstest.console` in Design Mode and merge all code coverage reports. VS will show full code coverage report for all test projects.
+4. Use above logic to reprocess data collector attachments for parallel test executions and VS scenarios (e.g. `Run All Tests`, `Analyze Code Coverage for All Tests`). In case of `Analyze Code Coverage for All Tests` VS will use `vstest.console` in a variation of design mode and merge all code coverage reports. VS will show full code coverage report for all test projects.
 
 5. When [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command is used to execute unit tests in a given solution, new console app `Orchestrator` will be executed.
   * `Orchestrator` for every project inside solution will start `dotnet test` command, using `Process` with output redirected. Output for every project will be printed to stdout with some mutex to not mix output from children. 
@@ -118,9 +119,9 @@ Interface provides callbacks from Multi Test Run Finalization process. For every
     - Test results statistics
   back to `Orchestrator`.
   * In parallel with test executions `Orchestrator` will start `vstest.console` in Design Mode.
-  * Whenever at least 2 test executions are finished `Orchestrator` will invoke `FinalizeMultiTestRunAsync` and provide all attachments from those test executions that finished. Parameter `multiTestRunCompleted` will be set to `false`. Test platform will provide data attachments only to associative collectors.
-  * When all test exections are done `Orchestrator` will provide all attachments back through `FinalizeMultiTestRunAsync` with `multiTestRunCompleted` set to `true`. Test Platfrom will use all available collectors to process data attachments.
-  * When all attachments are merged `Orchestrator` will display information about data attachments to standard output. 
+  * Whenever at least 2 test executions are finished `Orchestrator` will invoke `FinalizeMultiTestRunAsync` and provide all attachments from those test executions that finished. Parameter `multiTestRunCompleted` will be set to `false`. Test platform will provide data collector attachments only to associative processors.
+  * When all test exections are done `Orchestrator` will provide all attachments back through `FinalizeMultiTestRunAsync` with `multiTestRunCompleted` set to `true`. Test Platform will use all available processors to process data collector attachments.
+  * When all attachments are merged `Orchestrator` will display information about data collector attachments to standard output. 
   * Finally `Orchestator` will combine all tests results print it to standard output.
 
   For example let's assume we have .NET Core solution with 4 test projects `A1`, `A2`, `A3` and `A4`. Let's assume running tests for `A1`, `A2`, `A3`, `A4` takes 3, 4, 5 and 11 seconds respectively.
