@@ -125,6 +125,8 @@ Interface provides callbacks from Multi Test Run Finalization process. For every
   * When all attachments are merged `Orchestrator` will display information about data collector attachments to standard output. 
   * Finally `Orchestator` will combine all tests results statistics and print it to standard output.
 
+![dotnet-test finalization](Images/finalization.png)
+
   For example let's assume we have .NET Core solution with 4 test projects `A1`, `A2`, `A3` and `A4`. Let's assume running tests for `A1`, `A2`, `A3`, `A4` takes 3, 4, 5 and 11 seconds respectively.
   Running `dotnet test` on solution level will result in:
   * Second 0: `Orchestrator` will run all tests projects in parallel (by invoking `dotnet test` for each project)
