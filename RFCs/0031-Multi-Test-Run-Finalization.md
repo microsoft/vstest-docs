@@ -1,7 +1,7 @@
 # 0031 Multi Test Run Finalization
 
 # Summary
-This document details a data collector extensibility point to reporcess (combine/merge) attachments obtained across test executions in both design mode and commandline scenarios.
+This document details a data collector extensibility point to reprocess (combine/merge) attachments obtained across test executions in both design mode and commandline scenarios.
 
 # Motivation
 Today when Test Platform executes tests in parallel only code coverage reports are merged (data collector attachments with uri: `datacollector://microsoft/CodeCoverage/2.0`). For other data collector attachments reprocessing is skipped and all of them are returned by Test Platform.
