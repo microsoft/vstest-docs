@@ -11,7 +11,8 @@ The [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test
 When `Run All Tests` is performed in VS, tests for projects can be executed separately based on target platform/target framework amongst other criteria. In this case also combining/merging of data collector attachments is not performed (e.g. code overage reports are not merged). `Analyze Code Coverage for All Tests` is showing coverage report for only some test projects in the run.
 
 # Proposed Changes
-1. Introduce a `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Below interface should be used only for providing logic to reprocess information from data collector attachments from independent test executions. This interface should **not be** used for modifying any single data collector attachment. Test Platform will invoke `ProcessAttachmentSets` only if at least 2 data collector attachments related to processor (through `GetExtensionUris`) are created by independent test executions.
+
+Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Below interface should be used only for providing logic to reprocess information from data collector attachments from independent test executions. In other words data collector attachment should be modified/created using data from other data collector attachments. This interface should **not be** used for modifying any single data collector attachment. Test Platform will invoke `ProcessAttachmentSets` only if at least 2 data collector attachments related to processor (through `GetExtensionUris`) are created by independent test executions.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
@@ -136,3 +137,166 @@ Interface provides callbacks from Multi Test Run Finalization process. For every
   * Second 11: Tests for `A4` are completed. Code coverage report is produced. Let's name it `CC4`. There is no merging in progress and all test executions are done. Orchestator` starts final merge of `CC1_2_3` and `CC4` by invoking `FinalizeMultiTestRunAsync([CC1_2_3, CC2], multiTestRunCompleted: true)`. Let's assume merging will take 2 seconds (will finish in second 13).
   * Second 13: Merging of `CC1_2_3` and `CC4` is done. New Code coverage report is produced. Let's name it `CC1_2_3_4`. `Orchestator` prints information about data attachment `CC1_2_3_4`. `Orchestator` prints aggregated statistics about tests from all `A1`, `A2`, `A3` and `A4`. 
 
+# Additional classes
+
+1. `MultiTestRunFinalizationCompleteEventArgs` used by IMultiTestRunFinalizationEventsHandler:
+
+```
+namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
+{
+    [DataContract]
+    public class MultiTestRunFinalizationCompleteEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="isCanceled">Specifies whether the finalization is canceled.</param>
+        /// <param name="error">Specifies the error encountered during the execution of the finalization.</param>
+        public MultiTestRunFinalizationCompleteEventArgs(bool isCanceled, Exception error)
+        {
+            this.IsCanceled = isCanceled;
+            this.Error = error;
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the finalization is canceled or not.
+        /// </summary>
+        [DataMember]
+        public bool IsCanceled { get; private set; }
+
+        /// <summary>
+        /// Gets the error encountered during the finalization of the test runs. Null if there is no error.
+        /// </summary>
+        [DataMember]
+        public Exception Error { get; private set; }
+
+        /// <summary>
+        /// Get or Sets the Metrics
+        /// </summary>
+        [DataMember]
+        public IDictionary<string, object> Metrics { get; set; }
+    }
+}
+```
+
+2. `MultiTestRunFinalizationProgressEventArgs` used by IMultiTestRunFinalizationEventsHandler:
+
+```
+namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
+{
+    [DataContract]
+    public class MultiTestRunFinalizationProgressEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="currentProcessorIndex">Specifies current processor index.</param>
+        /// <param name="currentProcessorUris">Specifies current processor Uris.</param>
+        /// <param name="currentProcessorProgress">Specifies current processor progress.</param>
+        /// <param name="processorsCount">Specifies the overall number of processors.</param>
+        public MultiTestRunFinalizationProgressEventArgs(long currentProcessorIndex, ICollection<Uri> currentProcessorUris, long currentProcessorProgress, long processorsCount)
+        {
+            CurrentProcessorIndex = currentProcessorIndex;
+            CurrentProcessorUris = currentProcessorUris;
+            CurrentProcessorProgress = currentProcessorProgress;
+            ProcessorsCount = processorsCount;
+        }
+
+        /// <summary>
+        /// Gets a current processor index.
+        /// </summary>
+        [DataMember]
+        public long CurrentProcessorIndex { get; private set; }
+
+        /// <summary>
+        /// Gets a current processor URI.
+        /// </summary>
+        [DataMember]
+        public ICollection<Uri> CurrentProcessorUris { get; private set; }
+
+        /// <summary>
+        /// Gets a current processor progress.
+        /// </summary>
+        [DataMember]
+        public long CurrentProcessorProgress { get; private set; }
+
+        /// <summary>
+        /// Gets the overall number of processors.
+        /// </summary>
+        [DataMember]
+        public long ProcessorsCount { get; private set; }
+    }
+}
+```
+
+3. Class `MultiTestRunFinalizationPayload` defines message payload connected to message ID `"MultiTestRunFinalization.Start"`
+
+```
+namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
+{
+    /// <summary>
+    /// Class used to define the MultiTestRunFinalizationPayload sent by the Vstest.console translation layers into design mode
+    /// </summary>
+    public class MultiTestRunFinalizationPayload
+    {
+        /// <summary>
+        /// Collection of attachments.
+        /// </summary>
+        [DataMember]
+        public IEnumerable<AttachmentSet> Attachments { get; set; }
+
+        /// <summary>
+        ///  Gets or sets whether Metrics should be collected or not.
+        /// </summary>
+        [DataMember]
+        public bool CollectMetrics { get; set; }
+        
+        /// <summary>
+        ///  Gets or sets whether all multi test runs are completed.
+        /// </summary>
+        [DataMember]
+        public bool MultiTestRunCompleted { get; set; }
+    }
+}
+```
+
+4. Class `MultiTestRunFinalizationCompletePayload` defines message payload connected to message ID `"MultiTestRunFinalization.Complete"`
+
+```
+namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel
+{
+    /// <summary>
+    /// Multi test run finalization complete payload.
+    /// </summary>
+    public class MultiTestRunFinalizationCompletePayload
+    {
+        /// <summary>
+        /// Gets or sets the multi test run finalization complete args.
+        /// </summary>
+        public MultiTestRunFinalizationCompleteEventArgs FinalizationCompleteEventArgs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the attachments.
+        /// </summary>
+        public IEnumerable<AttachmentSet> Attachments { get; set; }
+    }
+}
+```
+
+5. Class `MultiTestRunFinalizationProgressPayload` defines message payload connected to message ID `"MultiTestRunFinalization.Progress"`
+
+```
+namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel
+{
+    /// <summary>
+    /// Multi test run finalization complete payload.
+    /// </summary>
+    public class MultiTestRunFinalizationProgressPayload
+    {
+        /// <summary>
+        /// Gets or sets the multi test run finalization complete args.
+        /// </summary>
+        public MultiTestRunFinalizationProgressEventArgs FinalizationProgressEventArgs { get; set; }
+    }
+}
+```
