@@ -123,7 +123,7 @@ Interface provides callbacks from Multi Test Run Finalization process. For every
   * Whenever at least 2 test executions are finished `Orchestrator` will invoke `FinalizeMultiTestRunAsync` and provide all attachments from those test executions that finished. Parameter `multiTestRunCompleted` will be set to `false`. Test platform will provide data collector attachments only to associative processors.
   * When all test exections are done `Orchestrator` will provide all attachments back through `FinalizeMultiTestRunAsync` with `multiTestRunCompleted` set to `true`. Test Platform will use all available processors to process data collector attachments.
   * When all attachments are merged `Orchestrator` will display information about data collector attachments to standard output. 
-  * Finally `Orchestator` will combine all tests results print it to standard output.
+  * Finally `Orchestator` will combine all tests results statistics and print it to standard output.
 
   For example let's assume we have .NET Core solution with 4 test projects `A1`, `A2`, `A3` and `A4`. Let's assume running tests for `A1`, `A2`, `A3`, `A4` takes 3, 4, 5 and 11 seconds respectively.
   Running `dotnet test` on solution level will result in:
