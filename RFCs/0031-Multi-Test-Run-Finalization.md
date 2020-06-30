@@ -12,7 +12,7 @@ When `Run All Tests` is performed in VS, tests for projects can be executed sepa
 
 # Proposed Changes
 
-Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Below interface should be used only for providing logic to reprocess information from data collector attachments from independent test executions. In other words data collector attachment should be modified/created using data from other data collector attachments. This interface should **not be** used for modifying any single data collector attachment. Test Platform will invoke `ProcessAttachmentSets` only if at least 2 data collector attachments related to processor (through `GetExtensionUris`) are created by independent test executions.
+Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Below interface should be used only for providing logic to reprocess information from data collector attachments from independent test executions. In other words data collector attachment should be modified/created using data from other data collector attachments. This interface should **not be** used for modifying any single data collector attachment. Test Platform will invoke `ProcessAttachmentSetsAsync` only if at least 2 data collector attachments related to processor (through `GetExtensionUris`) are created by independent test executions.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
@@ -40,22 +40,22 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
         /// <param name="logger">Message logger</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Attachments after reprocessing</returns>
-        ICollection<AttachmentSet> ProcessAttachmentSets(ICollection<AttachmentSet> attachments, IProgress<int> progressReporter, IMessageLogger logger, CancellationToken cancellationToken);
+        Task<ICollection<AttachmentSet>> ProcessAttachmentSetsAsyncAsync(ICollection<AttachmentSet> attachments, IProgress<int> progressReporter, IMessageLogger logger, CancellationToken cancellationToken);
     }
 }
 ```
 
-Method `GetExtensionUris` should provide all Uris for data collector attachments which are handled by current processor. Test platform will provide to processor only data collector attachments with such Uris. Result of method `ProcessAttachmentSets` shouyld contain only data collector attachments with such Uris.
+Method `GetExtensionUris` should provide all Uris for data collector attachments which are handled by current processor. Test platform will provide to processor only data collector attachments with such Uris. Result of method `ProcessAttachmentSetsAsync` shouyld contain only data collector attachments with such Uris.
 
-`SupportsIncrementalProcessing` should indicate if processor is supporting incremental processing of attachments. It means that `ProcessAttachmentSets` should be [associative](https://en.wikipedia.org/wiki/Associative_property).
+`SupportsIncrementalProcessing` should indicate if processor is supporting incremental processing of attachments. It means that `ProcessAttachmentSetsAsync` should be [associative](https://en.wikipedia.org/wiki/Associative_property).
 
 If `SupportsIncrementalProcessing` is `True` Test Platform may try to speed up whole process by reprocessing data collector attachments as soon as possible when any two test executions are done. For example let's assume we have 5 test executions which are generating 5 data collector attachments: `a1`, `a2`, `a3`, `a4` and `a5`. Test platform could perform invocations:
-* `var result1 = ProcessAttachmentSets([a1, a2, a3], ...);` when first 3 executions are done
-* `var result2 = ProcessAttachmentSets(result1.Concat([a4]), ...);` when 4th execution is done
-* `var finalResult = ProcessAttachmentSets(result2.Concat([a5]), ...);` when last test execution is done
+* `var result1 = await ProcessAttachmentSetsAsync([a1, a2, a3], ...);` when first 3 executions are done
+* `var result2 = await ProcessAttachmentSetsAsync(result1.Concat([a4]), ...);` when 4th execution is done
+* `var finalResult = await ProcessAttachmentSetsAsync(result2.Concat([a5]), ...);` when last test execution is done
 
-If `SupportsIncrementalProcessing` is `False` then Test Platform will wait for all test executions to finish and call `ProcessAttachmentSets` only once:
-* `var finalResult = ProcessAttachmentSets([a1, a2, a3, a4, a5], ...);`
+If `SupportsIncrementalProcessing` is `False` then Test Platform will wait for all test executions to finish and call `ProcessAttachmentSetsAsync` only once:
+* `var finalResult = await ProcessAttachmentSetsAsync([a1, a2, a3, a4, a5], ...);`
 
 By default `SupportsIncrementalProcessing` should be `False`, unless processing can take longer time and it's beneficial to start the process as soon as possible.
 
@@ -69,7 +69,7 @@ By default `SupportsIncrementalProcessing` should be `False`, unless processing 
 /// </summary>
 /// <param name="attachments">Collection of attachments</param>
 /// <param name="multiTestRunCompleted">Indicates that all test executions are done and all data is provided</param>
-/// <param name="collectMetrics">Enables metrics collection</param>
+/// <param name="collectMetrics">Enables metrics collection (used for telemetry)</param>
 /// <param name="multiTestRunFinalizationCompleteEventsHandler">EventHandler to receive session complete event</param>
 /// <param name="cancellationToken">Cancellation token</param>        
 Task FinalizeMultiTestRunAsync(IEnumerable<AttachmentSet> attachments, bool multiTestRunCompleted, bool collectMetrics, IMultiTestRunFinalizationEventsHandler eventsHandler, CancellationToken cancellationToken);
@@ -173,7 +173,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
         public Exception Error { get; private set; }
 
         /// <summary>
-        /// Get or Sets the Metrics
+        /// Get or Sets the Metrics (used for telemetry)
         /// </summary>
         [DataMember]
         public IDictionary<string, object> Metrics { get; set; }
