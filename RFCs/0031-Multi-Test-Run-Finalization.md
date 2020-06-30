@@ -75,7 +75,7 @@ By default `SupportsIncrementalProcessing` should be `False`, unless processing 
 Task FinalizeMultiTestRunAsync(IEnumerable<AttachmentSet> attachments, bool multiTestRunCompleted, bool collectMetrics, IMultiTestRunFinalizationEventsHandler eventsHandler, CancellationToken cancellationToken);
 ```
 
-Method can be used to start a new Multi Test Run Finalization process, which is reprocessing all data collector attachments passed as first argument using all available attachment processors.
+Method can be used to start a new Multi Test Run Finalization process, which is reprocessing all data collector attachments passed as first argument using all available attachment processors. When `collectMetrics` is set to `true` Test Platform will provide information about initial number of attachments, final number of attachments, time taken in seconds to process all data collector attachments.
 
 
 3. Introduce a new `IMultiTestRunFinalizationEventsHandler` interface:
@@ -95,10 +95,10 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
         void HandleMultiTestRunFinalizationComplete(MultiTestRunFinalizationCompleteEventArgs finalizationCompleteEventArgs, IEnumerable<AttachmentSet> lastChunk);
 
         /// <summary>
-        /// Dispatch FinalisedAttachments event to listeners.
+        /// Dispatch ProcessedAttachmentsChunk event to listeners.
         /// </summary>
-        /// <param name="attachments">Finalised attachment sets.</param>
-        void HandleFinalisedAttachments(IEnumerable<AttachmentSet> attachments);
+        /// <param name="attachments">Processed attachment sets.</param>
+        void HandleProcessedAttachmentsChunk(IEnumerable<AttachmentSet> attachments);
 
         /// <summary>
         /// Dispatch MultiTestRunFinalizationProgress event to listeners.
@@ -108,7 +108,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
     }
 }
 ```
-Interface provides callbacks from Multi Test Run Finalization process. For every such process `HandleMultiTestRunFinalizationComplete` will be called once and will provide last chunk or all data collector attachments. During finalization process `HandleFinalisedAttachments` can be invoked several times providing data collector attachments that are already processed. Method `HandleMultiTestRunFinalizationProgress` will be invoked every time when `progressReporter` is used by attachment processor and will provide information about current attachment processor: progress, uris and index of it. Additionally event will contain also number of attachment processors.
+Interface provides callbacks from Multi Test Run Finalization process. For every such process `HandleMultiTestRunFinalizationComplete` will be called once and will provide last chunk or all data collector attachments. During finalization process `HandleProcessedAttachmentsChunk` can be invoked several times providing data collector attachments that are already processed. Method `HandleMultiTestRunFinalizationProgress` will be invoked every time when `progressReporter` is used by attachment processor and will provide information about current attachment processor: progress, uris and index of it. Additionally event will contain also number of attachment processors.
 
 
 4. Use above logic to reprocess data collector attachments for parallel test executions and VS scenarios (e.g. `Run All Tests`, `Analyze Code Coverage for All Tests`). In case of `Analyze Code Coverage for All Tests` VS will use `vstest.console` in a variation of design mode and merge all code coverage reports. VS will show full code coverage report for all test projects.
