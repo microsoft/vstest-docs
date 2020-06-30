@@ -40,7 +40,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
         /// <param name="logger">Message logger</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Attachments after reprocessing</returns>
-        Task<ICollection<AttachmentSet>> ProcessAttachmentSetsAsyncAsync(ICollection<AttachmentSet> attachments, IProgress<int> progressReporter, IMessageLogger logger, CancellationToken cancellationToken);
+        Task<ICollection<AttachmentSet>> ProcessAttachmentSetsAsync(ICollection<AttachmentSet> attachments, IProgress<int> progressReporter, IMessageLogger logger, CancellationToken cancellationToken);
     }
 }
 ```
