@@ -23,7 +23,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
     public interface IDataCollectorAttachmentProcessor
     {
         /// <summary>
-        /// Gets the attachments Uris, which are handled by processor
+        /// Gets the attachments Uris, which are handled by attachment processor
         /// </summary>
         IEnumerable<Uri> GetExtensionUris();
 
@@ -45,9 +45,9 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
 }
 ```
 
-Method `GetExtensionUris` should provide all Uris for data collector attachments which are handled by current processor. Test platform will provide to processor only data collector attachments with such Uris. Result of method `ProcessAttachmentSetsAsync` shouyld contain only data collector attachments with such Uris.
+Method `GetExtensionUris` should provide all Uris for data collector attachments which are handled by current attachment processor. Test platform will provide to attachment processor only data collector attachments with such Uris. Result of method `ProcessAttachmentSetsAsync` shouyld contain only data collector attachments with such Uris.
 
-`SupportsIncrementalProcessing` should indicate if processor is supporting incremental processing of attachments. It means that `ProcessAttachmentSetsAsync` should be [associative](https://en.wikipedia.org/wiki/Associative_property).
+`SupportsIncrementalProcessing` should indicate if attachment processor is supporting incremental processing of attachments. It means that `ProcessAttachmentSetsAsync` should be [associative](https://en.wikipedia.org/wiki/Associative_property).
 
 If `SupportsIncrementalProcessing` is `True` Test Platform may try to speed up whole process by reprocessing data collector attachments as soon as possible when any two test executions are done. For example let's assume we have 5 test executions which are generating 5 data collector attachments: `a1`, `a2`, `a3`, `a4` and `a5`. Test platform could perform invocations:
 * `var result1 = await ProcessAttachmentSetsAsync([a1, a2, a3], ...);` when first 3 executions are done
@@ -75,7 +75,7 @@ By default `SupportsIncrementalProcessing` should be `False`, unless processing 
 Task FinalizeMultiTestRunAsync(IEnumerable<AttachmentSet> attachments, bool multiTestRunCompleted, bool collectMetrics, IMultiTestRunFinalizationEventsHandler eventsHandler, CancellationToken cancellationToken);
 ```
 
-Method can be used to start a new Multi Test Run Finalization process, which is reprocessing all data collector attachments passed as first argument using all available processors.
+Method can be used to start a new Multi Test Run Finalization process, which is reprocessing all data collector attachments passed as first argument using all available attachment processors.
 
 
 3. Introduce a new `IMultiTestRunFinalizationEventsHandler` interface:
@@ -108,7 +108,7 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
     }
 }
 ```
-Interface provides callbacks from Multi Test Run Finalization process. For every such process `HandleMultiTestRunFinalizationComplete` will be called once and will provide last chunk or all data collector attachments. During finalization process `HandleFinalisedAttachments` can be invoked several times providing data collector attachments that are already processed. Method `HandleMultiTestRunFinalizationProgress` will be invoked every time when `progressReporter` is used by `IDataCollectorAttachmentProcessor` implementation and will provide information about current collector: progress, uris and index of collector. Additionally event will contain also number of processors.
+Interface provides callbacks from Multi Test Run Finalization process. For every such process `HandleMultiTestRunFinalizationComplete` will be called once and will provide last chunk or all data collector attachments. During finalization process `HandleFinalisedAttachments` can be invoked several times providing data collector attachments that are already processed. Method `HandleMultiTestRunFinalizationProgress` will be invoked every time when `progressReporter` is used by attachment processor and will provide information about current attachment processor: progress, uris and index of it. Additionally event will contain also number of attachment processors.
 
 
 4. Use above logic to reprocess data collector attachments for parallel test executions and VS scenarios (e.g. `Run All Tests`, `Analyze Code Coverage for All Tests`). In case of `Analyze Code Coverage for All Tests` VS will use `vstest.console` in a variation of design mode and merge all code coverage reports. VS will show full code coverage report for all test projects.
@@ -120,8 +120,8 @@ Interface provides callbacks from Multi Test Run Finalization process. For every
     - Test results statistics
   back to `Orchestrator`.
   * In parallel with test executions `Orchestrator` will start `vstest.console` in Design Mode.
-  * Whenever at least 2 test executions are finished `Orchestrator` will invoke `FinalizeMultiTestRunAsync` and provide all attachments from those test executions that finished. Parameter `multiTestRunCompleted` will be set to `false`. Test platform will provide data collector attachments only to processors which supports incremental processing.
-  * When all test exections are done `Orchestrator` will provide all attachments back through `FinalizeMultiTestRunAsync` with `multiTestRunCompleted` set to `true`. Test Platform will use all available processors to process data collector attachments.
+  * Whenever at least 2 test executions are finished `Orchestrator` will invoke `FinalizeMultiTestRunAsync` and provide all attachments from those test executions that finished. Parameter `multiTestRunCompleted` will be set to `false`. Test platform will provide data collector attachments only to attachments processors which supports incremental processing.
+  * When all test exections are done `Orchestrator` will provide all attachments back through `FinalizeMultiTestRunAsync` with `multiTestRunCompleted` set to `true`. Test Platform will use all available attachment processors to process data collector attachments.
   * When all attachments are merged `Orchestrator` will display information about data collector attachments to standard output. 
   * Finally `Orchestator` will combine all tests results statistics and print it to standard output.
 
@@ -192,41 +192,41 @@ namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.Client
         /// <summary>
         /// Default constructor.
         /// </summary>
-        /// <param name="currentProcessorIndex">Specifies current processor index.</param>
-        /// <param name="currentProcessorUris">Specifies current processor Uris.</param>
-        /// <param name="currentProcessorProgress">Specifies current processor progress.</param>
-        /// <param name="processorsCount">Specifies the overall number of processors.</param>
-        public MultiTestRunFinalizationProgressEventArgs(long currentProcessorIndex, ICollection<Uri> currentProcessorUris, long currentProcessorProgress, long processorsCount)
+        /// <param name="currentAttachmentProcessorIndex">Specifies current attachment processor index.</param>
+        /// <param name="currentAttachmentProcessorUris">Specifies current processor Uris.</param>
+        /// <param name="currentAttachmentProcessorProgress">Specifies current processor progress.</param>
+        /// <param name="attachmentProcessorsCount">Specifies the overall number of processors.</param>
+        public MultiTestRunFinalizationProgressEventArgs(long currentAttachmentProcessorIndex, ICollection<Uri> currentAttachmentProcessorUris, long currentAttachmentProcessorProgress, long attachmentProcessorsCount)
         {
-            CurrentProcessorIndex = currentProcessorIndex;
-            CurrentProcessorUris = currentProcessorUris;
-            CurrentProcessorProgress = currentProcessorProgress;
-            ProcessorsCount = processorsCount;
+            CurrentAttachmentProcessorIndex = currentAttachmentProcessorIndex;
+            CurrentAttachmentProcessorUris = currentAttachmentProcessorUris;
+            CurrentAttachmentProcessorProgress = currentAttachmentProcessorProgress;
+            AttachmentProcessorsCount = attachmentProcessorsCount;
         }
 
         /// <summary>
-        /// Gets a current processor index.
+        /// Gets a current attachment processor index.
         /// </summary>
         [DataMember]
-        public long CurrentProcessorIndex { get; private set; }
+        public long CurrentAttachmentProcessorIndex { get; private set; }
 
         /// <summary>
-        /// Gets a current processor URI.
+        /// Gets a current attachment processor URI.
         /// </summary>
         [DataMember]
-        public ICollection<Uri> CurrentProcessorUris { get; private set; }
+        public ICollection<Uri> CurrentAttachmentProcessorUris { get; private set; }
 
         /// <summary>
-        /// Gets a current processor progress.
+        /// Gets a current attachment processor progress.
         /// </summary>
         [DataMember]
-        public long CurrentProcessorProgress { get; private set; }
+        public long CurrentAttachmentProcessorProgress { get; private set; }
 
         /// <summary>
-        /// Gets the overall number of processors.
+        /// Gets the overall number of attachment processors.
         /// </summary>
         [DataMember]
-        public long ProcessorsCount { get; private set; }
+        public long AttachmentProcessorsCount { get; private set; }
     }
 }
 ```
