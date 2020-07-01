@@ -6,13 +6,13 @@ This document details a data collector extensibility point to reprocess (combine
 # Motivation
 Today when Test Platform executes tests in parallel only code coverage reports are merged (data collector attachments with uri: `datacollector://microsoft/CodeCoverage/2.0`). For other data collector attachments reprocessing is skipped and all of them are returned by Test Platform.
 
-The [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command is used to execute unit tests in a given solution. The `dotnet test` command builds the solution and runs a test host application for each test project in the solution. However, currently there is no way to reporcess (combine/merge) data collector attachments associated with each project execution. Code coverage reports are not merged.
+The [dotnet test](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test) command is used to execute unit tests in a given solution. The `dotnet test` command builds the solution and runs a test host application for each test project in the solution. However, currently there is no way to reprocess(combine/merge) data collector attachments associated with each project execution. Code coverage reports are not merged.
 
 When `Run All Tests` is performed in VS, tests for projects can be executed separately based on target platform/target framework amongst other criteria. In this case also combining/merging of data collector attachments is not performed (e.g. code overage reports are not merged). `Analyze Code Coverage for All Tests` is showing coverage report for only some test projects in the run.
 
 # Proposed Changes
 
-Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Test Platform will invoke `ProcessAttachmentSetsAsync` only if at least 1 data collector attachment related to processor (through `GetExtensionUris`) is created by test execution.
+Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reprocess(combine/merge) data collector attachments. Test Platform will invoke `ProcessAttachmentSetsAsync` only if at least 1 data collector attachment related to processor (through `GetExtensionUris`) is created by test execution.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
