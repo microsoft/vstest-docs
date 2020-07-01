@@ -12,7 +12,7 @@ When `Run All Tests` is performed in VS, tests for projects can be executed sepa
 
 # Proposed Changes
 
-Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Test Platform will invoke `ProcessAttachmentSetsAsync` only if at least 1 data collector attachments related to processor (through `GetExtensionUris`) are created by test execution.
+Introduce a new `IDataCollectorAttachmentProcessor` interface which can be implemented by Test Platform extensions and provide custom logic to reporcess (combine/merge) data collector attachments. Test Platform will invoke `ProcessAttachmentSetsAsync` only if at least 1 data collector attachment related to processor (through `GetExtensionUris`) is created by test execution.
 
 ```
 namespace Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection
