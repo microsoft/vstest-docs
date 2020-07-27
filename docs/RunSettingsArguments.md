@@ -46,3 +46,18 @@ For example, in below command the final value for `MapInconclusiveToFailed` will
 ```
 dotnet test --settings additionalargs.runsettings -- MSTest.MapInconclusiveToFailed=False
 ```
+
+You can also set `TestRunParameters` using command line option: 
+
+```cmd
+# cmd
+dotnet test  -- TestRunParameters.Parameter(name=\"myParam\", value=\"value\")
+
+# powershell
+dotnet test --%  -- TestRunParameters.Parameter(name=\"myParam\", value=\"value\") 
+
+# bash
+dotnet test -- TestRunParameters.Parameter\(name=\"myParam\",\ value=\"value\"\) 
+```
+
+In this example, `\"myParam\"` corresponds to the name of you parameter and `\"value\"` - the value of your parameter. Note, that `\` are escaping characters and they should stay as shown above.
