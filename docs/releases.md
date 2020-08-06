@@ -41,6 +41,37 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0-preview-
 * TestPlatform vsix: [16.8.0-preview-20200806-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200806-02;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200806-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200806-02)
 
+## 16.7.0
+
+### Issue Fixed
+* Added new exception handling [#2461](https://github.com/microsoft/vstest/pull/2461)
+* Added exception handling while creating "TestResults" folder [#2450](https://github.com/microsoft/vstest/pull/2450)
+* Added support for default exclusion merging for code coverage [#2431](https://github.com/microsoft/vstest/pull/2431)
+* LOC CHECKIN | microsoft/vstest master | 20200526 [#2445](https://github.com/microsoft/vstest/pull/2445)
+* Generate xlf for blame [#2442](https://github.com/microsoft/vstest/pull/2442)
+* Upgrade TestPlatform external dependencies [#2440](https://github.com/microsoft/vstest/pull/2440)
+* Added support for debugging external test processes [#2325](https://github.com/microsoft/vstest/pull/2325)
+* Add the parameters to VSTestTask to allow dotnet test to work [#2438](https://github.com/microsoft/vstest/pull/2438)
+* Add hangdump and crash dump capabilities and options [#2434](https://github.com/microsoft/vstest/pull/2434)
+* Update arcade tooling to latest [#2436](https://github.com/microsoft/vstest/pull/2436)
+* More verbose info in datacollector log [#2430](https://github.com/microsoft/vstest/pull/2430)
+* Support /TestCaseFilter and /Tests arguments at the same time [#2371](https://github.com/microsoft/vstest/pull/2371)
+* Wrap error message/stack trace content in `<pre>` [#2419](https://github.com/microsoft/vstest/pull/2419)
+* Update telemetry to latest [#2421](https://github.com/microsoft/vstest/pull/2421)
+* Merge test run parameters that have spaces [#2409](https://github.com/microsoft/vstest/pull/2409)
+* update externals [#2406](https://github.com/microsoft/vstest/pull/2406)
+* VS Depencencies from 16.7.0 signed build [#2382](https://github.com/microsoft/vstest/pull/2382)
+* Changed new configurator method name (#2397) [#2403](https://github.com/microsoft/vstest/pull/2403)
+* Fix null reference [#2401](https://github.com/microsoft/vstest/pull/2401)
+* Changed new configurator method name [#2398](https://github.com/microsoft/vstest/pull/2398)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0...v16.7.0)
+
+### Drops
+
+* TestPlatform vsix: [16.7.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/v16.7.0;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.7.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0)
+
 ## 16.7.0-preview-20200519-01
 
 ### Issue Fixed
