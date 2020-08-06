@@ -1,5 +1,46 @@
 # Release Notes
 
+## 16.8.0-preview-20200806-02
+
+### Issue Fixed
+* Use OS bitness to figure out .NETCore runner architecture [#2507](https://github.com/microsoft/vstest/pull/2507)
+* Updated TP external dependencies [#2503](https://github.com/microsoft/vstest/pull/2503)
+* Add missing space before parens in message [#2504](https://github.com/microsoft/vstest/pull/2504)
+* CI failure fix [#2500](https://github.com/microsoft/vstest/pull/2500)
+* Fix signing [#2497](https://github.com/microsoft/vstest/pull/2497)
+* Add the new MacOs env variable to allow dumps to be created. [#2496](https://github.com/microsoft/vstest/pull/2496)
+* Macos dumps [#2495](https://github.com/microsoft/vstest/pull/2495)
+* Multitarget testhost [#2493](https://github.com/microsoft/vstest/pull/2493)
+* Revert detecting default architecture, to allow dotnet to default to 64-bit [#2492](https://github.com/microsoft/vstest/pull/2492)
+* Nuget.Frameworks renamed netcoreapp5.0 to net5.0 [#2491](https://github.com/microsoft/vstest/pull/2491)
+* Console output for minimal and quiet [#2191](https://github.com/microsoft/vstest/pull/2191)
+* Update License
+* Linux build [#2477](https://github.com/microsoft/vstest/pull/2477)
+* Windows 32 bit issue [#2482](https://github.com/microsoft/vstest/pull/2482)
+* Update dependencies from https://github.com/dotnet/arcade build 20200715.6 [#2485](https://github.com/microsoft/vstest/pull/2485)
+* Create test results directory [#2483](https://github.com/microsoft/vstest/pull/2483)
+* Use testhost.exe only on Windows x86 and x64, and enable hang dumps on ARM and ARM64 [#2479](https://github.com/microsoft/vstest/pull/2479)
+* Localization HB. [#2478](https://github.com/microsoft/vstest/pull/2478)
+* Introduced acceptance tests for default exclusion merging [#2454](https://github.com/microsoft/vstest/pull/2454)
+* Change indicators to words [#2475](https://github.com/microsoft/vstest/pull/2475)
+* Adding test run attachments processing [#2463](https://github.com/microsoft/vstest/pull/2463)
+* Localization check-in 07-01-2020 [#2471](https://github.com/microsoft/vstest/pull/2471)
+* Update dependencies from https://github.com/dotnet/arcade build 20200626.2 [#2470](https://github.com/microsoft/vstest/pull/2470)
+* Added new exception handling [#2461](https://github.com/microsoft/vstest/pull/2461)
+* Update branding to 16.8.0 [#2460](https://github.com/microsoft/vstest/pull/2460)
+* Update dependencies from https://github.com/dotnet/arcade build 20200602.3 [#2455](https://github.com/microsoft/vstest/pull/2455)
+* Added exception handling while creating "TestResults" folder [#2450](https://github.com/microsoft/vstest/pull/2450)
+* Added support for default exclusion merging for code coverage [#2431](https://github.com/microsoft/vstest/pull/2431)
+* LOC CHECKIN | microsoft/vstest master | 20200526 [#2445](https://github.com/microsoft/vstest/pull/2445)
+* Generate xlf for blame [#2442](https://github.com/microsoft/vstest/pull/2442)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0-preview-20200519-01...v16.8.0-preview-20200806-02)
+
+### Drops
+
+* TestPlatform vsix: [16.8.0-preview-20200806-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200806-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200806-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200806-02)
+
 ## 16.7.0-preview-20200519-01
 
 ### Issue Fixed
