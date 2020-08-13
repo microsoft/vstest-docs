@@ -1,5 +1,21 @@
 # Release Notes
 
+## 16.8.0-preview-20200812-03
+
+### Issue Fixed
+* Replace NET451 compiler directives with NETFRAMEWORK [#2516](https://github.com/Microsoft/vstest/pull/2516)
+* [master] Update dependencies from dotnet/arcade [#2509](https://github.com/Microsoft/vstest/pull/2509)
+* Updated TP external dependencies [#2515](https://github.com/Microsoft/vstest/pull/2515)
+* Fixed code coverage compatibility issue [#2514](https://github.com/Microsoft/vstest/pull/2514)
+* Fixed TRX file overwrite in certain circumstances [#2508](https://github.com/Microsoft/vstest/pull/2508)
+
+See full log [here](https://github.com/Microsoft/vstest/compare/v16.8.0-preview-20200806-02...v16.8.0-preview-20200812-03)
+
+### Drops
+
+* TestPlatform vsix: [16.8.0-preview-20200812-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200812-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200812-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200812-03)
+
 ## 16.8.0-preview-20200806-02
 
 ### Issue Fixed
