@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.7.1
+
+### Issue Fixed
+* Fixed code coverage compatibility issue [#2527](https://github.com/microsoft/vstest/pull/2527)
+* Adding test run attachments processing [#2463](https://github.com/microsoft/vstest/pull/2463)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0...v16.7.1)
+
+### Drops
+
+* TestPlatform vsix: [16.7.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.7/20200819-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.7.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.1)
+
 ## 16.8.0-preview-20200812-03
 
 ### Issue Fixed
