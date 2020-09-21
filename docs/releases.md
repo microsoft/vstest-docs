@@ -1,5 +1,34 @@
 # Release Notes
 
+
+## 16.8.0-preview-20200921-01
+
+### Issue Fixed
+* Fix blame parameter, warning, and add all testhosts to be ngend [#2579](https://github.com/microsoft/vstest/pull/2579)
+* Blame upload on crash even if hang dump started [#2553](https://github.com/microsoft/vstest/pull/2553)
+* Fix errors reported by StyleCop Analyzers [#2555](https://github.com/microsoft/vstest/pull/2555)
+* Improve blame [#2552](https://github.com/microsoft/vstest/pull/2552)
+* Changes to allow special characters in parameter names [#2481](https://github.com/microsoft/vstest/pull/2481)
+* Add binaries to enable running Fakes in Net Core [#2529](https://github.com/microsoft/vstest/pull/2529)
+* Trigger dumps asynchronously [#2542](https://github.com/microsoft/vstest/pull/2542)
+* Print version of the product in log [#2535](https://github.com/microsoft/vstest/pull/2535)
+* Optionally force procdump [#2531](https://github.com/microsoft/vstest/pull/2531)
+* Crash dumps via net client [#2532](https://github.com/microsoft/vstest/pull/2532)
+* Added a command-line argument to vstest.console.exe for setting environment variables [#2528](https://github.com/microsoft/vstest/pull/2528)
+* Fixed code coverage compatibility issue [#2527](https://github.com/microsoft/vstest/pull/2527)
+* Take non-completed tests instead of last [#2526](https://github.com/microsoft/vstest/pull/2526)
+* Fixing the reminder of crash dumps [#2520](https://github.com/microsoft/vstest/pull/2520)
+* Dumping child processes [#2518](https://github.com/microsoft/vstest/pull/2518)
+* Adding test run attachments processing [#2463](https://github.com/microsoft/vstest/pull/2463)
+* Added new exception handling [#2461](https://github.com/microsoft/vstest/pull/2461)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.8.0-preview-20200812-03...v16.8.0-preview-20200921-01)
+
+### Drops
+
+* TestPlatform vsix: [16.8.0-preview-20200921-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200921-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200921-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200921-01)
+
 ## 16.7.1
 
 ### Issue Fixed
