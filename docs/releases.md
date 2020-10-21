@@ -1,5 +1,29 @@
 # Release Notes
 
+## 16.9.0-preview-20201020-06
+
+### Issue Fixed
+* Enable Fakes Datacollector settings to be added in design mode [#2586](https://github.com/microsoft/vstest/pull/2586)
+* Fix blame parameter, warning, and add all testhosts to be ngend [#2579](https://github.com/microsoft/vstest/pull/2579)
+* Add netcoreapp1.0 support to `Microsoft.TestPlatform.TestHost` NuGet [#2569](https://github.com/microsoft/vstest/pull/2569)
+* Use bitness from process or OS [#2571](https://github.com/microsoft/vstest/pull/2571)
+* Restore netcoreapp1.0 support for testhost [#2554](https://github.com/microsoft/vstest/pull/2554)
+* Get symbols of DiaSymReader from externals [#2560](https://github.com/microsoft/vstest/pull/2560)
+* Do not force .NET4.5 in case legacy test settings are provided [#2545](https://github.com/microsoft/vstest/pull/2545)
+* Simplify package references [#2559](https://github.com/microsoft/vstest/pull/2559)
+* Enable default compile items for Microsoft.TestPlatform.PlatformAbstractions [#2556](https://github.com/microsoft/vstest/pull/2556)
+* Avoid logging >Task returned false but did not log an error.< [#2557](https://github.com/microsoft/vstest/pull/2557)
+* Fixed code coverage compatibility issue [#2527](https://github.com/microsoft/vstest/pull/2527)
+* Add environment variables to enable MacOS dump
+* Adding test run attachments processing [#2463](https://github.com/microsoft/vstest/pull/2463)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.8.0-release-20200921-02...v16.9.0-preview-20201020-06)
+
+### Drops
+
+* TestPlatform vsix: [16.9.0-preview-20201020-06](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20201020-06;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20201020-06](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201020-06)
+
 ## 16.8.0-preview-20200921-01
 
 ### Issue Fixed
