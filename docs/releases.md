@@ -1,5 +1,82 @@
 # Release Notes
 
+## 16.8.0
+
+### Issue Fixed
+* Cherry-picked signing fixes from `master` [#2619](https://github.com/microsoft/vstest/pull/2619)
+* Signing instructions for Newtonsoft.Json.dll added (#2601) [#2603](https://github.com/microsoft/vstest/pull/2603)
+* Fix the initial assets location of VSTest assets [#2589](https://github.com/microsoft/vstest/pull/2589)
+* Generate release notes in pipeline
+* Forward merge fixes from master to rc2 [#2581](https://github.com/microsoft/vstest/pull/2581)
+* Fix blame parameter, warning, and add all testhosts to be ngend [#2579](https://github.com/microsoft/vstest/pull/2579)
+* Merge branch 'master' of https://github.com/microsoft/vstest into rel/16.8
+* Blame upload on crash even if hang dump started [#2553](https://github.com/microsoft/vstest/pull/2553)
+* Fix errors reported by StyleCop Analyzers [#2555](https://github.com/microsoft/vstest/pull/2555)
+* Improve blame [#2552](https://github.com/microsoft/vstest/pull/2552)
+* Remove sleeps and extra process dumps from blame
+* Changes to allow special characters in parameter names [#2481](https://github.com/microsoft/vstest/pull/2481)
+* Update dependencies from https://github.com/dotnet/arcade build 20200827.6 [#2547](https://github.com/microsoft/vstest/pull/2547)
+* Update dependencies from https://github.com/dotnet/arcade build 20200827.2 [#2546](https://github.com/microsoft/vstest/pull/2546)
+* Merge branch 'rel/16.8' of https://github.com/microsoft/vstest into rel/16.8
+* Remove env variables
+* Add binaries to enable running Fakes in Net Core [#2529](https://github.com/microsoft/vstest/pull/2529)
+* Trigger dumps asynchronously [#2542](https://github.com/microsoft/vstest/pull/2542)
+* Revert "Trigger dumps asynchronously (#2533)" [#2541](https://github.com/microsoft/vstest/pull/2541)
+* Trigger dumps asynchronously [#2533](https://github.com/microsoft/vstest/pull/2533)
+* Print version of the product in log [#2535](https://github.com/microsoft/vstest/pull/2535)
+* Merge rel16.7 into master [#2534](https://github.com/microsoft/vstest/pull/2534)
+* Print version of the product in log [#2536](https://github.com/microsoft/vstest/pull/2536)
+* Print only whole version on release branch.
+* Optionally force procdump [#2531](https://github.com/microsoft/vstest/pull/2531)
+* Forward merge master
+* Crash dumps via net client [#2532](https://github.com/microsoft/vstest/pull/2532)
+* Added a command-line argument to vstest.console.exe for setting environment variables [#2528](https://github.com/microsoft/vstest/pull/2528)
+* Fixed code coverage compatibility issue [#2527](https://github.com/microsoft/vstest/pull/2527)
+* Custom dump path for helix [#2525](https://github.com/microsoft/vstest/pull/2525)
+* Take non-completed tests instead of last [#2526](https://github.com/microsoft/vstest/pull/2526)
+* Forgot to regenerate resources before commit, as always [#2524](https://github.com/microsoft/vstest/pull/2524)
+* Fixing the reminder of crash dumps [#2520](https://github.com/microsoft/vstest/pull/2520)
+* Dumping child processes [#2518](https://github.com/microsoft/vstest/pull/2518)
+* Replace NET451 compiler directives with NETFRAMEWORK [#2516](https://github.com/microsoft/vstest/pull/2516)
+* [master] Update dependencies from dotnet/arcade [#2509](https://github.com/microsoft/vstest/pull/2509)
+* Updated TP external dependencies [#2515](https://github.com/microsoft/vstest/pull/2515)
+* Add environment variables to enable MacOS dump
+* Fixed code coverage compatibility issue [#2514](https://github.com/microsoft/vstest/pull/2514)
+* Fixed TRX file overwrite in certain circumstances [#2508](https://github.com/microsoft/vstest/pull/2508)
+* Use OS bitness to figure out .NETCore runner architecture [#2507](https://github.com/microsoft/vstest/pull/2507)
+* Updated TP external dependencies [#2503](https://github.com/microsoft/vstest/pull/2503)
+* Add missing space before parens in message [#2504](https://github.com/microsoft/vstest/pull/2504)
+* CI failure fix [#2500](https://github.com/microsoft/vstest/pull/2500)
+* Fix signing [#2497](https://github.com/microsoft/vstest/pull/2497)
+* Add the new MacOs env variable to allow dumps to be created. [#2496](https://github.com/microsoft/vstest/pull/2496)
+* Macos dumps [#2495](https://github.com/microsoft/vstest/pull/2495)
+* Multitarget testhost [#2493](https://github.com/microsoft/vstest/pull/2493)
+* Revert detecting default architecture, to allow dotnet to default to 64-bit [#2492](https://github.com/microsoft/vstest/pull/2492)
+* Nuget.Frameworks renamed netcoreapp5.0 to net5.0 [#2491](https://github.com/microsoft/vstest/pull/2491)
+* Console output for minimal and quiet [#2191](https://github.com/microsoft/vstest/pull/2191)
+* Update License
+* Linux build [#2477](https://github.com/microsoft/vstest/pull/2477)
+* Windows 32 bit issue [#2482](https://github.com/microsoft/vstest/pull/2482)
+* Update dependencies from https://github.com/dotnet/arcade build 20200715.6 [#2485](https://github.com/microsoft/vstest/pull/2485)
+* Create test results directory [#2483](https://github.com/microsoft/vstest/pull/2483)
+* Use testhost.exe only on Windows x86 and x64, and enable hang dumps on ARM and ARM64 [#2479](https://github.com/microsoft/vstest/pull/2479)
+* Localization HB. [#2478](https://github.com/microsoft/vstest/pull/2478)
+* Introduced acceptance tests for default exclusion merging [#2454](https://github.com/microsoft/vstest/pull/2454)
+* Change indicators to words [#2475](https://github.com/microsoft/vstest/pull/2475)
+* Adding test run attachments processing [#2463](https://github.com/microsoft/vstest/pull/2463)
+* Adding test run attachments processing [#2463](https://github.com/microsoft/vstest/pull/2463)
+* Localization check-in 07-01-2020 [#2471](https://github.com/microsoft/vstest/pull/2471)
+* Update dependencies from https://github.com/dotnet/arcade build 20200626.2 [#2470](https://github.com/microsoft/vstest/pull/2470)
+* Added new exception handling [#2461](https://github.com/microsoft/vstest/pull/2461)
+* Update branding to 16.8.0 [#2460](https://github.com/microsoft/vstest/pull/2460)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0...v16.8.0)
+
+### Drops
+
+* TestPlatform vsix: [16.8.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/v16.8.0;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.8.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0)
+
 ## 16.9.0-preview-20201020-06
 
 ### Issue Fixed
