@@ -1,5 +1,29 @@
 # Release Notes
 
+## 16.9.0-preview-20201123-03
+
+### Issue Fixed
+* Added support for new CC merging library for netstandard2.0 [#2598](https://github.com/microsoft/vstest/pull/2598)
+* [master] Fix collect dump always  [#2645](https://github.com/microsoft/vstest/pull/2645)
+* Managed TestCase Properties implemented [#2611](https://github.com/microsoft/vstest/pull/2611)
+* Use jsonSerializer2 for protocol version 3 [#2630](https://github.com/microsoft/vstest/pull/2630)
+* Fixed assembly loading issue for netcoreapp on linux [#2636](https://github.com/microsoft/vstest/pull/2636)
+* Fixed assembly loading issue for netcoreapp. [#2631](https://github.com/microsoft/vstest/pull/2631)
+* Generation of CodeCoverage.deps.json file [#2627](https://github.com/microsoft/vstest/pull/2627)
+* TP trace data collector changes to support CLR IE [#2618](https://github.com/microsoft/vstest/pull/2618)
+* Enable linux build [#2617](https://github.com/microsoft/vstest/pull/2617)
+* Implemented functionality to return non-zero value when no tests available. [#2610](https://github.com/microsoft/vstest/pull/2610)
+* Ensure that a supplied vstest.console path is escape sequenced [#2600](https://github.com/microsoft/vstest/pull/2600)
+* Temporary code to enable correct Fakes and Code Coverage integration [#2604](https://github.com/microsoft/vstest/pull/2604)
+* netstandard1.0 and uap10.0 support [#2596](https://github.com/microsoft/vstest/pull/2596)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-20201020-06...v16.9.0-preview-20201123-03)
+
+### Drops
+
+* TestPlatform vsix: [16.9.0-preview-20201123-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20201123-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20201123-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201123-03)
+
 ## 16.8.0
 
 ### Issues Fixed
