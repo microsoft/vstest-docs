@@ -24,6 +24,20 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 * TestPlatform vsix: [16.9.0-preview-20201123-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20201123-03;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20201123-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201123-03)
 
+## 16.8.3
+
+### Issue Fixed
+* Fixed PackageReferences on ObjectModel nupkg [#2660](https://github.com/microsoft/vstest/pull/2660)
+* [16.8] Fix collect dump always [#2641](https://github.com/microsoft/vstest/pull/2641)
+* Assembly load fixes [#2644](https://github.com/microsoft/vstest/pull/2644)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.8.0...v16.8.3)
+
+### Drops
+
+* TestPlatform vsix: [16.8.3](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.8/20201202-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.8.3](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.3)
+
 ## 16.8.0
 
 ### Issues Fixed
