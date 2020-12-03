@@ -2,7 +2,7 @@
 
 ## 16.9.0-preview-20201123-03
 
-### Issue Fixed
+### Issues Fixed
 * Added support for new CC merging library for netstandard2.0 [#2598](https://github.com/microsoft/vstest/pull/2598)
 * [master] Fix collect dump always  [#2645](https://github.com/microsoft/vstest/pull/2645)
 * Managed TestCase Properties implemented [#2611](https://github.com/microsoft/vstest/pull/2611)
@@ -26,7 +26,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 
 ## 16.8.3
 
-### Issue Fixed
+### Issues Fixed
 * Fixed PackageReferences on ObjectModel nupkg [#2660](https://github.com/microsoft/vstest/pull/2660)
 * [16.8] Fix collect dump always [#2641](https://github.com/microsoft/vstest/pull/2641)
 * Assembly load fixes [#2644](https://github.com/microsoft/vstest/pull/2644)
