@@ -1,5 +1,34 @@
 # Release Notes
 
+## 16.9.0-preview-20210106-01
+
+### Issues Fixed
+* Upgrade CC to 16.9.0-beta.20630.1 [#2684](https://github.com/microsoft/vstest/pull/2684)
+* Upgrade fakes version [#2683](https://github.com/microsoft/vstest/pull/2683)
+* Fixed assembly names of TestHost executables [#2682](https://github.com/microsoft/vstest/pull/2682)
+* Upgrade CC and CLR IE versions [#2681](https://github.com/microsoft/vstest/pull/2681)
+* Update dependencies from https://github.com/dotnet/arcade build 20201221.2 [#2680](https://github.com/microsoft/vstest/pull/2680)
+* Adding environment variable used during build process, [#2679](https://github.com/microsoft/vstest/pull/2679)
+* Getting TraceDataCollector from nuget [#2678](https://github.com/microsoft/vstest/pull/2678)
+* Attribute refactoring [#2676](https://github.com/microsoft/vstest/pull/2676)
+* Removed TypesToLoadAttribute from ObjectModel. [#2674](https://github.com/microsoft/vstest/pull/2674)
+* Early testhost startup performance work [#2584](https://github.com/microsoft/vstest/pull/2584)
+* Do not merge logs from code coverage [#2671](https://github.com/microsoft/vstest/pull/2671)
+* Implement Workitem support in TRX logger [#2666](https://github.com/microsoft/vstest/pull/2666)
+* Bumping Fakes TestRunnerHarness version [#2661](https://github.com/microsoft/vstest/pull/2661)
+* Fixed "issue" pluralization in write-release-notes.ps1 [#2665](https://github.com/microsoft/vstest/pull/2665)
+* Updating Microsoft.VisualStudio.TraceDataCollector source [#2663](https://github.com/microsoft/vstest/pull/2663)
+* Update dependencies from https://github.com/dotnet/arcade build 20201130.3 [#2659](https://github.com/microsoft/vstest/pull/2659)
+* Cross platform acceptance tests [#2653](https://github.com/microsoft/vstest/pull/2653)
+* Upgrade externals - remove interop [#2650](https://github.com/microsoft/vstest/pull/2650)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-20201123-03...v16.9.0-preview-20210106-01)
+
+### Drops
+
+* TestPlatform vsix: [16.9.0-preview-20210106-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210106-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20210106-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20210106-01)
+
 ## 16.9.0-preview-20201123-03
 
 ### Issues Fixed
