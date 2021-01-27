@@ -10,7 +10,7 @@ There are a broad variety of choices that current test adapter implementers have
 
 TestCases for managed code must include a string-valued property named `ManagedType` property and a string-valued property named `ManagedMethod`. The specification below outlines the requirements for the contents of these two properties.
 
-**`ManagedType` Property**
+### `ManagedType` Property
 
 The `ManagedType` test case property represents the fully specified type name in metadata format:
 
@@ -20,7 +20,7 @@ The `ManagedType` test case property represents the fully specified type name in
 * Nested classes are appended with a '+' and must also include an arity if generic.
 * There must be no whitespace included in the property value.
 
-**`ManagedMethod` Property**
+### `ManagedMethod` Property
 
 The `ManagedMethod` test case property is the fully specified method including the method name and a list of its parameter types inside parentheses separated by commas.
 
