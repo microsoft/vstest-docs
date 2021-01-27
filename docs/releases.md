@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.9.0-preview-20210127-04
+
+### Issue Fixed
+* Move FQN related code into a separate NuGet package [#2714](https://github.com/microsoft/vstest/pull/2714)
+* vstest.console: CommandLineOptions: preserve stacktrace on re-throw (CA2200) [#2606](https://github.com/microsoft/vstest/pull/2606)
+* Add metrics for datacollector.exe - provides information about profilers [#2705](https://github.com/microsoft/vstest/pull/2705)
+* Loc Update [#2685](https://github.com/microsoft/vstest/pull/2685)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-20210106-01...v16.9.0-preview-20210127-04)
+
+### Drops
+
+* TestPlatform vsix: [16.9.0-preview-20210127-04](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210127-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20210127-04](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20210127-04)
+
 ## 16.9.0-preview-20210106-01
 
 ### Issues Fixed
