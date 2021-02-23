@@ -1,5 +1,28 @@
 # Release Notes
 
+## 16.10.0-preview-20210219-03
+
+### Issue Fixed
+* Dynamic corelib.net loading [#2762](https://github.com/microsoft/vstest/pull/2762)
+* Add failed logic for trx logger when TreatNoTestAsError is set to true [#2758](https://github.com/microsoft/vstest/pull/2758)
+* Adding resources for corelib.net in portable package, [#2759](https://github.com/microsoft/vstest/pull/2759)
+* Prefer agent temp directory if available. [#2752](https://github.com/microsoft/vstest/pull/2752)
+* Generating cc attachments with correct uri [#2750](https://github.com/microsoft/vstest/pull/2750)
+* Added support for spaces and other special characters in method names into the ManagedNameUtilities [#2738](https://github.com/microsoft/vstest/pull/2738)
+* Don't swallow stacktrace from adapter exception when running in thread [#2746](https://github.com/microsoft/vstest/pull/2746)
+* Fix duration in console logger for parallel tests [#2739](https://github.com/microsoft/vstest/pull/2739)
+* Marked `InvalidManagedNameException` as serializable [#2732](https://github.com/microsoft/vstest/pull/2732)
+* Print stack trace from executor [#2730](https://github.com/microsoft/vstest/pull/2730)
+* Added constants for hierarchical naming. [#2724](https://github.com/microsoft/vstest/pull/2724)
+* Fix divide by zero in HTML logger [#2723](https://github.com/microsoft/vstest/pull/2723)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-20210127-04...v16.10.0-preview-20210219-03)
+
+### Drops
+
+* TestPlatform vsix: [16.10.0-preview-20210219-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210219-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.10.0-preview-20210219-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-preview-20210219-03)
+
 ## 16.9.1
 
 ### Issues Fixed
