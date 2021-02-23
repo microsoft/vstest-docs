@@ -1,5 +1,22 @@
 # Release Notes
 
+## 16.9.1
+
+### Issues Fixed
+* Implemented Workitem support in TRX logger (#2666)
+* Stopped merging code coverage logs (#2671)
+* Early testhost startup performance improved (#2584)
+* Removed TypesToLoadAttribute from ObjectModel, and moved the functionallity into adapters (#2674)
+* Fixed assembly names of TestHost executables (#2682)
+* Add metrics for datacollector.exe - provides information about profilers (#2705)
+* Added `Microsoft.TestPlatform.AdapterUtilities`. (#2714)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-20210127-04...v16.9.1)
+
+### Drops
+* TestPlatform vsix: [16.9.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/rel/16.9/20210223-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.9.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.1)
+
 ## 16.9.0-preview-20210127-04
 
 ### Issue Fixed
