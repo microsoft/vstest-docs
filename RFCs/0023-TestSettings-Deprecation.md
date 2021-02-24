@@ -41,6 +41,8 @@ SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings
 SettingsMigrator.exe  E:\MyTest\MyTestSettings.testsettings E:\MyTest\MyNewRunSettings.runsettings  
 SettingsMigrator.exe  E:\MyTest\MyOldRunSettings.runsettings E:\MyTest\MyNewRunSettings.runsettings  
 
+The exe can usually be found in C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\TestPlatform\SettingsMigrator.exe depending on your Visual Studio install location.
+
 ## Expected Ship Date
 
 Support for the new legacy settings in runsettings is expected to come in the next release. The deprecation of testsettings for automated unit and functional testing scenarios is expected to be in effect from the next major VS release.
