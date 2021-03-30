@@ -1,8 +1,21 @@
 # Release Notes
 
+## 16.10.0-release-20210329-03
+
+### Issues Fixed
+* Add basic mstestv1 telemetry [#2781](https://github.com/microsoft/vstest/pull/2781)
+* Update TP externals [#2809](https://github.com/microsoft/vstest/pull/2809)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0-preview-20210219-03...v16.10.0-release-20210329-03)
+
+### Drops
+
+* TestPlatform vsix: [16.10.0-release-20210329-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.10/20210329-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel: [16.10.0-release-20210329-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-release-20210329-03)
+
 ## 16.10.0-preview-20210219-03
 
-### Issue Fixed
+### Issues Fixed
 * Dynamic corelib.net loading [#2762](https://github.com/microsoft/vstest/pull/2762)
 * Add failed logic for trx logger when TreatNoTestAsError is set to true [#2758](https://github.com/microsoft/vstest/pull/2758)
 * Adding resources for corelib.net in portable package, [#2759](https://github.com/microsoft/vstest/pull/2759)
@@ -21,7 +34,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.10.0-preview-20210219-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210219-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.10.0-preview-20210219-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-preview-20210219-03)
+* Microsoft.TestPlatform.ObjectModel: [16.10.0-preview-20210219-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-preview-20210219-03)
 
 ## 16.9.1
 
@@ -38,7 +51,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 
 ### Drops
 * TestPlatform vsix: [16.9.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/rel/16.9/20210223-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.9.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.1)
+* Microsoft.TestPlatform.ObjectModel: [16.9.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.1)
 
 ## 16.9.0-preview-20210127-04
 
@@ -53,7 +66,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.9.0-preview-20210127-04](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210127-04;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20210127-04](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20210127-04)
+* Microsoft.TestPlatform.ObjectModel: [16.9.0-preview-20210127-04](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20210127-04)
 
 ## 16.9.0-preview-20210106-01
 
@@ -82,7 +95,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.9.0-preview-20210106-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210106-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20210106-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20210106-01)
+* Microsoft.TestPlatform.ObjectModel: [16.9.0-preview-20210106-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20210106-01)
 
 ## 16.9.0-preview-20201123-03
 
@@ -106,7 +119,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.9.0-preview-20201123-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20201123-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20201123-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201123-03)
+* Microsoft.TestPlatform.ObjectModel: [16.9.0-preview-20201123-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201123-03)
 
 ## 16.8.3
 
@@ -120,7 +133,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.8.0...v16.8.
 ### Drops
 
 * TestPlatform vsix: [16.8.3](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.8/20201202-04;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.8.3](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.3)
+* Microsoft.TestPlatform.ObjectModel: [16.8.3](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.3)
 
 ## 16.8.0
 
@@ -197,7 +210,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0...v16.8.
 ### Drops
 
 * TestPlatform vsix: [16.8.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/v16.8.0;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.8.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0)
+* Microsoft.TestPlatform.ObjectModel: [16.8.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0)
 
 ## 16.9.0-preview-20201020-06
 
@@ -221,7 +234,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.8.0-release-
 ### Drops
 
 * TestPlatform vsix: [16.9.0-preview-20201020-06](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20201020-06;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.9.0-preview-20201020-06](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201020-06)
+* Microsoft.TestPlatform.ObjectModel: [16.9.0-preview-20201020-06](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.0-preview-20201020-06)
 
 ## 16.8.0-preview-20200921-01
 
@@ -235,7 +248,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.8.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.8.0-preview-20200921-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200921-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200921-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200921-01)
+* Microsoft.TestPlatform.ObjectModel: [16.8.0-preview-20200921-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200921-01)
 
 ## 16.7.1
 
@@ -248,7 +261,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0...v16.7.
 ### Drops
 
 * TestPlatform vsix: [16.7.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.7/20200819-04;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.7.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.1)
+* Microsoft.TestPlatform.ObjectModel: [16.7.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.1)
 
 ## 16.8.0-preview-20200812-03
 
@@ -264,7 +277,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.8.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.8.0-preview-20200812-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200812-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200812-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200812-03)
+* Microsoft.TestPlatform.ObjectModel: [16.8.0-preview-20200812-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200812-03)
 
 ## 16.8.0-preview-20200806-02
 
@@ -305,7 +318,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.8.0-preview-20200806-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200806-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.8.0-preview-20200806-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200806-02)
+* Microsoft.TestPlatform.ObjectModel: [16.8.0-preview-20200806-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.8.0-preview-20200806-02)
 
 ## 16.7.0
 
@@ -336,7 +349,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0...v16.7.
 ### Drops
 
 * TestPlatform vsix: [16.7.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/v16.7.0;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.7.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0)
+* Microsoft.TestPlatform.ObjectModel: [16.7.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0)
 
 ## 16.7.0-preview-20200519-01
 
@@ -355,7 +368,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.7.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.7.0-preview-20200519-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200519-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.7.0-preview-20200519-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0-preview-20200519-01)
+* Microsoft.TestPlatform.ObjectModel: [16.7.0-preview-20200519-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0-preview-20200519-01)
 
 ## 16.7.0-preview-20200428-01
 
@@ -374,7 +387,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.1...v16.7.
 ### Drops
 
 * TestPlatform vsix: [16.7.0-preview-20200428-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200428-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.7.0-preview-20200428-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0-preview-20200428-01)
+* Microsoft.TestPlatform.ObjectModel: [16.7.0-preview-20200428-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.7.0-preview-20200428-01)
 
 ## 16.6.1
 
@@ -387,7 +400,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0...v16.6.
 ### Drops
 
 * TestPlatform vsix: [16.6.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.6/20200423-06;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.6.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.1)
+* Microsoft.TestPlatform.ObjectModel: [16.6.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.1)
 
 ## 16.6.0
 
@@ -424,7 +437,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.5.0...v16.6.
 ### Drops
 
 * TestPlatform vsix: [16.6.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.6/20200414-04;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.6.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0)
+* Microsoft.TestPlatform.ObjectModel: [16.6.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0)
 
 ## 16.6.0-preview-20200318-01
 
@@ -439,7 +452,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.6.0-preview-20200318-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200318-01;/TestPlatform.vsix)        
-* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200318-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200318-01)
+* Microsoft.TestPlatform.ObjectModel: [16.6.0-preview-20200318-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200318-01)
 
 ## 16.6.0-preview-20200310-03
 
@@ -453,7 +466,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.6.0-preview-20200310-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200310-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200310-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200310-03)
+* Microsoft.TestPlatform.ObjectModel: [16.6.0-preview-20200310-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200310-03)
 
 ## 16.6.0-preview-20200309-01
 
@@ -466,7 +479,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.6.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.6.0-preview-20200309-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200309-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200309-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200309-01)
+* Microsoft.TestPlatform.ObjectModel: [16.6.0-preview-20200309-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200309-01)
 
 ## 16.6.0-preview-20200226-03
 
@@ -484,7 +497,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.6.0-preview-20200226-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200226-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.6.0-preview-20200226-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200226-03)
+* Microsoft.TestPlatform.ObjectModel: [16.6.0-preview-20200226-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.6.0-preview-20200226-03)
 
 ## 16.5.0
 
@@ -521,7 +534,7 @@ See changes since the last preview [here](https://github.com/microsoft/vstest/co
 ### Drops
 
 * TestPlatform vsix: [16.5.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200205-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0)
+* Microsoft.TestPlatform.ObjectModel: [16.5.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0)
 
 ## 16.5.0-preview-20200203-01
 
@@ -536,7 +549,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.5.0-preview-20200203-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200203-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200203-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200203-01)  
+* Microsoft.TestPlatform.ObjectModel: [16.5.0-preview-20200203-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200203-01)  
 
 ## 16.5.0-preview-20200116-01
 
@@ -550,7 +563,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.5.0-preview-20200116-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200116-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200116-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200116-01)
+* Microsoft.TestPlatform.ObjectModel: [16.5.0-preview-20200116-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200116-01)
 
 ## 16.5.0-preview-20200110-02
 
@@ -564,7 +577,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.5.0-preview-20200110-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200110-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200110-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200110-02)
+* Microsoft.TestPlatform.ObjectModel: [16.5.0-preview-20200110-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200110-02)
 
 ## 16.5.0-preview-20200102-01
 
@@ -574,7 +587,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.5.0-preview-20200102-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20200102-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20200102-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200102-01)
+* Microsoft.TestPlatform.ObjectModel: [16.5.0-preview-20200102-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20200102-01)
 
 ## 16.5.0-preview-20191216-02
 
@@ -586,7 +599,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.5.0-preview-20191216-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20191216-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20191216-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20191216-02)
+* Microsoft.TestPlatform.ObjectModel: [16.5.0-preview-20191216-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20191216-02)
 
 ## 16.5.0-preview-20191115-01
 
@@ -596,7 +609,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.5.0-preview-20191115-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20191115-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.5.0-preview-20191115-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20191115-01)
+* Microsoft.TestPlatform.ObjectModel: [16.5.0-preview-20191115-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.5.0-preview-20191115-01)
 
 ## 16.4.0
 
@@ -609,7 +622,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.4.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20191025-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.4.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.4.0)
+* Microsoft.TestPlatform.ObjectModel: [16.4.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.4.0)
 
 ##  16.4.0-preview-20191007-01
 
@@ -633,7 +646,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.3.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190919-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0)
+* Microsoft.TestPlatform.ObjectModel: [16.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0)
 
 
 ## 16.3.0-preview-20190828-03
@@ -647,7 +660,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.3.0-preview-20190828-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190828-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190828-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190828-03)
+* Microsoft.TestPlatform.ObjectModel: [16.3.0-preview-20190828-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190828-03)
 
 
 ## 16.3.0-preview-20190715-02
@@ -660,7 +673,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.3.0-preview-20190715-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190715-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.3.0-preview-20190715-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190715-02)
+* Microsoft.TestPlatform.ObjectModel: [16.3.0-preview-20190715-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.3.0-preview-20190715-02)
 
 ## 16.2.0
 
@@ -673,7 +686,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.2.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20190626-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.2.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0)
+* Microsoft.TestPlatform.ObjectModel: [16.2.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0)
 
 ## 16.2.0-preview-20190606-02
 
@@ -686,7 +699,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.2.0-preview-20190606-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190606-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.2.0-preview-20190606-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0-preview-20190606-02)
+* Microsoft.TestPlatform.ObjectModel: [16.2.0-preview-20190606-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.2.0-preview-20190606-02)
 
 ## 16.1.1
 
@@ -700,7 +713,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.1.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190529-04;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.1.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.1.1)
+* Microsoft.TestPlatform.ObjectModel: [16.1.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.1.1)
 
 ## 16.0.2-Preview-20190502-01
 
@@ -715,7 +728,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.2-preview-20190502-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190502-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.2-preview-20190502-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.2-preview-20190502-01)
+* Microsoft.TestPlatform.ObjectModel: [16.0.2-preview-20190502-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.2-preview-20190502-01)
 
 ## 16.0.1
 
@@ -725,7 +738,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190304-05;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.1)
+* Microsoft.TestPlatform.ObjectModel: [16.0.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.1)
 
 ## 16.0.0
 
@@ -737,7 +750,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190228-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0)
+* Microsoft.TestPlatform.ObjectModel: [16.0.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0)
 
 ## 16.0.0-preview-20190201-03
 
@@ -748,7 +761,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.0-preview-20190201-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190201-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20190201-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190201-03)
+* Microsoft.TestPlatform.ObjectModel: [16.0.0-preview-20190201-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190201-03)
 
 
 ## 16.0.0-preview-20190124-02
@@ -763,7 +776,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.0-preview-20190124-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20190124-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20190124-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190124-02)
+* Microsoft.TestPlatform.ObjectModel: [16.0.0-preview-20190124-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20190124-02)
 
 
 ## 16.0.0-preview-20181205-02
@@ -776,7 +789,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.0-preview-20181205-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20181205-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20181205-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20181205-02)
+* Microsoft.TestPlatform.ObjectModel: [16.0.0-preview-20181205-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20181205-02)
 
 
 ## 16.0.0-preview-20181128-01
@@ -791,7 +804,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [16.0.0-preview-20181128-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20181128-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [16.0.0-preview-20181128-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20181128-01)
+* Microsoft.TestPlatform.ObjectModel: [16.0.0-preview-20181128-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.0.0-preview-20181128-01)
 
 
 ## 15.9.0
@@ -804,7 +817,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [15.9.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/15.9/20181008-02;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [15.9.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0)
+* Microsoft.TestPlatform.ObjectModel: [15.9.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0)
 
 
 ## 15.9.0-preview-20180924-03
@@ -820,7 +833,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 ### Drops
 
 * TestPlatform vsix: [15.9.0-preview-20180924-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180924-03;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [15.9.0-preview-20180924-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180924-03)
+* Microsoft.TestPlatform.ObjectModel: [15.9.0-preview-20180924-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180924-03)
 
 
 ## 15.9.0-preview-20180807-05
@@ -842,7 +855,7 @@ See full log [here](https://github.com/Microsoft/vstest/compare/v16.5.0-preview-
 	
 ### Drops
 * TestPlatform vsix: [15.9.0-preview-20180807-05](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/Microsoft/vstest/master/20180807-05;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [15.9.0-preview-20180807-05](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180807-05)
+* Microsoft.TestPlatform.ObjectModel: [15.9.0-preview-20180807-05](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/15.9.0-preview-20180807-05)
 
 ## 15.8.0
 
