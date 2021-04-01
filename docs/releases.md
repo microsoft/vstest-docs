@@ -1,8 +1,20 @@
 # Release Notes
 
+## 16.9.4
+
+### Issue Fixed
+* Loadind corelib.net dynamically (https://github.com/microsoft/vstest/pull/2762)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.9.1...v16.9.4)
+
+### Drops
+
+* TestPlatform vsix: [16.9.4](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.9/20210401-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.9.4](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.9.4)
+
 ## 16.10.0-release-20210330-02
 
-### Issues Fixed
+### Issue Fixed
 * Updating code coverage version [#2836](https://github.com/microsoft/vstest/pull/2836)
 
 See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0-release-20210329-03...v16.10.0-release-20210330-02)
