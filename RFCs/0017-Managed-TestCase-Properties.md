@@ -1,3 +1,5 @@
+
+
 # 0017 Properties for TestCases in Managed Code
 
 ## Summary
@@ -18,7 +20,7 @@ The `ManagedType` test case property represents the fully specified type name in
 
 * The type name must be fully qualified (in the CLR sense), including its namespace. Any generic classes must also include an arity value using backtick notation (`# where # is the number of type arguments that the class requires).
 * Nested classes are appended with a '+' and must also include an arity if generic.
-* There must be no whitespace included in the property value.
+* `ManagedType` name must be escaped if it doesn't conform to identifier naming rules.
 
 ### `ManagedMethod` Property
 
@@ -28,9 +30,9 @@ The `ManagedMethod` test case property is the fully specified method including t
 
 * If the method accepts no parameters, then the parentheses should be omitted.
 * If the method is generic, then an arity must be specified (in the same way as the type property).
-* There must be no whitespace included in the segment
 * The list of parameter types must be encoded using the type specification below.
 * Return types are not encoded.
+* `ManagedMethod` must be escaped if it doesn't conform to identifier naming rules.
 
 ### Parameter Type Encoding
 
@@ -47,13 +49,28 @@ Parameters are encoded as a comma-separated list of strings in parentheses at th
 #### Examples
 
 ```csharp
-Method(NamespaceA.NamespaceB.Class) // Custom Types
-Method(System.String,System.Int32) // Native Types
-Method(System.String[]) // Array Types
-Method(List<System.String>) // Generic Types
-Method(!0) // Generic Type Parameters
-Method(!!0) // Generic Method Parameters
-Method(List<!0>) // Generic Type with a Generic Type Parameter
+// Custom Types
+Method(NamespaceA.NamespaceB.Class)
+'𝐌𝐲 𝗮𝘄𝗲𝘀𝗼𝗺𝗲 method w\\𝘢𝘯 𝒊𝒏𝒂𝒄𝒄𝒆𝒔𝒔𝒊𝒃𝒍𝒆 𝙣𝙖𝙢𝙚 🤦‍♂️'(NamespaceA.NamespaceB.Class)
+
+// Native Types
+Method(System.String,System.Int32)
+
+// Array Types
+Method(System.String[])
+
+// Generic Types
+Method(System.Collections.Generic.List`1<System.String>)
+'Method Name'(System.Collections.Generic.List`1<System.String>) // Method name contains a space
+
+// Generic Type Parameters
+Method(!0)
+
+// Generic Method Parameters
+Method(!!0)
+
+// Generic Type with a Generic Type Parameter
+Method(System.Collections.Generic.List`1<!0>)
 ```
 
 ### Special Methods
@@ -107,3 +124,43 @@ There are some situations where the number of test cases cannot be determined at
 ## Uniqueness
 
 The combination of `ManagedType` and `ManagedMethod` will be unique to a particular method within an assembly, but are not unique to a test case. This is due to the fact that when tests are data-driven, there can be many test cases that are executed by the same method. The test case ID is expected to be unique for every test case within an assembly. The test case ID should also be deterministic with respect to the method and its arguments. In other words, the test ID should not change given a particular method and a set of argument values (if any).
+
+## Identifier Naming Rules
+1. The first character cannot be a number (A number is a `char` belong  to Unicode category `Nd`). 
+2. It can contain letters or digits. (Unicode categories: `Lu`, `Ll`, `Lt`, `Lm`, `Lo`, `Nl` and `Nd`.)
+3. It can contain formatting characters. (Unicode categories: `Mn`, `Mc`, `Pc`, and `Cf`.)
+
+## Escaping
+If an identifier does not conform to identifier naming rules, it gets escaped. An escaped identifier always start and end with a `'`. 
+```console
+         Type: CleanNamespaceName.SecondLevel.𝐌𝐲 𝘤𝘭𝘢𝘴𝘴 with 𝘢𝘯 𝒊𝒏𝒂𝒄𝒄𝒆𝒔𝒔𝒊𝒃𝒍𝒆 𝙣𝙖𝙢𝙚 🤷‍♀️
+       Method: int Sum(int x, int y)
+  Parsed Type: CleanNamespaceName.SecondLevel.'𝐌𝐲 𝘤𝘭𝘢𝘴𝘴 with 𝘢𝘯 𝒊𝒏𝒂𝒄𝒄𝒆𝒔𝒔𝒊𝒃𝒍𝒆 𝙣𝙖𝙢𝙚 🤷‍♀️'
+Parsed Method: Sum(System.Int32,System.Int32)
+
+         Type: CleanNamespaceName.SecondLevel.Deeply wrong .namespace name.NamespaceA.Class1
+       Method: int Method with . in it(int x, int y)
+  Parsed Type: CleanNamespaceName.SecondLevel.'Deeply wrong '.'namespace name'.NamespaceA.Class1
+Parsed Method: 'Method with . in it'(System.Int32,System.Int32)
+```
+
+If a character is `'` or `\` it gets escaped to `\'` or `\\` consecutively.
+```console
+         Type: CleanNamespaceName.ClassName\Continues
+       Method: void MethodName(int x, int y)
+  Parsed Type: CleanNamespaceName.'ClassName\\Continues'
+Parsed Method: MethodName(System.Int32,System.Int32)
+```
+
+If an identifier is ending with arity, but that arity is not correct it will be escaped.
+```console
+         Type: CleanNamespaceName.ClassName
+       Method: void MethodName`1(int x, int y)
+  Parsed Type: CleanNamespaceName.ClassName
+Parsed Method: 'MethodName`1'(System.Int32,System.Int32)
+
+         Type: CleanNamespaceName.ClassName
+       Method: void MethodName<T>(int x, int y)
+  Parsed Type: CleanNamespaceName.ClassName
+Parsed Method: MethodName`1(System.Int32,System.Int32)
+```
