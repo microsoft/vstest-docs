@@ -1,5 +1,20 @@
 # Release Notes
 
+## 16.10.0-release-20210422-02
+
+### Issue Fixed
+* Mark early testhost startup APIs as internal for TP 16.10 (#2768) [#2864](https://github.com/microsoft/vstest/pull/2864)
+* Added some capabilities to package utilities (#2854) [#2862](https://github.com/microsoft/vstest/pull/2862)
+* Fixed #2814 and #2853.
+* Added support for WinUI3 appxrecipe. [#2849](https://github.com/microsoft/vstest/pull/2849)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0-release-20210330-02...v16.10.0-release-20210422-02)
+
+### Drops
+
+* TestPlatform vsix: [16.10.0-release-20210422-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210422-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.10.0-release-20210422-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-release-20210422-02)
+
 ## 16.9.4
 
 ### Issue Fixed
