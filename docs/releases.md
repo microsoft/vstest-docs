@@ -1,8 +1,21 @@
 # Release Notes
 
+## 16.10.0-release-20210429-01
+
+### Issues Fixed
+* Adding mono.cecil libs to packages, (#2878) [#2878](https://github.com/microsoft/vstest/pull/2878)
+* Upgrade CC components to 16.10.0-beta.21227.2 (#2877) [#2877](https://github.com/microsoft/vstest/pull/2877)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0-release-20210330-02...v16.10.0-release-20210422-02)
+
+### Drops
+
+* TestPlatform vsix: [16.10.0-release-20210429-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.10/20210429-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.10.0-release-20210429-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-release-20210429-01)
+
 ## 16.10.0-release-20210422-02
 
-### Issue Fixed
+### Issues Fixed
 * Mark early testhost startup APIs as internal for TP 16.10 (#2768) [#2864](https://github.com/microsoft/vstest/pull/2864)
 * Added some capabilities to package utilities (#2854) [#2862](https://github.com/microsoft/vstest/pull/2862)
 * Fixed #2814 and #2853.
@@ -12,7 +25,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0-release
 
 ### Drops
 
-* TestPlatform vsix: [16.10.0-release-20210422-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210422-02;/TestPlatform.vsix)
+* TestPlatform vsix: [16.10.0-release-20210422-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.10/20210422-02;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [16.10.0-release-20210422-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-release-20210422-02)
 
 ## 16.9.4
@@ -36,7 +49,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0-release
 
 ### Drops
 
-* TestPlatform vsix: [16.10.0-release-20210330-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/rel/16.10/20210330-02;/TestPlatform.vsix)
+* TestPlatform vsix: [16.10.0-release-20210330-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.10/20210330-02;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [16.10.0-release-20210330-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-release-20210330-02)
 
 ## 16.10.0-release-20210329-03
@@ -72,7 +85,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v16.9.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [16.10.0-preview-20210219-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20210219-03;/TestPlatform.vsix)
+* TestPlatform vsix: [16.10.0-preview-20210219-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.10/20210219-03;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel: [16.10.0-preview-20210219-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0-preview-20210219-03)
 
 ## 16.9.1
