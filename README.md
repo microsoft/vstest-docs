@@ -1,4 +1,8 @@
+# ℹ This branch is deprecated and is kept here to avoid breaking online links. Please switch to [main](https://github.com/microsoft/vstest-docs/tree/main).
+
+
 ### Visual Studio Test Platform Documentation
+
 You've found the GitHub repository which contains the content for the Visual Studio Test Platform documentation.
 If you are looking for the Visual Studio Test Platform product GitHub repository, you can find it [here](https://github.com/Microsoft/vstest).
 
