@@ -1587,4 +1587,4 @@ of the target framework. For example, ".NETFramework,Version=v4.5.2". Other supp
 
 [discovery]: 0002-Test-Discovery-Protocol.md
 [execution]: 0003-Test-Execution-Protocol.md
-[sample]: https://github.com/Microsoft/vstest/tree/master/samples/Microsoft.TestPlatform.Protocol
+[sample]: https://github.com/Microsoft/vstest/tree/main/samples/Microsoft.TestPlatform.Protocol

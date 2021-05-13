@@ -32,7 +32,7 @@ Below is one of the analysis done for one of the crash dump while calling Appdom
 Proposed guidelines are for customers and test adapters who wants to avoid these issues.
 
 **Adapters**
-1. Test Adapter should honour ```<DisableAppDomain>``` setting inside RunConfiguration node of runsettings. Check https://github.com/Microsoft/vstest-docs/blob/master/docs/configure.md for information on this setting. This will ensure that adapters dont create AppDomain at all to run tests
+1. Test Adapter should honour ```<DisableAppDomain>``` setting inside RunConfiguration node of runsettings. Check https://github.com/Microsoft/vstest-docs/blob/main/docs/configure.md for information on this setting. This will ensure that adapters dont create AppDomain at all to run tests
 
 **Test platform**
 

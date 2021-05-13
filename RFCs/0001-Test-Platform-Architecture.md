@@ -225,9 +225,9 @@ is detailed in a different document.
    communication with a TestSession.Terminate.
 9. On receiving a terminate message the test host process cleanly exits.
 	
-[DiscoveryPayload]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.ObjectModel/Client/DiscoveryCriteria.cs
-[TestMessagePayload]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestMessagePayload.cs
-[DiscoveryCompletePayload]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/DiscoveryCompletePayload.cs
+[DiscoveryPayload]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.ObjectModel/Client/DiscoveryCriteria.cs
+[TestMessagePayload]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestMessagePayload.cs
+[DiscoveryCompletePayload]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/DiscoveryCompletePayload.cs
 
 #### Execution:
 
@@ -259,10 +259,10 @@ is detailed in a different document.
    communication with a TestSession.Terminate.
 9. On receiving a terminate message the test host process cleanly exits.
 
-[TestRunCriteriaWithSources]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/ObjectModel/TestRunCriteriaWithSources.cs
-[TestRunStatsPayload]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunStatsPayload.cs
-[TestMessagePayload]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestMessagePayload.cs
-[TestRunCompletePayload]: https://github.com/Microsoft/vstest/blob/master/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunCompletePayload.cs
+[TestRunCriteriaWithSources]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.CommunicationUtilities/ObjectModel/TestRunCriteriaWithSources.cs
+[TestRunStatsPayload]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunStatsPayload.cs
+[TestMessagePayload]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestMessagePayload.cs
+[TestRunCompletePayload]: https://github.com/Microsoft/vstest/blob/main/src/Microsoft.TestPlatform.CommunicationUtilities/Messages/TestRunCompletePayload.cs
 
 <!--The exact set of switches the vstest.console runner supports is listed here([Todo] add link here.))--> 
 
