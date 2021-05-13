@@ -55,7 +55,7 @@ Test platform allows integration with an editor using a JSON wire protocol. The 
 #### SDK requirements
 There is no strict requirement for a authoring an editor integration in a particular language since the communication can be driven with JSON over the wire. At the moment, a `.NET` implementation is available. It is used by Visual Studio to drive test execution from the Test Explorer.
 
-Developers can use `Microsoft.TestPlatform.TranslationLayer` nuget package. It is a *redistributable* package. It is available from vstest myget feed: [https://dotnet.myget.org/F/vstest/api/v3/index.json](https://dotnet.myget.org/F/vstest/api/v3/index.json). Sample application is [here](https://github.com/Microsoft/vstest/tree/master/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest)
+Developers can use `Microsoft.TestPlatform.TranslationLayer` nuget package. It is a *redistributable* package. It is available from vstest myget feed: [https://dotnet.myget.org/F/vstest/api/v3/index.json](https://dotnet.myget.org/F/vstest/api/v3/index.json). Sample application is [here](https://github.com/Microsoft/vstest/tree/main/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest)
 
 | Version   | .NET runtime                      |
 |-----------|-----------------------------------|

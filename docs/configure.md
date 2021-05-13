@@ -372,7 +372,7 @@ This section allows users to configure settings that were earlier required to be
 set using *testsettings file.
 These settings can be used for Ordered tests and MSTest v1 based tests when running in legacy mode.
 
-Users can now migrate testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/master/RFCs/0023-TestSettings-Deprecation.md#migration)
+Users can now migrate testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/main/RFCs/0023-TestSettings-Deprecation.md#migration)
 
 Here is an example:
 ```xml

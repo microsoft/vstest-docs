@@ -2,7 +2,7 @@ This repo is the modern, OSS, cross-plat testing engine that has been powering t
 
 We aim to continuously deliver improvements that will ship with Visual Studio and with the .NET Tools SDK. These improvements are directly informed by your feedback filed as [issues](https://github.com/Microsoft/vstest/issues). If you do not see your issue addressed already, we will get to it soon! If you would like to help out, let us know!
 
-Over the past several quarters, we have made many enhancements - from introducing support for Mono, to refactoring the platform to make it ready to support device testing, to performance improvements, to enabling robust C++ support, to improved documentation, and more. For a complete list see here: [Release Notes](https://github.com/Microsoft/vstest-docs/blob/master/docs/releases.md)
+Over the past several quarters, we have made many enhancements - from introducing support for Mono, to refactoring the platform to make it ready to support device testing, to performance improvements, to enabling robust C++ support, to improved documentation, and more. For a complete list see here: [Release Notes](https://github.com/Microsoft/vstest-docs/blob/main/docs/releases.md)
 
 ## Roadmap
 We typically plan for a quarter, and establish a set of themes we want to work towards. Here are the themes we will work on this quarter.

@@ -1,5 +1,5 @@
 # Issue tracking
-The vstest project tracks issues and feature requests using the [issue template](https://github.com/Microsoft/vstest/blob/master/.github/ISSUE_TEMPLATE.md) for the vstest repository.
+The vstest project tracks issues and feature requests using the [issue template](https://github.com/Microsoft/vstest/blob/main/.github/ISSUE_TEMPLATE.md) for the vstest repository.
 
 ## Submitting an Issue
 First, please do a search in [issues](https://github.com/Microsoft/vstest/issues) to see if the issue or feature request has already been filed. Use this [query](https://github.com/Microsoft/vstest/issues?q=is%3Aopen+is%3Aissue+sort%3Areactions-%2B1-desc) to search for the most popular feature requests.
@@ -7,7 +7,7 @@ If you find your issue already exists, make relevant comments and add your [reac
 - 👍 - upvote
 - 👎 - downvote
 
-If you cannot find an existing issue that describes your issue, submit it using the [issue template](https://github.com/Microsoft/vstest/blob/master/.github/ISSUE_TEMPLATE.md). Remember to follow the instruction mentioned therein carefully.
+If you cannot find an existing issue that describes your issue, submit it using the [issue template](https://github.com/Microsoft/vstest/blob/main/.github/ISSUE_TEMPLATE.md). Remember to follow the instruction mentioned therein carefully.
 
 ## Issue triage
 Please follow the guidelines in the issue template when filing an issue or a pull request.

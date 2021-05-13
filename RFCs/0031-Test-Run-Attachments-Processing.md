@@ -61,7 +61,7 @@ By default `SupportsIncrementalProcessing` should be `False`, unless processing 
 
 
 
-2. Introduce a new `ProcessTestRunAttachmentsAsync` method in [IVsTestConsoleWrapper](https://github.com/microsoft/vstest/blob/master/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs) interface:
+2. Introduce a new `ProcessTestRunAttachmentsAsync` method in [IVsTestConsoleWrapper](https://github.com/microsoft/vstest/blob/main/src/Microsoft.TestPlatform.VsTestConsole.TranslationLayer/Interfaces/IVsTestConsoleWrapper.cs) interface:
 
 ```
 /// <summary>

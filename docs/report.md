@@ -13,7 +13,7 @@ You can author a test logger to print messages on the console, generate result
 files of a specific reporting format, or even report results to various CI/CD
 services. Default inputs to a test logger can be provided in the command line.
 
- Please refer to [this section](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#create-a-test-logger) for instructions on creating a test logger and [todo]()
+ Please refer to [this section](https://github.com/Microsoft/vstest-docs/blob/main/docs/report.md#create-a-test-logger) for instructions on creating a test logger and [todo]()
 if you're interested in the architecture of a test logger.
 
 ### Available test loggers
@@ -29,9 +29,9 @@ if you're interested in the architecture of a test logger.
 | Azure Pipelines | [AzurePipelines.TestLogger][azurepipelines.nuget] | [Azure Pipelines Logger][] |
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
 
-[Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
-[Html Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.HtmlLogger
-[Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
+[Trx Logger]: https://github.com/Microsoft/vstest/tree/main/src/Microsoft.TestPlatform.Extensions.TrxLogger
+[Html Logger]: https://github.com/Microsoft/vstest/tree/main/src/Microsoft.TestPlatform.Extensions.HtmlLogger
+[Console Logger]: https://github.com/Microsoft/vstest/blob/main/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/spekt/xunit.testlogger
 [Nunit Logger]: https://github.com/spekt/nunit.testlogger
 [Junit Logger]: https://github.com/spekt/junit.testlogger
@@ -79,7 +79,7 @@ to load test loggers.
 Go through the following steps to create your own logger
 1) Add a nuget reference of package `Microsoft.TestPlatform.ObjectModel`.
 2) Implement ITestLoggerWithParameters (or ITestLogger, if your logger is not expecting any parameter). [Logger Example](https://github.com/spekt/xunit.testlogger/blob/master/src/Xunit.Xml.TestLogger/XunitXmlTestLogger.cs#L19)
-3) Name your logger assemlby `*.testlogger.dll`. [Detailed](https://github.com/Microsoft/vstest-docs/blob/master/docs/report.md#naming)
+3) Name your logger assemlby `*.testlogger.dll`. [Detailed](https://github.com/Microsoft/vstest-docs/blob/main/docs/report.md#naming)
 
 ## Enable a test logger
 A test logger must be explicitly enabled using the command line. E.g.

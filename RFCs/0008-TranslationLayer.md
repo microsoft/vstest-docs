@@ -14,7 +14,7 @@ TranslationLayer provides simple APIs that can be invoked to get the desired res
 
 ## Sample
 There is a sample project available for reference. Please find the relevant links below.
-* Sample project : [https://github.com/Microsoft/vstest/tree/master/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest](https://github.com/Microsoft/vstest/tree/master/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest)
+* Sample project : [https://github.com/Microsoft/vstest/tree/main/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest](https://github.com/Microsoft/vstest/tree/main/samples/Microsoft.TestPlatform.TranslationLayer.E2ETest)
 * Nuget package : [https://www.nuget.org/packages/Microsoft.TestPlatform.TranslationLayer](https://www.nuget.org/packages/Microsoft.TestPlatform.TranslationLayer)
 
 ## Details
