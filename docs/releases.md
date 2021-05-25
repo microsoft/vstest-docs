@@ -1,5 +1,17 @@
 # Release Notes
 
+## 16.10.0
+
+### Issues Fixed
+* Updating code coverage version (#2836) [#2836](https://github.com/microsoft/vstest/pull/2836)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0...v16.10.0-release-20210422-02)
+
+### Drops
+
+* TestPlatform vsix: [16.10.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.10/20210525-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [16.10.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.10.0)
+
 ## 16.10.0-release-20210429-01
 
 ### Issues Fixed
