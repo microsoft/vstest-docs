@@ -152,10 +152,10 @@ class NewDataCollector : DataCollector, ITestExecutionEnvironmentSpecifier
     }
 }
 ```
-Environment variables returned by the above method are set in the test exectuion process while bootstraping.
+Environment variables returned by the above method are set in the test execution process while bootstraping.
 
 ## Using DataCollector
-Once the DataCollector is compiled, it can be used to monitor test exection. There are two ways by which datacollectors can be plugged in:
+Once the DataCollector is compiled, it can be used to monitor test execution. There are two ways by which datacollectors can be plugged in:
 1. Using /collect switch :
 `vstest.console.exe <TestLibrary> /collect:<DataCollector FriendlyName> /testadapterpath:<Path to test adapter> /testadapterpath:<Path to DataCollector>`
 
