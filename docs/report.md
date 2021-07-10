@@ -29,9 +29,9 @@ if you're interested in the architecture of a test logger.
 | Azure Pipelines | [AzurePipelines.TestLogger][azurepipelines.nuget] | [Azure Pipelines Logger][] |
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
 
-[Trx Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.TrxLogger
-[Html Logger]: https://github.com/Microsoft/vstest/tree/master/src/Microsoft.TestPlatform.Extensions.HtmlLogger
-[Console Logger]: https://github.com/Microsoft/vstest/blob/master/src/vstest.console/Internal/ConsoleLogger.cs
+[Trx Logger]: https://github.com/Microsoft/vstest/tree/main/src/Microsoft.TestPlatform.Extensions.TrxLogger
+[Html Logger]: https://github.com/Microsoft/vstest/tree/main/src/Microsoft.TestPlatform.Extensions.HtmlLogger
+[Console Logger]: https://github.com/Microsoft/vstest/blob/main/src/vstest.console/Internal/ConsoleLogger.cs
 [Xunit Logger]: https://github.com/spekt/xunit.testlogger
 [Nunit Logger]: https://github.com/spekt/nunit.testlogger
 [Junit Logger]: https://github.com/spekt/junit.testlogger
