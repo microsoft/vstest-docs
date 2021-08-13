@@ -1,5 +1,18 @@
 # Release Notes
 
+## 16.11.0
+
+### Issues Fixed
+* 16.11 External Packages Insertion [#2996](https://github.com/microsoft/vstest/pull/2996)
+* Update externals to 16.11 [#2932](https://github.com/microsoft/vstest/pull/2932)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.10.0...v16.11.0)
+
+### Drops
+
+* TestPlatform vsix: [16.11.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/16.11/20210812-04;Microsoft.VisualStudio.TestTools.TestPlatform.V2.CLI.vsman)
+* Microsoft.TestPlatform.ObjectModel : [16.11.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/16.11.0)
+
 ## 16.10.0-release-20210429-01
 
 ### Issues Fixed
