@@ -1,5 +1,14 @@
 # Release Notes
 
+## 17.0.0
+
+See full log [here](https://github.com/microsoft/vstest/compare/v16.11.0...v17.0.0)
+
+### Drops
+
+* TestPlatform vsix: [17.0.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.0/20211022-05;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.0.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.0.0)
+
 ## 16.11.0
 
 ### Issues Fixed
