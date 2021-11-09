@@ -1,5 +1,21 @@
 # Release Notes
 
+## 17.1.0-preview-20211109-03                                                                                                                                                                                                                                                                                                                                   ### Issue Fixed
+* Honor `--arch` switch for arm64 on Windows and Mac [#3100](https://github.com/microsoft/vstest/pull/3100)
+* CPP runner under .NET (Core) [#3003](https://github.com/microsoft/vstest/pull/3003)
+* Log messages from RequestSender [#3057](https://github.com/microsoft/vstest/pull/3057)
+* Fixed CVE-2018-8292 & CVE-2021-26701 [#3054](https://github.com/microsoft/vstest/pull/3054)
+* --diag should take files with no extension [#3048](https://github.com/microsoft/vstest/pull/3048)
+* Blame fix 32 bit hang dump [#3043](https://github.com/microsoft/vstest/pull/3043)
+* Add public api analyzers for ObjectModel and dependencies [#3042](https://github.com/microsoft/vstest/pull/3042)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.0.0...v17.1.0-preview-20211109-03)
+
+### Drops
+
+* TestPlatform vsix: [17.1.0-preview-20211109-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20211109-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.1.0-preview-20211109-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-preview-20211109-03)
+
 ## 17.0.0
 
 See full log [here](https://github.com/microsoft/vstest/compare/v16.11.0...v17.0.0)
