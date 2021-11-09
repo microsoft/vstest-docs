@@ -1,6 +1,8 @@
 # Release Notes
 
-## 17.1.0-preview-20211109-03                                                                                                                                                                                                                                                                                                                                   ### Issue Fixed
+## 17.1.0-preview-20211109-03
+
+### Issues Fixed
 * Honor `--arch` switch for arm64 on Windows and Mac [#3100](https://github.com/microsoft/vstest/pull/3100)
 * CPP runner under .NET (Core) [#3003](https://github.com/microsoft/vstest/pull/3003)
 * Log messages from RequestSender [#3057](https://github.com/microsoft/vstest/pull/3057)
