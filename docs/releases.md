@@ -1,5 +1,29 @@
 # Release Notes
 
+## 17.1.0-preview-20211130-02
+
+### Issue Fixed
+* AttachVS PR comments fixed [#3201](https://github.com/microsoft/vstest/pull/3201)
+* Attach to VS automatically [#3197](https://github.com/microsoft/vstest/pull/3197)
+* Fixing .net frmw parallel issue [#3192](https://github.com/microsoft/vstest/pull/3192)
+* Testhost sharing between discovery & execution [#2687](https://github.com/microsoft/vstest/pull/2687)
+* Make older uwp work [#3166](https://github.com/microsoft/vstest/pull/3166)
+* Enable code coverage when "Code Coverage;arg1=val1;arg2=val2" is provided in cli [#3172](https://github.com/microsoft/vstest/pull/3172)
+* Remove TargetPlatform before start test host [#3170](https://github.com/microsoft/vstest/pull/3170)
+* Adding elements to code coverage config passed via commandline, [#3162](https://github.com/microsoft/vstest/pull/3162)
+* Aggregate api files [#3165](https://github.com/microsoft/vstest/pull/3165)
+* Fix GenerateProgramFile [#3163](https://github.com/microsoft/vstest/pull/3163)
+* Move new enum into public api [#3157](https://github.com/microsoft/vstest/pull/3157)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.1.0-preview-20211109-03...v17.1.0-preview-20211130-02)
+
+### Drops
+
+* TestPlatform vsix: [17.1.0-preview-20211130-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20211130-02;/TestP
+latform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.1.0-preview-20211130-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-preview-2
+0211130-02)
+
 ## 17.1.0-preview-20211109-03
 
 ### Issues Fixed
