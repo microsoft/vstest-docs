@@ -19,10 +19,8 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.1.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.1.0-preview-20211130-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20211130-02;/TestP
-latform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [17.1.0-preview-20211130-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-preview-2
-0211130-02)
+* TestPlatform vsix: [17.1.0-preview-20211130-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20211130-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.1.0-preview-20211130-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-preview-20211130-02)
 
 ## 17.1.0-preview-20211109-03
 
