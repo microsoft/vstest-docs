@@ -1,5 +1,17 @@
 # Release Notes
 
+## 17.1.0-release-20220113-05
+
+### Issue Fixed
+* Fix architecture retrival [#3251](https://github.com/microsoft/vstest/pull/3251)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.1.0-preview-20211130-02...v17.1.0-release-20220113-05)
+
+### Drops
+
+* TestPlatform vsix: [17.1.0-release-20220113-05](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220113-05;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.1.0-release-20220113-05](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-release-20220113-05)
+
 ## 17.1.0-preview-20211130-02
 
 ### Issue Fixed
