@@ -1,5 +1,58 @@
 # Release Notes
 
+## 17.2.0-preview-20220131-20
+
+### Issues Fixed
+* Removed system-wide PDB purge to make build faster [#3310](https://github.com/microsoft/vstest/pull/3310)
+* Test stabilization, increase waiting time for report events [#3309](https://github.com/microsoft/vstest/pull/3309)
+* Use longer timeout for playground project [#3301](https://github.com/microsoft/vstest/pull/3301)
+* Remove stylecop files [#3308](https://github.com/microsoft/vstest/pull/3308)
+* Enable some rules with no impact on public API [#3299](https://github.com/microsoft/vstest/pull/3299)
+* Fix race condition inside DataCollectionAttachmentManager [#3296](https://github.com/microsoft/vstest/pull/3296)
+* Remove unused properties and solution files [#3295](https://github.com/microsoft/vstest/pull/3295)
+* Ignore project and build script re-format in blame [#3297](https://github.com/microsoft/vstest/pull/3297)
+* Reformat projects and script files [#3290](https://github.com/microsoft/vstest/pull/3290)
+* Recognize AnyCPU in case of fallback to PEReader [#3287](https://github.com/microsoft/vstest/pull/3287)
+* Add Architecture.S390x [#3289](https://github.com/microsoft/vstest/pull/3289)
+* Migrating to 1ES Hosted Pools [#3278](https://github.com/microsoft/vstest/pull/3278)
+* Remove formatting changes from git blame [#3288](https://github.com/microsoft/vstest/pull/3288)
+* Medium and low level vulnerabilities patched [#3286](https://github.com/microsoft/vstest/pull/3286)
+* Apply modern code styles [#3264](https://github.com/microsoft/vstest/pull/3264)
+* Add diag log env variable [#3275](https://github.com/microsoft/vstest/pull/3275)
+* Fix encoding when writing updated dependencies in build [#3277](https://github.com/microsoft/vstest/pull/3277)
+* Enable parallelization of acceptance tests [#3268](https://github.com/microsoft/vstest/pull/3268)
+* Fix some typos in codebase [#3262](https://github.com/microsoft/vstest/pull/3262)
+* Logs improvement [#3271](https://github.com/microsoft/vstest/pull/3271)
+* Skip attachment processor if doesn't support incremental processing [#3270](https://github.com/microsoft/vstest/pull/3270)
+* Fix change done in commit a223146b8c3d5dbbf7bae49149aed762560434c4 [#3258](https://github.com/microsoft/vstest/pull/3258)
+* Improve logging for the architecture switch feature [#3265](https://github.com/microsoft/vstest/pull/3265)
+* Improve the cache of the extension framework [#3261](https://github.com/microsoft/vstest/pull/3261)
+* Improve error logging for VS output [#3260](https://github.com/microsoft/vstest/pull/3260)
+* Ensure the Public API analyzer gets installed only for src projects [#3256](https://github.com/microsoft/vstest/pull/3256)
+* Architecture test improvement [#3254](https://github.com/microsoft/vstest/pull/3254)
+* Update system.net.http to 4.3.2 for uap10 [#3249](https://github.com/microsoft/vstest/pull/3249)
+* Add tests for architecture switch feature [#3253](https://github.com/microsoft/vstest/pull/3253)
+* Fixed manifest publishing [#3246](https://github.com/microsoft/vstest/pull/3246)
+* Fix architecture retrival [#3250](https://github.com/microsoft/vstest/pull/3250)
+* Complete the attachment processors extension [#3161](https://github.com/microsoft/vstest/pull/3161)
+* Use the ToString format specifier rather than the Replace method [#3242](https://github.com/microsoft/vstest/pull/3242)
+* Fixed manifest publishing
+* Use stable channel for dotnet 6 installation [#3243](https://github.com/microsoft/vstest/pull/3243)
+* Check exitcodes in build script [#3236](https://github.com/microsoft/vstest/pull/3236)
+* improve attachvs output [#3230](https://github.com/microsoft/vstest/pull/3230)
+* Add playground project [#3200](https://github.com/microsoft/vstest/pull/3200)
+* Bump private dotnet version [#3228](https://github.com/microsoft/vstest/pull/3228)
+* Bumped TP version to 17.2 [#3214](https://github.com/microsoft/vstest/pull/3214)
+* Add marco as code owner for public api [#3217](https://github.com/microsoft/vstest/pull/3217)
+* Add PublicAPI analyzer to all public projects [#3205](https://github.com/microsoft/vstest/pull/3205)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.1.0-preview-20211130-02...v17.2.0-preview-20220131-20)
+
+### Drops
+
+* TestPlatform vsix: [17.2.0-preview-20220131-20](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220131-20;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220131-20](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220131-20)
+
 ## 17.1.0-release-20220113-05
 
 ### Issue Fixed
