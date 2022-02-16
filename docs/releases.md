@@ -1,5 +1,35 @@
 # Release Notes
 
+## 17.1.0
+
+### Issues Fixed
+* Added support for TestAdapterLoadingStrategy. [#3374](https://github.com/microsoft/vstest/pull/3374)
+* Fix architecture retrival [#3251](https://github.com/microsoft/vstest/pull/3251)
+* External dependencies updated [#3204](https://github.com/microsoft/vstest/pull/3204)
+* Fixing .net frmw parallel issue [#3192](https://github.com/microsoft/vstest/pull/3192)
+* Testhost sharing between discovery & execution [#2687](https://github.com/microsoft/vstest/pull/2687)
+* Cleanup tmp code for the --arch feature [#3174](https://github.com/microsoft/vstest/pull/3174)
+* Make older uwp work [#3166](https://github.com/microsoft/vstest/pull/3166)
+* Enable code coverage when "Code Coverage;arg1=val1;arg2=val2" is provided in cli [#3172](https://github.com/microsoft/vstest/pull/3172)
+* Remove TargetPlatform before start test host [#3170](https://github.com/microsoft/vstest/pull/3170)
+* Adding elements to code coverage config passed via commandline, [#3162](https://github.com/microsoft/vstest/pull/3162)* Aggregate api files [#3165](https://github.com/microsoft/vstest/pull/3165)
+* Fix GenerateProgramFile [#3163](https://github.com/microsoft/vstest/pull/3163)
+* Move new enum into public api [#3157](https://github.com/microsoft/vstest/pull/3157)
+* Included UAP10.0 version of Microsoft.VisualStudio.TestPlatform.ObjectModel.dll for signing. [#3160](https://github.com/microsoft/vstest/pull/3160)
+* Add package with UWP dependencies for UWP runner [#3133](https://github.com/microsoft/vstest/pull/3133)
+* Honor `--arch` switch for arm64 on Windows and Mac [#3100](https://github.com/microsoft/vstest/pull/3100)
+* Don't publish for win runtime identifier in source-build [#3096](https://github.com/microsoft/vstest/pull/3096)
+* CPP runner under .NET (Core) [#3003](https://github.com/microsoft/vstest/pull/3003)
+* Updating SDK versions [#3083](https://github.com/microsoft/vstest/pull/3083)
+* Upgrade nuget packages to fix security issues [#3072](https://github.com/microsoft/vstest/pull/3072)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.0.0...v17.1.0)
+
+### Drops
+
+* TestPlatform vsix: [17.1.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.1/20220216-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.1.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0)
+
 ## 17.2.0-preview-20220131-20
 
 ### Issues Fixed
