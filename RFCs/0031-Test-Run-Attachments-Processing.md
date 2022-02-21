@@ -262,4 +262,4 @@ public class MyDataCollectorArtifactPostProcessor : IDataCollectorAttachmentProc
     ...
 }    
 ```
-At runtime if the `Type` registered as attachment processor doesn't implement the `IDataCollectorAttachmentProcessor` the registration will be silently ignored(checking logs will be possible understand the reason).
+At runtime if the `Type` registered as attachment processor doesn't implement the `IDataCollectorAttachmentProcessor` will be silently ignored(check the logs to verify the reason).
