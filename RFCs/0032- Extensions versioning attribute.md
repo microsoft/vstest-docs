@@ -1,7 +1,7 @@
 # 0032 Extensions versioning attribute
 
 # Summary
-This document explain how to use the `TestExtensionTypesAttribute` and `TestExtensionTypesV2Attribute` to handle the versioning for every the platform extension.
+This document explain how to use the `TestExtensionTypesAttribute` and `TestExtensionTypesV2Attribute` to handle the versioning for every platform extension.
 
 # Motivation
 The test platform offers many extensions points like custom test adapters, test execution providers, data collectors, etc...   
