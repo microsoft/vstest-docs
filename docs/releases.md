@@ -1,5 +1,60 @@
 # Release Notes
 
+## 17.2.0-preview-20220131-20
+
+### Issue Fixed
+* Handle correctly waiting for process exit on Unix systems [#3410](https://github.com/microsoft/vstest/pull/3410)
+* Move usings outside namespace [#3398](https://github.com/microsoft/vstest/pull/3398)
+* Prefer string alias over String type [#3408](https://github.com/microsoft/vstest/pull/3408)
+* Use null-coalesce assignment [#3405](https://github.com/microsoft/vstest/pull/3405)
+* Added telemetry codeowners [#3403](https://github.com/microsoft/vstest/pull/3403)
+* Map incoming and outgoing requests [#3314](https://github.com/microsoft/vstest/pull/3314)
+* Use fakes to surround vstest core and test it [#3347](https://github.com/microsoft/vstest/pull/3347)
+* Fix more IDE warnings [#3388](https://github.com/microsoft/vstest/pull/3388)
+* Remember to keep in sync SDK feature flags [#3393](https://github.com/microsoft/vstest/pull/3393)
+* Fix FeatureFlag singleton implementation [#3389](https://github.com/microsoft/vstest/pull/3389)
+* Localized file check-in by OneLocBuild Task: Build definition ID 2923: Build ID 5773266 [#3386](https://github.com/microsoft/vstest/pull/3386)
+* Test adapter loading strategy [#3380](https://github.com/microsoft/vstest/pull/3380)
+* Enable parallel discovery [#3349](https://github.com/microsoft/vstest/pull/3349)
+* Enable post processing [#3384](https://github.com/microsoft/vstest/pull/3384)
+* add post processing intergration test [#3377](https://github.com/microsoft/vstest/pull/3377)
+* Add ARM64 .NET Framework testhost [#3370](https://github.com/microsoft/vstest/pull/3370)
+* Remove architecture validation [#3371](https://github.com/microsoft/vstest/pull/3371)
+* Add ci switch for Windows and Windows-Acceptance [#3372](https://github.com/microsoft/vstest/pull/3372)
+* Revert part of "Remove regions (#3366)" [#3369](https://github.com/microsoft/vstest/pull/3369)
+* Remove regions [#3366](https://github.com/microsoft/vstest/pull/3366)
+* Add unit tests for the artifact post processing [#3352](https://github.com/microsoft/vstest/pull/3352)
+* Update version of VS sdk build tools [#3344](https://github.com/microsoft/vstest/pull/3344)
+* Use !! null check [#3341](https://github.com/microsoft/vstest/pull/3341)
+* Enable nullable on new files for all projects [#3359](https://github.com/microsoft/vstest/pull/3359)
+* Enable more rules [#3345](https://github.com/microsoft/vstest/pull/3345)
+* Enable pattern code style [#3358](https://github.com/microsoft/vstest/pull/3358)
+* Enable even more rules [#3356](https://github.com/microsoft/vstest/pull/3356)
+* Fixed conditional expression [#3355](https://github.com/microsoft/vstest/pull/3355)
+* Telemetry improvements [#3340](https://github.com/microsoft/vstest/pull/3340)
+* Simplify calls to EqtTrace logger [#3351](https://github.com/microsoft/vstest/pull/3351)
+* Implement the post processing extension feature [#3324](https://github.com/microsoft/vstest/pull/3324)
+* Add ionide exclusions to gitignore [#3336](https://github.com/microsoft/vstest/pull/3336)
+* Enable TreatWarningsAsErrors only on CI [#3335](https://github.com/microsoft/vstest/pull/3335)
+* Fix failfast [#3327](https://github.com/microsoft/vstest/pull/3327)
+* Fix red [#3325](https://github.com/microsoft/vstest/pull/3325)
+* Update git blame [#3326](https://github.com/microsoft/vstest/pull/3326)
+* Run dotnet format whitespace [#3307](https://github.com/microsoft/vstest/pull/3307)
+* Suppress assembly architecture, assembly conflict and restore warnings [#3323](https://github.com/microsoft/vstest/pull/3323)
+* Make property readonly when possible [#3320](https://github.com/microsoft/vstest/pull/3320)
+* Log callbacks to delegates better [#3283](https://github.com/microsoft/vstest/pull/3283)
+* Fix OperationCanceledException handling for the TestRunAttachmentsProcessingManager [#3319](https://github.com/microsoft/vstest/pull/3319)
+* Fix serialization issue with TestRunSettings [#3317](https://github.com/microsoft/vstest/pull/3317)
+* Fallback to loaded assembly if load file fails during the extension discovery v2 [#3315](https://github.com/microsoft/vstest/pull/3315)
+* Stabilize unit test  [#3311](https://github.com/microsoft/vstest/pull/3311)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-20220301-01...v17.2.0-preview-20220131-20)
+
+### Drops
+
+* TestPlatform vsix: [17.2.0-preview-20220131-20](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220131-20;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220131-20](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220131-20)
+
 ## 17.1.0
 
 ### Issues Fixed
