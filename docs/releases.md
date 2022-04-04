@@ -1,6 +1,37 @@
 # Release Notes
 
-## 17.2.0-preview-20220131-20
+## v17.2.0-preview-20220401-07
+
+### Issue Fixed
+* Added telemetry data point for extensions loaded during test discovery/run [#3511](https://github.com/microsoft/vstest/pull/3511)
+* Catch all exceptions when exiting process [#3530](https://github.com/microsoft/vstest/pull/3530)
+* Test matrix [#3459](https://github.com/microsoft/vstest/pull/3459)
+* Make Cancel Discovery faster and more reliable [#3527](https://github.com/microsoft/vstest/pull/3527)
+* Fix remote testhost [#3492](https://github.com/microsoft/vstest/pull/3492)
+* Fix feature flag name [#3483](https://github.com/microsoft/vstest/pull/3483)
+* Add parity for AnyCPU containers between .NET Core and .NET FX, add banner with architecture and warning if running emulated(all on win arm64) [#3481](https://github.com/microsoft/vstest/pull/3481)
+* Update feature flag logic to disable only semantics [#3479](https://github.com/microsoft/vstest/pull/3479)
+* Allows to override shutdown timeout [#3466](https://github.com/microsoft/vstest/pull/3466)
+* Support reading embedded pdbs [#3454](https://github.com/microsoft/vstest/pull/3454)
+* Update nuspec project target frameworks for source-build [#3285](https://github.com/microsoft/vstest/pull/3285)
+* Run DataCollectorAttachmentsProcessors inside custom AppDomain [#3434](https://github.com/microsoft/vstest/pull/3434)
+* Newer approach to reference assemblies on MacOS and Linux [#3448](https://github.com/microsoft/vstest/pull/3448)
+* CA1840: Use 'Environment.CurrentManagedThreadId' [#3440](https://github.com/microsoft/vstest/pull/3440)
+* Patched CVE-2019-0657. [#3436](https://github.com/microsoft/vstest/pull/3436)
+* Made telemetry data constants true constants [#3416](https://github.com/microsoft/vstest/pull/3416)
+* Add a zero-width space after test name in HTML results [#3423](https://github.com/microsoft/vstest/pull/3423)
+* Temporary disable full post processing in design mode [#3429](https://github.com/microsoft/vstest/pull/3429)
+* Build vstest.console.arm64.exe and fix process architecture retrieval [#3422](https://github.com/microsoft/vstest/pull/3422)
+* Fix multi tfm project tests [#3425](https://github.com/microsoft/vstest/pull/3425)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-20220401-07...v17.2.0-preview-20220301-01)
+
+### Drops
+
+* TestPlatform vsix: [17.2.0-preview-20220401-07](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220401-07;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220401-07](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220401-07)
+
+## 17.2.0-preview-20220301-01
 
 ### Issue Fixed
 * Handle correctly waiting for process exit on Unix systems [#3410](https://github.com/microsoft/vstest/pull/3410)
@@ -52,8 +83,8 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.2.0-preview-20220131-20](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220131-20;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220131-20](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220131-20)
+* TestPlatform vsix: [17.2.0-preview-20220301-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220301-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220301-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220301-01)
 
 ## 17.1.0
 
