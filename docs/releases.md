@@ -1,5 +1,17 @@
 # Release Notes
 
+## 17.2.0-preview-20220401-08
+
+### Issue Fixed
+* Add packing to PR build [#3540](https://github.com/microsoft/vstest/pull/3540)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-20220401-08...v17.2.0-preview-20220401-07)
+
+### Drops
+
+* TestPlatform vsix: [17.2.0-preview-20220401-08](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220401-08;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220401-08](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220401-08)
+
 ## v17.2.0-preview-20220401-07
 
 ### Issue Fixed
