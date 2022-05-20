@@ -14,8 +14,9 @@ Clone the repository to a local directory. Rest of this article assumes
 ```
 
 If you're planning to use **Visual Studio** as development environment, please
-install `VS 2017 RC 2` and the `.NET Core and Docker (Preview)` workload installed. See download
-link [here](https://www.microsoft.com/net/core#windowsvs2017).
+install `VS 2019` and the `.NET Core and Docker (Preview)` workload installed. See download
+link [here](https://www.microsoft.com/net/core#windowsvs2017). 
+Ensure that .NET Portable library targeting pack is installed with the workloads.
 
 If you're _not_ planning to use **Visual Studio** and only use CLI. You will need to install [.Net 46 targeting pack](https://www.microsoft.com/en-us/download/details.aspx?id=48136). The download link has two msis. Both needs to be installed. Otherwise build will fail asking to install net 46.
 
