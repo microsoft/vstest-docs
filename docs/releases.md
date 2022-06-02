@@ -1,5 +1,24 @@
 # Release Notes
 
+## 17.3.0-preview-20220426-02
+
+### Issue Fixed
+* Collect artifacts in case of test abort/cancelled [#3606](https://github.com/microsoft/vstest/pull/3606)
+* Use most recent stable version of Microsoft.CodeCoverage for unit tests [#3601](https://github.com/microsoft/vstest/pull/3601)
+* Patched CVE-2017-11770 and CVE-2019-0981 [#3578](https://github.com/microsoft/vstest/pull/3578)
+* Fixed assembly loading in Explicit mode. [#3570](https://github.com/microsoft/vstest/pull/3570)
+* Make vstest.console, and datacollector upgrade across major .NET version [#3561](https://github.com/microsoft/vstest/pull/3561)
+* Fix parallel discovery [#3437](https://github.com/microsoft/vstest/pull/3437)
+* Remove CC from vsix [#3546](https://github.com/microsoft/vstest/pull/3546)
+* Bundle arm64 managed code coverage support [#3547](https://github.com/microsoft/vstest/pull/3547)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-20220401-08...v17.3.0-preview-20220426-02)
+
+### Drops
+
+* TestPlatform vsix: [17.3.0-preview-20220426-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220426-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.3.0-preview-20220426-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0-preview-20220426-02)
+
 ## 17.2.0
 
 See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-20220401-07...v17.2.0)
