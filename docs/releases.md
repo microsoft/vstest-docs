@@ -1,5 +1,35 @@
 # Release Notes
 
+## 17.3.0-preview-20220530-08
+
+### Issue Fixed
+* Fix CppUnitTestFramework package layout [#3695](https://github.com/microsoft/vstest/pull/3695)
+* Share files instead of duplicating them [#3692](https://github.com/microsoft/vstest/pull/3692)
+* Enable nullable on adapter utilities [#3688](https://github.com/microsoft/vstest/pull/3688)
+* Allow sharing testhosts for non-paralell runs on a Shared testhost [#3682](https://github.com/microsoft/vstest/pull/3682)
+* Fix same file access exception in htmlLogger [#3373](https://github.com/microsoft/vstest/pull/3373)
+* Perform file roll only occasionally when file is locked [#3684](https://github.com/microsoft/vstest/pull/3684)
+* Enable nullable for EventLogCollector [#3674](https://github.com/microsoft/vstest/pull/3674)
+* Fixed telemetry data sharing exception [#3676](https://github.com/microsoft/vstest/pull/3676)
+* Enable nullable on AttachVS [#3671](https://github.com/microsoft/vstest/pull/3671)
+* Enable nullable for datacollector [#3670](https://github.com/microsoft/vstest/pull/3670)
+* Fix CUIT test [#3673](https://github.com/microsoft/vstest/pull/3673)
+* Fix NRE when coverage merge tool is not found [#3665](https://github.com/microsoft/vstest/pull/3665)
+* Run multiple target frameworks and architectures in single vstest.console [#3412](https://github.com/microsoft/vstest/pull/3412)
+* Fix NgenArchitecture [#3651](https://github.com/microsoft/vstest/pull/3651)
+* Fix missing attachement processor [#3644](https://github.com/microsoft/vstest/pull/3644)
+* Added null checks for GetCachedExtensions call [#3639](https://github.com/microsoft/vstest/pull/3639)
+* Fix more issues with parallel discovery and cancellation [#3605](https://github.com/microsoft/vstest/pull/3605)
+* Better deserialization and serialization performance [#3608](https://github.com/microsoft/vstest/pull/3608)
+* Refined runsettings matching criteria for test sessions [#3610](https://github.com/microsoft/vstest/pull/3610)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.3.0-preview-20220426-02...v17.3.0-preview-20220530-08)
+
+### Drops
+
+* TestPlatform vsix: [17.3.0-preview-20220530-08](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220530-08;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.3.0-preview-20220530-08](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0-preview-20220530-08)
+
 ## 17.3.0-preview-20220426-02
 
 ### Issue Fixed
