@@ -1,5 +1,28 @@
 # Release Notes
 
+## 17.3.0-preview-20220612-01
+
+### Issue Fixed
+* Fix logging setup when running in remote [#3643](https://github.com/microsoft/vstest/pull/3643)
+* Fix get process architecture [#3726](https://github.com/microsoft/vstest/pull/3726)
+* Enable nullables on Abstraction project [#3723](https://github.com/microsoft/vstest/pull/3723)
+* Enable nullables on TP Build project [#3719](https://github.com/microsoft/vstest/pull/3719)
+* Add target framework information to the AttachDebugger callback [#3701](https://github.com/microsoft/vstest/pull/3701)
+* Enable nullable on BlameDataCollector [#3713](https://github.com/microsoft/vstest/pull/3713)
+* Enable nullable on HtmlLogger [#3712](https://github.com/microsoft/vstest/pull/3712)
+* Update framework detection logic to not rely on throwing/catching NRE [#3714](https://github.com/microsoft/vstest/pull/3714)
+* Enable nullable on TP utilities [#3700](https://github.com/microsoft/vstest/pull/3700)
+* Enable nullable on vstest.console [#3694](https://github.com/microsoft/vstest/pull/3694)
+* Minor optimizations [#3687](https://github.com/microsoft/vstest/pull/3687)
+* Using "\." instead of "." as it is not a valid regex [#3708](https://github.com/microsoft/vstest/pull/3708)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.3.0-preview-20220530-08...v17.3.0-preview-20220612-01)
+
+### Drops
+
+* TestPlatform vsix: [17.3.0-preview-20220612-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220612-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.3.0-preview-20220612-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0-preview-20220612-01)
+
 ## 17.3.0-preview-20220530-08
 
 ### Issue Fixed
