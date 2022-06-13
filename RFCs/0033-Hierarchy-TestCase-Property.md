@@ -6,7 +6,7 @@
 This document standardizes an additional `Hierarchy` property on TestCase to support more flexible visual display of tests in the Visual Studio Test Explorer.
 
 ## Overview
-The `ManagedType` and `ManagedMethod` properties [have been defined](0017-Managed-TestCase-Properties.md) as a way of deterministically identifying the type and method to which a test case belongs (in managed code). However, the legacy `FullyQualifiedName` property is still required to deduce a Namespace, Classname and TestGroup for display in the Test Explorer hierarchy. When the Test Explorer added a hierarchy for easier grouping and navigation of tests, there was no specified way for a TestCase to provide those values so they were heuristically deduced from `FullyQualifiedName`. 
+The `ManagedType` and `ManagedMethod` properties [have been defined](0017-Managed-TestCase-Properties.md) as a way of deterministically identifying the type and method to which a test case belongs (in managed code). However, the legacy `FullyQualifiedName` property is still required to deduce a Namespace, Classname and TestGroup for display in the Test Explorer hierarchy. When the Test Explorer added a hierarchy for easier grouping and navigation of tests, there was no specified way for a TestCase to provide those values so they were heuristically derived from `FullyQualifiedName`. 
 
 This document specifies a way for the TestCase to provide these display values directly to the test explorer, granting flexibility and control back to the test adapter.
 
@@ -18,11 +18,12 @@ TestCases for managed code may include a string array (string[]) valued property
 
 The `Hierarchy` test case property represents the text strings used to display the test in the Visual Studio Test Explorer window. 
 
-* The property must be a string array with 4 elements. If the property is null, or missing or doesn't have 4 elements then it is is ignored.
+* The property must be an array of strings with 4 elements. If the property is null, missing or doesn't have 4 elements then it is is ignored as invalid.
 * The element values are arranged as `[TestGroup, Class, Namespace, Container]`, which is the reverse of the order of display in the Test Explorer. i.e. Container is the top level node, Namespace is next, etc... Each TestCase is coalesced into a tree using the following order from the root. `Container`, `Namespace`, `Class`, `TestGroup`, `DisplayName`.
-* If `TestGroup` is the same for all tests under a particular `Class`, then the `TestGroup` level is omitted from the hierarchy.
+* If `TestGroup` is the same for all tests under a particular `Class`, then the `TestGroup` level is omitted from the hierarchy. 
 * `Container` usually represents the project name or the assembly name.
 * `Namespace` represents the namespace containing the test suite (or a suitable semantic equivalent).
-* `Class` normally represents the test suite.
-* `TestGroup` typically represents the method that implements a particular test or set of tests (if data-driven).
-* `DisplayName` is the name of a particular single test case.
+* `Class` normally represents the display name of the test suite.
+* `TestGroup` typically represents the method that implements a particular test or set of tests (if data-driven). If a test is not data-driven, then the TestGroup could be the same as the `DisplayName`.
+* `DisplayName` is the name of a particular single test case. For data-driven tests, the `DisplayName` should include a representation of the parameters in order to distinguish the unique test case to the end user. If the test case is not data-driven, then there is no need to include the parameters as the method name would likely be sufficient.
+* In some cases `ClassName`, `TestGroup` and `Method` could represent generic methods or types. In that case, if possible, the text should reflect the "closed" or instantiated typename. For example the type `List<String>` is referenced in metadata as ``List`1`` and in the code as `List<T>`; both of these are "open" forms of the type because they do not specify the type of `T`. If at all possible, when displaying this data in these properties, the closed form (e.g. `List<String>, List<MyType>`) should be used.
