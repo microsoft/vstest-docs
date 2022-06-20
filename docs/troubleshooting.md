@@ -87,7 +87,6 @@ jobs:
       sourceFolder: $(Agent.TempDirectory)
       contents: '**/*.diag'
       targetFolder: $(Build.ArtifactStagingDirectory)/vstestlog
-    condition: always()
     continueOnError: true
 
   - task: PublishPipelineArtifact@1
@@ -118,7 +117,6 @@ jobs:
       testAssemblyVer2: |
         ...
       runSettingsFile: ./config.runsettings
-    condition: always()
     continueOnError: true
 
   - task: CopyFiles@2
