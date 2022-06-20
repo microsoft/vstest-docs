@@ -1,10 +1,6 @@
 # Troubleshooting guide
 The goal of this document is to help the test platform users to collect useful information for troubleshooting issues.  
 
-The setup to collect information depends on specific scenario:  
-* [@VSTest2 Azure DevOps task](#scenario:-@vstest2-azure-devops-task)  : https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/vstest
-
-
 # Scenario: @VSTest2 Azure DevOps task  
 1) Collect diagnostic logs using `otherConsoleOptions: /Diag:vstestlog.txt`   
 ```yaml
