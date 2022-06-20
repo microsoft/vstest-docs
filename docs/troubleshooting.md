@@ -17,12 +17,14 @@ The goal of this document is to help the test platform users to collect useful i
     inputs:
       contents: '**/*vstestlog*.diag'
       targetFolder: $(Build.ArtifactStagingDirectory)/vstestlog
+      condition: always()
 
   - task: PublishPipelineArtifact@1
     displayName: Publish vstestlog log
     inputs:
       targetPath: $(Build.ArtifactStagingDirectory)/vstestlog
       artifactName: vstestlog      
+      condition: always()
 ```
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder.  
 
@@ -50,12 +52,14 @@ jobs:
       sourceFolder: $(Agent.TempDirectory)
       contents: '**/*.diag'
       targetFolder: $(Build.ArtifactStagingDirectory)/vstestlog
+      condition: always()
 
   - task: PublishPipelineArtifact@1
     displayName: Publish vstestlog log
     inputs:
       targetPath: $(Build.ArtifactStagingDirectory)/vstestlog
       artifactName: vstestlog
+      condition: always()
 ```
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder.  
 
@@ -88,6 +92,7 @@ jobs:
       contents: '**/*.diag'
       targetFolder: $(Build.ArtifactStagingDirectory)/vstestlog
     continueOnError: true
+    condition: always()
 
   - task: PublishPipelineArtifact@1
     displayName: Publish vstestlog log
