@@ -10,7 +10,7 @@ The goal of this document is to help the test platform users to collect useful i
       inputs:
       testAssemblyVer2: |
         ...
-      otherConsoleOptions: '/Diag:$(Build.ArtifactStagingDirectory)/vstestlog/vstestlog.diag'
+      otherConsoleOptions: '/Diag:vstestlog.diag'
 
   - task: CopyFiles@2
     displayName: Copy vstestlog logs to staging
