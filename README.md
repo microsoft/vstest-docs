@@ -13,6 +13,7 @@ If you are looking for the Visual Studio Test Platform product GitHub repository
 - [Translation Layer](https://github.com/Microsoft/vstest-docs/blob/main/RFCs/0008-TranslationLayer.md)
 - [Editors API Revision Update](https://github.com/Microsoft/vstest-docs/blob/main/RFCs/0009-Editors-API-RevisionUpdate.md)
 - [Roadmap](https://github.com/Microsoft/vstest-docs/blob/main/docs/releases.md)
+- [Troubleshooting guide](https://github.com/Microsoft/vstest-docs/blob/main/docs/troubleshooting.md)
 
 ### Contributing
 There are many ways to contribute to VSTest
