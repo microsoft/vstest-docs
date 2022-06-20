@@ -2,7 +2,7 @@
 The goal of this document is to help the test platform users to collect useful information for troubleshooting issues.  
 
 # Scenario: @VSTest2 Azure DevOps task  
-1) Collect diagnostic logs using `otherConsoleOptions: /Diag:vstestlog.txt`   
+## Collect diagnostic logs using `otherConsoleOptions: /Diag:vstestlog.txt`   
 ```yaml
   - task: VSTest@2
     inputs:
@@ -26,7 +26,7 @@ The goal of this document is to help the test platform users to collect useful i
 ```
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder.  
 
-2) Collect diagnostic logs using `System.Debug` environment variable, sometime is not possible use the `otherConsoleOptions`(parallel execution)
+## Collect diagnostic logs using `System.Debug` environment variable, sometime is not possible use the `otherConsoleOptions`(parallel execution)
 ```yaml
 jobs:
 - job: ...
@@ -59,7 +59,7 @@ jobs:
 ```
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder.  
 
-3) Collect logs and crash dump/hang using `otherConsoleOptions: /Blame`  
+## Collect logs and crash dump/hang using `otherConsoleOptions: /Blame`  
 ```yaml
 jobs:
 - job: ...
@@ -99,7 +99,7 @@ jobs:
 ```
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder and you can find the dump using the `Attachments` tab under `Tests` selecting the parent(first) test node.  
 
-4) Collect logs and crash dump/hang using *.runsettings file , sometime is not possible use the `otherConsoleOptions`(parallel execution)
+## Collect logs and crash dump/hang using *.runsettings file , sometime is not possible use the `otherConsoleOptions`(parallel execution)
 ```yaml
 jobs:
 - job: ...
