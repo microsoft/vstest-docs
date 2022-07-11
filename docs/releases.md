@@ -1,5 +1,67 @@
 # Release Notes
 
+## 17.4.0-preview-20220707-01
+
+### Issue Fixed
+* Revert #3715 [#3843](https://github.com/microsoft/vstest/pull/3843)
+* Enable more rules on test projects [#3832](https://github.com/microsoft/vstest/pull/3832)
+* Ignore CancelTestDiscovery test as it is flaky [#3839](https://github.com/microsoft/vstest/pull/3839)
+* Fix Newtonsoft.Json.dll 13.0.1 signature verification [#3835](https://github.com/microsoft/vstest/pull/3835)
+* Bump to 17.4.0 [#3831](https://github.com/microsoft/vstest/pull/3831)
+* Upgrade to Newtonsoft.Json 13.0.1 [#3815](https://github.com/microsoft/vstest/pull/3815)
+* Enable CA1824 - Mark assemblies with NeutralResourcesLanguageAttribute [#3833](https://github.com/microsoft/vstest/pull/3833)
+* Make test functions static when possible [#3830](https://github.com/microsoft/vstest/pull/3830)
+* Fix unused using warning [#3828](https://github.com/microsoft/vstest/pull/3828)
+* Remove unused msdia140typelib_clr0200.dll [#3822](https://github.com/microsoft/vstest/pull/3822)
+* Enable nullables on all public API files [#3808](https://github.com/microsoft/vstest/pull/3808)
+* Fix missing signature [#3796](https://github.com/microsoft/vstest/pull/3796)
+* Version bumped to 17.4 [#3818](https://github.com/microsoft/vstest/pull/3818)
+* Add runtime location to host log [#3806](https://github.com/microsoft/vstest/pull/3806)
+* Fix reading/setting culture env variables [#3802](https://github.com/microsoft/vstest/pull/3802)
+* Enable nullable on missed files [#3801](https://github.com/microsoft/vstest/pull/3801)
+* Enable nullable on ObjectModel [#3793](https://github.com/microsoft/vstest/pull/3793)
+* Add missing nullable [#3795](https://github.com/microsoft/vstest/pull/3795)
+* Improve how to retrieve process ID [#3794](https://github.com/microsoft/vstest/pull/3794)
+* Enable nullables on common [#3790](https://github.com/microsoft/vstest/pull/3790)
+* Fix race condition issues on stream access on LengthPrefixCommunicati??? [#3789](https://github.com/microsoft/vstest/pull/3789)
+* Enable nullables on CrossPlatEngine [#3779](https://github.com/microsoft/vstest/pull/3779)
+* Enable nullable on VS Translation layer [#3781](https://github.com/microsoft/vstest/pull/3781)
+* Enable missed nullables on already handled projects [#3773](https://github.com/microsoft/vstest/pull/3773)
+* Add background option for testhosts [#3772](https://github.com/microsoft/vstest/pull/3772)
+* Pass sources, to fix native debug [#3777](https://github.com/microsoft/vstest/pull/3777)
+* Temporary disable ngen for arm64 binaries [#3765](https://github.com/microsoft/vstest/pull/3765)
+* Add default platform option to runsettings [#3770](https://github.com/microsoft/vstest/pull/3770)
+* Support arm64 native CppUnitTestFramework with `dotnet test` [#3768](https://github.com/microsoft/vstest/pull/3768)
+* Reduce usage of bang + reduce usage of throw/catch [#3771](https://github.com/microsoft/vstest/pull/3771)
+* Fix warnings and failed assertions [#3767](https://github.com/microsoft/vstest/pull/3767)
+* Enable nullable on Communication utilities [#3758](https://github.com/microsoft/vstest/pull/3758)
+* Add default VS settings to playground [#3756](https://github.com/microsoft/vstest/pull/3756)
+* Skip sources when runtime provider is not found [#3760](https://github.com/microsoft/vstest/pull/3760)
+* Fix loop on TPDebug.Assert [#3764](https://github.com/microsoft/vstest/pull/3764)
+* Remove backup project that should not have been checked in [#3763](https://github.com/microsoft/vstest/pull/3763)
+* Enable nullables on acceptance tests [#3757](https://github.com/microsoft/vstest/pull/3757)
+* Enable nullables on TRX logger [#3754](https://github.com/microsoft/vstest/pull/3754)
+* Enable nullables on CoreUtilities [#3751](https://github.com/microsoft/vstest/pull/3751)
+* Fix failing assertions on tests [#3761](https://github.com/microsoft/vstest/pull/3761)
+* Get PlatformAbstractions from ObjectModel [#3722](https://github.com/microsoft/vstest/pull/3722)
+* Fix nullable conflict [#3753](https://github.com/microsoft/vstest/pull/3753)
+* Remove missed #nullable disable [#3741](https://github.com/microsoft/vstest/pull/3741)
+* Fix which value is used in platform warning [#3752](https://github.com/microsoft/vstest/pull/3752)
+* Experimental feature: enable negative values of MaxCpuCount to match a percentage of number of cores [#3748](https://github.com/microsoft/vstest/pull/3748)
+* Enable nullables on SettingsMigrator [#3744](https://github.com/microsoft/vstest/pull/3744)
+* Enable nullables on TestHostProvider [#3738](https://github.com/microsoft/vstest/pull/3738)
+* Update MSTest and VSTest versions [#3663](https://github.com/microsoft/vstest/pull/3663)
+* Fix DOTNET_ROOT env var for .NET 6.0+ [#3715](https://github.com/microsoft/vstest/pull/3715)
+* Enable nullables on TestPlatform.Client [#3745](https://github.com/microsoft/vstest/pull/3745)
+* Add env var to control host priority [#3740](https://github.com/microsoft/vstest/pull/3740)
+
+See full log [here](https://github.com/microsoft/vstest/compare/f6b89cfcace13f8ac0e994af9dbe7f9a7438e958...v17.4.0-preview-20220707-01)
+
+### Drops
+
+* TestPlatform vsix: [17.4.0-preview-20220707-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220707-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.4.0-preview-20220707-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.4.0-preview-20220707-01)
+
 ## 17.3.0-preview-20220612-01
 
 ### Issue Fixed
@@ -20,7 +82,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.3.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.3.0-preview-20220612-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220612-01;/TestPlatform.vsix)
+* TestPlatform vsix: [17.3.0-preview-20220612-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220612-01;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.3.0-preview-20220612-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0-preview-20220612-01)
 
 ## 17.3.0-preview-20220530-08
@@ -50,7 +112,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.3.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.3.0-preview-20220530-08](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220530-08;/TestPlatform.vsix)
+* TestPlatform vsix: [17.3.0-preview-20220530-08](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220530-08;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.3.0-preview-20220530-08](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0-preview-20220530-08)
 
 ## 17.3.0-preview-20220426-02
@@ -69,7 +131,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.3.0-preview-20220426-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220426-02;/TestPlatform.vsix)
+* TestPlatform vsix: [17.3.0-preview-20220426-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220426-02;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.3.0-preview-20220426-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0-preview-20220426-02)
 
 ## 17.2.0
@@ -90,7 +152,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.2.0-preview-20220401-08](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220401-08;/TestPlatform.vsix)
+* TestPlatform vsix: [17.2.0-preview-20220401-08](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220401-08;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220401-08](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220401-08)
 
 ## v17.2.0-preview-20220401-07
@@ -121,7 +183,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.2.0-preview-20220401-07](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220401-07;/TestPlatform.vsix)
+* TestPlatform vsix: [17.2.0-preview-20220401-07](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220401-07;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220401-07](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220401-07)
 
 ## 17.2.0-preview-20220301-01
@@ -176,7 +238,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.2.0-preview-20220301-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220301-01;/TestPlatform.vsix)
+* TestPlatform vsix: [17.2.0-preview-20220301-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220301-01;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.2.0-preview-20220301-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.2.0-preview-20220301-01)
 
 ## 17.1.0
@@ -271,7 +333,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.1.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.1.0-release-20220113-05](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20220113-05;/TestPlatform.vsix)
+* TestPlatform vsix: [17.1.0-release-20220113-05](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220113-05;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.1.0-release-20220113-05](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-release-20220113-05)
 
 ## 17.1.0-preview-20211130-02
@@ -293,7 +355,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.1.0-preview-
 
 ### Drops
 
-* TestPlatform vsix: [17.1.0-preview-20211130-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20211130-02;/TestPlatform.vsix)
+* TestPlatform vsix: [17.1.0-preview-20211130-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20211130-02;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.1.0-preview-20211130-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-preview-20211130-02)
 
 ## 17.1.0-preview-20211109-03
@@ -311,7 +373,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.0.0...v17.1.
 
 ### Drops
 
-* TestPlatform vsix: [17.1.0-preview-20211109-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/master/20211109-03;/TestPlatform.vsix)
+* TestPlatform vsix: [17.1.0-preview-20211109-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20211109-03;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.1.0-preview-20211109-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.1.0-preview-20211109-03)
 
 ## 17.0.0
