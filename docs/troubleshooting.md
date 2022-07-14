@@ -157,7 +157,7 @@ jobs:
 </RunSettings>
 ```
 # Scenario: DotNetCoreCLI@2 Azure DevOps task  
-## Collect process dump using Procdump
+## Collect process dump using Procdump on Windows
 ```yaml
   variables:
     - name: System.Debug
