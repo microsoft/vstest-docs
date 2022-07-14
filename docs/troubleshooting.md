@@ -1,8 +1,15 @@
 # Troubleshooting guide
-The goal of this document is to help the test platform users to collect useful information for troubleshooting issues.  
 
-# Scenario: @VSTest2 Azure DevOps task  
-## Collect diagnostic logs using `otherConsoleOptions: /Diag:vstestlog.txt`   
+The goal of this document is to help the test platform users to collect useful information for troubleshooting issues.
+
+## Azure DevOps
+
+### @VSTest2 task
+
+#### Collect diagnostic logs
+
+##### Using `otherConsoleOptions: /Diag:vstestlog.txt`
+
 ```yaml
   - task: VSTest@2
     inputs:
@@ -26,9 +33,13 @@ The goal of this document is to help the test platform users to collect useful i
       artifactName: vstestlog      
     condition: always()
 ```
+
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder.  
 
-## Collect diagnostic logs using `System.Debug` environment variable, sometimes is not possible use the `otherConsoleOptions`(parallel execution)
+##### Using `System.Debug` environment variable
+
+For some scenarios, it is not possible use the `otherConsoleOptions` (e.g., parallel execution).
+
 ```yaml
 jobs:
 - job: ...
@@ -61,9 +72,13 @@ jobs:
       artifactName: vstestlog
     condition: always()
 ```
+
 You can now zip/download all logs from the published artifacts view under the `vstestlog` folder.  
 
-## Collect logs and crash dump/hang using `otherConsoleOptions: /Blame`  
+#### Collect logs and crash dump/hang
+
+##### Using `otherConsoleOptions: /Blame`  
+
 ```yaml
 jobs:
 - job: ...
@@ -102,9 +117,13 @@ jobs:
     condition: always()
     continueOnError: true
 ```
-You can now zip/download all logs from the published artifacts view under the `vstestlog` folder and you can find the dump using the `Attachments` tab under `Tests` selecting the parent(first) test node.  
 
-## Collect logs and crash dump/hang using *.runsettings file , sometimes is not possible use the `otherConsoleOptions`(parallel execution)
+You can now zip/download all logs from the published artifacts view under the `vstestlog` folder and you can find the dump using the `Attachments` tab under `Tests` selecting the parent (first) test node.  
+
+##### Using *.runsettings file
+
+ For some scenarios, it is not possible use the `otherConsoleOptions` (e.g., parallel execution).
+
 ```yaml
 jobs:
 - job: ...
@@ -141,7 +160,9 @@ jobs:
     condition: always()
     continueOnError: true
 ```
+
 `config.runsettings` file
+
 ```xml
 <RunSettings>
   <DataCollectionRunSettings>
@@ -156,8 +177,11 @@ jobs:
   </DataCollectionRunSettings>
 </RunSettings>
 ```
-# Scenario: DotNetCoreCLI@2 Azure DevOps task  
-## Collect process dump using Procdump on Windows (i.e. OutOfMemory)
+
+### DotNetCoreCLI@2 task  
+
+#### Collect process dump using Procdump on Windows (i.e. OutOfMemory)
+
 ```yaml
   variables:
     - name: System.Debug
@@ -181,3 +205,18 @@ jobs:
       command: test
       arguments: --blame-crash --blame-crash-collect-always true --diag:log.txt
 ```
+
+## Visual Studio
+
+### Enable Diagnostic logs
+
+* Go to Visual Studio options page (`Tools/Options`)
+* Select `Test` and then `General`
+* Under `Logging`, change `Logging level` to `Trace (Includes Platform logs)`
+* Close the `Options` window
+* Open the `Output` window and select `Tests` output
+* Locate the entry similar to `C:\Users\<YOUR_USER>\AppData\Local\Temp\TestPlatformLogs\<DATE_TIME>` (e.g. `C:\Users\johndoe\AppData\Local\Temp\TestPlatformLogs\2022_07_14_15_24_06_19400`) and open the folder
+* Run your tests
+* Create a zip with all files available
+
+Note: these logs could contain sensitive information (paths, project name...). Make sure to clean them or use the Visual Studio `Send Feedback` button. Don't put anything you want to keep private in the title or content of the initial report, which is public. Instead, say that you'll send details privately in a separate comment. Once the problem report is created, it's now possible to specify who can see your replies and attachments.
