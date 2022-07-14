@@ -156,3 +156,28 @@ jobs:
   </DataCollectionRunSettings>
 </RunSettings>
 ```
+# Scenario: DotNetCoreCLI@2 Azure DevOps task  
+## Collect process dump using Procdump
+```yaml
+  variables:
+    - name: System.Debug
+      value: true
+    - name: PROCDUMP_PATH
+      value: $(Agent.ToolsDirectory)\Procdump
+    - name: VSTEST_DUMP_FORCEPROCDUMP
+      value: 1
+...
+  - task: PowerShell@2
+    displayName: 'Download ProcDump'
+    inputs:
+      targetType: inline
+      script: |
+        Invoke-WebRequest -Uri "https://download.sysinternals.com/files/Procdump.zip" -OutFile $(Agent.TempDirectory)\Procdump.zip
+        Expand-Archive -LiteralPath $(Agent.TempDirectory)\Procdump.zip -DestinationPath $(Agent.ToolsDirectory)\Procdump -Force
+...
+  - task: DotNetCoreCLI@2
+    displayName: Test project
+    inputs:
+      command: test
+      arguments: --blame-crash --blame-crash-collect-always true --diag:log.txt
+```
