@@ -1,5 +1,28 @@
 # Release Notes
 
+## 17.4.0-preview-20220726-02
+
+### Issue Fixed
+* Use runtime 3.1.27 [#3900](https://github.com/microsoft/vstest/pull/3900)
+* Remove un-needed entries from sln [#3887](https://github.com/microsoft/vstest/pull/3887)
+* Build compatibility matrix tests faster [#3884](https://github.com/microsoft/vstest/pull/3884)
+* Make Microsoft.NET.Test.Sdk package transitive [#3879](https://github.com/microsoft/vstest/pull/3879)
+* In-process vstest.console [#3728](https://github.com/microsoft/vstest/pull/3728)
+* Fix warnings on main [#3870](https://github.com/microsoft/vstest/pull/3870)
+* Fixed bugs in ManagedMethod parsing, and updated hierarchies. [#3704](https://github.com/microsoft/vstest/pull/3704)
+* Remove default architecture env variable [#3863](https://github.com/microsoft/vstest/pull/3863)
+* Enforce use of correct dispose pattern [#3852](https://github.com/microsoft/vstest/pull/3852)
+* Follow .NET lifecycle: update codebase to net462 [#3646](https://github.com/microsoft/vstest/pull/3646)
+* Fixed some security vulnerabilities. [#3851](https://github.com/microsoft/vstest/pull/3851)
+* Increase ThreadPool.MinThreads limit [#3845](https://github.com/microsoft/vstest/pull/3845)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.4.0-preview-20220707-01...v17.4.0-preview-20220726-02)
+
+### Drops
+
+* TestPlatform vsix: [17.4.0-preview-20220726-02](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20220726-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.4.0-preview-20220726-02](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.4.0-preview-20220726-02)
+
 ## 17.4.0-preview-20220707-01
 
 ### Issue Fixed
