@@ -1,5 +1,55 @@
 # Release Notes
 
+## 17.3.0
+
+### Issue Fixed
+* Reverts change that breaks DOTNET_ROOT [#3844](https://github.com/microsoft/vstest/pull/3844)
+* Add runtime location to host log [#3806](https://github.com/microsoft/vstest/pull/3806)
+* Fix reading/setting culture env variables [#3802](https://github.com/microsoft/vstest/pull/3802)
+* Enable nullable on missed files [#3801](https://github.com/microsoft/vstest/pull/3801)
+* Enable nullable on ObjectModel [#3793](https://github.com/microsoft/vstest/pull/3793)
+* Add missing nullable [#3795](https://github.com/microsoft/vstest/pull/3795)
+* Improve how to retrieve process ID [#3794](https://github.com/microsoft/vstest/pull/3794)
+* Enable nullables on common [#3790](https://github.com/microsoft/vstest/pull/3790)
+* Fix race condition issues on stream access on LengthPrefixCommunicatiΓÇª [#3789](https://github.com/microsoft/vstest/pull/3789)
+* Enable nullables on CrossPlatEngine [#3779](https://github.com/microsoft/vstest/pull/3779)
+* Enable nullable on VS Translation layer [#3781](https://github.com/microsoft/vstest/pull/3781)
+* Enable missed nullables on already handled projects [#3773](https://github.com/microsoft/vstest/pull/3773)
+* Add background option for testhosts [#3772](https://github.com/microsoft/vstest/pull/3772)
+* Pass sources, to fix native debug [#3777](https://github.com/microsoft/vstest/pull/3777)
+* Temporary disable ngen for arm64 binaries [#3765](https://github.com/microsoft/vstest/pull/3765)
+* Add default platform option to runsettings [#3770](https://github.com/microsoft/vstest/pull/3770)
+* Support arm64 native CppUnitTestFramework with `dotnet test` [#3768](https://github.com/microsoft/vstest/pull/3768)
+* Reduce usage of bang + reduce usage of throw/catch [#3771](https://github.com/microsoft/vstest/pull/3771)
+* Fix warnings and failed assertions [#3767](https://github.com/microsoft/vstest/pull/3767)
+* Enable nullable on Communication utilities [#3758](https://github.com/microsoft/vstest/pull/3758)
+* Add default VS settings to playground [#3756](https://github.com/microsoft/vstest/pull/3756)
+* Skip sources when runtime provider is not found [#3760](https://github.com/microsoft/vstest/pull/3760)
+* Fix loop on TPDebug.Assert [#3764](https://github.com/microsoft/vstest/pull/3764)
+* Remove backup project that should not have been checked in [#3763](https://github.com/microsoft/vstest/pull/3763)
+* Enable nullables on acceptance tests [#3757](https://github.com/microsoft/vstest/pull/3757)
+* Enable nullables on TRX logger [#3754](https://github.com/microsoft/vstest/pull/3754)
+* Enable nullables on CoreUtilities [#3751](https://github.com/microsoft/vstest/pull/3751)
+* Fix failing assertions on tests [#3761](https://github.com/microsoft/vstest/pull/3761)
+* Get PlatformAbstractions from ObjectModel [#3722](https://github.com/microsoft/vstest/pull/3722)
+* Fix nullable conflict [#3753](https://github.com/microsoft/vstest/pull/3753)
+* Remove missed #nullable disable [#3741](https://github.com/microsoft/vstest/pull/3741)
+* Fix which value is used in platform warning [#3752](https://github.com/microsoft/vstest/pull/3752)
+* Experimental feature: enable negative values of MaxCpuCount to match a percentage of number of cores [#3748](https://github.com/microsoft/vstest/pull/3748)
+* Enable nullables on SettingsMigrator [#3744](https://github.com/microsoft/vstest/pull/3744)
+* Enable nullables on TestHostProvider [#3738](https://github.com/microsoft/vstest/pull/3738)
+* Update MSTest and VSTest versions [#3663](https://github.com/microsoft/vstest/pull/3663)
+* Fix DOTNET_ROOT env var for .NET 6.0+ [#3715](https://github.com/microsoft/vstest/pull/3715)
+* Enable nullables on TestPlatform.Client [#3745](https://github.com/microsoft/vstest/pull/3745)
+* Add env var to control host priority [#3740](https://github.com/microsoft/vstest/pull/3740)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.3.0-preview-20220612-01...v17.3.0)
+
+### Drops
+
+* TestPlatform vsix: [17.3.0](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.3/20220809-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.3.0](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.0)   
+
 ## 17.4.0-preview-20220726-02
 
 ### Issue Fixed
