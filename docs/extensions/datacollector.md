@@ -37,7 +37,8 @@ public class NewDataCollector : DataCollector
     {
         events.SessionStart += this.SessionStarted_Handler;
         events.TestCaseStart += this.Events_TestCaseStart;
-        logFileName = configurationElement["LogFileName"];
+        this.logFileName = configurationElement["LogFileName"];
+        this.context = environmentContext;
     }
     
     private void SessionStarted_Handler(object sender, SessionStartEventArgs args)
