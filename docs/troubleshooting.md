@@ -244,3 +244,38 @@ jobs:
 * Create a zip with all files available
 
 Note: these logs could contain sensitive information (paths, project name...). Make sure to clean them or use the Visual Studio `Send Feedback` button. Don't put anything you want to keep private in the title or content of the initial report, which is public. Instead, say that you'll send details privately in a separate comment. Once the problem report is created, it's now possible to specify who can see your replies and attachments.
+
+## Use procdump https://docs.microsoft.com/it-it/sysinternals/downloads/procdump
+Sometimes is not possible take the dump using test platform tool because the crash happen before we're able to attach to the process to take the dump self. In that situation we need a way to register for dump at process startup level.  
+To achieve it we can use procdump that will install machine wide Just-in-time (AeDebug) debugger.
+```bash
+PS C:\tools\Procdump> .\procdump.exe -i C:\tools\Procdump\dumps
+
+ProcDump v10.11 - Sysinternals process dump utility
+Copyright (C) 2009-2021 Mark Russinovich and Andrew Richards
+Sysinternals - www.sysinternals.com
+
+Set to:
+  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug
+    (REG_SZ) Auto     = 1
+    (REG_SZ) Debugger = "C:\tools\Procdump\procdump.exe" -accepteula -j "C:\tools\Procdump\dumps" %ld %ld %p
+
+Set to:
+  HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\AeDebug
+    (REG_SZ) Auto     = 1
+    (REG_SZ) Debugger = "C:\tools\Procdump\procdump.exe" -accepteula -j "C:\tools\Procdump\dumps" %ld %ld %p
+
+ProcDump is now set as the Just-in-time (AeDebug) debugger.
+```
+After you can run your application and in case of crash a dump will be automatically taken inside the `C:\tools\Procdump\dumps` directory.
+```
+PS C:\tools\Procdump> ls C:\tools\Procdump\dumps
+
+
+    Directory: C:\tools\Procdump\dumps
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         8/17/2022   9:42 AM        6161605 dotnet.exe_220817_094234.dmp
+```
