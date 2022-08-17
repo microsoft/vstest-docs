@@ -2,6 +2,30 @@
 
 The goal of this document is to help the test platform users to collect useful information for troubleshooting issues.
 
+## Dotnet CLI
+
+#### Collect logs and crash dump
+```bash
+ dotnet test --diag:log.txt --blame-crash --blame-crash-dump-type full
+```
+At the end of the execution you'll find the list of artifacts generated with the link to the file dump:
+```bash
+Starting test execution, please wait...
+Logging Vstest Diagnostics in file: C:\git\issue\bug\log.txt
+A total of 1 test files matched the specified pattern.
+...
+   --- End of inner exception stack trace ---.
+...
+Attachments:
+  C:\git\issues\bug\TestResults\620c075b-e035-41d2-b950-159f57abc604\Sequence_bfcc4d8558654413a3fb2f5164695bf6.xml
+  C:\git\issues\bug\TestResults\620c075b-e035-41d2-b950-159f57abc604\dotnet.exe_11876_1660721586_crashdump.dmp
+```
+You'll find 3 files for logs(runner, datacollector, host), datacollector one can be missing.
+```bash
+-a----         8/17/2022   9:33 AM          30001 log.datacollector.22-08-17_09-32-54_50516_1.txt
+-a----         8/17/2022   9:33 AM          37222 log.host.22-08-17_09-32-55_24965_7.txt
+-a----         8/17/2022   9:33 AM         200345 log.txt
+```
 ## Azure DevOps
 
 ### @VSTest2 task
