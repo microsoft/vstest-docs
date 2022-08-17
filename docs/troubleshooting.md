@@ -247,7 +247,7 @@ Note: these logs could contain sensitive information (paths, project name...). M
 
 ## Use procdump https://docs.microsoft.com/it-it/sysinternals/downloads/procdump on Windows
 
-Sometimes is not possible take the dump using test platform tool because the crash happen before we're able to attach to the process to take the dump self. In that situation we need a way to register for dump at process startup level.  
+Sometimes it's not possible to take the dump using test platform tool because the crash happen before we're able to attach to the process to take the dump self. In that situation we need a way to register for dump at process startup level.  
 To achieve it we can use procdump that will install machine wide Just-in-time (AeDebug) debugger.
 ```bash
 PS C:\tools\Procdump> .\procdump.exe -i C:\tools\Procdump\dumps
