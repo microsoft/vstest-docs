@@ -1,5 +1,17 @@
 # Release Notes
 
+## 17.3.1
+
+### Issues Fixed
+* Do not match .NET Standard to Dotnet testhost runner [#3958](https://github.com/microsoft/vstest/pull/3958)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.3.0...v17.3.1)
+
+### Drops
+
+* TestPlatform vsix: [17.3.1](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.3/20220829-02;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.3.1](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.1)
+
 ## 17.3.0
 
 ### Issue Fixed
