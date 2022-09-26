@@ -1,5 +1,17 @@
 # Release Notes
 
+## 17.3.2
+
+### Issue Fixed
+* Fixed Selenium test run hang after stopping the debugger [#4013](https://github.com/microsoft/vstest/pull/4013)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.3.1...v17.3.2)
+
+### Drops
+
+* TestPlatform vsix: [17.3.2](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.3/20220919-01;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.3.2](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.3.2)
+
 ## 17.3.1
 
 ### Issues Fixed
