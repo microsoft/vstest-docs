@@ -1,5 +1,69 @@
 # Release Notes
 
+## 17.4.0-preview-20220926-01
+
+### Issues Fixed
+* [rel/17.4] Remove portable CPP adapter and dbghelp [#4020](https://github.com/microsoft/vstest/pull/4020)
+* Fix ManagedNameHelper to support namespaceless methods. [#4003](https://github.com/microsoft/vstest/pull/4003)
+* Remove netstandard telemetry dependencies [#4007](https://github.com/microsoft/vstest/pull/4007)
+* Playground project file refactored. [#4002](https://github.com/microsoft/vstest/pull/4002)
+* Fixed wording for Github issue template [#3998](https://github.com/microsoft/vstest/pull/3998)
+* Add more // to the console mode comment in playground to make it easier to uncomment. [#3999](https://github.com/microsoft/vstest/pull/3999)
+* Fixed Selenium test run hang after stopping the debugger [#3995](https://github.com/microsoft/vstest/pull/3995)
+* Enable usage of datacollectors in playground. [#3981](https://github.com/microsoft/vstest/pull/3981)
+* Update azure-pipelines.yml
+* Fixed common.lib.ps1 use correct dotnet on ARM64 devices. [#3986](https://github.com/microsoft/vstest/pull/3986)
+* Fix pipeline build triggers. [#3988](https://github.com/microsoft/vstest/pull/3988)
+* Fix variable name in common.lib.ps1 [#3985](https://github.com/microsoft/vstest/pull/3985)
+* Add some polyfill to simplify code across compilations [#3974](https://github.com/microsoft/vstest/pull/3974)
+* Update versions of diagnostics dependencies [#3976](https://github.com/microsoft/vstest/pull/3976)
+* Refactor supported TFMs names [#3973](https://github.com/microsoft/vstest/pull/3973)
+* Updated deprecated build VMs. [#3972](https://github.com/microsoft/vstest/pull/3972)
+* Signing fixed. [#3971](https://github.com/microsoft/vstest/pull/3971)
+* Fix signing verification script
+* Updated build scripts to always install the latest dotnet patch. [#3968](https://github.com/microsoft/vstest/pull/3968)
+* Remove TargetLatestRuntimePatch properties [#3969](https://github.com/microsoft/vstest/pull/3969)
+* Updated dotnet runtime versions.
+* Add missing signing [#3964](https://github.com/microsoft/vstest/pull/3964)
+* Added net7 support. [#3944](https://github.com/microsoft/vstest/pull/3944)
+* Declare Newtonsoft.Json dependency for netstandard2.0 in Microsoft.Te… [#3962](https://github.com/microsoft/vstest/pull/3962)
+* Make TraitCollection serializable in all supported TFMs [#3963](https://github.com/microsoft/vstest/pull/3963)
+* Replace netstandard1.0 and netstandard1.3 with netstandard2.0 [#3921](https://github.com/microsoft/vstest/pull/3921)
+* Fix stack overflow in FilterExpression.ValidForProperties [#3946](https://github.com/microsoft/vstest/pull/3946)
+* Add process id to  VSTEST_DUMP_PROCDUMPARGUMENTS usage for for BlameDataCollector [#3957](https://github.com/microsoft/vstest/pull/3957)
+* Console logger splits path using directory and alt directory separators [#3923](https://github.com/microsoft/vstest/pull/3923)
+* Localized file check-in by OneLocBuild Task: Build definition ID 2923: Build ID 6589224 [#3954](https://github.com/microsoft/vstest/pull/3954)
+* Do not match .NET Standard to Dotnet testhost runner [#3949](https://github.com/microsoft/vstest/pull/3949)
+* Remove AllowMultiple on DirectoryBasedTestDiscovererAttribute. [#3953](https://github.com/microsoft/vstest/pull/3953)
+* Revert "Re-enable arm64 ngen (#3931)" [#3948](https://github.com/microsoft/vstest/pull/3948)
+* Re-enable arm64 ngen [#3931](https://github.com/microsoft/vstest/pull/3931)
+* Support test discovery in sources that are directories [#3932](https://github.com/microsoft/vstest/pull/3932)
+* Allow DotNetHostPath to contain env vars [#3858](https://github.com/microsoft/vstest/pull/3858)
+* update fakes package version to include fix that prevents testhost from crashing [#3928](https://github.com/microsoft/vstest/pull/3928)
+* Run tests with Server GC enabled & concurrent GC disabled. [#3661](https://github.com/microsoft/vstest/pull/3661)
+* VS: move Solution Items folder out of scripts [#3919](https://github.com/microsoft/vstest/pull/3919)
+* Set discovery batch size to 1000 [#3896](https://github.com/microsoft/vstest/pull/3896)
+* Update Fakes packages [#3912](https://github.com/microsoft/vstest/pull/3912)
+* Fix warnings on main (IDE only) [#3914](https://github.com/microsoft/vstest/pull/3914)
+* Fix name of testhost folder in playground [#3917](https://github.com/microsoft/vstest/pull/3917)
+* fixed paths duplicates [#3907](https://github.com/microsoft/vstest/pull/3907)
+* Add some tests for AssemblyHelper [#3911](https://github.com/microsoft/vstest/pull/3911)
+* Fix broken behaviour for AssemblyHelper [#3909](https://github.com/microsoft/vstest/pull/3909)
+* Fix verification of signing [#3904](https://github.com/microsoft/vstest/pull/3904)
+* Migrate FabricBot Tasks to Config-as-Code [#3823](https://github.com/microsoft/vstest/pull/3823)
+* Removed unnecessary signing instruction. [#3903](https://github.com/microsoft/vstest/pull/3903)
+* Fix some vulnerability [#3897](https://github.com/microsoft/vstest/pull/3897)
+* Signing: Fix path to TestHost folders [#3902](https://github.com/microsoft/vstest/pull/3902)
+* Move codebase to netcoreapp3.1 [#3861](https://github.com/microsoft/vstest/pull/3861)
+* Update dotnet runtimes [#3901](https://github.com/microsoft/vstest/pull/3901)
+* CC package update [#3881](https://github.com/microsoft/vstest/pull/3881)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.4.0-preview-20220726-02...v17.4.0-preview-20220926-01)
+
+### Drops
+
+* Microsoft.TestPlatform.ObjectModel : [17.4.0-preview-20220926-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.4.0-preview-20220926-01)
+
 ## 17.3.2
 
 ### Issue Fixed
