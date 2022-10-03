@@ -62,6 +62,7 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.4.0-preview-
 
 ### Drops
 
+* TestPlatform vsix: [17.4.0-preview-20220926-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.4/20220926-01;/TestPlatform.vsix)
 * Microsoft.TestPlatform.ObjectModel : [17.4.0-preview-20220926-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.4.0-preview-20220926-01)
 
 ## 17.3.2
