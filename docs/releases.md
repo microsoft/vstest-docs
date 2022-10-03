@@ -1,5 +1,19 @@
 # Release Notes
 
+## 17.5.0-preview-20221003-04
+
+### Issues Fixed
+* Fix release note and prebuild scripts [#4039](https://github.com/microsoft/vstest/pull/4039)
+* Update Fakes binaries [#4033](https://github.com/microsoft/vstest/pull/4033)
+* Add support for ppc64le processor architecture [#4028](https://github.com/microsoft/vstest/pull/4028)
+
+See full log [here](https://github.com/microsoft/vstest/compare/v17.4.0-preview-20220726-02...v17.5.0-preview-20221003-04)
+
+### Drops
+
+* TestPlatform vsix: [17.5.0-preview-20221003-04](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/main/20221003-04;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.5.0-preview-20221003-04](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.5.0-preview-20221003-04)
+
 ## 17.4.0-preview-20221003-03
 
 ### Issues Fixed
