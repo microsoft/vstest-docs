@@ -1,8 +1,9 @@
 # Release Notes
 
-## 17.4.0-preview-20220926-01
+## 17.4.0-preview-20221003-03
 
 ### Issues Fixed
+* Fix release note and prebuild scripts
 * [rel/17.4] Remove portable CPP adapter and dbghelp [#4020](https://github.com/microsoft/vstest/pull/4020)
 * Fix ManagedNameHelper to support namespaceless methods. [#4003](https://github.com/microsoft/vstest/pull/4003)
 * Remove netstandard telemetry dependencies [#4007](https://github.com/microsoft/vstest/pull/4007)
@@ -58,12 +59,12 @@
 * Update dotnet runtimes [#3901](https://github.com/microsoft/vstest/pull/3901)
 * CC package update [#3881](https://github.com/microsoft/vstest/pull/3881)
 
-See full log [here](https://github.com/microsoft/vstest/compare/v17.4.0-preview-20220726-02...v17.4.0-preview-20220926-01)
+See full log [here](https://github.com/microsoft/vstest/compare/v17.4.0-preview-20220726-02...v17.4.0-preview-20221003-03)
 
 ### Drops
 
-* TestPlatform vsix: [17.4.0-preview-20220926-01](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.4/20220926-01;/TestPlatform.vsix)
-* Microsoft.TestPlatform.ObjectModel : [17.4.0-preview-20220926-01](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.4.0-preview-20220926-01)
+* TestPlatform vsix: [17.4.0-preview-20221003-03](https://vsdrop.corp.microsoft.com/file/v1/Products/DevDiv/microsoft/vstest/17.4/20221003-03;/TestPlatform.vsix)
+* Microsoft.TestPlatform.ObjectModel : [17.4.0-preview-20221003-03](https://www.nuget.org/packages/Microsoft.TestPlatform.ObjectModel/17.4.0-preview-20221003-03)
 
 ## 17.3.2
 
