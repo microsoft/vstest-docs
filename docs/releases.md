@@ -10,9 +10,7 @@
 * [rel/17.4] Remove portable CPP adapter and dbghelp [#4020](https://github.com/microsoft/vstest/pull/4020)
 * Mirror test commit.
 * Fix ManagedNameHelper to support namespaceless methods. [#4003](https://github.com/microsoft/vstest/pull/4003)
-* Update dependencies from https://dev.azure.com/devdiv/DevDiv/_git/vs-code-coverage build 20220912.4 [#4008](https://github.com/microsoft/vstest/pull/4008)
 * Remove netstandard telemetry dependencies [#4007](https://github.com/microsoft/vstest/pull/4007)
-* Update dependencies from https://dev.azure.com/devdiv/DevDiv/_git/vs-code-coverage build 20220909.3 [#4006](https://github.com/microsoft/vstest/pull/4006)
 * Playground project file refactored. [#4002](https://github.com/microsoft/vstest/pull/4002)
 * Fixed wording for Github issue template [#3998](https://github.com/microsoft/vstest/pull/3998)
 * Add more // to the console mode comment in playground to make it easier to uncomment. [#3999](https://github.com/microsoft/vstest/pull/3999)
