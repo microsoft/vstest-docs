@@ -4,12 +4,15 @@ The goal of this document is to help the test platform users to collect useful i
 
 ## Dotnet CLI
 
-#### Collect logs and crash dump
-```bash
+### Collect logs and crash dump
+
+```shell
  dotnet test --diag:log.txt --blame-crash --blame-crash-dump-type full
 ```
+
 At the end of the execution you'll find the list of artifacts generated with the link to the file dump:
-```bash
+
+```shell
 Starting test execution, please wait...
 Logging Vstest Diagnostics in file: C:\git\issue\bug\log.txt
 A total of 1 test files matched the specified pattern.
@@ -20,12 +23,15 @@ Attachments:
   C:\git\issues\bug\TestResults\620c075b-e035-41d2-b950-159f57abc604\Sequence_bfcc4d8558654413a3fb2f5164695bf6.xml
   C:\git\issues\bug\TestResults\620c075b-e035-41d2-b950-159f57abc604\dotnet.exe_11876_1660721586_crashdump.dmp
 ```
+
 You'll find 3 files for logs(runner, datacollector, host), datacollector one can be missing.
-```bash
+
+```shell
 -a----         8/17/2022   9:33 AM          30001 log.datacollector.22-08-17_09-32-54_50516_1.txt
 -a----         8/17/2022   9:33 AM          37222 log.host.22-08-17_09-32-55_24965_7.txt
 -a----         8/17/2022   9:33 AM         200345 log.txt
 ```
+
 ## Azure DevOps
 
 ### @VSTest2 task
@@ -245,11 +251,12 @@ jobs:
 
 Note: these logs could contain sensitive information (paths, project name...). Make sure to clean them or use the Visual Studio `Send Feedback` button. Don't put anything you want to keep private in the title or content of the initial report, which is public. Instead, say that you'll send details privately in a separate comment. Once the problem report is created, it's now possible to specify who can see your replies and attachments.
 
-## Use procdump https://docs.microsoft.com/it-it/sysinternals/downloads/procdump on Windows
+## Use procdump <https://docs.microsoft.com/it-it/sysinternals/downloads/procdump> on Windows
 
 Sometimes it's not possible to take the dump using test platform tool because the crash happen before we're able to attach to the process to take the dump self. In that situation we need a way to register for dump at process startup level.  
 To achieve it we can use procdump that will install machine wide Just-in-time (AeDebug) debugger.
-```bash
+
+```shell
 PS C:\tools\Procdump> .\procdump.exe -i C:\tools\Procdump\dumps
 
 ProcDump v10.11 - Sysinternals process dump utility
@@ -268,7 +275,9 @@ Set to:
 
 ProcDump is now set as the Just-in-time (AeDebug) debugger.
 ```
+
 After you can run your application and in case of crash a dump will be automatically taken inside the `C:\tools\Procdump\dumps` directory.
+
 ```
 PS C:\tools\Procdump> ls C:\tools\Procdump\dumps
 
@@ -280,8 +289,11 @@ Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----         8/17/2022   9:42 AM        6161605 dotnet.exe_220817_094234.dmp
 ```
-You can unistall the automatic generation running at the end of the collection phase 
-```bash 
+
+You can unistall the automatic generation running at the end of the collection phase
+
+```shell
 .\procdump.exe -u
 ```
+
 Keep in mind that this mode will collect machine wide crash so every process in the machine that will crash will collect a dump in the folder.

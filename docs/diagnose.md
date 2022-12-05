@@ -7,7 +7,7 @@ This document outlines troubleshooting and diagnosis instructions for test platf
 The console test runner (`vstest.console`) provides a `diag` switch to collect
 traces to a log file. Invoke the runner using below command line:
 
-```
+```shell
 > vstest.console testApp.dll --diag:log.txt
 ```
 
@@ -19,7 +19,7 @@ it doesn't exist.
 
 Trace level can be changed using below command line:
 
-```
+```shell
 > vstest.console testApp.dll --diag:log.txt;tracelevel=verbose
 ```
 
@@ -29,13 +29,14 @@ Allowed values for tracelevel are: off, error, warning, info and verbose.
 
 The `--diag` option is supported on the `dotnet test` command as well. This will also produce same
 set of log files: `log.txt` and `log.*.txt`.
-```
+
+```shell
 > dotnet test --diag:log.txt
 ```
 
 To get traces for VSTest build task, enable the following environment variable:
 
-```
+```shell
 > set VSTEST_BUILD_TRACE=1
 or
 > $env:VSTEST_BUILD_TRACE=1    # powershell
@@ -50,7 +51,7 @@ a `vstest.console.exe.config` configuration file in the same directory as
 
 This technique is useful to capture logs for IDE/Editor scenarios.
 
-```
+```shell
 > where vstest.console
 d:\tmp\vstest.console.exe
 
@@ -59,7 +60,7 @@ d:\tmp\vstest.console.exe
 
 Add the following content to the config file (`vstest.console.exe.config` or `testhost.exe.config`).
 
-```
+```shell
 <configuration>
   <system.diagnostics>
     <sources>
@@ -97,10 +98,12 @@ Add the following content to the config file (`vstest.console.exe.config` or `te
 ```
 
 ## Collect trace in VSTS CI (VSTest Task)
+
 Add a variable to the build definition named `System.Debug` with value `True`. This can
 be done while a new build is queued.
 
 This variable will ensure:
+
 * Exact command line of `vstest.console.exe` is reported. It can be used to isolate if there
 are errors in translating user inputs in the task to command line options of vstest.console.exe.
 * The task invokes `vstest.console.exe` with `/diag` option. The log files can be uploaded
@@ -112,7 +115,7 @@ The runner and test host processes support waiting for debugger attach. You can
 enable the following environment variable to keep `vstest.console.exe` waiting for
 debugger attach:
 
-```
+```shell
 > set VSTEST_RUNNER_DEBUG=1
 > vstest.console testApp.dll
 Waiting for debugger attach...
@@ -120,10 +123,10 @@ Process Id: 51928, Name: vstest.console
 ```
 
 For test host process (`testhost.exe`, or `dotnet exec testhost.dll` depending on
-target framework) use the following environment variable. 
+target framework) use the following environment variable.
 Execution will halt until debugger is attached.
 
-```
+```shell
 > set VSTEST_HOST_DEBUG=1
 > vstest.console testApp.dll
 Microsoft (R) Test Execution Command Line Tool Version 15.0.0.0

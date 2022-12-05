@@ -1,7 +1,9 @@
 # TestCase filter
+
 This document will help you to selectively execute tests based on filtering conditions through `--filter` for `dotnet test` and `--testcasefilter` for `vstest.console.exe`.
 
 ### Syntax
+
    `dotnet test --filter <Expression>` or
    `vstest.console.exe --testcasefilter:<Expression>`
 
@@ -20,6 +22,7 @@ supported by popular unit test frameworks.
 | Xunit          | <ul><li>FullyQualifiedName</li><li>DisplayName</li><li>Traits</li></ul> |
 
 Allowed **operators**:
+
 * `=` implies an exact match
 * `!=` implies an exact not match
 * `~` implies a contains lookup
@@ -27,7 +30,7 @@ Allowed **operators**:
 
 **Value** is a string. All the lookups are case insensitive.
 
-**Escape Sequences** must be used to represent characters in the value that have special meanings in the filter, i.e. filter operators. 
+**Escape Sequences** must be used to represent characters in the value that have special meanings in the filter, i.e. filter operators.
 
 | Escape Sequence | Represents |
 | -------------- | -------------------- |
@@ -44,13 +47,16 @@ A helper method `Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities.Filte
 is also available by referencing the `Microsoft.VisualStudio.TestPlatform.ObjectModel` NuGet package, which can be used to escape strings programatically.
 
 Expressions can be joined with boolean operators. The following boolean operators are supported:
+
 * `|` implies a boolean `OR`
 * `&` implies a boolean `AND`
 
 ## Examples
-The following examples use `dotnet test`, if you're using `vstest.console.exe` replace `--filter ` with `--testcasefilter:`.
+
+The following examples use `dotnet test`, if you're using `vstest.console.exe` replace `--filter` with `--testcasefilter:`.
 
 ### MSTest
+
 ```CSharp
 namespace MSTestNamespace
 {
@@ -88,8 +94,8 @@ namespace MSTestNamespace
 
 | Expression | What it does? |
 | ---------- | ------------- |
-| `dotnet test --filter "FullyQualifiedName~UnitTestClass1\|TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName __or__ TestCategory is CategoryA. |
-| `dotnet test --filter "FullyQualifiedName~UnitTestClass1&TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName __and__ TestCategory is CategoryA. |
+| `dotnet test --filter "FullyQualifiedName~UnitTestClass1\|TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName **or** TestCategory is CategoryA. |
+| `dotnet test --filter "FullyQualifiedName~UnitTestClass1&TestCategory=CategoryA"` | Runs tests which have `UnitTestClass1` in FullyQualifiedName **and** TestCategory is CategoryA. |
 | `dotnet test --filter "(FullyQualifiedName~UnitTestClass1&TestCategory=CategoryA)\|Priority=1"` | Runs tests which have either FullyQualifiedName contains `UnitTestClass1` and TestCategory is CategoryA or Priority is 1. |
 
 ### xUnit
@@ -101,6 +107,7 @@ namespace MSTestNamespace
 | `dotnet test --filter DisplayName~TestClass1` | Runs tests whose display name contains `TestClass1`. |
 
 #### Using traits for filter
+
 ```CSharp
 namespace XUnitNamespace
 {
@@ -123,6 +130,7 @@ namespace XUnitNamespace
 }
 
 ```
+
 In above code we defined traits with keys `Category` and `Priority` which can be used for filtering.
 
 | Expression | What it does? |
@@ -134,6 +142,6 @@ In above code we defined traits with keys `Category` and `Priority` which can be
 
 | Expression | What it does? |
 | ---------- | ------------- |
-| `dotnet test --filter "FullyQualifiedName~TestClass1\|Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName __or__ Category is Nightly. |
-| `dotnet test --filter "FullyQualifiedName~TestClass1&Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName __and__ Category is Nightly. |
+| `dotnet test --filter "FullyQualifiedName~TestClass1\|Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName **or** Category is Nightly. |
+| `dotnet test --filter "FullyQualifiedName~TestClass1&Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName **and** Category is Nightly. |
 | `dotnet test --filter "(FullyQualifiedName~TestClass1&Category=Nightly)\|Priority=1"` | Runs tests which have either FullyQualifiedName contains `TestClass1` and Category is CategoryA or Priority is 1. |

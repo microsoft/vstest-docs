@@ -1,7 +1,9 @@
 # Configure a test run
+
 This document covers configuration of a test run in the test platform.
 
 ## Overview
+
 There are three different ways to configure various aspects of a test run.
 
 1. **Using command line arguments**
@@ -10,13 +12,13 @@ test` command line. For example, `--framework` can specify the runtime framework
 version, or `--platform` can specify the architecture of test run (`x86` or
 `x64`).
 
-2. **Using a runsettings file**
+1. **Using a runsettings file**
 User can specify a `runsettings` file to configure test run. For example:
 
 * `> vstest.console.exe --settings:test.runsettings test.dll`
 * `> dotnet test -s test.runsettings`
 
-3. **Using command line runsettings parameters**
+1. **Using command line runsettings parameters**
 Various elements of a `runsettings` file can also specified as command line
 parameters directly. For example, consider following `runsettings`:
 
@@ -31,20 +33,21 @@ parameters directly. For example, consider following `runsettings`:
 The `DisableAppDomain` settings can be changed in the following way:
 `> vstest.console --settings:test.runsettings -- RunConfiguration.DisableAppDomain=true`
 
-Or, `> dotnet test -s test.runsettings -- RunConfiguration.DisableAppDomain=true` if 
+Or, `> dotnet test -s test.runsettings -- RunConfiguration.DisableAppDomain=true` if
 you're using dotnet test to execute tests.
 
 Order of priority (in case of conflicting settings) is as follows:
 
 1. If a command line switch is available, it takes priority. E.g. `/platform`
    wins over `<TargetPlatform>` specified in the `runsettings` file.
-2. If a command line runsettings is available, it takes priority over the
+1. If a command line runsettings is available, it takes priority over the
    content of `runsettings` file. E.g. in case of `dotnet test -s
    test.runsettings -- RunConfiguration.TargetPlatform=x86`, platform is set to
    `x86` even if `test.runsettings` specifies `x64` as platform.
-3. If a `runsettings` file is provided, it is used for the test run.
+1. If a `runsettings` file is provided, it is used for the test run.
 
 ## Run settings
+
 A `*.runsettings` file is used to configure various aspects of a test discovery
 and execution with `vstest.console.exe` or the `Test Explorer` in VS. An editor
 using the test platform, can specify a `runsettings` as an `xml` in the `Test
@@ -53,28 +56,30 @@ Discovery` or `Test Run` requests (details are in Editor API Specification).
 The `runsettings` file is a xml file with following sections:
 
 1. Run Configuration
-2. Data Collection
-3. Runtime Parameters
-4. Adapter Configuration
-5. Legacy Settings
+1. Data Collection
+1. Runtime Parameters
+1. Adapter Configuration
+1. Legacy Settings
 
 We will cover these sections in detail later in the document. Let's discuss few
 core principles for runsettings.
 
 ### Principles
+
 1. Any runner (CLI, IDE, Editor) can use run settings to configure the test run
-2. These runners need to take care of merging user provided runsettings with
+1. These runners need to take care of merging user provided runsettings with
    their own configuration parameters. E.g. an IDE may provide `TargetPlatform`
    as an UI configuration, at the same time an user can also provide the setting
    in a `runsettings` file. It is the IDE's responsibility to disambiguate.
-3. Run settings are always created at the start of a test run. They are
+1. Run settings are always created at the start of a test run. They are
    immutable for rest of the run.
-4. Every test platform extension should get the _effective_ runsettings for a
+1. Every test platform extension should get the _effective_ runsettings for a
    test run via the test platform APIs. It may use it to read its own settings
    or take decisions (e.g. an adapter needs to disable appdomains if
    `DisableAppDomain` setting is provided via run settings).
 
 ### Sample
+
 Given below is a complete `runsettings` file with all available options. Each
 option is briefly annotated, details are available in a later section of this
 document.
@@ -180,6 +185,7 @@ document.
 ```
 
 ### Section 1: Run Configuration
+
 ```xml
 <RunSettings>  
   <RunConfiguration>  
@@ -196,7 +202,8 @@ Available elements are:
 
 1. **Test settings**
 
-*Example*
+_Example_
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
 <RunSettings>  
@@ -212,8 +219,8 @@ Available elements are:
   </RunConfiguration>  
 </RunSettings>
 ```
- 
-*Description*
+
+_Description_
 
 | Settings Element  | Type   | Function                                                                                        |
 |-------------------|--------|-------------------------------------------------------------------------------------------------|
@@ -227,6 +234,7 @@ Available elements are:
 | ExecutionThreadApartmentState       | string    | Apartment state of thread which calls adapter's RunTests and Cancel APIs. Possible values: (MTA, STA). default is STA for .NET Full and MTA for .NET Core.  STA supported only for .NET Full **Required Version: 15.5+.** [More details.](#execution-thread-apartment-state) |
 
 Examples of valid `TargetFrameworkVersion`:
+
 * .NETCoreApp, Version=v1.0
 * .NETCoreApp, Version=v1.1
 * .NETFramework, Version=v4.5
@@ -238,7 +246,8 @@ These settings are a hint to adapters to behave in a particular way. These are
 determined by runners based on user configuration. It is also possible for an
 user to provide these settings, if they want to tweak a run.
 
-*Example*
+_Example_
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
 <RunSettings>  
@@ -251,7 +260,7 @@ user to provide these settings, if they want to tweak a run.
 </RunSettings>
 ```
 
-*Description*
+_Description_
 
 | Settings Element         | Type | Function                                                                           |
 |--------------------------|------|------------------------------------------------------------------------------------|
@@ -264,7 +273,8 @@ user to provide these settings, if they want to tweak a run.
 An IDE/Editor can set these settings to change the behavior of test platform.
 They are not actionable for an adapter.
 
-*Example*
+_Example_
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
 <RunSettings>  
@@ -274,13 +284,14 @@ They are not actionable for an adapter.
 </RunSettings>
 ```
 
-*Description*
+_Description_
 
 | Settings Element | Type | Function                                                                                                    |
 |------------------|------|-------------------------------------------------------------------------------------------------------------|
 | BatchSize        | int  | Configures the frequency of run statistics. Discovered/Test results are send once `n` tests are accumulated |
 
 ### Section 2: Data Collection
+
 ```xml
 <RunSettings>  
   <!-- Configurations for out-of-process data collectors -->  
@@ -313,7 +324,8 @@ Data collector extension authors may use the content within the specific
 for their data collector. For example, the code coverage data collector uses
 following section.
 
-*Example*
+_Example_
+
 ```xml
 <RunSettings>  
   <!-- Configurations for data collectors -->  
@@ -341,15 +353,16 @@ following section.
     </DataCollectors>  
   </DataCollectionRunSettings>  
 </RunSettings>  
-``` 
+```
 
-*Description*
+_Description_
 
 | Settings Element | Type   | Function                                                                  |
 |------------------|--------|---------------------------------------------------------------------------|
 | DataCollector    | string | Provides a data collector information. See below for required attributes. |
 
 Required attributes:
+
 1. `friendlyName` provides a common name for the data collector. It is declared
    by a data collector implementation.
 2. `enabled` is used to enable/disable a data collector. If `true` the data
@@ -375,6 +388,7 @@ These settings can be used for Ordered tests and MSTest v1 based tests when runn
 Users can now migrate testsettings to runsettings using [SettingsMigrator](https://github.com/Microsoft/vstest-docs/blob/main/RFCs/0023-TestSettings-Deprecation.md#migration)
 
 Here is an example:
+
 ```xml
 <Runsettings>
   <MSTest>
@@ -421,6 +435,7 @@ Here is an example:
   ```
 
 #### Run Parameters
+
 ```xml
   <!-- Parameters used by tests at runtime -->  
   <TestRunParameters>  
@@ -439,6 +454,7 @@ available to tests during runtime.
 > `TestContext` API.
 
 #### Adapter Configuration
+
 An adapter may provide a section in runsettings for users. See [mstest config][]
 and [nunit config][] for more details.
 
@@ -446,10 +462,13 @@ and [nunit config][] for more details.
 [nunit config]: TODO
 
 # Execution thread apartment state
+
 This section explains usage of ExecutionThreadApartmentState element in runsettings and testplatform behavior for same.
 
-### Usage:
-#### using runsettings file:
+### Usage
+
+#### using runsettings file
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
@@ -459,22 +478,24 @@ This section explains usage of ExecutionThreadApartmentState element in runsetti
 </RunSettings>
 ```
 
-#### using command line:
+#### using command line
+
 vstest.console.exe a.dll -- RunConfiguration.ExecutionThreadApartmentState=STA
 
 dotnet test -f net46 -- RunConfiguration.ExecutionThreadApartmentState=STA
 
 ### History
+
 In Test Platform V1 ExecutionThreadApartmentState property can be set from vstest.executionengine*.exe.config file. Default value is `STA`.
 
 ### Behavior
+
 In Test platform V2 ExecutionThreadApartmentState property default value is `MTA` for .NET Core and `STA` for .NET Full. `STA` value is only supported for .NET Framework.
 Warning should be shown on trying to set value `STA` for .NET Core and UAP10.0 frameworks tests.
 
+* To support adapters which depends on thread test platform creates may need STA apartment state to run UI tests. `ExecutionThreadApartmentState` option can be used to set apartment state. Example: MSTest v1, MSTest v2 and MSCPPTest adapters.
 
-- To support adapters which depends on thread test platform creates may need STA apartment state to run UI tests. `ExecutionThreadApartmentState` option can be used to set apartment state. Example: MSTest v1, MSTest v2 and MSCPPTest adapters.
-
-- The recommended way to make the tests run in STA thread is using custom attributes that adapter provides.
+* The recommended way to make the tests run in STA thread is using custom attributes that adapter provides.
 
 | Adapter | Attribute|
 |-----------|-----------|
