@@ -1,3 +1,5 @@
+# This repository is archived, content is moved to https://github.com/microsoft/vstest
+
 ### Visual Studio Test Platform Documentation
 
 You've found the GitHub repository which contains the content for the Visual Studio Test Platform documentation.
