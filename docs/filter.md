@@ -20,6 +20,7 @@ supported by popular unit test frameworks.
 | -------------- | -------------------- |
 | MSTest         | <ul><li>FullyQualifiedName</li><li>Name</li><li>ClassName</li><li>Priority</li><li>TestCategory</li></ul> |
 | Xunit          | <ul><li>FullyQualifiedName</li><li>DisplayName</li><li>Traits</li></ul> |
+| MSpec          | <ul><li>FullyQualifiedName</li><li>DisplayName</li><li>Tag</li><li>Subject</li></ul> |
 
 Allowed **operators**:
 
@@ -145,3 +146,32 @@ In above code we defined traits with keys `Category` and `Priority` which can be
 | `dotnet test --filter "FullyQualifiedName~TestClass1\|Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName **or** Category is Nightly. |
 | `dotnet test --filter "FullyQualifiedName~TestClass1&Category=Nightly"` | Runs tests which have `TestClass1` in FullyQualifiedName **and** Category is Nightly. |
 | `dotnet test --filter "(FullyQualifiedName~TestClass1&Category=Nightly)\|Priority=1"` | Runs tests which have either FullyQualifiedName contains `TestClass1` and Category is CategoryA or Priority is 1. |
+
+### Machine Spec
+
+| Expression | What it does? |
+| ---------- | ------------- |
+| `dotnet test --filter DisplayName=MSpecNamespace.TestClass1.Test1` | Runs only one test `MSpecNamespace.TestClass1.Test1`. |
+| `dotnet test --filter Tag!=SlowTests` | Runs all tests except tests with `[Tags("SlowTests")]` |
+| `dotnet test --filter Subject~WebAPI` | Runs tests whose `Subject` name contains `WebAPI`. |
+
+#### Using traits for filter
+```CSharp
+namespace MSpecNamespace
+{
+    [Subject(typeof(TestClass1))]
+    [Tags("SlowTests")]
+    public class TestClass1Tests
+    {
+        Establish context = () =>
+            _class = new TestClass1();
+
+        Because of = () =>
+           _result = _class.Do();
+
+        It should_have_assertions = () =>
+           _result.ShouldNotBeNull();
+    }
+}
+```
+In above code we defined traits with keys `Subject` and `Tags` (Tag) which can be used for filtering.
