@@ -424,7 +424,31 @@ See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-
 
 ## 17.2.0
 
-See full log [here](https://github.com/microsoft/vstest/compare/v17.2.0-preview-20220401-07...v17.2.0)
+
+### User-facing features and fixes:
+
+- Add ARM64 support [#3370](https://github.com/microsoft/vstest/pull/3370), [#3422](https://github.com/microsoft/vstest/pull/3422),  [#3371](https://github.com/microsoft/vstest/pull/3371)
+- Add remote testhost capability for WinUI remote test runs  [#3314](https://github.com/microsoft/vstest/pull/3314), [#3492](https://github.com/microsoft/vstest/pull/3492)
+- Add support for portable embedded PDBs [#3454](https://github.com/microsoft/vstest/pull/3454)
+- Add override for shutdown timeout [#3466](https://github.com/microsoft/vstest/pull/3466)
+- Add options for test adapter loading strategy, to make adapter lookup faster [#3380](https://github.com/microsoft/vstest/pull/3380)
+- Add attachment post-processing [#3324](https://github.com/microsoft/vstest/pull/3324), [#3384](https://github.com/microsoft/vstest/pull/3384), [#3434](https://github.com/microsoft/vstest/pull/3434)
+
+- Patch CVE-2019-0657. [#3436](https://github.com/microsoft/vstest/pull/3436)
+- Fix reporting all errors on exit on Linux, and MacOS [#3530](https://github.com/microsoft/vstest/pull/3530), [#3410](https://github.com/microsoft/vstest/pull/3410)
+- Fix cancelling discovery, to make it more reliable [#3527](https://github.com/microsoft/vstest/pull/3527)
+
+
+### Developer facing features and fixes: 
+
+- Add test matrix to acceptance tests to test against previous versions of TestPlatform and MSTest to ensure compatibility [#3459](https://github.com/microsoft/vstest/pull/3459)
+- Add telemetry to collect TestPlatform extensions in discovery/run (under VS only) [#3511](https://github.com/microsoft/vstest/pull/3511), [#3340](https://github.com/microsoft/vstest/pull/3340)
+- Add better logging for delegate callbacks  [#3283](https://github.com/microsoft/vstest/pull/3283)
+
+- Fix flaky unit and acceptance tests [#3311](https://github.com/microsoft/vstest/pull/3311)
+
+- Modernize code-base [#3398](https://github.com/microsoft/vstest/pull/3398),  [#3408](https://github.com/microsoft/vstest/pull/3408), [#3405](https://github.com/microsoft/vstest/pull/3405), [#3366](https://github.com/microsoft/vstest/pull/3366),  [#3341](https://github.com/microsoft/vstest/pull/3341), [#3359](https://github.com/microsoft/vstest/pull/3359), [#3345](https://github.com/microsoft/vstest/pull/3345), [#3358](https://github.com/microsoft/vstest/pull/3358), [#3356](https://github.com/microsoft/vstest/pull/3356), [#3307](https://github.com/microsoft/vstest/pull/3307), [#3320](https://github.com/microsoft/vstest/pull/3320)
+
 
 ### Drops
 
