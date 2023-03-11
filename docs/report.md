@@ -30,6 +30,7 @@ if you're interested in the architecture of a test logger.
 | AppVeyor | [AppVeyor.TestLogger][appveyor.nuget] | [AppVeyor Logger][] |
 | Azure Pipelines | [AzurePipelines.TestLogger][azurepipelines.nuget] | [Azure Pipelines Logger][] |
 | TeamCity | [TeamCity.VSTest.TestAdapter][teamcity.nuget] | [Teamcity Logger][] |
+| GitHub | [GitHub.TestLogger][github.nuget] | [GitHub Logger][]
 
 [Trx Logger]: https://github.com/Microsoft/vstest/tree/main/src/Microsoft.TestPlatform.Extensions.TrxLogger
 [Html Logger]: https://github.com/Microsoft/vstest/tree/main/src/Microsoft.TestPlatform.Extensions.HtmlLogger
@@ -40,6 +41,7 @@ if you're interested in the architecture of a test logger.
 [AppVeyor Logger]: https://github.com/spekt/appveyor.testlogger
 [Azure Pipelines Logger]: https://github.com/daveaglick/AzurePipelines.TestLogger
 [TeamCity Logger]: https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
+[GitHub Logger]: https://github.com/dogguts/githubtestlogger
 
 [xunit.nuget]: https://www.nuget.org/packages/XunitXml.TestLogger
 [nunit.nuget]: https://www.nuget.org/packages/NUnitXml.TestLogger/
@@ -47,6 +49,7 @@ if you're interested in the architecture of a test logger.
 [appveyor.nuget]: https://www.nuget.org/packages/AppVeyor.TestLogger
 [azurepipelines.nuget]: https://www.nuget.org/packages/AzurePipelines.TestLogger
 [teamcity.nuget]: https://www.nuget.org/packages/TeamCity.VSTest.TestAdapter
+[github.nuget]: https://www.nuget.org/packages/GitHub.TestLogger/
 
  Want to add your logger? Please send a PR with changes in this doc.
 
